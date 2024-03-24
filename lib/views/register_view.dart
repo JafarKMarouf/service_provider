@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/views/widgets/custome_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'widgets/custome_text_form_field.dart';
@@ -64,8 +65,8 @@ class _RegisterViewState extends State<RegisterView> {
                       CustomTextFormField(
                         isSuffix: false,
                         validate: (value) {
-                          if (value!.isEmpty ) {
-                            return  "هذا الحقل مطلوب";
+                          if (value!.isEmpty) {
+                            return "هذا الحقل مطلوب";
                           }
                           return null;
                         },
@@ -83,7 +84,7 @@ class _RegisterViewState extends State<RegisterView> {
                         isSuffix: false,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return  "هذا الحقل مطلوب";
+                            return "هذا الحقل مطلوب";
                           }
                           return null;
                         },
@@ -100,7 +101,7 @@ class _RegisterViewState extends State<RegisterView> {
                         prefixIcon: Icons.lock,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return  "هذا الحقل مطلوب";
+                            return "هذا الحقل مطلوب";
                           }
                           if (value.length < 8) {
                             return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
@@ -128,7 +129,7 @@ class _RegisterViewState extends State<RegisterView> {
                         isObsecure: passwordVisibleConfirm,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return  "هذا الحقل مطلوب";
+                            return "هذا الحقل مطلوب";
                           }
                           if (value.length < 8) {
                             return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
@@ -154,40 +155,41 @@ class _RegisterViewState extends State<RegisterView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                              children:   [
-                                Radio(
-                                    value: 1,
-                                    groupValue:userRoleType,
-                                  onChanged: (val){
-                                    userRoleType = val as int;
-                                    setState(() {});
-                                  },
-                                ),
-                               const Text('Customer',style: TextStyle(
+                          Row(children: [
+                            Radio(
+                              value: 1,
+                              groupValue: userRoleType,
+                              onChanged: (val) {
+                                userRoleType = val as int;
+                                setState(() {});
+                              },
+                            ),
+                            const Text(
+                              'Customer',
+                              style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
-                                   color: Color(0xff252525)
-                                ),),
-                              ]
-                          ),
-                          Row(
-                              children:   [
-                                Radio(
-                                    value: 2,
-                                    groupValue:userRoleType,
-                                    onChanged: (val){
-                                      userRoleType = val as int;
-                                      setState(() {});
-                                    },
-                                ),
-                                const Text('Freelancer',style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16,
-                                    color: Color(0xff252525),
-                                ),),
-                              ]
-                          ),
+                                  color: Color(0xff252525)),
+                            ),
+                          ]),
+                          Row(children: [
+                            Radio(
+                              value: 2,
+                              groupValue: userRoleType,
+                              onChanged: (val) {
+                                userRoleType = val as int;
+                                setState(() {});
+                              },
+                            ),
+                            const Text(
+                              'Freelancer',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff252525),
+                              ),
+                            ),
+                          ]),
                         ],
                       ),
                       const SizedBox(
@@ -195,19 +197,20 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                       CustomButton(
                         onTap: () {
-                          if (formKey.currentState!.validate()) {}
-                          else {
+                          if (formKey.currentState!.validate()) {
+                          } else {
                             autoValidate = AutovalidateMode.always;
                             setState(() {});
                           }
                         },
                         title: "إنشاء حساب",
-            
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -218,10 +221,9 @@ class _RegisterViewState extends State<RegisterView> {
                       child: const Text(
                         'تسجيل الدخول',
                         style: TextStyle(
-                            color: Color(0xff36789D),
+                            color: kPrimaryColor,
                             fontSize: 18,
-                            fontWeight: FontWeight.bold
-                        ),
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.right,
                       ),
                     ),

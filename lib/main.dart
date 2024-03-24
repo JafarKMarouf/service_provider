@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/views/login_view.dart';
 import 'package:freelancer_app/views/register_view.dart';
+import 'package:freelancer_app/views/service_home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +16,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // backgroundColor: Color(0xffF5F5F5),
-        // backgroundColor: Color(0xffF5F5F5),
-        brightness: Brightness.light,
-        fontFamily: 'Poppins'
-      ),
-      initialRoute: 'login',
+          brightness: Brightness.light,
+          fontFamily: 'Poppins',
+          primaryColorLight: kPrimaryColor),
+      initialRoute: 'home',
       // home: SignInView(),
       routes: {
-        'login' : (context) => const LoginView(),
-        'register' : (context) => const RegisterView(),
+        'login': (context) => const LoginView(),
+        'register': (context) => const RegisterView(),
+        'home': (context) => const ServiceHomeView(),
       },
     );
   }

@@ -34,32 +34,34 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: isObsecure ?? false,
+      style: TextStyle(color: Colors.grey[800]),
       decoration: InputDecoration(
         label: Text(
           title,
           style: const TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Color(0xff252525)
-          ),
+              fontWeight: FontWeight.w600, color: kPrimaryColor),
         ),
+        hintTextDirection: TextDirection.rtl,
         filled: true,
         fillColor: Colors.grey[300],
-        contentPadding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 2
-        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
         border: buildBorder(),
         enabledBorder: buildBorder(),
-        focusedBorder: buildBorder( const Color(0xff9E9D9D)),
-        prefixIcon: Icon(prefixIcon,color: const Color(0xff9E9D9D),),
-        suffixIcon: (isSuffix) ? IconButton(
-          onPressed:onPressedSuffix ,
-          icon: Icon(
-            suffixIcon,
-            color: Colors.grey[600],
-            size: 20,
-          ),
-        ):const Text(''),
+        focusedBorder: buildBorder(const Color(0xff9E9D9D)),
+        prefixIcon: Icon(
+          prefixIcon,
+          color: const Color(0xff9E9D9D),
+        ),
+        suffixIcon: (isSuffix)
+            ? IconButton(
+                onPressed: onPressedSuffix,
+                icon: Icon(
+                  suffixIcon,
+                  color: Colors.grey[600],
+                  size: 20,
+                ),
+              )
+            : const Text(''),
         // hintText: hintText,
         hintStyle: TextStyle(
           color: Colors.grey[600],
@@ -69,10 +71,8 @@ class CustomTextFormField extends StatelessWidget {
       cursorColor: const Color(0xff36789D),
       controller: customController,
       keyboardType: type,
-      onChanged:onChange,
-      style: const TextStyle(
-        color: Colors.black
-      ),
+      onChanged: onChange,
+      // style: const TextStyle(color: Colors.black),
       onFieldSubmitted: onSubmit,
       validator: validate,
       // validator: (){
@@ -84,7 +84,9 @@ class CustomTextFormField extends StatelessWidget {
 
 OutlineInputBorder buildBorder([color]) {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12, ),
+    borderRadius: BorderRadius.circular(
+      12,
+    ),
     borderSide: BorderSide(color: color ?? Colors.white),
   );
 }

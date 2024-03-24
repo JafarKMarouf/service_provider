@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/views/widgets/custome_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -56,7 +57,7 @@ class _LoginViewState extends State<LoginView> {
                       isSuffix: false,
                       validate: (value) {
                         if (value!.isEmpty) {
-                          return  "هذا الحقل مطلوب";
+                          return "هذا الحقل مطلوب";
                         }
                         return null;
                       },
@@ -74,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                       prefixIcon: FontAwesomeIcons.lock,
                       validate: (value) {
                         if (value!.isEmpty) {
-                          return  "هذا الحقل مطلوب";
+                          return "هذا الحقل مطلوب";
                         }
                         if (value.length < 8) {
                           return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
@@ -108,27 +109,30 @@ class _LoginViewState extends State<LoginView> {
                             color: Color(0xff252525),
                           ),
                         ),
-                        Checkbox(value: check, onChanged: (val){
-                          check = val!;
-                          setState(() {});
-                        }),
+                        Checkbox(
+                            value: check,
+                            onChanged: (val) {
+                              check = val!;
+                              setState(() {});
+                            }),
                       ],
                     ),
-
                     const SizedBox(
                       height: 10,
                     ),
                     CustomButton(
                       onTap: () {
-                        if (formKey.currentState!.validate()) {}
-                        else {
+                        if (formKey.currentState!.validate()) {
+                        } else {
                           autoValidate = AutovalidateMode.always;
                           setState(() {});
                         }
                       },
                       title: "تسجيل الدخول",
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).pushReplacementNamed('');
@@ -136,16 +140,17 @@ class _LoginViewState extends State<LoginView> {
                       child: const Text(
                         'أعد تعيين كلمة السر',
                         style: TextStyle(
-                            color: Color(0xff36789D),
+                            color: kPrimaryColor,
                             fontSize: 16,
-                            fontWeight: FontWeight.bold
-                        ),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -156,10 +161,9 @@ class _LoginViewState extends State<LoginView> {
                     child: const Text(
                       'انشاء حساب',
                       style: TextStyle(
-                          color: Color(0xff36789D),
+                          color: kPrimaryColor,
                           fontSize: 18,
-                          fontWeight: FontWeight.bold
-                      ),
+                          fontWeight: FontWeight.bold),
                       textAlign: TextAlign.right,
                     ),
                   ),
