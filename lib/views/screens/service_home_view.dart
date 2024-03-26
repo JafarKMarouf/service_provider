@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/views/screens/last_service.dart';
 import 'package:freelancer_app/views/screens/profile_view.dart';
+import 'package:freelancer_app/views/screens/progress_services.dart';
 import 'package:freelancer_app/views/screens/services_view.dart';
 import 'package:freelancer_app/views/screens/settings.dart';
 import 'package:freelancer_app/views/screens/bookmark_view.dart';
@@ -15,13 +15,15 @@ class ServiceHomeView extends StatefulWidget {
 }
 
 class _ServiceHomeViewState extends State<ServiceHomeView> {
+
   List<Widget> screens = const [
     ProfileView(),
     SettingsView(),
+    ProgressServices(),
     BookmarkView(),
-    LastServiceView(),
     ServicesView(),
   ];
+
   int currentIndex = 4;
 
   @override
@@ -38,25 +40,15 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
             tabBackgroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),            // gap: 10,
             onTabChange: (val) => {
-              // print(val);
               setState(() {
                 currentIndex = val;
               }),
             },
             tabs: const [
-              GButton(
-                icon: Icons.person,
-                // text: 'Home',
-              ),
-              GButton(
-                icon: Icons.settings,
-                // text: 'Posts',
-              ),
-              GButton(
-                icon: Icons.bookmark,
-                // text: 'Person',
-              ),
+              GButton(icon: Icons.person,),
+              GButton(icon: Icons.settings,),
               GButton(icon: Icons.credit_score_sharp),
+              GButton(icon: Icons.bookmark,),
               GButton(icon: Icons.home),
             ],
           ),

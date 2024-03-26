@@ -17,14 +17,14 @@ class ProgressServiceItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
+                const Icon(
                   Icons.bookmark_border,
                   size: 34,
                   color: kPrimaryColor,
                 ),
                 Row(
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
@@ -35,7 +35,7 @@ class ProgressServiceItem extends StatelessWidget {
                         Text('هشام'),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Container(
@@ -54,13 +54,13 @@ class ProgressServiceItem extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            SizedBox(
+            const SizedBox(
               child: Divider(color: Colors.grey, thickness: 3),
             ),
-            SizedBox(height: 12,),
+            const SizedBox(height: 12,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,14 +69,13 @@ class ProgressServiceItem extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         color: Colors.orangeAccent),
-                    padding: EdgeInsets.symmetric(
+                    padding:const  EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 4),
-                    child: Text(
+                    child: const Text(
                       'فحص',
                       style: TextStyle(color: Colors.white, fontSize: 16,fontWeight: FontWeight.w600),
                     )),
-                Column(
-                  // mainAxisAlignment: MainAxisAlignment.start,
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
@@ -94,39 +93,27 @@ class ProgressServiceItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
+                    const Text(
                       'طرطوس',
                       style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: 4,),
-                    Text('ساعه/9000 ل.س',
+                    const SizedBox(height: 4,),
+                    const Text('ساعه/9000 ل.س',
                       style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: 4,),
+                    const SizedBox(height: 4,),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: kPrimaryColor,width: 3)
-                        // color: kPrimaryColoraryColor
-                      ),
-                      child: Text('في الموقع',style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.w500,fontSize: 16),),
+                        ),
+                      child: const Text('في الموقع',style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.w500,fontSize: 16),),
                     ),
                   ],
                 ),
               ],
             ),
-            // const Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   // crossAxisAlignment: CrossAxisAlignment.end,
-            //   children: [
-            //     // Text(''),
-            //     // Spacer(flex: 1,),
-            //     // Expanded(child: child)
-            //     Text('6 مساءً'),
-            //     Text('ساعه/9000 ل.س'),
-            //   ],
-            // ),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/views/screens/progress_services.dart';
 import 'package:freelancer_app/views/widgets/custome_app_bar.dart';
-import 'package:freelancer_app/views/widgets/custome_seach.dart';
+import 'package:freelancer_app/views/widgets/custome_search.dart';
 import 'package:freelancer_app/views/widgets/progress_service_page_view.dart';
 import 'package:freelancer_app/views/widgets/service_grid_view.dart';
 import 'package:freelancer_app/views/widgets/type_service.dart';
@@ -31,7 +31,8 @@ class ServicesView extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ProgressServices(),));
+                        builder: (context) => const ProgressServices(),)
+                  );
                 }),
             const ProgressServicePageView(),
           ],
