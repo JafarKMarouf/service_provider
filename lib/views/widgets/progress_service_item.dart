@@ -7,11 +7,12 @@ class ProgressServiceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0.9,
+      elevation: .7,
       child: Padding(
         padding:
         const EdgeInsets.symmetric(vertical: 15.0, horizontal: 16.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/views/login_view.dart';
-import 'package:freelancer_app/views/register_view.dart';
-import 'package:freelancer_app/views/service_home_view.dart';
+import 'package:freelancer_app/views/screens/login_view.dart';
+import 'package:freelancer_app/views/screens/register_view.dart';
+import 'package:freelancer_app/views/screens/service_home_view.dart';
 
 void main() {
   runApp(const MyApp());

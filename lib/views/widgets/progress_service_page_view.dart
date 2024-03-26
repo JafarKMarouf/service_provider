@@ -8,6 +8,7 @@ class ProgressServicePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 220,
+      // width: 400,
       child: PageView.builder(
         itemCount: 5,
         scrollDirection: Axis.horizontal,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/views/last_service.dart';
-import 'package:freelancer_app/views/profile_view.dart';
-import 'package:freelancer_app/views/services_view.dart';
-import 'package:freelancer_app/views/settings.dart';
-import 'package:freelancer_app/views/bookmark_view.dart';
+import 'package:freelancer_app/views/screens/last_service.dart';
+import 'package:freelancer_app/views/screens/profile_view.dart';
+import 'package:freelancer_app/views/screens/services_view.dart';
+import 'package:freelancer_app/views/screens/settings.dart';
+import 'package:freelancer_app/views/screens/bookmark_view.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class ServiceHomeView extends StatefulWidget {
@@ -32,14 +32,13 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GNav(
-            backgroundColor: kPrimaryColor,
             color: const Color(0xff252525),
             activeColor: kPrimaryColor,
+            selectedIndex: currentIndex,
             tabBackgroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-            
-            // gap: 10,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),            // gap: 10,
             onTabChange: (val) => {
+              // print(val);
               setState(() {
                 currentIndex = val;
               }),

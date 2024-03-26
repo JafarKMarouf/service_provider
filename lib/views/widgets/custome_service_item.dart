@@ -17,7 +17,7 @@ class CustomeServiceItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20), color: kPrimaryColor),
               child: const Icon(
                 Icons.settings,
-                size: 40,
+                size: 55,
                 color: Colors.white,
               ),
             ),

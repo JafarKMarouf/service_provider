@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/views/widgets/custome_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'widgets/custome_text_form_field.dart';
+import '../widgets/custome_text_form_field.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
