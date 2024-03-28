@@ -57,7 +57,7 @@ class _LoginViewState extends State<LoginView> {
                       const SizedBox(
                         height: 60,
                       ),
-                      CustomTextFormField(
+                      CustomeTextFormField(
                         prefixIcon: Icons.email,
                         isSuffix: false,
                         validate: (value) {
@@ -73,8 +73,8 @@ class _LoginViewState extends State<LoginView> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextFormField(
-                        isObsecure: passwordVisible,
+                      CustomeTextFormField(
+                        isObscure: passwordVisible,
                         // prefixIcon:Icons.lock ,
                         prefixIcon: FontAwesomeIcons.lock,
                         validate: (value) {
@@ -125,6 +125,7 @@ class _LoginViewState extends State<LoginView> {
                         height: 10,
                       ),
                       CustomButton(
+                          width: MediaQuery.of(context).size.width,
                         onTap: () {
                           Navigator.pushReplacementNamed(context, 'home');
                           //

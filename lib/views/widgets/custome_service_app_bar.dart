@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BookServiceAppBar extends StatelessWidget {
-  const BookServiceAppBar({super.key});
+class CustomeServiceAppBar extends StatelessWidget {
+  const CustomeServiceAppBar({super.key, required this.title,});
 
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,15 +13,15 @@ class BookServiceAppBar extends StatelessWidget {
        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset('assets/images/img_bookmark.svg'),
-            // SizedBox(width: 8.0,),
-            SvgPicture.asset('assets/images/send.svg'),
+            SvgPicture.asset('assets/images/img_bookmark.svg',height: 30,),
+
+            SvgPicture.asset('assets/images/img_save.svg',height: 30,),
           ],
         ),
 
-        const Text(
-            'وصف الخدمة',
-          style: TextStyle(
+        Text(
+            title,
+          style: const TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 20
           ),
@@ -33,7 +34,7 @@ class BookServiceAppBar extends StatelessWidget {
           child:SvgPicture.asset(
               'assets/images/img_arrow_right.svg',
             width: 34,
-            height: 34,
+            // height: 40,
           ),
           // icon: const Icon(Icons.arrow_back_rounded)
         ),

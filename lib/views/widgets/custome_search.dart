@@ -9,22 +9,19 @@ class CustomeSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: 60,
+      height: 50,
       child: TextField(
         cursorColor: kPrimaryColor,
         textDirection: TextDirection.rtl,
         style: TextStyle(color: Colors.grey[800]),
         decoration: InputDecoration(
           suffixIcon: SvgPicture.asset(
-              'assets/images/img_search_gray_300.svg',
-
-           ),
+            'assets/images/img_search_gray_300.svg',
+            ),
           prefixIcon:SvgPicture.asset(
-              'assets/images/img_curved_filters1.svg',
-            width: 24,
-            height: 24,
+            'assets/images/img_curved_filters1.svg',
+            colorFilter: const ColorFilter.mode(kPrimaryColor, BlendMode.srcIn),
           ),
-            // Icon(, color: kPrimaryColor, size: 32),
           hintTextDirection: TextDirection.rtl,
           hintText: 'ابحث عن خدمة',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),

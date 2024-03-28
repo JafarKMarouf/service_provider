@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
 
-class CustomTextFormField extends StatelessWidget {
-  final TextEditingController customController;
-  // final String hintText;
+class CustomeTextFormField extends StatelessWidget {
+  final TextEditingController? customController;
+  final String? hintText;
   final TextInputType type;
-  final String title;
+  final String? title;
   final bool isSuffix;
-  final bool? isObsecure;
+  final bool? isObscure;
   final IconData? suffixIcon;
   final IconData? prefixIcon;
   final String? Function(String?)? validate;
   final void Function(String)? onChange;
   final String? Function(String?)? onSubmit;
   final VoidCallback? onPressedSuffix;
-  const CustomTextFormField({
+
+  const CustomeTextFormField({
     super.key,
-    required this.validate,
-    required this.title,
-    required this.customController,
-    // required this.hintText,
+    this.validate,
+    this.title,
+    this.customController,
+    this.hintText,
     this.prefixIcon,
     required this.type,
     required this.isSuffix,
     this.suffixIcon,
-    this.isObsecure,
+    this.isObscure,
     this.onPressedSuffix,
     this.onChange,
     this.onSubmit,
@@ -33,15 +34,17 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: isObsecure ?? false,
+      obscureText: isObscure ?? false,
       style: TextStyle(color: Colors.grey[800]),
       decoration: InputDecoration(
-        label: Text(
-          title,
+        label:  Text(
+          title ?? '',
           textDirection: TextDirection.rtl,
           style: const TextStyle(
               fontWeight: FontWeight.w600, color: kPrimaryColor),
         ),
+        hintText: hintText,
+
         hintTextDirection: TextDirection.rtl,
         filled: true,
         fillColor: Colors.grey[300],
@@ -64,12 +67,12 @@ class CustomTextFormField extends StatelessWidget {
               )
             : const Text(''),
         // hintText: hintText,
-        hintStyle: TextStyle(
-          color: Colors.grey[600],
+        hintStyle: const TextStyle(
+          color: Colors.black,
           fontSize: 16,
         ),
       ),
-      cursorColor: const Color(0xff36789D),
+      cursorColor: kPrimaryColor,
       controller: customController,
       keyboardType: type,
       onChanged: onChange,

@@ -62,7 +62,7 @@ class _RegisterViewState extends State<RegisterView> {
                       const SizedBox(
                         height: 40,
                       ),
-                      CustomTextFormField(
+                      CustomeTextFormField(
                         isSuffix: false,
                         validate: (value) {
                           if (value!.isEmpty) {
@@ -79,7 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextFormField(
+                      CustomeTextFormField(
                         prefixIcon: Icons.email,
                         isSuffix: false,
                         validate: (value) {
@@ -96,8 +96,8 @@ class _RegisterViewState extends State<RegisterView> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextFormField(
-                        isObsecure: passwordVisible,
+                      CustomeTextFormField(
+                        isObscure: passwordVisible,
                         prefixIcon: Icons.lock,
                         validate: (value) {
                           if (value!.isEmpty) {
@@ -124,9 +124,9 @@ class _RegisterViewState extends State<RegisterView> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextFormField(
+                      CustomeTextFormField(
                         prefixIcon: Icons.lock,
-                        isObsecure: passwordVisibleConfirm,
+                        isObscure: passwordVisibleConfirm,
                         validate: (value) {
                           if (value!.isEmpty) {
                             return "هذا الحقل مطلوب";
@@ -196,6 +196,7 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 30,
                       ),
                       CustomButton(
+                          width: MediaQuery.of(context).size.width,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                           } else {

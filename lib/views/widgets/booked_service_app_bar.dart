@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/views/widgets/custome_search.dart';
 
-class BookedServiceAppBar extends StatelessWidget {
-  const BookedServiceAppBar({
+class CustomeAppBar extends StatelessWidget {
+  const CustomeAppBar({
     super.key,
   });
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/views/widgets/book_service_app_bar.dart';
+import 'package:freelancer_app/views/widgets/custome_service_app_bar.dart';
 import 'package:freelancer_app/views/widgets/custome_button.dart';
 import 'package:freelancer_app/views/widgets/custome_service_book_info.dart';
 import 'package:freelancer_app/views/widgets/custome_service_infos.dart';
@@ -16,7 +16,7 @@ class DescServiceBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const BookServiceAppBar(),
+          const CustomeServiceAppBar(title: "وصف الخدمة"),
           const ServiceType(),
           const CustomeServiceBookInfoItems(),
           const DisplayLocation(),
@@ -27,7 +27,7 @@ class DescServiceBody extends StatelessWidget {
                   'المشكلات والشكاوى وحلها أو الرد ع'
                   'لى الأسئلة العامة.'
           ),
-          CustomButton(title: 'title',onTap: (){},)
+          CustomButton(title: 'title',onTap: (){},width: MediaQuery.of(context).size.width,)
         ],
       ),
     );
