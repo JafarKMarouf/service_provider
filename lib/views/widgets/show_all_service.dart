@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
 
-class TypeServices extends StatelessWidget {
-  const TypeServices
+class ShowAllServices extends StatelessWidget {
+  const ShowAllServices
       ({super.key, required this.onPressed, required this.title,});
   final void Function()? onPressed;
   final String title;

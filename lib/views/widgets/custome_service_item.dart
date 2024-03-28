@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/views/screens/desc_service_view.dart';
+import 'package:freelancer_app/views/widgets/custome_icon_service.dart';
 
 class CustomeServiceItem extends StatelessWidget {
   const CustomeServiceItem({super.key});
@@ -8,24 +9,20 @@ class CustomeServiceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      child: Column(
-        children: [
-          Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: kPrimaryColor),
-              child: const Icon(
-                Icons.settings,
-                size: 55,
-                color: Colors.white,
-              ),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const DescServiceView()));
+        },
+        child: const Column(
+          children: [
+            Expanded(
+              child: CustomeIconService(),
             ),
-          ),
-          const Text(
-              'تصليح',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-        ],
+            Text('تصليح',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+          ],
+        ),
       ),
     );
   }

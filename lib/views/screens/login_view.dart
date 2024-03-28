@@ -31,152 +31,160 @@ class _LoginViewState extends State<LoginView> {
       inAsyncCall: loading,
       child: Scaffold(
         body: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Form(
-                key: formKey,
-                autovalidateMode: autoValidate,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "تسجيل الدخول",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 34,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 60,
-                    ),
-                    CustomTextFormField(
-                      prefixIcon: Icons.email,
-                      isSuffix: false,
-                      validate: (value) {
-                        if (value!.isEmpty) {
-                          return "هذا الحقل مطلوب";
-                        }
-                        return null;
-                      },
-                      title: 'الايميل',
-                      customController: emailAddress,
-                      // hintText: 'Enter your email',
-                      type: TextInputType.emailAddress,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomTextFormField(
-                      isObsecure: passwordVisible,
-                      // prefixIcon:Icons.lock ,
-                      prefixIcon: FontAwesomeIcons.lock,
-                      validate: (value) {
-                        if (value!.isEmpty) {
-                          return "هذا الحقل مطلوب";
-                        }
-                        if (value.length < 8) {
-                          return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
-                        }
-                        return null;
-                      },
-                      title: 'كلمة السر',
-                      customController: password,
-                      // hintText: 'password',
-                      type: TextInputType.visiblePassword,
-                      isSuffix: true,
-                      suffixIcon: passwordVisible
-                          ? FontAwesomeIcons.eye
-                          : FontAwesomeIcons.eyeSlash,
-                      onPressedSuffix: () {
-                        passwordVisible = !passwordVisible;
-                        setState(() {});
-                      },
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const Text(
-                          'تذكر كلمة السر',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff252525),
-                          ),
+          padding: const EdgeInsets.only(
+            top: 120,
+            bottom: 30,
+            left: 24,
+            right: 24
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Form(
+                  key: formKey,
+                  autovalidateMode: autoValidate,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "تسجيل الدخول",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 34,
                         ),
-                        Checkbox(
-                            value: check,
-                            onChanged: (val) {
-                              check = val!;
-                              setState(() {});
-                            }),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomButton(
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-                        } else {
-                          autoValidate = AutovalidateMode.always;
+                      ),
+                      const SizedBox(
+                        height: 60,
+                      ),
+                      CustomTextFormField(
+                        prefixIcon: Icons.email,
+                        isSuffix: false,
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return "هذا الحقل مطلوب";
+                          }
+                          return null;
+                        },
+                        title: 'الايميل',
+                        customController: emailAddress,
+                        type: TextInputType.emailAddress,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextFormField(
+                        isObsecure: passwordVisible,
+                        // prefixIcon:Icons.lock ,
+                        prefixIcon: FontAwesomeIcons.lock,
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return "هذا الحقل مطلوب";
+                          }
+                          if (value.length < 8) {
+                            return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
+                          }
+                          return null;
+                        },
+                        title: 'كلمة السر',
+                        customController: password,
+                        // hintText: 'password',
+                        type: TextInputType.visiblePassword,
+                        isSuffix: true,
+                        suffixIcon: passwordVisible
+                            ? FontAwesomeIcons.eye
+                            : FontAwesomeIcons.eyeSlash,
+                        onPressedSuffix: () {
+                          passwordVisible = !passwordVisible;
                           setState(() {});
-                        }
-                      },
-                      title: "تسجيل الدخول",
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text(
+                            'تذكر كلمة السر',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff252525),
+                            ),
+                          ),
+                          Checkbox(
+                              value: check,
+                              onChanged: (val) {
+                                check = val!;
+                                setState(() {});
+                              }),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, 'home');
+                          //
+                          // if (formKey.currentState!.validate()) {
+                          // } else {
+                          //   autoValidate = AutovalidateMode.always;
+                          //   setState(() {});
+                          // }
+                        },
+                        title: "تسجيل الدخول",
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacementNamed('');
+                        },
+                        child: const Text(
+                          'أعد تعيين كلمة السر',
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacementNamed('');
+                        Navigator.of(context).pushReplacementNamed('register');
                       },
                       child: const Text(
-                        'أعد تعيين كلمة السر',
+                        'إنشاء حساب',
                         style: TextStyle(
                             color: kPrimaryColor,
-                            fontSize: 16,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.right,
                       ),
+                    ),
+                    const Text(
+                      'ليس لديك حساب؟',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xff9E9D9D),
+                      ),
+                      textAlign: TextAlign.end,
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('register');
-                    },
-                    child: const Text(
-                      'انشاء حساب',
-                      style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                  const Text(
-                    'ليس لديك حساب؟',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xff9E9D9D),
-                    ),
-                    textAlign: TextAlign.end,
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

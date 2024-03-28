@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/views/widgets/custome_search.dart';
-import 'package:freelancer_app/views/widgets/progress_service_item.dart';
+import 'package:freelancer_app/views/widgets/booked_service_app_bar.dart';
+import 'package:freelancer_app/views/widgets/on_going_service_list.dart';
 
-class ProgressServices extends StatelessWidget {
-  const ProgressServices({super.key});
+class OnGoingServicesView extends StatelessWidget {
+  const OnGoingServicesView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,22 +13,10 @@ class ProgressServices extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: const Icon(Icons.arrow_back_ios)),
-                const CustomeSearch(
-                  width: 300,
-                ),
-              ],
-            ),
+            const BookedServiceAppBar(),
             const SizedBox(height: 15,),
             const Text(
-              'الخدمات المحجوزة',
+              'الخدمات الجارية',
               style:TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 15,),
@@ -38,7 +26,7 @@ class ProgressServices extends StatelessWidget {
                   itemCount: 12,
                   reverse: true,
                   itemBuilder: (context, index) {
-                    return const ProgressServiceItem();
+                    return const OnGoingServicesList();
                   }),
             )
           ],
@@ -47,3 +35,4 @@ class ProgressServices extends StatelessWidget {
     );
   }
 }
+

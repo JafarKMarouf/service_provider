@@ -38,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         label: Text(
           title,
+          textDirection: TextDirection.rtl,
           style: const TextStyle(
               fontWeight: FontWeight.w600, color: kPrimaryColor),
         ),
@@ -72,6 +73,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: customController,
       keyboardType: type,
       onChanged: onChange,
+
       // style: const TextStyle(color: Colors.black),
       onFieldSubmitted: onSubmit,
       validator: validate,
