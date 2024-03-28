@@ -35,13 +35,8 @@ class _CustomeBottomNavBarState extends State<CustomeBottomNavBar> {
           currentIndex = value;
           setState(() {});
         },
-        fixedColor: Colors.grey,
-        backgroundColor: Colors.black,
-        mouseCursor: MouseCursor.uncontrolled,
-        type: BottomNavigationBarType.shifting,
         selectedItemColor: kPrimaryColor,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
+
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -96,6 +91,32 @@ class _CustomeBottomNavBarState extends State<CustomeBottomNavBar> {
         ],
       ),
       body: screens[currentIndex],
+      // bottomNavigationBar: Container(
+      //   color: kPrimaryColor,
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: GNav(
+      //       color: const Color(0xff252525),
+      //       activeColor: kPrimaryColor,
+      //       selectedIndex: currentIndex,
+      //       tabBackgroundColor: Colors.white,
+      //       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),            // gap: 10,
+      //       onTabChange: (val) => {
+      //         setState(() {
+      //           currentIndex = val;
+      //         }),
+      //       },
+      //
+      //       tabs:   [
+      //         GButton(icon: Icons.person,),
+      //         GButton(icon: Icons.settings,),
+      //         // SvgAssetLoader('assets/images/img_settings.svg'),
+      //         GButton(icon: Icons.bookmark,),
+      //         GButton(icon: Icons.home),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

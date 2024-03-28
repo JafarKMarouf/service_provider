@@ -196,6 +196,7 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 30,
                       ),
                       CustomButton(
+                          width: MediaQuery.of(context).size.width,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                           } else {

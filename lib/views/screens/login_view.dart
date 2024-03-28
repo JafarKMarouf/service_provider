@@ -125,6 +125,7 @@ class _LoginViewState extends State<LoginView> {
                         height: 10,
                       ),
                       CustomButton(
+                          width: MediaQuery.of(context).size.width,
                         onTap: () {
                           Navigator.pushReplacementNamed(context, 'home');
                           //

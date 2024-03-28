@@ -6,15 +6,17 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.title,
     this.onTap,
-    this.color = kPrimaryColor
+    this.color = kPrimaryColor, required this.width
   });
   final String title;
   final VoidCallback ? onTap;
   final Color color;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      minWidth: MediaQuery.of(context).size.width,
+      minWidth: width,
+      // height: 14,
       color: color,
       padding: const EdgeInsets.symmetric(vertical: 12),
       shape: OutlineInputBorder(
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget {
         child: Text(
           title,
               style: const TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color:Colors.white,
               ),

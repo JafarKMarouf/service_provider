@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/views/screens/login_view.dart';
 import 'package:freelancer_app/views/screens/register_view.dart';
+import 'package:freelancer_app/views/screens/status_order_view.dart';
 import 'package:freelancer_app/views/widgets/custome_bottom_nav_bar.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           fontFamily: 'Poppins',
           primaryColorLight: kPrimaryColor),
-      initialRoute: 'login',
+      // initialRoute: 'login',
+      home: StatusOrderView(),
       routes: {
         'login': (context) => const LoginView(),
         'register': (context) => const RegisterView(),

@@ -13,7 +13,7 @@ class OnGoingServicesView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const BookedServiceAppBar(),
+            const CustomeAppBar(),
             const SizedBox(height: 15,),
             const Text(
               'الخدمات الجارية',
