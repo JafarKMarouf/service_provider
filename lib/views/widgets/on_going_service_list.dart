@@ -1,8 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/constant.dart';
 
-class ProgressServiceItem extends StatelessWidget {
-  const ProgressServiceItem({super.key});
+class OnGoingServicesList extends StatelessWidget {
+  const OnGoingServicesList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +20,13 @@ class ProgressServiceItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.bookmark_border,
-                  size: 34,
-                  color: kPrimaryColor,
-                ),
+                SvgPicture.asset('assets/images/img_bookmark.svg',height: 34,color: kPrimaryColor,),
+
+                // const Icon(
+                //   Icons.bookmark_border,
+                //   size: 34,
+                //   color: kPrimaryColor,
+                // ),
                 Row(
                   children: [
                     const Column(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomeAppBar extends StatelessWidget {
-  const CustomeAppBar({super.key});
+class CustomeHomeBar extends StatelessWidget {
+  const CustomeHomeBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +20,19 @@ class CustomeAppBar extends StatelessWidget {
               )),
         ),
         Row(
-          // mainAxisAlignment: MainAxisAlignment.end,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'جعفر معروف',
-              style: TextStyle(),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'مرحبا',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+                Text(
+                  'جعفر معروف',
+                  style: TextStyle(),
+                ),
+              ],
             ),
             const SizedBox(
               width: 5,
@@ -35,7 +42,6 @@ class CustomeAppBar extends StatelessWidget {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.asset('assets/images/profile.png'))
-
                 // child: Image.asset('assets/images/profile.png'),
                 ),
           ],
