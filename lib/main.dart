@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/views/screens/approve_service_view.dart';
-import 'package:freelancer_app/views/screens/login_view.dart';
-import 'package:freelancer_app/views/screens/register_view.dart';
-import 'package:freelancer_app/views/widgets/custome_bottom_nav_bar.dart';
+import 'package:get/get.dart';
+import 'features/splash/presentation/view/splash_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,19 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          brightness: Brightness.light,
-          fontFamily: 'Poppins',
-          primaryColorLight: kPrimaryColor),
-      // initialRoute: 'login',
-      home: const ApproveServiceView(),
-      routes: {
-        'login': (context) => const LoginView(),
-        'register': (context) => const RegisterView(),
-        'home': (context) => const CustomeBottomNavBar(),
-      },
+        brightness: Brightness.light,
+        fontFamily: 'Poppins',
+        primaryColorLight: kPrimaryColor,
+      ),
+      home:const SplashView(),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/utils/custome_button.dart';
 import 'package:freelancer_app/views/widgets/custome_service_app_bar.dart';
-import 'package:freelancer_app/views/widgets/custome_button.dart';
 import 'package:freelancer_app/views/widgets/custome_service_book_info.dart';
 import 'package:freelancer_app/views/widgets/custome_service_infos.dart';
 import 'package:freelancer_app/views/widgets/display_location.dart';
@@ -11,12 +11,12 @@ class DescServiceBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding:const EdgeInsets.symmetric(vertical: 60.0, horizontal: 12),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const CustomeServiceAppBar(title: "وصف الخدمة"),
+           const CustomeServiceAppBar(title: "وصف الخدمة"),
           const ServiceType(),
           const CustomeServiceBookInfoItems(),
           const DisplayLocation(),

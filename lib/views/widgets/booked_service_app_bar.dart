@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freelancer_app/views/widgets/custome_search.dart';
 
 class CustomeAppBar extends StatelessWidget {
   const CustomeAppBar({
@@ -12,9 +11,9 @@ class CustomeAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CustomeSearch(
-          width: 300,
-        ),
+        // const CustomeSearch(
+        //   width: 300,
+        // ),
         IconButton(
             onPressed: () {
               Navigator.of(context).pop();
