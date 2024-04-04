@@ -7,7 +7,8 @@ import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/presentation/view/register_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/widgets/login_form.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' as g;
+import 'package:get/route_manager.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginBody extends StatefulWidget {
@@ -29,7 +30,7 @@ class _LoginBodyState extends State<LoginBody> {
         } else if (state is AuthSuccess) {
           loading = false;
           Future.delayed(
-            const Duration(seconds: 1),
+            const Duration(microseconds: 250),
             () {
               Get.to(
                 () => const CustomeNavBar(),
@@ -68,8 +69,7 @@ class _LoginBodyState extends State<LoginBody> {
                         onPressed: () {
                           Get.to(
                             () => const RegisterView(),
-                            // transition: Transition,
-                            duration: kDurationTransition,
+                            transition: g.Transition.fadeIn,
                           );
                         },
                         child: const Text(

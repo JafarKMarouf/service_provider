@@ -10,10 +10,12 @@ class CustomeTextFormField extends StatelessWidget {
   final bool? isObscure;
   final IconData? suffixIcon;
   final IconData? prefixIcon;
+  final String? prefixText;
   final String? Function(String?)? validate;
   final void Function(String)? onChange;
   final String? Function(String?)? onSubmit;
   final VoidCallback? onPressedSuffix;
+  final bool dir;
 
   const CustomeTextFormField({
     super.key,
@@ -22,6 +24,7 @@ class CustomeTextFormField extends StatelessWidget {
     this.customController,
     this.hintText,
     this.prefixIcon,
+    this.prefixText,
     required this.type,
     required this.isSuffix,
     this.suffixIcon,
@@ -29,6 +32,7 @@ class CustomeTextFormField extends StatelessWidget {
     this.onPressedSuffix,
     this.onChange,
     this.onSubmit,
+    this.dir = true,
   });
 
   @override
@@ -37,21 +41,15 @@ class CustomeTextFormField extends StatelessWidget {
       obscureText: isObscure ?? false,
       style: TextStyle(color: Colors.grey[800]),
       decoration: InputDecoration(
-        label:  Text(
-          title ?? '',
-          textDirection: TextDirection.rtl,
-          style: const TextStyle(
-              fontWeight: FontWeight.w600, color: kPrimaryColor),
-        ),
+        prefixText: prefixText,
         hintText: hintText,
-
-        hintTextDirection: TextDirection.rtl,
+        hintTextDirection: dir ? TextDirection.rtl : TextDirection.ltr,
         filled: true,
-        fillColor: Colors.grey[300],
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+        fillColor: Colors.grey[200],
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         border: buildBorder(),
-        enabledBorder: buildBorder(),
-        focusedBorder: buildBorder(const Color(0xff9E9D9D)),
+        enabledBorder: buildBorder(Colors.blueGrey[200]),
+        focusedBorder: buildBorder(kPrimaryColor),
         prefixIcon: Icon(
           prefixIcon,
           color: const Color(0xff9E9D9D),
@@ -65,10 +63,9 @@ class CustomeTextFormField extends StatelessWidget {
             size: 20,
           ),
         )
-            : const Text(''),
-        // hintText: hintText,
+            : null,
         hintStyle: const TextStyle(
-          color: Colors.black,
+          // color: Colors.black,
           fontSize: 16,
         ),
       ),

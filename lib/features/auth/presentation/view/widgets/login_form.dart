@@ -51,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
               }
               return null;
             },
-            title: 'الايميل',
+            hintText: 'ادخل الإيميل',
             customController: emailAddress,
             type: TextInputType.emailAddress,
           ),
@@ -59,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
             height: 20,
           ),
           CustomeTextFormField(
-            isObscure: passwordVisible,
+            isObscure: !passwordVisible,
             prefixIcon: FontAwesomeIcons.lock,
             validate: (value) {
               if (value!.isEmpty) {
@@ -70,7 +70,7 @@ class _LoginFormState extends State<LoginForm> {
               }
               return null;
             },
-            title: 'كلمة السر',
+            hintText: 'أدخل كلمة السر',
             customController: password,
             type: TextInputType.visiblePassword,
             isSuffix: true,
