@@ -1,10 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/core/utils/custome_button.dart';
+import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
+import 'package:freelancer_app/features/auth/presentation/view/register_view.dart';
+import 'package:freelancer_app/features/auth/presentation/view/widgets/login_form.dart';
+import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'custome_text_form_field.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -14,184 +18,88 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-  GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autoValidate = AutovalidateMode.disabled;
-  TextEditingController emailAddress = TextEditingController();
-  TextEditingController password = TextEditingController();
-
-  bool passwordVisible = false;
-  bool check = false;
   bool loading = false;
 
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      inAsyncCall: loading,
-      child:  Container(
-          padding: const EdgeInsets.only(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is AuthLoading) {
+          loading = true;
+        } else if (state is AuthSuccess) {
+          loading = false;
+          Future.delayed(
+            const Duration(seconds: 1),
+            () {
+              Get.to(
+                () => const CustomeNavBar(),
+                // transition: Transition.fadeIn,
+                duration: kDurationTransition,
+              );
+            },
+          );
+          print(state.userModel);
+        } else if (state is AuthFailure) {
+          loading = false;
+          print(state.errorMessage);
+        }
+      },
+      builder: (context, state) {
+        return ModalProgressHUD(
+          inAsyncCall: loading,
+          child: Container(
+            padding: const EdgeInsets.only(
               top: 120,
               bottom: 30,
               left: 24,
-              right: 24
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Form(
-                  key: formKey,
-                  autovalidateMode: autoValidate,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+              right: 24,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const LoginForm(),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "تسجيل الدخول",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 34,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 60,
-                      ),
-                      CustomeTextFormField(
-                        prefixIcon: Icons.email,
-                        isSuffix: false,
-                        validate: (value) {
-                          if (value!.isEmpty) {
-                            return "هذا الحقل مطلوب";
-                          }
-                          return null;
-                        },
-                        title: 'الايميل',
-                        customController: emailAddress,
-                        type: TextInputType.emailAddress,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomeTextFormField(
-                        isObscure: passwordVisible,
-                        prefixIcon: FontAwesomeIcons.lock,
-                        validate: (value) {
-                          if (value!.isEmpty) {
-                            return "هذا الحقل مطلوب";
-                          }
-                          if (value.length < 8) {
-                            return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
-                          }
-                          return null;
-                        },
-                        title: 'كلمة السر',
-                        customController: password,
-                        // hintText: 'password',
-                        type: TextInputType.visiblePassword,
-                        isSuffix: true,
-                        suffixIcon: passwordVisible
-                            ? FontAwesomeIcons.eye
-                            : FontAwesomeIcons.eyeSlash,
-                        onPressedSuffix: () {
-                          passwordVisible = !passwordVisible;
-                          setState(() {});
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const Text(
-                            'تذكر كلمة السر',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff252525),
-                            ),
-                          ),
-                          Checkbox(
-                              value: check,
-                              onChanged: (val) {
-                                check = val!;
-                                setState(() {});
-                              }),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomButton(
-                        width: MediaQuery.of(context).size.width,
-                        onTap: () {
-                          Future.delayed(
-                            const Duration(seconds: 4),
-                                () {
-                              Get.to(
-                                    () => const (),
-                                transition: Transition.zoom,
-                                duration: kDurationTransition,
-                              );
-                            },
-                          );
-                          //
-                          // if (formKey.currentState!.validate()) {
-                          // } else {
-                          //   autoValidate = AutovalidateMode.always;
-                          //   setState(() {});
-                          // }
-                        },
-                        title: "تسجيل الدخول",
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacementNamed('');
+                          Get.to(
+                            () => const RegisterView(),
+                            // transition: Transition,
+                            duration: kDurationTransition,
+                          );
                         },
                         child: const Text(
-                          'أعد تعيين كلمة السر',
+                          'إنشاء حساب',
                           style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                            color: kPrimaryColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.right,
                         ),
+                      ),
+                      const Text(
+                        'ليس لديك حساب؟',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(
+                            0xff9E9D9D,
+                          ),
+                        ),
+                        textAlign: TextAlign.end,
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacementNamed('register');
-                      },
-                      child: const Text(
-                        'إنشاء حساب',
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    const Text(
-                      'ليس لديك حساب؟',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xff9E9D9D),
-                      ),
-                      textAlign: TextAlign.end,
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
+        );
+      },
     );
   }
 }

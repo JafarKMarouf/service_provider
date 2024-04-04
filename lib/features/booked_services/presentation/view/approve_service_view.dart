@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/views/widgets/approve_service_body.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/widgets/approve_service_body.dart';
 
 class ApproveServiceView extends StatelessWidget {
   const ApproveServiceView({super.key});

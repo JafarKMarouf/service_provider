@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/core/utils/custome_button.dart';
+import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'custome_text_form_field.dart';
 

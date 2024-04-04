@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'on_going_list.dart';
+import '../../../../booked_services/presentation/view/widgets/on_going_list.dart';
 
 class OnGoingPageView extends StatelessWidget {
   const OnGoingPageView({super.key});

@@ -46,7 +46,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        seconds: 3,
+        milliseconds: 300,
       ),
     );
 

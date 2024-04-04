@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/views/widgets/custome_service_app_bar.dart';
 import 'package:freelancer_app/views/widgets/text_thanks.dart';
 
-import 'approve_service_infos.dart';
+import '../../../../../views/widgets/approve_service_infos.dart';
 
 class ApproveServiceBody extends StatelessWidget {
   const ApproveServiceBody({super.key});
@@ -10,7 +10,7 @@ class ApproveServiceBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 40.0, right: 12, left: 12, bottom: 15),
+      padding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 12),
       child: SingleChildScrollView(
         child: Column(
           children: [

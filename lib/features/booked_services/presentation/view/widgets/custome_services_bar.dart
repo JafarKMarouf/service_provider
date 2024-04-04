@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class CustomeAppBar extends StatelessWidget {
-  const CustomeAppBar({
+import '../../../../home/presentation/view/widgets/custome_search.dart';
+
+class CustomeServicesBar extends StatelessWidget {
+  const CustomeServicesBar({
     super.key,
   });
 
@@ -11,17 +14,17 @@ class CustomeAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // const CustomeSearch(
-        //   width: 300,
-        // ),
+        const CustomeSearch(
+          width: 300,
+        ),
         IconButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Get.back();
             },
             icon: SvgPicture.asset(
               'assets/images/img_arrow_right.svg',
               width: 34,
-            )),
+            ),),
       ],
     );
   }
