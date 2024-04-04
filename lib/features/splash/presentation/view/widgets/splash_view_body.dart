@@ -36,7 +36,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: SlidingText(slidingAnimation: slidingAnimation),
+          child: SlidingText(
+            slidingAnimation: slidingAnimation,
+          ),
         ),
       ],
     );
@@ -46,23 +48,28 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 300,
+        milliseconds: 1500,
       ),
     );
 
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(2, 2), end: Offset.zero)
-            .animate(animationController);
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(2, 2),
+      end: Offset.zero,
+    ).animate(
+      animationController,
+    );
     animationController.forward();
   }
 
   void navigateToLogin() {
     Future.delayed(
-      const Duration(seconds: 4),
-          () {
+      const Duration(
+        seconds: 3,
+      ),
+      () {
         Get.to(
-              () => const LoginView(),
-          transition: Transition.zoom,
+          () => const LoginView(),
+          transition: Transition.fadeIn,
           duration: kDurationTransition,
         );
       },

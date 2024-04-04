@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
-import 'package:freelancer_app/features/auth/presentation/view/email_verify_view.dart';
+import 'package:freelancer_app/features/splash/presentation/view/splash_view.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primaryColorLight: kPrimaryColor,
       ),
-      // home: LoginView(),
-      home: const EmailVerifyView(),
-      // home: const SplashView(),
+      home: const SplashView(),
     );
   }
 }

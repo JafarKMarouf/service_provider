@@ -15,4 +15,11 @@ abstract class AuthRepo {
     required String passwordConfirm,
     required String role,
   });
+
+  Future<Either<Failure, UserModel>> verify({
+    required String email,
+    required String otp,
+  });
+
+  Future<Either<Failure,Map<String,String>>> sendCode(); 
 }

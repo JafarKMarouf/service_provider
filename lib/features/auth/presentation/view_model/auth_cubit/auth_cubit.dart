@@ -14,26 +14,18 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
     required String password,
   }) async {
-    emit(
-      AuthLoading(),
-    );
+    emit(AuthLoading());
     var result = await authRepoImpl.login(
       email: email,
       password: password,
     );
     result.fold(
       (failure) {
-        emit(
-          AuthFailure(
-            errorMessage: failure.errMessage,
-          ),
-        );
+        emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (user) {
         emit(
-          AuthSuccess(
-            userModel: user,
-          ),
+          AuthSuccess(userModel: user),
         );
       },
     );
@@ -46,9 +38,8 @@ class AuthCubit extends Cubit<AuthState> {
     required String passwordConfirm,
     required String role,
   }) async {
-    emit(
-      AuthLoading(),
-    );
+    emit(AuthLoading());
+
     var result = await authRepoImpl.register(
       name: name,
       email: email,
@@ -56,21 +47,27 @@ class AuthCubit extends Cubit<AuthState> {
       passwordConfirm: passwordConfirm,
       role: role,
     );
-    result.fold(
-      (failure) {
-        emit(
-          AuthFailure(
-            errorMessage: failure.errMessage,
-          ),
-        );
-      },
-      (user) {
-        emit(
-          AuthSuccess(
-            userModel: user,
-          ),
-        );
-      },
+    result.fold((failure) {
+      emit(AuthFailure(errorMessage: failure.errMessage));
+    }, (user) {
+      emit(AuthSuccess(userModel: user));
+    });
+  }
+
+  Future<void> verify({
+    required String email,
+    required String otp,
+  }) async {
+    emit(AuthLoading());
+
+    var result = await authRepoImpl.verify(
+      email: email,
+      otp: otp,
     );
+    return result.fold((failure) {
+      emit(AuthFailure(errorMessage: failure.errMessage));
+    }, (user) {
+      emit(AuthSuccess(userModel: user));
+    });
   }
 }

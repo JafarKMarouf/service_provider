@@ -2,12 +2,15 @@ import 'package:dio/dio.dart';
 
 abstract class Failure {
   final String errMessage;
-
-  const Failure(this.errMessage);
+  const Failure(
+    this.errMessage,
+  );
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.errMessage);
+  ServerFailure(
+    super.errMessage,
+  );
 
   factory ServerFailure.fromDioError(DioException dioError) {
     switch (dioError.type) {
@@ -53,9 +56,13 @@ class ServerFailure extends Failure {
   }
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+    if (statusCode == 401) {
       return ServerFailure(
-        'status code is 401 or 400 or 403',
+        '401 Invalid credentials',
+      );
+    } else if (statusCode == 403) {
+      return ServerFailure(
+        '403 Forbidden',
       );
     } else if (statusCode == 404) {
       return ServerFailure(

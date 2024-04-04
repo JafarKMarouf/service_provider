@@ -27,22 +27,40 @@ class _LoginBodyState extends State<LoginBody> {
       listener: (context, state) {
         if (state is AuthLoading) {
           loading = true;
+        } else if (state is AuthFailure) {
+          loading = false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.errorMessage,
+              ),
+              duration: const Duration(
+                seconds: 3,
+              ),
+            ),
+          );
         } else if (state is AuthSuccess) {
           loading = false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  '${state.userModel.data!.user!.role} Your Logged Successfully'),
+              duration: const Duration(
+                seconds: 3,
+              ),
+            ),
+          );
           Future.delayed(
             const Duration(microseconds: 250),
             () {
               Get.to(
                 () => const CustomeNavBar(),
-                // transition: Transition.fadeIn,
+                transition: g.Transition.fadeIn,
                 duration: kDurationTransition,
               );
             },
           );
           print(state.userModel);
-        } else if (state is AuthFailure) {
-          loading = false;
-          print(state.errorMessage);
         }
       },
       builder: (context, state) {

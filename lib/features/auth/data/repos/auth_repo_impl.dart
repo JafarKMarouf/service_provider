@@ -71,4 +71,38 @@ class AuthRepoImpl implements AuthRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, Map<String, String>>> sendCode() {
+    // TODO: implement sendCode
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, UserModel>> verify({
+    required String email,
+    required String otp,
+  }) async {
+    try {
+      var data = await apiService.post(
+        endPoint: 'email_verification/verify',
+        body: {
+          'email': email,
+          'otp': otp,
+        },
+      );
+      return right(UserModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
 }
