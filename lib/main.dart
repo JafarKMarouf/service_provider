@@ -20,27 +20,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthCubit(
-            AuthRepoImpl(
-              ApiService(
-                Dio(),
-              ),
-            ),
-          ),
-        ),
-      ],
-      child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.light,
-          fontFamily: 'Poppins',
-          primaryColorLight: kPrimaryColor,
-        ),
-        home: const SplashView(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        fontFamily: 'Poppins',
+        primaryColorLight: kPrimaryColor,
       ),
+      home: const SplashView(),
     );
   }
 }

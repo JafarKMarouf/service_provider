@@ -24,7 +24,6 @@ class AuthRepoImpl implements AuthRepo {
         },
       );
       return right(UserModel.fromJson(data));
-
     } catch (e) {
       if (e is DioException) {
         return left(
@@ -40,36 +39,36 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserModel>> register(
-      {required String name,
-      required String email,
-      required String password,
-      required String passwordConfirm,
-      required String role}) {
-    throw UnimplementedError();
+  Future<Either<Failure, UserModel>> register({
+    required String name,
+    required String email,
+    required String password,
+    required String passwordConfirm,
+    required String role,
+  }) async {
+    try {
+      var data = await apiService.post(
+        endPoint: 'register',
+        body: {
+          'name': name,
+          'email': email,
+          'password': password,
+          'password_confirmation': passwordConfirm,
+          'role': role,
+        },
+      );
+      return right(UserModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
   }
-
-  // @override
-  // Future<Either<Failure, UserModel>> register(
-  //     {required String name,
-  //     required String email,
-  //     required String password,
-  //     required String passwordConfirm,
-  //     required String role}) async {
-  //   try {
-  //     var data = await apiService.post(
-  //       endPoint: 'register',
-  //       body: {
-  //         'name': name,
-  //         'email': email,
-  //         'password': password,
-  //         'password_confirmation': passwordConfirm,
-  //         'role': role,
-  //       },
-  //     );
-  //     return right(data);
-  //   } catch (e) {
-  //     return left(ServerFailure());
-  //   }
-  // }
 }

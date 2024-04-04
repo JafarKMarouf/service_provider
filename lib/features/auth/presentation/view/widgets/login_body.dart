@@ -29,7 +29,7 @@ class _LoginBodyState extends State<LoginBody> {
         } else if (state is AuthSuccess) {
           loading = false;
           Future.delayed(
-            const Duration(seconds: 1),
+            const Duration(microseconds: 250),
             () {
               Get.to(
                 () => const CustomeNavBar(),
