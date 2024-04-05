@@ -8,18 +8,11 @@ class ApiService {
   ApiService(this._dio);
 
   Future<Map<String, dynamic>> get({required String endPoint}) async {
-    Map<String, String> headers = {
-      'Accept': 'application/json',
-    };
     String? token = await getToken();
-    if (token != null) {
-      headers.addAll(
-        {
-          'Authorization': 'Bearer $token',
-        },
-      );
-      // print('===========stored token: $token=============');
-    }
+    _dio.options.headers['Accept'] = 'application/json';
+    _dio.options.headers['Authorization'] = 'Bearer $token';
+  //  print('$_baseUrl$endPoint');
+  //   print(_dio.options.headers);
     var response = await _dio.get(
       '$_baseUrl$endPoint',
     );
@@ -30,22 +23,15 @@ class ApiService {
     required String endPoint,
     dynamic body,
   }) async {
-    Map<String, String> headers = {
-      'Accept': 'application/json',
-    };
     String? token = await getToken();
-    if (token != null) {
-      headers.addAll(
-        {
-          'Authorization': 'Bearer ${getToken()}',
-        },
-      );
-      // print('===========stored token: $token=============');
-    }
+
+    _dio.options.headers['Accept'] = 'application/json';
+    _dio.options.headers['Authorization'] = 'Bearer $token';
+    // print('$_baseUrl$endPoint');
+    // print(_dio.options.headers);
     var response = await _dio.post(
       '$_baseUrl$endPoint',
       data: body,
-      queryParameters: headers,
     );
     return response.data;
   }
@@ -54,7 +40,11 @@ class ApiService {
     await storage.write(key: 'token', value: token);
   }
 
- static Future<String?> getToken() async {
+  static Future<String?> getToken() async {
     return await storage.read(key: 'token');
+  }
+
+  static Future<void> logout() async {
+    await storage.delete(key: 'token');
   }
 }

@@ -21,20 +21,13 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
   ];
 
   int currentIndex = 2;
-  // late var token;
-
   @override
   void initState() {
-    // ApiService? apiService;
-    // token = apiService!.getToken();
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // final user = ModalRoute.of(context)!.settings.arguments;
-    // print('=============token: $token===============');
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,

@@ -22,7 +22,7 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
-  var code;
+  String? code;
   bool loading = false;
   void resend() {
     BlocProvider.of<AuthCubit>(context).resend();
@@ -141,10 +141,10 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                     borderRadius: BorderRadius.circular(13),
                     obscureText: false,
                     keyboardType: TextInputType.number,
-                    onCodeChanged: (val) {
-                      code = val;
-                      setState(() {});
-                    },
+                    // onCodeChanged: (val) {
+                    //   code = val;
+                    //   setState(() {});
+                    // },
                     onSubmit: (otp) {
                       code = otp;
                     },
@@ -188,21 +188,24 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                     width: MediaQuery.of(context).size.width,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                        if (code != '') {
-                          BlocProvider.of<AuthCubit>(context).verify(
-                            email: email.toString(),
-                            otp: code,
-                          );
-                          print('======email : $email =========');
-                          print('======otp : $code =========');
-                        }
+                        // if (code != '') {
+                        BlocProvider.of<AuthCubit>(context).verify(
+                          email: email.toString(),
+                          otp: code!,
+                        );
+                        print('======email : ${email.toString()} =========');
+                        print('======otp : $code =========');
                       } else {
                         autoValidate = AutovalidateMode.always;
                         setState(() {});
                       }
                     },
-                  )
-                  // : const CircularProgressIndicator(),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  if (loading) const CircularProgressIndicator(),
+                
                 ],
               ),
             ),

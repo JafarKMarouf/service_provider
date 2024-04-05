@@ -87,6 +87,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> resend() async {
     emit(AuthLoading());
+    
     var result = await authRepoImpl.resend();
     return result.fold(
       (failure) {

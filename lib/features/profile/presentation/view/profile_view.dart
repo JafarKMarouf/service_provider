@@ -5,6 +5,8 @@ import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/models/user_model/user.dart';
 import 'package:freelancer_app/features/auth/data/models/user_model/user_model.dart';
+import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
+import 'package:get/get.dart';
 
 import 'widgets/profile_body.dart';
 
@@ -14,14 +16,22 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final username = ModalRoute.of(context)!.settings.arguments;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text('$username'),
         actions: [
           IconButton(
             onPressed: () async {
-              ApiService? apiService;
+              await ApiService.logout();
+              String? token = await ApiService.getToken() ?? '';
+              // print('==========token after logout : $token==================');
+              
+              Get.to(
+                (context) => const LoginView(),
+              );
+
+              // ApiService? apiService;
               // await apiService!.storage.delete(key: 'token');
             },
             icon: const Icon(
