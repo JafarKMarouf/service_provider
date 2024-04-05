@@ -21,12 +21,16 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
   int _start = 60;
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
-  var code = '';
+
+  var code;
   bool loading = false;
   void resend() {
-    setState(() {
-      _isResendAgain = true;
-    });
+    BlocProvider.of<AuthCubit>(context).resend();
+    setState(
+      () {
+        _isResendAgain = true;
+      },
+    );
 
     const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(oneSec, (timer) {

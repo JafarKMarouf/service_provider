@@ -23,7 +23,12 @@ class AuthRepoImpl implements AuthRepo {
           'password': password,
         },
       );
-      return right(UserModel.fromJson(data));
+      UserModel user = UserModel.fromJson(data);
+      ApiService.storeToken(user.data!.token!);
+
+      // await apiService.getToken();
+      // print('============== token: $token =====================');
+      return right(user);
     } catch (e) {
       if (e is DioException) {
         return left(
@@ -57,7 +62,9 @@ class AuthRepoImpl implements AuthRepo {
           'role': role,
         },
       );
-      return right(UserModel.fromJson(data));
+      UserModel user = UserModel.fromJson(data);
+      ApiService.storeToken(user.data!.token!);
+      return right(user);
     } catch (e) {
       if (e is DioException) {
         return left(
@@ -73,9 +80,24 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, Map<String, String>>> sendCode() {
-    // TODO: implement sendCode
-    throw UnimplementedError();
+  Future<Either<Failure, UserModel>> resend() async {
+    try {
+      var data = await apiService.get(
+        endPoint: 'email_verification/send',
+      );
+      return right(UserModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
   }
 
   @override

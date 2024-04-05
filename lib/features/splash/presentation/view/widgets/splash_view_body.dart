@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/api_service.dart';
+import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 import 'package:get/get.dart';
 
@@ -16,12 +18,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
-
+ late String token = '';
   @override
   void initState() {
     super.initState();
     initSlidingAnimation();
-    navigateToLogin();
+    _loadingUserInfo();
   }
 
   @override
@@ -61,6 +63,15 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.forward();
   }
 
+  _loadingUserInfo() async {
+    token = await ApiService.getToken() ?? '';
+    if (token == '') {
+      navigateToLogin();
+    } else {
+      navigateToHome();
+    }
+  }
+
   void navigateToLogin() {
     Future.delayed(
       const Duration(
@@ -69,6 +80,21 @@ class _SplashViewBodyState extends State<SplashViewBody>
       () {
         Get.to(
           () => const LoginView(),
+          transition: Transition.fadeIn,
+          duration: kDurationTransition,
+        );
+      },
+    );
+  }
+
+  void navigateToHome() {
+    Future.delayed(
+      const Duration(
+        seconds: 3,
+      ),
+      () {
+        Get.to(
+          () => const CustomeNavBar(),
           transition: Transition.fadeIn,
           duration: kDurationTransition,
         );

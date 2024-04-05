@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/home_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view/profile_view.dart';
@@ -20,9 +21,20 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
   ];
 
   int currentIndex = 2;
+  // late var token;
+
+  @override
+  void initState() {
+    // ApiService? apiService;
+    // token = apiService!.getToken();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    // final user = ModalRoute.of(context)!.settings.arguments;
+    // print('=============token: $token===============');
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
@@ -66,32 +78,6 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
         ],
       ),
       body: screens[currentIndex],
-      // bottomNavigationBar: Container(
-      //   color: kPrimaryColor,
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(8.0),
-      //     child: GNav(
-      //       color: const Color(0xff252525),
-      //       activeColor: kPrimaryColor,
-      //       selectedIndex: currentIndex,
-      //       tabBackgroundColor: Colors.white,
-      //       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),            // gap: 10,
-      //       onTabChange: (val) => {
-      //         setState(() {
-      //           currentIndex = val;
-      //         }),
-      //       },
-      //
-      //       tabs:   [
-      //         GButton(icon: Icons.person,),
-      //         GButton(icon: Icons.settings,),
-      //         // SvgAssetLoader('assets/images/img_settings.svg'),
-      //         GButton(icon: Icons.bookmark,),
-      //         GButton(icon: Icons.home),
-      //       ],
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
+import 'package:freelancer_app/features/auth/data/models/user_model/user.dart';
 import 'package:freelancer_app/features/auth/presentation/view/register_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/widgets/login_form.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
@@ -41,10 +42,10 @@ class _LoginBodyState extends State<LoginBody> {
           );
         } else if (state is AuthSuccess) {
           loading = false;
+          User user = state.userModel.data!.user!;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(
-                  '${state.userModel.data!.user!.role} Your Logged Successfully'),
+              content: Text('${user.name} is Logged Successfully'),
               duration: const Duration(
                 seconds: 3,
               ),
@@ -57,6 +58,7 @@ class _LoginBodyState extends State<LoginBody> {
                 () => const CustomeNavBar(),
                 transition: g.Transition.fadeIn,
                 duration: kDurationTransition,
+                arguments: user.name,
               );
             },
           );

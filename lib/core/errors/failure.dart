@@ -74,7 +74,7 @@ class ServerFailure extends Failure {
       );
     } else {
       return ServerFailure(
-        'Opps There was an Error, Please try again',
+        'Oppsas There was an Error, Please try again',
       );
     }
   }

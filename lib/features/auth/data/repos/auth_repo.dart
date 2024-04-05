@@ -7,7 +7,10 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-
+//   Future<UserModel>login({
+//     required String email,
+//     required String password,
+// });
   Future<Either<Failure, UserModel>> register({
     required String name,
     required String email,
@@ -21,5 +24,5 @@ abstract class AuthRepo {
     required String otp,
   });
 
-  Future<Either<Failure,Map<String,String>>> sendCode(); 
+  Future<Either<Failure, UserModel>> resend();
 }

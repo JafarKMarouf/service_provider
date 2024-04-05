@@ -24,12 +24,26 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (user) {
+        // print('=========token: ${user.data!.token}');
         emit(
           AuthSuccess(userModel: user),
         );
       },
     );
   }
+
+  // Future<void>login({required String email,required String password,})async{
+  //   emit(AuthLoading());
+  //   var result = await authRepoImpl.login(email: email, password: password);
+  //   if(result.status == 'failed'){
+  //     emit(AuthFailure(errorMessage: '${result.message}'));
+  //
+  //   }
+  //   else {
+  //     emit(AuthSuccess(userModel: result));
+  //
+  //   }
+  // }
 
   Future<void> register({
     required String name,
@@ -69,5 +83,18 @@ class AuthCubit extends Cubit<AuthState> {
     }, (user) {
       emit(AuthSuccess(userModel: user));
     });
+  }
+
+  Future<void> resend() async {
+    emit(AuthLoading());
+    var result = await authRepoImpl.resend();
+    return result.fold(
+      (failure) {
+        emit(AuthFailure(errorMessage: failure.errMessage));
+      },
+      (data) {
+        emit(AuthSuccess(userModel: data));
+      },
+    );
   }
 }
