@@ -3,7 +3,7 @@
     <application
         android:label="freelancer_app"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/service_provider">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -17,8 +17,8 @@
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
             <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@drawable/splashscreen"
+              android:name="io.flutter.embedding.android.SplashSplashScreenDrawable"
+              android:resource="@drawable/launch_background"
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

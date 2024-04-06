@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/home_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view/profile_view.dart';
@@ -21,10 +20,6 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
   ];
 
   int currentIndex = 2;
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

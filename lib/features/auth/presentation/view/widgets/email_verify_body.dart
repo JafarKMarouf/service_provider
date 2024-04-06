@@ -187,7 +187,7 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                         if (_isResendAgain) return;
                         resend();
                       },
-                      child: loadingR
+                      child: loading
                           ? const CircularProgressIndicator()
                           : Text(
                               _isResendAgain ? "s $_start" : "إعادة الإرسال",
