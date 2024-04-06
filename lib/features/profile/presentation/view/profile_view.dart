@@ -24,15 +24,8 @@ class ProfileView extends StatelessWidget {
           IconButton(
             onPressed: () async {
               await ApiService.logout();
-              String? token = await ApiService.getToken() ?? '';
-              // print('==========token after logout : $token==================');
+              // String? token = await ApiService.getToken() ?? '';
               
-              Get.to(
-                (context) => const LoginView(),
-              );
-
-              // ApiService? apiService;
-              // await apiService!.storage.delete(key: 'token');
             },
             icon: const Icon(
               Icons.exit_to_app,

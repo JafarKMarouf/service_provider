@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 
 class ApiService {
   final _baseUrl = 'http://192.168.1.5:8000/api/';

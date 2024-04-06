@@ -16,6 +16,7 @@ class EmailVerifyBody extends StatefulWidget {
 
 class _EmailVerifyBodyState extends State<EmailVerifyBody> {
   final TextEditingController emailAddress = TextEditingController();
+  final TextEditingController otp = TextEditingController();
   bool _isResendAgain = false;
   late Timer timer;
   int _start = 60;
@@ -86,128 +87,132 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
             horizontal: 24.0,
           ),
           child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              autovalidateMode: autoValidate,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 16,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'أدخل رمز التحقق المكون من 6 أرقام والذي تم إرساله إلى بريدك الإلكتروني.',
+                  // 'Enter the 6-digit verification code that was sent to your email.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[400],
+                    fontWeight: FontWeight.w600,
                   ),
-                  Text(
-                    'أدخل رمز التحقق المكون من 6 أرقام والذي تم إرساله إلى بريدك الإلكتروني.',
-                    // 'Enter the 6-digit verification code that was sent to your email.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[400],
-                      fontWeight: FontWeight.w600,
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  CustomeTextFormField(
-                    type: TextInputType.emailAddress,
-                    isSuffix: false,
-                    dir: false,
-                    hintText: '$email',
-                    prefixIcon: Icons.email,
-                    customController: emailAddress,
-                    onChange: (val) {
-                      emailAddress.text = val;
-                      setState(
-                        () {},
-                      );
-                    },
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  OtpTextField(
-                    textStyle: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    numberOfFields: 6,
-                    borderColor: kPrimaryColor,
-                    showFieldAsBox: true,
-                    fieldHeight: 75,
-                    fieldWidth: MediaQuery.of(context).size.width / 8,
-                    cursorColor: kPrimaryColor,
-                    borderRadius: BorderRadius.circular(13),
-                    obscureText: false,
-                    keyboardType: TextInputType.number,
-                    // onCodeChanged: (val) {
-                    //   code = val;
-                    //   setState(() {});
-                    // },
-                    onSubmit: (otp) {
-                      code = otp;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 48,
+                ),
+                Form(
+                  key: formKey,
+                  autovalidateMode: autoValidate,
+                  child: Column(
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          if (_isResendAgain) return;
-                          resend();
+                      CustomeTextFormField(
+                        type: TextInputType.emailAddress,
+                        isSuffix: false,
+                        dir: false,
+                        hintText: '$email',
+                        prefixIcon: Icons.email,
+                        customController: emailAddress,
+                        onChange: (val) {
+                          emailAddress.text = val;
+                          setState(
+                            () {},
+                          );
                         },
-                        child: Text(
-                          _isResendAgain ? "s $_start" : "إعادة الإرسال",
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                          ),
-                        ),
                       ),
-                      Text(
-                        "ألم تتلقى الكود ؟",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey.shade500,
+                      const SizedBox(
+                        height: 48,
+                      ),
+                      OtpTextField(
+                        textStyle: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
                         ),
-                        textDirection: TextDirection.rtl,
+                        numberOfFields: 6,
+                        borderColor: kPrimaryColor,
+                        showFieldAsBox: true,
+                        fieldHeight: 75,
+                        fieldWidth: MediaQuery.of(context).size.width / 8,
+                        cursorColor: kPrimaryColor,
+                        borderRadius: BorderRadius.circular(13),
+                        obscureText: false,
+                        keyboardType: TextInputType.number,
+                        handleControllers: (controllers) {
+                          otp;
+                        },
+                        onSubmit: (otp) {
+                          code = otp;
+                        },
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      CustomButton(
+                        title: 'تقدم',
+                        width: MediaQuery.of(context).size.width,
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            // if (code != '') {
+                            print(
+                                '======email : ${email.toString()} =========');
+                            print('======otp : $code =========');
+                            BlocProvider.of<AuthCubit>(context).verify(
+                              email: email.toString(),
+                              otp: code!,
+                            );
+                          } else {
+                            autoValidate = AutovalidateMode.always;
+                            setState(() {});
+                          }
+                        },
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  CustomButton(
-                    title: 'تقدم',
-                    width: MediaQuery.of(context).size.width,
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        // if (code != '') {
-                        BlocProvider.of<AuthCubit>(context).verify(
-                          email: email.toString(),
-                          otp: code!,
-                        );
-                        print('======email : ${email.toString()} =========');
-                        print('======otp : $code =========');
-                      } else {
-                        autoValidate = AutovalidateMode.always;
-                        setState(() {});
-                      }
-                    },
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  if (loading) const CircularProgressIndicator(),
-                
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        if (_isResendAgain) return;
+                        resend();
+                      },
+                      child: loadingR
+                          ? const CircularProgressIndicator()
+                          : Text(
+                              _isResendAgain ? "s $_start" : "إعادة الإرسال",
+                              style: const TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                    ),
+                    Text(
+                      "ألم تتلقى الكود ؟",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey.shade500,
+                      ),
+                      textDirection: TextDirection.rtl,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+              ],
             ),
           ),
         );
