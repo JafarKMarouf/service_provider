@@ -23,7 +23,7 @@ class ProfileBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${BlocProvider.of<AuthCubit>(context).name}'),
+                      // Text('${BlocProvider.of<AuthCubit>(context).name}'),
                       IconButton(
                         onPressed: () async {
                           ApiService.logout();

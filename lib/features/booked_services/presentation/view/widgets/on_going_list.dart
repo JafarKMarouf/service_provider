@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booking_infos_view.dart';
+import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
 import 'package:get/get.dart';
 
 class OnGoingList extends StatelessWidget {
-  const OnGoingList({super.key});
+  const OnGoingList({super.key, required this.data});
+  final Datum data;
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +37,17 @@ class OnGoingList extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            'تصليح مكيفات',
-                            style: TextStyle(
+                            '${data.serviceName}',
+                            // 'تصليح مكيفات',
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w800, fontSize: 16),
                           ),
-                          Text('هشام'),
+                          Text('${data.expert!.name}'),
+                          // Text('هشام'),
                         ],
                       ),
                       const SizedBox(
