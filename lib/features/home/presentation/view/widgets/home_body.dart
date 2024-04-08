@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' as g;
 
 import 'custome_home_bar.dart';
 import 'custome_search.dart';
@@ -9,8 +11,21 @@ import 'fetch_services.dart';
 import 'on_going_page_view.dart';
 import 'service_grid_view.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
+
+  @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  late String name;
+
+  @override
+  void initState() {
+    name = BlocProvider.of<AuthCubit>(context).name!;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +39,9 @@ class HomeBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomeHomeBar(),
+            CustomeHomeBar(
+              name: name,
+            ),
             const SizedBox(
               height: 15,
             ),
@@ -42,9 +59,9 @@ class HomeBody extends StatelessWidget {
             FetchServices(
               title: 'الخدمات الجارية',
               onPressed: () {
-                Get.to(
+                g.Get.to(
                   () => const BookedServicesListView(),
-                  transition: Transition.fadeIn,
+                  transition: g.Transition.fadeIn,
                   duration: kDurationTransition,
                 );
               },

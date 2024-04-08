@@ -24,10 +24,9 @@ class AuthRepoImpl implements AuthRepo {
         },
       );
       UserModel user = UserModel.fromJson(data);
-      ApiService.storeToken(user.data!.token!);
+      await ApiService.storeToken(user.data!.token!);
+      await ApiService.storeUserDetails(user.data!.user!.name!);
 
-      // await apiService.getToken();
-      // print('============== token: $token =====================');
       return right(user);
     } catch (e) {
       if (e is DioException) {
@@ -49,7 +48,7 @@ class AuthRepoImpl implements AuthRepo {
     required String email,
     required String password,
     required String passwordConfirm,
-    required String role,
+    // required String role,
   }) async {
     try {
       var data = await apiService.post(
@@ -59,11 +58,13 @@ class AuthRepoImpl implements AuthRepo {
           'email': email,
           'password': password,
           'password_confirmation': passwordConfirm,
-          'role': role,
+          'role': 'customer',
         },
       );
       UserModel user = UserModel.fromJson(data);
-      ApiService.storeToken(user.data!.token!);
+      await ApiService.storeToken(user.data!.token!);
+      await ApiService.storeUserDetails(user.data!.user!.name!);
+      
       return right(user);
     } catch (e) {
       if (e is DioException) {
@@ -126,5 +127,9 @@ class AuthRepoImpl implements AuthRepo {
         ),
       );
     }
+  }
+
+  Future<String?> getUser() async {
+    return await ApiService.getUserDetails();
   }
 }

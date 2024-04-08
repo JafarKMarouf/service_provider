@@ -20,6 +20,7 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
   ];
 
   int currentIndex = 2;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +39,10 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
               'assets/images/img_lock.svg',
               width: 24,
               height: 30,
-              colorFilter:
-                  const ColorFilter.mode(kPrimaryColor, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
             ),
             label: 'profile',
           ),
@@ -48,8 +51,10 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
               'assets/images/img_settings.svg',
               width: 24,
               height: 30,
-              colorFilter:
-                  const ColorFilter.mode(kPrimaryColor, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
             ),
             label: 'booked',
           ),
@@ -58,8 +63,10 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
               'assets/images/img_settings_gray_300.svg',
               width: 24,
               height: 30,
-              colorFilter:
-                  const ColorFilter.mode(kPrimaryColor, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
             ),
             label: 'home',
           ),

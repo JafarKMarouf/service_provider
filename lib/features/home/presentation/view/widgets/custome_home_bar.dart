@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomeHomeBar extends StatelessWidget {
-  const CustomeHomeBar({super.key});
-
+  const CustomeHomeBar({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,16 +21,17 @@ class CustomeHomeBar extends StatelessWidget {
         ),
         Row(
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
+                const Text(
                   'مرحبا',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
                 Text(
-                  'جعفر معروف',
-                  style: TextStyle(),
+                  name,
+                  // 'جعفر معروف',
+                  style: const TextStyle(),
                 ),
               ],
             ),
@@ -42,8 +43,8 @@ class CustomeHomeBar extends StatelessWidget {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.asset('assets/images/profile.png'))
-              // child: Image.asset('assets/images/profile.png'),
-            ),
+                // child: Image.asset('assets/images/profile.png'),
+                ),
           ],
         )
       ],

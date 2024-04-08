@@ -54,7 +54,7 @@ class _LoginBodyState extends State<LoginBody> {
           Future.delayed(
             const Duration(microseconds: 250),
             () {
-              Get.to(
+              Get.offAll(
                 () => const CustomeNavBar(),
                 transition: g.Transition.fadeIn,
                 duration: kDurationTransition,

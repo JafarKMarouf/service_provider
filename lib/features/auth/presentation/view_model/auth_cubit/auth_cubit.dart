@@ -6,6 +6,8 @@ import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
+  String? name;
+
   AuthCubit(this.authRepoImpl) : super(AuthInitial());
 
   final AuthRepoImpl authRepoImpl;
@@ -19,12 +21,12 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
       password: password,
     );
+    name = await authRepoImpl.getUser();
     result.fold(
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (user) {
-        // print('=========token: ${user.data!.token}');
         emit(
           AuthSuccess(userModel: user),
         );
@@ -32,35 +34,20 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  // Future<void>login({required String email,required String password,})async{
-  //   emit(AuthLoading());
-  //   var result = await authRepoImpl.login(email: email, password: password);
-  //   if(result.status == 'failed'){
-  //     emit(AuthFailure(errorMessage: '${result.message}'));
-  //
-  //   }
-  //   else {
-  //     emit(AuthSuccess(userModel: result));
-  //
-  //   }
-  // }
-
   Future<void> register({
-    required String name,
+    required String username,
     required String email,
     required String password,
     required String passwordConfirm,
-    required String role,
   }) async {
     emit(AuthLoading());
-
     var result = await authRepoImpl.register(
-      name: name,
+      name: username,
       email: email,
       password: password,
       passwordConfirm: passwordConfirm,
-      role: role,
     );
+    // name = await authRepoImpl.getUser();
     result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) {
@@ -73,11 +60,11 @@ class AuthCubit extends Cubit<AuthState> {
     required String otp,
   }) async {
     emit(AuthLoading());
-
     var result = await authRepoImpl.verify(
       email: email,
       otp: otp,
     );
+    name = await authRepoImpl.getUser();
     return result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) {
@@ -87,7 +74,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> resend() async {
     emit(AuthLoading());
-    
+
     var result = await authRepoImpl.resend();
     return result.fold(
       (failure) {

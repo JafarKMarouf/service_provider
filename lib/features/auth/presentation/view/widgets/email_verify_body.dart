@@ -1,11 +1,16 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
+import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/widgets/custome_text_form_field.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
+import 'package:get/get.dart' as g;
+import 'package:get/route_manager.dart';
 
 class EmailVerifyBody extends StatefulWidget {
   const EmailVerifyBody({super.key});
@@ -23,7 +28,7 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
-  String? code;
+  var code;
   bool loading = false;
   void resend() {
     BlocProvider.of<AuthCubit>(context).resend();
@@ -68,6 +73,7 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
             ),
           );
         } else if (state is AuthSuccess) {
+          // User user = state.userModel.data!.user!;
           loading = false;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -78,6 +84,12 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                 seconds: 2,
               ),
             ),
+          );
+          g.Get.offAll(
+            () => const LoginView(),
+            transition: g.Transition.fadeIn,
+            duration: kDurationTransition,
+            // arguments: user.name,
           );
         }
       },
@@ -160,12 +172,9 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             // if (code != '') {
-                            print(
-                                '======email : ${email.toString()} =========');
-                            print('======otp : $code =========');
                             BlocProvider.of<AuthCubit>(context).verify(
                               email: email.toString(),
-                              otp: code!,
+                              otp: code,
                             );
                           } else {
                             autoValidate = AutovalidateMode.always;

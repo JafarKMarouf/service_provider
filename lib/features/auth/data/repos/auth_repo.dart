@@ -7,16 +7,12 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-//   Future<UserModel>login({
-//     required String email,
-//     required String password,
-// });
   Future<Either<Failure, UserModel>> register({
     required String name,
     required String email,
     required String password,
     required String passwordConfirm,
-    required String role,
+    // required String role,
   });
 
   Future<Either<Failure, UserModel>> verify({
@@ -25,4 +21,6 @@ abstract class AuthRepo {
   });
 
   Future<Either<Failure, UserModel>> resend();
+
+
 }

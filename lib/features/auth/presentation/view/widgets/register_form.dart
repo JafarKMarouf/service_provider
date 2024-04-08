@@ -136,51 +136,51 @@ class _RegisterFormState extends State<RegisterForm> {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                children: [
-                  Radio(
-                    value: 'customer',
-                    groupValue: userRoleType,
-                    onChanged: (val) {
-                      userRoleType = val as String;
-                      setState(() {});
-                    },
-                  ),
-                  const Text(
-                    'زبون',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 20,
-                      color: Color(0xff252525),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Radio(
-                    value: 'expert',
-                    groupValue: userRoleType,
-                    onChanged: (val) {
-                      userRoleType = val as String;
-                      setState(() {});
-                    },
-                  ),
-                  const Text(
-                    'خبير',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 20,
-                      color: Color(0xff252525),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //   children: [
+          //     Row(
+          //       children: [
+          //         Radio(
+          //           value: 'customer',
+          //           groupValue: userRoleType,
+          //           onChanged: (val) {
+          //             userRoleType = val as String;
+          //             setState(() {});
+          //           },
+          //         ),
+          //         const Text(
+          //           'زبون',
+          //           style: TextStyle(
+          //             fontWeight: FontWeight.w800,
+          //             fontSize: 20,
+          //             color: Color(0xff252525),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //     Row(
+          //       children: [
+          //         Radio(
+          //           value: 'expert',
+          //           groupValue: userRoleType,
+          //           onChanged: (val) {
+          //             userRoleType = val as String;
+          //             setState(() {});
+          //           },
+          //         ),
+          //         const Text(
+          //           'خبير',
+          //           style: TextStyle(
+          //             fontWeight: FontWeight.w800,
+          //             fontSize: 20,
+          //             color: Color(0xff252525),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
           const SizedBox(
             height: 30,
           ),
@@ -189,11 +189,11 @@ class _RegisterFormState extends State<RegisterForm> {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 BlocProvider.of<AuthCubit>(context).register(
-                  name: name.text,
+                  username: name.text,
                   email: emailAddress.text,
                   password: password.text,
                   passwordConfirm: passwordConfirm.text,
-                  role: userRoleType,
+                  // role: userRoleType,
                 );
               } else {
                 autoValidate = AutovalidateMode.always;

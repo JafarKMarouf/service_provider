@@ -3,7 +3,7 @@ import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' as g;
 
 import 'sliding_text.dart';
 
@@ -78,9 +78,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
         seconds: 3,
       ),
       () {
-        Get.to(
+        g.Get.offAll(
           () => const LoginView(),
-          transition: Transition.fadeIn,
+          transition: g.Transition.fadeIn,
           duration: kDurationTransition,
         );
       },
@@ -93,9 +93,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
         seconds: 3,
       ),
       () {
-        Get.to(
+        g.Get.offAll(
           () => const CustomeNavBar(),
-          transition: Transition.fadeIn,
+          transition: g.Transition.fadeIn,
           duration: kDurationTransition,
         );
       },
