@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
       password: password,
     );
-    name = await authRepoImpl.getUser();
+    // name = await authRepoImpl.getUser();
     result.fold(
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
@@ -64,7 +64,6 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
       otp: otp,
     );
-    name = await authRepoImpl.getUser();
     return result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) {
@@ -84,5 +83,9 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthSuccess(userModel: data));
       },
     );
+  }
+
+  Future<String?> getUser() async {
+    return await authRepoImpl.getUser();
   }
 }

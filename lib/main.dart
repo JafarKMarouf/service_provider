@@ -12,6 +12,7 @@ import 'package:dio/dio.dart';
 void main() {
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {

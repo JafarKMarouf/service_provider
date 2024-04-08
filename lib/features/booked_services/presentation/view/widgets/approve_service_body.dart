@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/views/widgets/custome_service_app_bar.dart';
+import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_app_bar.dart';
 import 'package:freelancer_app/views/widgets/text_thanks.dart';
 
 import '../../../../../views/widgets/approve_service_infos.dart';

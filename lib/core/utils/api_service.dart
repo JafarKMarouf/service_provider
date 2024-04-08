@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
 class ApiService {
-  final _baseUrl = 'http://192.168.1.5:8000/api/';
+  final _baseUrl = 'http://192.168.1.6:8000/api/';
   final Dio _dio;
   static var storage = const FlutterSecureStorage();
   ApiService(this._dio);
@@ -27,7 +27,7 @@ class ApiService {
     dynamic body,
   }) async {
     String? token = await getToken();
-    
+
     await getUserDetails();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
@@ -55,8 +55,7 @@ class ApiService {
     await storage.write(key: 'username', value: username);
   }
 
-
-  static Future<String?> getUserDetails() async{
+  static Future<String?> getUserDetails() async {
     return await storage.read(key: 'username');
   }
 }

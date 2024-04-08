@@ -4,11 +4,12 @@ import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
+import 'package:freelancer_app/features/home/presentation/view/services_list_view.dart';
+import 'package:freelancer_app/features/home/presentation/view/widgets/custome_home_bar.dart';
 import 'package:freelancer_app/features/home/presentation/view_models/service_cubit/service_cubit.dart';
 import 'package:get/get.dart' as g;
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+// import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import 'custome_home_bar.dart';
 import 'custome_search.dart';
 import 'fetch_services.dart';
 import 'on_going_page_view.dart';
@@ -48,57 +49,69 @@ class _HomeBodyState extends State<HomeBody> {
           );
         } else if (state is ServiceSuccess) {
           loading = false;
-          print('===============data ${state.service.data} ==============');
+          // print('===============data ${state.service.data} ==============');
           // data = state.service.data!;
           data.addAll(state.service.data!.toList());
-          // print(state.service.data);
+          print(state.service.data);
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: loading,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              right: 16,
-              left: 16,
-              top: 60,
-              bottom: 30,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // CustomeHomeBar(
-                  //   name: name,
-                  // ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomeSearch(
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  FetchServices(
-                    title: 'الخدمات',
-                    onPressed: () {},
-                  ),
-                  const ServiceGridView(),
-                  FetchServices(
-                    title: 'الخدمات الجارية',
-                    onPressed: () {
-                      g.Get.to(
-                        () => const BookedServicesListView(),
-                        transition: g.Transition.fadeIn,
-                        duration: kDurationTransition,
-                      );
-                    },
-                  ),
-                  OnGoingPageView(
-                    data: data,
-                  ),
-                ],
-              ),
+        return Padding(
+          padding: const EdgeInsets.only(
+            right: 16,
+            left: 16,
+            top: 40,
+            bottom: 30,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const CustomeHomeBar(
+                  name: 'Jafar',
+                  // name: BlocProvider.of<AuthCubit>(context),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomeSearch(
+                  width: MediaQuery.of(context).size.width,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                FetchServices(
+                  title: 'الخدمات المتاحة',
+                  onPressed: () {
+                    g.Get.to(
+                      () => ServicesListView(
+                        data: data,
+                      ),
+                      transition: g.Transition.fadeIn,
+                      duration: kDurationTransition,
+                    );
+                  },
+                ),
+                loading
+                    ? const CircularProgressIndicator()
+                    : data.isEmpty
+                        ? const Text('there is no service')
+                        : ServiceGridView(
+                            data: data,
+                          ),
+                FetchServices(
+                  title: 'الخدمات المحجوزة',
+                  onPressed: () {
+                    g.Get.to(
+                      () => const BookedServicesListView(),
+                      transition: g.Transition.fadeIn,
+                      duration: kDurationTransition,
+                    );
+                  },
+                ),
+                const OnGoingPageView(
+                    // data: data,
+                    ),
+              ],
             ),
           ),
         );

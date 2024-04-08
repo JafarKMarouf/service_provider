@@ -15,7 +15,8 @@ class CustomeIconService extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: kPrimaryColor
       ),
-      child: SvgPicture.asset('assets/images/img_button_google_primary.svg'),
+      child: Image.network(''),
+      // child: SvgPicture.asset('assets/images/img_button_google_primary.svg'),
     );
   }
 }
