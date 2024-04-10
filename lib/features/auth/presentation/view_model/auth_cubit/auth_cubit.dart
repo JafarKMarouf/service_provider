@@ -85,7 +85,17 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<String?> getUser() async {
-    return await authRepoImpl.getUser();
+  Future<void> logout() async {
+    emit(AuthLoading());
+    var result = await authRepoImpl.logout();
+
+    return result.fold(
+      (fail) => emit(
+        AuthFailure(errorMessage: fail.errMessage),
+      ),
+      (sucess) => emit(
+        AuthSuccess(userModel: sucess),
+      ),
+    );
   }
 }

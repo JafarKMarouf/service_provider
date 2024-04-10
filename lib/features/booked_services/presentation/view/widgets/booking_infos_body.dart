@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_app_bar.dart';
 import 'package:freelancer_app/views/widgets/custome_service_book_info.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/service_type.dart';
 
 class BookingInfosBody extends StatelessWidget {
   const BookingInfosBody({super.key});

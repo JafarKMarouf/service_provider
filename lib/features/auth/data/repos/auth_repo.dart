@@ -22,5 +22,5 @@ abstract class AuthRepo {
 
   Future<Either<Failure, UserModel>> resend();
 
-
+  Future<Either<Failure,UserModel>> logout();
 }

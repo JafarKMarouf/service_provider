@@ -15,7 +15,6 @@ class ServiceRepoImpl implements ServiceRepo {
     var data = await apiService.get(endPoint: 'customer/service/');
 
     Service service = Service.fromJson(data);
-    print('===============service $service ==============');
 
     return service;
   }

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
@@ -10,14 +11,16 @@ class ApiService {
   static var storage = const FlutterSecureStorage();
   ApiService(this._dio);
 
-  Future<Map<String, dynamic>> get({required String endPoint}) async {
+  Future<Map<String, dynamic>> get({
+    required String endPoint,
+    String? id,
+  }) async {
     String? token = await getToken();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
-    //  print('$_baseUrl$endPoint');
-    //   print(_dio.options.headers);
+   
     var response = await _dio.get(
-      '$_baseUrl$endPoint',
+      id == '' ? '$_baseUrl$endPoint' : '$_baseUrl$endPoint$id',
     );
     return response.data;
   }
@@ -27,11 +30,12 @@ class ApiService {
     dynamic body,
   }) async {
     String? token = await getToken();
-
-    await getUserDetails();
+    // await getUserDetails();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
-
+    print(
+      '====================$_baseUrl$endPoint===============',
+    );
     var response = await _dio.post(
       '$_baseUrl$endPoint',
       data: body,
@@ -47,15 +51,15 @@ class ApiService {
     return await storage.read(key: 'token');
   }
 
-  static Future<void> logout() async {
+  Future<void> removeToken() async {
     await storage.delete(key: 'token');
   }
 
-  static Future<void> storeUserDetails(String username) async {
-    await storage.write(key: 'username', value: username);
+  static Future<void> storeUserId(String userId) async {
+    await storage.write(key: 'userId', value: userId);
   }
 
-  static Future<String?> getUserDetails() async {
-    return await storage.read(key: 'username');
+  Future<String?> getUserId() async {
+    return await storage.read(key: 'userId');
   }
 }

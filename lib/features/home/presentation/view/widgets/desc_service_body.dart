@@ -15,27 +15,32 @@ class DescServiceBody extends StatelessWidget {
   final Datum data;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 12),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const CustomeServiceAppBar(title: "وصف الخدمة"),
-          ServiceType(
-            data: data,
-          ),
-          const CustomeServiceBookInfoItems(),
-          const DisplayLocation(),
-          CustomeServiceInfo(
-            price: '${data.price!.toInt()}',
-            description: '${data.serviceDescription}',
-          ),
-          CustomButton(
-            title: 'حجز',
-            onTap: () {},
-            width: MediaQuery.of(context).size.width,
-          )
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 40.0,
+          horizontal: 12,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const CustomeServiceAppBar(title: "وصف الخدمة"),
+            ServiceType(
+              data: data,
+            ),
+            const CustomeServiceBookInfoItems(),
+            const DisplayLocation(),
+            CustomeServiceInfo(
+              price: '${data.price!.toInt()}',
+              description: '${data.serviceDescription}',
+            ),
+            CustomButton(
+              title: 'حجز',
+              onTap: () {},
+              width: MediaQuery.of(context).size.width,
+            )
+          ],
+        ),
       ),
     );
   }

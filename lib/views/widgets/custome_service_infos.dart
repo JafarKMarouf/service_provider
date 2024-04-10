@@ -21,42 +21,45 @@ class CustomeServiceInfo extends StatelessWidget {
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 textDirection: TextDirection.rtl,
               ),
-              const Text('رسوم الفحص : ',style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700
-              ),
+              const Text(
+                'رسوم الفحص : ',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 textDirection: TextDirection.rtl,
               ),
             ],
           ),
-          const SizedBox(height: 8,),
-          Row (
+          const SizedBox(
+            height: 8,
+          ),
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Flexible(
                 child: Text(
                   description,
-                  style:
-                  const TextStyle(
+                  style: const TextStyle(
                       fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    overflow: TextOverflow.ellipsis
-                  ),
+                      fontWeight: FontWeight.w700,
+                      overflow: TextOverflow.ellipsis),
                   maxLines: 2,
                   textDirection: TextDirection.rtl,
                 ),
               ),
-              const Text('الوصف : ',style: TextStyle(
+              const Text(
+                'الوصف : ',
+                style: TextStyle(
                   fontSize: 18,
-                overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.w700,
-              ),
+                ),
                 textDirection: TextDirection.rtl,
               ),
             ],
           ),
-
+          const SizedBox(
+            height: 8,
+          ),
         ],
       ),
     );

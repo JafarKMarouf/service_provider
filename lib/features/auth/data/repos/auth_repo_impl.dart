@@ -25,7 +25,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       UserModel user = UserModel.fromJson(data);
       await ApiService.storeToken(user.data!.token!);
-      await ApiService.storeUserDetails(user.data!.user!.name!);
+      await ApiService.storeUserId(user.data!.user!.id!.toString());
 
       return right(user);
     } catch (e) {
@@ -63,8 +63,8 @@ class AuthRepoImpl implements AuthRepo {
       );
       UserModel user = UserModel.fromJson(data);
       await ApiService.storeToken(user.data!.token!);
-      await ApiService.storeUserDetails(user.data!.user!.name!);
-      
+      await ApiService.storeUserId(user.data!.user!.name!);
+
       return right(user);
     } catch (e) {
       if (e is DioException) {
@@ -129,7 +129,31 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
-  Future<String?> getUser() async {
-    return await ApiService.getUserDetails();
+  @override
+  Future<Either<Failure, UserModel>> logout() async {
+    try {
+      var data = await apiService.post(
+        endPoint: 'logout',
+      );
+      apiService.removeToken();
+      return right(
+        UserModel.fromJson(data),
+      );
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
   }
+
+//   Future<String?> getUser() async {
+//     return await ApiService.getUserDetails();
+//   }
 }

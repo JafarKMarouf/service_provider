@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
 import 'package:freelancer_app/features/home/presentation/view/services_list_view.dart';
@@ -52,7 +51,6 @@ class _HomeBodyState extends State<HomeBody> {
           // print('===============data ${state.service.data} ==============');
           // data = state.service.data!;
           data.addAll(state.service.data!.toList());
-          print(state.service.data);
         }
       },
       builder: (context, state) {
@@ -93,11 +91,11 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
                 loading
                     ? const CircularProgressIndicator()
-                    : data.isEmpty
-                        ? const Text('there is no service')
-                        : ServiceGridView(
+                    : data.isNotEmpty
+                        ? ServiceGridView(
                             data: data,
-                          ),
+                          )
+                        : const Text('there is no service'),
                 FetchServices(
                   title: 'الخدمات المحجوزة',
                   onPressed: () {

@@ -27,13 +27,10 @@ class CustomeServiceItem extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Container(
-                width: 90,
-                height: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: kPrimaryColor),
-                child: Image.network('${data.photo}'),
+              // child: FastCachedImage(url: '${data.photo}'),
+              // // child: Cache,
+              child: Image(
+                image: NetworkImage('${data.photo}',scale: .5)
               ),
             ),
             Text(
