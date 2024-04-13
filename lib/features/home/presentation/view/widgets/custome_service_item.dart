@@ -27,11 +27,15 @@ class CustomeServiceItem extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              // child: FastCachedImage(url: '${data.photo}'),
-              // // child: Cache,
-              child: Image(
-                image: NetworkImage('${data.photo}',scale: .5)
-              ),
+              child: (data.photo == null)
+                  ? Image.asset('assets/images/profile.png')
+                  : FadeInImage.assetNetwork(
+                      placeholder: 'asd',
+                      image: ('${data.photo}'),
+                    ),
+              // child: Image.network('${data.photo}')
+              // child: Text('${data.photo}'),
+              // child: Image.network('${data.photo}'),
             ),
             Text(
               data.serviceName!,

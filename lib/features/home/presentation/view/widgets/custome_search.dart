@@ -3,13 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/constant.dart';
 
 class CustomeSearch extends StatelessWidget {
-  const CustomeSearch({super.key,required this.width});
+  const CustomeSearch({super.key, required this.width});
   final double width;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: 50,
+      height: 35,
       child: TextField(
         cursorColor: kPrimaryColor,
         textDirection: TextDirection.rtl,
@@ -18,9 +18,12 @@ class CustomeSearch extends StatelessWidget {
           suffixIcon: SvgPicture.asset(
             'assets/images/img_search_gray_300.svg',
           ),
-          prefixIcon:SvgPicture.asset(
+          prefixIcon: SvgPicture.asset(
             'assets/images/img_curved_filters1.svg',
-            colorFilter: const ColorFilter.mode(kPrimaryColor, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(
+              kPrimaryColor,
+              BlendMode.srcIn,
+            ),
           ),
           hintTextDirection: TextDirection.rtl,
           hintText: 'ابحث عن خدمة',

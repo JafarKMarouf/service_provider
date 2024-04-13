@@ -28,11 +28,12 @@ class BookingInfosBody extends StatelessWidget {
           // CustomeServiceBookInfoItems(),
           // const DisplayLocation(),
           // const CustomeServiceInfo(
-          //     price: '9000',
-          //     description: 'تتضمن خدمة العملاء إجراءات، مثل تقد'
-          //         'يم اقتراحات المنتجات أو استكشاف '
-          //         'المشكلات والشكاوى وحلها أو الرد ع'
-          //         'لى الأسئلة العامة.'),
+          //   price: '9000',
+          //   description: 'تتضمن خدمة العملاء إجراءات، مثل تقد'
+          //       'يم اقتراحات المنتجات أو استكشاف '
+          //       'المشكلات والشكاوى وحلها أو الرد ع'
+          //       'لى الأسئلة العامة.',
+          // ),
           // CustomButton(
           //   title: 'تقدم',
           //   onTap: () {},

@@ -18,7 +18,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
- late String token = '';
+  late String token = '';
   @override
   void initState() {
     super.initState();
@@ -50,7 +50,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 1500,
+        milliseconds: 150,
       ),
     );
 
@@ -75,7 +75,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToLogin() {
     Future.delayed(
       const Duration(
-        seconds: 3,
+        microseconds: 200,
       ),
       () {
         g.Get.offAll(
@@ -90,7 +90,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToHome() {
     Future.delayed(
       const Duration(
-        seconds: 3,
+        microseconds: 200,
       ),
       () {
         g.Get.offAll(

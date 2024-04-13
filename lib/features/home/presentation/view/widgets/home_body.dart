@@ -34,7 +34,6 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    // List<Datum> data;
     return BlocConsumer<ServiceCubit, ServiceState>(
       listener: (context, state) {
         if (state is ServiceLoading) {
@@ -48,9 +47,10 @@ class _HomeBodyState extends State<HomeBody> {
           );
         } else if (state is ServiceSuccess) {
           loading = false;
-          // print('===============data ${state.service.data} ==============');
-          // data = state.service.data!;
-          data.addAll(state.service.data!.toList());
+          data.addAll(
+            state.service.data!.toList(),
+          );
+          // print('==========photo ${data[0].photo}=================');
         }
       },
       builder: (context, state) {
@@ -58,7 +58,7 @@ class _HomeBodyState extends State<HomeBody> {
           padding: const EdgeInsets.only(
             right: 16,
             left: 16,
-            top: 40,
+            top: 60,
             bottom: 30,
           ),
           child: SingleChildScrollView(
@@ -66,7 +66,6 @@ class _HomeBodyState extends State<HomeBody> {
               children: [
                 const CustomeHomeBar(
                   name: 'Jafar',
-                  // name: BlocProvider.of<AuthCubit>(context),
                 ),
                 const SizedBox(
                   height: 15,

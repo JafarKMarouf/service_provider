@@ -10,10 +10,9 @@ class ProfileRepoImpl implements ProfileRepo {
   ProfileRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, ProfileModel>> showProfile(
-      ) async {
+  Future<Either<Failure, ProfileModel>> showProfile() async {
     try {
-     var id = await apiService.getUserId();
+      var id = await apiService.getUserId();
       var user = await apiService.get(
         endPoint: 'customer/profile/',
         id: id,
@@ -37,7 +36,6 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<Either<Failure, ProfileModel>> updateProfile({required int userId}) {
-    // TODO: implement updateProfile
     throw UnimplementedError();
   }
 }

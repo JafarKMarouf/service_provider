@@ -27,22 +27,41 @@ class CustomeStyleServiceInfos extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
-              child:
-                  CustomeText(text: info!, size: 15, weight: FontWeight.w500)),
-          CustomeText(text: title, size: 16, weight: FontWeight.w900),
+            child: CustomeText(
+              text: info!,
+              size: 18,
+              weight: FontWeight.w500,
+            ),
+          ),
+          CustomeText(
+            text: title,
+            size: 18,
+            weight: FontWeight.w900,
+          ),
         ],
       );
     } else if (rating == true) {
-      return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-        const DisplayStarRating(),
-        const SizedBox(
-          width: 16,
-        ),
-        CustomeText(text: title, size: 16, weight: FontWeight.w600),
-      ]);
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const DisplayStarRating(),
+          const SizedBox(
+            width: 16,
+          ),
+          CustomeText(
+            text: title,
+            size: 18,
+            weight: FontWeight.w900,
+          ),
+        ],
+      );
     } else {
       return CustomeServiceImage(
-          title: title, image1: image1, image2: image2, image3: image3);
+        title: title,
+        image1: image1,
+        image2: image2,
+        image3: image3,
+      );
     }
   }
 }
@@ -55,7 +74,7 @@ class DisplayStarRating extends StatefulWidget {
 }
 
 class _DisplayStarRatingState extends State<DisplayStarRating> {
-  int rating = 0;
+  int rating = 4;
   @override
   Widget build(BuildContext context) {
     return StarRating(
@@ -85,7 +104,7 @@ class StarRating extends StatelessWidget {
     this.filledStar,
     this.unfilledStar,
     this.color = kPrimaryColor,
-    this.size = 26,
+    this.size = 28,
     this.marginFactor = 5,
   });
 
@@ -94,27 +113,34 @@ class StarRating extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: List.generate(5, (index) {
-        return RawMaterialButton(
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          shape: const CircleBorder(),
-          constraints: BoxConstraints.expand(
-              width: size - size / marginFactor, height: size),
-          padding: EdgeInsets.zero,
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          onPressed: () {
-            onChanged(value == index + 1 ? index : index + 1);
-          },
-          child: Icon(
-            index < value
-                ? filledStar ?? Icons.star
-                : unfilledStar ?? Icons.star_border,
-            color: color,
-            size: size,
-          ),
-        );
-      }),
+      children: List.generate(
+        5,
+        (index) {
+          return RawMaterialButton(
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            shape: const CircleBorder(),
+            constraints: BoxConstraints.expand(
+              width: size - size / marginFactor,
+              height: size,
+            ),
+            padding: EdgeInsets.zero,
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onPressed: () {
+              onChanged(
+                value == index + 1 ? index : index + 1,
+              );
+            },
+            child: Icon(
+              index < value
+                  ? filledStar ?? Icons.star
+                  : unfilledStar ?? Icons.star_border,
+              color: color,
+              size: size,
+            ),
+          );
+        },
+      ),
     );
   }
 }

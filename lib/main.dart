@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
-import 'package:freelancer_app/features/splash/presentation/view/splash_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/booking_confirmation_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/confirmed_booked_view.dart';
 import 'package:get/get.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
@@ -12,8 +13,8 @@ import 'package:dio/dio.dart';
 void main() {
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
-  
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           primaryColorLight: kPrimaryColor,
         ),
-        home: const SplashView(),
+        // home: const SplashView(),
+        home: const BookingConfirmationView(),
       ),
     );
   }

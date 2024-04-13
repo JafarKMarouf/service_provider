@@ -21,10 +21,11 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
   List<Widget> screens = const [
     ProfileView(),
     BookedServicesListView(),
+    BookedServicesListView(),
     HomeView(),
   ];
 
-  int currentIndex = 2;
+  int currentIndex = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,9 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
           elevation: 0,
           onTap: (value) {
             currentIndex = value;
-            setState(() {});
+            setState(
+              () {},
+            );
           },
           selectedItemColor: kPrimaryColor,
           items: [
@@ -69,6 +72,18 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
                 ),
               ),
               label: 'booked',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/img_bookmark_primary.svg',
+                width: 24,
+                height: 30,
+                colorFilter: const ColorFilter.mode(
+                  kPrimaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+              label: 'bookmark',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(

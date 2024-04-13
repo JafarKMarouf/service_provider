@@ -18,9 +18,10 @@ class ApiService {
     String? token = await getToken();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
-   
+
+    String uri = id == null ? '$_baseUrl$endPoint' : '$_baseUrl$endPoint$id';
     var response = await _dio.get(
-      id == '' ? '$_baseUrl$endPoint' : '$_baseUrl$endPoint$id',
+      uri,
     );
     return response.data;
   }
@@ -33,9 +34,6 @@ class ApiService {
     // await getUserDetails();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
-    print(
-      '====================$_baseUrl$endPoint===============',
-    );
     var response = await _dio.post(
       '$_baseUrl$endPoint',
       data: body,

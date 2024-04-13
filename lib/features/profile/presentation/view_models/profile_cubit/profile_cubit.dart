@@ -14,7 +14,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(ProfileLoading());
 
     var result = await profileRepoImpl.showProfile();
-    print('==============result: $result =============');
     result.fold((fail) {
       emit(
         ProfileFailure(errMessage: fail.errMessage),
@@ -23,7 +22,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         ProfileSuccess(profileModel: user),
       );
-      print('===============user: $user ===================');
     });
   }
 }

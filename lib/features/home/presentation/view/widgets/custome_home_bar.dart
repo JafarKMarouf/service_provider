@@ -10,14 +10,17 @@ class CustomeHomeBar extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16), color: Colors.grey[200]),
+            borderRadius: BorderRadius.circular(16),
+            color: Colors.grey[200],
+          ),
           child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications,
-                size: 32,
-                color: Colors.grey[500],
-              )),
+            onPressed: () {},
+            icon: Icon(
+              Icons.notifications,
+              size: 32,
+              color: Colors.grey[500],
+            ),
+          ),
         ),
         Row(
           children: [
@@ -26,7 +29,10 @@ class CustomeHomeBar extends StatelessWidget {
               children: [
                 const Text(
                   'مرحبا',
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey,
+                  ),
                 ),
                 Text(
                   name,
@@ -39,12 +45,12 @@ class CustomeHomeBar extends StatelessWidget {
               width: 5,
             ),
             CircleAvatar(
-                radius: 32,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image.asset('assets/images/profile.png'))
-                // child: Image.asset('assets/images/profile.png'),
-                ),
+              radius: 32,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset('assets/images/profile.png'),
+              ),
+            ),
           ],
         )
       ],
