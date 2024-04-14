@@ -6,11 +6,12 @@ class CustomeText extends StatelessWidget {
     required this.text,
     required this.size,
     required this.weight,
+    this.color = Colors.black,
   });
   final String text;
   final double size;
   final FontWeight weight;
-
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -18,10 +19,9 @@ class CustomeText extends StatelessWidget {
       style: TextStyle(
         fontSize: size,
         fontWeight: weight,
+        color: color,
       ),
-      // textWidthBasis: TextWidthBasis.parent,
       overflow: TextOverflow.ellipsis,
-      // softWrap: false,
       maxLines: 3,
       textDirection: TextDirection.rtl,
     );

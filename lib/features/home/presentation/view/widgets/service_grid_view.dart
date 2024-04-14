@@ -15,7 +15,6 @@ class ServiceGridView extends StatelessWidget {
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          // mainAxisExtent: BorderSide.strokeAlignCenter,
         ),
         padding: const EdgeInsets.only(top: 15, bottom: 10),
         itemCount: data.length,

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:freelancer_app/core/widgets/custome_search.dart';
 import 'package:get/get.dart';
 
-import '../../../../home/presentation/view/widgets/custome_search.dart';
-
-class CustomeServicesBar extends StatelessWidget {
-  const CustomeServicesBar({
+class CustomeSearchArrowBackBar extends StatelessWidget {
+  const CustomeSearchArrowBackBar({
     super.key,
   });
 

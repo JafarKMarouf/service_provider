@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 
 class FetchServices extends StatelessWidget {
   const FetchServices({
@@ -11,25 +11,28 @@ class FetchServices extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      TextButton(
-        onPressed: onPressed,
-        child: const Text(
-          'رؤية الكل',
-          style: TextStyle(
-            color: kPrimaryColor,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextButton(
+          onPressed: onPressed,
+          child: const Text(
+            'رؤية الكل',
+            style: TextStyle(
+              color: kPrimaryColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
-      ),
-      Text(
-        title,
-        style: const TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.w800,
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w800,
+          ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 }

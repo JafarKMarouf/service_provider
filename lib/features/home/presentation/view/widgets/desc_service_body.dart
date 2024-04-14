@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_app_bar.dart';
-import 'package:freelancer_app/views/widgets/custome_service_book_info.dart';
-import 'package:freelancer_app/views/widgets/custome_service_infos.dart';
-import 'package:freelancer_app/views/widgets/display_location.dart';
+import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
+import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_service_infos.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/widgets/display_location.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/service_type.dart';
 
 class DescServiceBody extends StatelessWidget {
@@ -24,11 +24,15 @@ class DescServiceBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const CustomeServiceAppBar(title: "وصف الخدمة"),
+            const CustomeServiceBar(title: "وصف الخدمة"),
             ServiceType(
               data: data,
             ),
-            const CustomeServiceBookInfoItems(),
+            const CustomeInfosServiceItems(
+              date: 'احجز تاريخاً للخدمة',
+              location: 'تحديد الموقع',
+              time: 'اختيار الوقت',
+            ),
             const DisplayLocation(),
             CustomeServiceInfo(
               price: '${data.price!.toInt()}',

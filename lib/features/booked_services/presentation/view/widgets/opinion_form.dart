@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constant.dart';
+import '../../core/utils/constant.dart';
 
 class OpinionForm extends StatelessWidget {
   const OpinionForm({super.key});

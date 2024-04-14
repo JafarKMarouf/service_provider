@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'custome_services_bar.dart';
+import '../../../../../core/widgets/custome_search_arrowback_bar.dart';
 import 'on_going_list.dart';
 
 class BookedServicesBody extends StatelessWidget {
@@ -18,9 +18,9 @@ class BookedServicesBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const CustomeServicesBar(),
+          const CustomeSearchArrowBackBar(),
           const SizedBox(
-            height: 15,
+            height: 16,
           ),
           const Text(
             'الخدمات المحجوزة',
@@ -30,7 +30,7 @@ class BookedServicesBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 16,
           ),
           Expanded(
             child: ListView.builder(

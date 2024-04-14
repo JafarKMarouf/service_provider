@@ -1,14 +1,15 @@
 name: freelancer_app
 description: "A new Flutter project."
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
+  awesome_dialog: ^3.2.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.4.2+1

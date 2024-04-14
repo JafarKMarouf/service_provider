@@ -17,13 +17,18 @@ class CustomeServiceInfo extends StatelessWidget {
             children: [
               Text(
                 '$price  ل.س ',
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
                 textDirection: TextDirection.rtl,
               ),
               const Text(
                 'رسوم الفحص : ',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
                 textDirection: TextDirection.rtl,
               ),
             ],
@@ -39,9 +44,10 @@ class CustomeServiceInfo extends StatelessWidget {
                 child: Text(
                   description,
                   style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      overflow: TextOverflow.ellipsis),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   maxLines: 2,
                   textDirection: TextDirection.rtl,
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';

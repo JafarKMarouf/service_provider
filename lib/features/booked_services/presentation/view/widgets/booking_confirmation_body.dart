@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/confirmed_booked_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/confirmed_booked.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_search.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_app_bar.dart';
+import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:get/get.dart' as g;
 
 class BookingConfirmationBody extends StatelessWidget {
@@ -23,7 +20,7 @@ class BookingConfirmationBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomeServiceAppBar(
+            const CustomeServiceBar(
               title: "تأكيد الحجز",
             ),
             const SizedBox(

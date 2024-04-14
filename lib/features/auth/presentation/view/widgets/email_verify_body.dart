@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/widgets/custome_text_form_field.dart';

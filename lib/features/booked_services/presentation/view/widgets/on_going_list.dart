@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booking_infos_view.dart';
 import 'package:get/get.dart';
 

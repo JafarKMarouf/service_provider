@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_app_bar.dart';
-import 'package:freelancer_app/views/widgets/text_thanks.dart';
-
-import '../../../../../views/widgets/approve_service_infos.dart';
+import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/widgets/approve_service_infos.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/widgets/text_thanks.dart';
 
 class ApproveServiceBody extends StatelessWidget {
   const ApproveServiceBody({super.key});
@@ -10,11 +9,11 @@ class ApproveServiceBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 12),
+      padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 12),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            CustomeServiceAppBar(title: 'تهانينا'),
+            CustomeServiceBar(title: 'تهانينا'),
             Column(
               children: [
                 TextThanks(

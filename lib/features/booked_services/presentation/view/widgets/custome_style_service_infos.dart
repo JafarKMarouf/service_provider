@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/constant.dart';
-import 'package:freelancer_app/views/widgets/custome_service_image.dart';
-import 'package:freelancer_app/views/widgets/custome_text.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
+import 'package:freelancer_app/core/widgets/custome_text.dart';
+
+import 'custome_service_image.dart';
 
 class CustomeStyleServiceInfos extends StatelessWidget {
   const CustomeStyleServiceInfos({

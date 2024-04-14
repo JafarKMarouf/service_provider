@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_services_bar.dart';
+import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/service_grid_view.dart';
 
-class ServiceListbody extends StatelessWidget {
-  const ServiceListbody({
+class ServiceListBody extends StatelessWidget {
+  const ServiceListBody({
     super.key,
     required this.data,
   });
@@ -21,7 +21,7 @@ class ServiceListbody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const CustomeServicesBar(),
+          const CustomeServiceBar(title: 'title'),
           const SizedBox(
             height: 15,
           ),

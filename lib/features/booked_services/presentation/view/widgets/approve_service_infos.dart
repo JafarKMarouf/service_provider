@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'custome_style_service_infos.dart';
-import 'opinion_form.dart';
 
 class ApproveServiceInfo extends StatelessWidget {
   const ApproveServiceInfo({
@@ -104,7 +102,7 @@ class ApproveServiceInfo extends StatelessWidget {
         SizedBox(
           height: 24,
         ),
-        OpinionForm(),
+        // OpinionForm(),
         SizedBox(
           height: 24,
         ),

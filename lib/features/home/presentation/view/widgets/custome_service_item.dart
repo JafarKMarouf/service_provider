@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/constant.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/home/presentation/view/desc_service_view.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomeHomeBar extends StatelessWidget {
-  const CustomeHomeBar({super.key, required this.name});
+  const CustomeHomeBar({
+    super.key,
+    required this.name,
+  });
   final String name;
   @override
   Widget build(BuildContext context) {

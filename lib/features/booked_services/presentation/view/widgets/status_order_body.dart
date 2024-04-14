@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_app_bar.dart';
+import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/views/widgets/service_infos.dart';
 
 class StatusOrderBody extends StatelessWidget {
@@ -18,7 +18,7 @@ class StatusOrderBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const CustomeServiceAppBar(title: 'حالة الطلب'),
+            const CustomeServiceBar(title: 'حالة الطلب'),
             const SizedBox(
               height: 16,
             ),

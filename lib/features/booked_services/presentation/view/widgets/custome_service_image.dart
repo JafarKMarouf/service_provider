@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/views/widgets/custome_text.dart';
+import 'package:freelancer_app/core/widgets/custome_text.dart';
 
 class CustomeServiceImage extends StatelessWidget {
   const CustomeServiceImage({
@@ -21,29 +21,32 @@ class CustomeServiceImage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         CustomeText(text: title, size: 18, weight: FontWeight.w700),
-        const SizedBox(width: 24,),
+        const SizedBox(
+          width: 24,
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           reverse: true,
           child: Row(
             children: [
-              Image.asset(
-                  image1 ?? '',
-                  width: MediaQuery.of(context).size.width*.4,
-                  height: MediaQuery.of(context).size.height/5
+              Image.asset(image1 ?? '',
+                  width: MediaQuery.of(context).size.width * .4,
+                  height: MediaQuery.of(context).size.height / 5),
+              const SizedBox(
+                width: 16,
               ),
-              const SizedBox(width: 16,),
-              Image.asset(
-                  image2 ?? '',
-                  width: MediaQuery.of(context).size.width*.4,
-                  height: MediaQuery.of(context).size.height/5
+              Image.asset(image2 ?? '',
+                  width: MediaQuery.of(context).size.width * .4,
+                  height: MediaQuery.of(context).size.height / 5),
+              const SizedBox(
+                width: 16,
               ),
-              const SizedBox(width: 16,),
               Image.asset(
                 image3 ?? '',
-                width: MediaQuery.of(context).size.width*.4,
-                height: MediaQuery.of(context).size.height/5,
-              ),],
+                width: MediaQuery.of(context).size.width * .4,
+                height: MediaQuery.of(context).size.height / 5,
+              ),
+            ],
           ),
         ),
       ],
