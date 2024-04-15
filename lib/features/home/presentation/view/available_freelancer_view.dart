@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_text.dart';
+import 'package:freelancer_app/features/home/presentation/view/freelancer_infos_view.dart';
+import 'package:freelancer_app/features/home/presentation/view/widgets/custome_freelancer_image.dart';
+import 'package:get/get.dart' as g;
 
 class AvailableFreelancerView extends StatelessWidget {
   const AvailableFreelancerView({super.key});
@@ -59,56 +60,60 @@ class AvailableFreelancerBody extends StatelessWidget {
               ),
               itemCount: 100,
               itemBuilder: (context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Card(
-                        margin: EdgeInsets.zero,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            vertical: 2,
-                          ),
-                          child: CircleAvatar(
-                            radius: 42,
-                            child: Image.asset('assets/images/profile.png'),
-                          ),
+                return GestureDetector(
+                  onTap: () {
+                    Future.delayed(
+                      const Duration(microseconds: 250),
+                      () {
+                        g.Get.to(
+                          () => const FreelancerInfosView(),
+                          transition: g.Transition.fadeIn,
+                          duration: kDurationTransition,
+                        );
+                      },
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Expanded(
+                        child: CutomeFreelancerImage(
+                          height: 80,
                         ),
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const CustomeText(
-                          text: 'هشام',
-                          size: 16,
-                          weight: FontWeight.w500,
-                        ),
-                        CustomeText(
-                          text: '9000 ل.س',
-                          size: 14,
-                          weight: FontWeight.w500,
-                          color: Colors.grey.shade700,
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            5,
-                            (index) => const Icon(
-                              Icons.star,
-                              size: 16,
-                              color: kPrimaryColor,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const CustomeText(
+                            text: 'هشام',
+                            size: 16,
+                            weight: FontWeight.w500,
+                          ),
+                          CustomeText(
+                            text: '9000 ل.س',
+                            size: 14,
+                            weight: FontWeight.w500,
+                            color: Colors.grey.shade700,
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(
+                              5,
+                              (index) => const Icon(
+                                Icons.star,
+                                size: 16,
+                                color: kPrimaryColor,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                      ],
-                    )
-                  ],
+                          const SizedBox(
+                            height: 5,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 );
               },
             ),

@@ -22,7 +22,7 @@ class BookingInfosBody extends StatelessWidget {
             location: 'تحديد الموقع',
             time: 'اختيار الوقت',
           ),
-          DisplayLocation(),
+         const DisplayLocation(),
           const Spacer(),
           const CustomeServiceInfo(
             price: '9000',

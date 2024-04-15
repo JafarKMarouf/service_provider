@@ -82,18 +82,22 @@ class OnGoingList extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.orangeAccent),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 4),
-                      child: const Text(
-                        'فحص',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      )),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: Colors.orangeAccent,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 4,
+                    ),
+                    child: const Text(
+                      'فحص',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [

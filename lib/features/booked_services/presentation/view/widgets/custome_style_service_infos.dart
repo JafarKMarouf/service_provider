@@ -13,6 +13,7 @@ class CustomeStyleServiceInfos extends StatelessWidget {
     this.image2,
     this.image3,
     this.rating,
+    this.clicked = true,
   });
   final String title;
   final String? info;
@@ -20,24 +21,31 @@ class CustomeStyleServiceInfos extends StatelessWidget {
   final String? image2;
   final String? image3;
   final bool? rating;
+  final bool clicked;
+
   @override
   Widget build(BuildContext context) {
     if (info != null) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
+        // textBaseline: TextBaseline.ideographic,
         children: [
           Expanded(
             child: CustomeText(
               text: info!,
-              size: 18,
+              size: 16,
               weight: FontWeight.w500,
             ),
           ),
+          const SizedBox(
+            width: 8,
+          ),
           CustomeText(
             text: title,
-            size: 18,
-            weight: FontWeight.w900,
+            size: 16,
+            weight: FontWeight.w700,
           ),
         ],
       );
@@ -45,14 +53,16 @@ class CustomeStyleServiceInfos extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const DisplayStarRating(),
+          DisplayStarRating(
+            clicked: clicked,
+          ),
           const SizedBox(
-            width: 16,
+            width: 8,
           ),
           CustomeText(
             text: title,
-            size: 18,
-            weight: FontWeight.w900,
+            size: 16,
+            weight: FontWeight.w700,
           ),
         ],
       );
@@ -68,8 +78,11 @@ class CustomeStyleServiceInfos extends StatelessWidget {
 }
 
 class DisplayStarRating extends StatefulWidget {
-  const DisplayStarRating({super.key});
-
+  const DisplayStarRating({
+    super.key,
+    this.clicked = true,
+  });
+  final bool clicked;
   @override
   State<DisplayStarRating> createState() => _DisplayStarRatingState();
 }
@@ -79,6 +92,7 @@ class _DisplayStarRatingState extends State<DisplayStarRating> {
   @override
   Widget build(BuildContext context) {
     return StarRating(
+      clicked: widget.clicked,
       onChanged: (index) {
         setState(() {
           rating = index;
@@ -97,6 +111,7 @@ class StarRating extends StatelessWidget {
   final double size;
   final Color color;
   final int marginFactor;
+  final bool clicked;
 
   const StarRating({
     super.key,
@@ -105,8 +120,9 @@ class StarRating extends StatelessWidget {
     this.filledStar,
     this.unfilledStar,
     this.color = kPrimaryColor,
-    this.size = 28,
+    this.size = 24,
     this.marginFactor = 5,
+    this.clicked = true,
   });
 
   @override
@@ -127,11 +143,13 @@ class StarRating extends StatelessWidget {
             padding: EdgeInsets.zero,
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onPressed: () {
-              onChanged(
-                value == index + 1 ? index : index + 1,
-              );
-            },
+            onPressed: clicked
+                ? () {
+                    onChanged(
+                      value == index + 1 ? index : index + 1,
+                    );
+                  }
+                : () {},
             child: Icon(
               index < value
                   ? filledStar ?? Icons.star

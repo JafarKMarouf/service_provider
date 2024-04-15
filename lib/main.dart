@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/approve_service_view.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/booking_infos_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/available_freelancer_view.dart';
+import 'package:freelancer_app/features/home/presentation/view/freelancer_infos_view.dart';
 import 'package:get/get.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
@@ -42,6 +41,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: const SplashView(),
         home: const AvailableFreelancerView(),
+        // home: const FreelancerInfosView(),
         // home: const ApproveServiceView(),
       ),
     );

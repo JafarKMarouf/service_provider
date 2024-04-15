@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/views/widgets/custome_style_service_infos.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_style_service_infos.dart';
+
 
 class ConfirmedBooked extends StatelessWidget {
   const ConfirmedBooked({

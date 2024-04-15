@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
+import 'package:freelancer_app/core/widgets/custome_search.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
 import 'package:freelancer_app/features/home/presentation/view/services_list_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/custome_home_bar.dart';
 import 'package:freelancer_app/features/home/presentation/view_models/service_cubit/service_cubit.dart';
 import 'package:get/get.dart' as g;
-import 'custome_search.dart';
 import 'fetch_services.dart';
 import 'on_going_page_view.dart';
 import 'service_grid_view.dart';
