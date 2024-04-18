@@ -13,10 +13,12 @@ class ServiceCubit extends Cubit<ServiceState> {
   Future<void> fetchService() async {
     emit(ServiceLoading());
     var result = await serviceRepoImpl.fetchServices();
-    try {
-      emit(ServiceSuccess(service: result));
-    } catch (e) {
-      emit(ServiceFailure(errMessage: result.status!));
-    }
+
+    result.fold((fail){
+      emit(ServiceFailure(errMessage: fail.errMessage));
+    }, (service){
+        emit(ServiceSuccess(service: service));
+      }
+    );
   }
 }

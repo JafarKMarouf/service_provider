@@ -18,8 +18,8 @@ class DescServiceBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: 40.0,
-          horizontal: 12,
+          vertical: 40,
+          horizontal: 16,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

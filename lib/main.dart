@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
-import 'package:freelancer_app/features/home/presentation/view/available_freelancer_view.dart';
-import 'package:freelancer_app/features/home/presentation/view/freelancer_infos_view.dart';
+import 'package:freelancer_app/features/splash/presentation/view/splash_view.dart';
 import 'package:get/get.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+    SystemUiOverlay.bottom,
+  ]);
+
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
@@ -38,11 +42,9 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           fontFamily: 'Poppins',
           primaryColorLight: kPrimaryColor,
+          applyElevationOverlayColor: true,
         ),
-        // home: const SplashView(),
-        home: const AvailableFreelancerView(),
-        // home: const FreelancerInfosView(),
-        // home: const ApproveServiceView(),
+        home: const SplashView(),
       ),
     );
   }

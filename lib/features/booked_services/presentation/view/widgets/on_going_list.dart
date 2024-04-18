@@ -21,7 +21,10 @@ class OnGoingList extends StatelessWidget {
       child: Card(
         elevation: .7,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(
+            vertical: 15.0,
+            horizontal: 16.0,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -31,8 +34,10 @@ class OnGoingList extends StatelessWidget {
                   SvgPicture.asset(
                     'assets/images/img_bookmark.svg',
                     height: 34,
-                    colorFilter:
-                        const ColorFilter.mode(kPrimaryColor, BlendMode.srcIn),
+                    colorFilter: const ColorFilter.mode(
+                      kPrimaryColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                   Row(
                     children: [

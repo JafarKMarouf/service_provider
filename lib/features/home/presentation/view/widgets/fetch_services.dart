@@ -21,7 +21,7 @@ class FetchServices extends StatelessWidget {
             style: TextStyle(
               color: kPrimaryColor,
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

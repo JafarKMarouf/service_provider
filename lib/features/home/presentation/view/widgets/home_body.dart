@@ -20,12 +20,12 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  late String name;
+  String? name ;
   bool loading = false;
   List<Datum> data = [];
   @override
   void initState() {
-    // name = BlocProvider.of<AuthCubit>(context).name!;
+    // name = (await ApiService.getUserName())!;
     BlocProvider.of<ServiceCubit>(context).fetchService();
     super.initState();
   }
@@ -48,22 +48,20 @@ class _HomeBodyState extends State<HomeBody> {
           data.addAll(
             state.service.data!.toList(),
           );
-          // print('==========photo ${data[0].photo}=================');
         }
       },
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.only(
-            right: 16,
-            left: 16,
-            top: 60,
-            bottom: 30,
-          ),
+        padding: const EdgeInsets.symmetric(
+          vertical: 40.0,
+          horizontal: 16,
+        ),
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 8,),
                 const CustomeHomeBar(
-                  name: 'Jafar',
+                  name: 'زبون4',
                 ),
                 const SizedBox(
                   height: 15,
@@ -72,7 +70,7 @@ class _HomeBodyState extends State<HomeBody> {
                   width: MediaQuery.of(context).size.width,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 16,
                 ),
                 FetchServices(
                   title: 'الخدمات المتاحة',
@@ -88,11 +86,9 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
                 loading
                     ? const CircularProgressIndicator()
-                    : data.isNotEmpty
-                        ? ServiceGridView(
-                            data: data,
-                          )
-                        : const Text('there is no service'),
+                    : ServiceGridView(
+                        data: data,
+                      ),
                 FetchServices(
                   title: 'الخدمات المحجوزة',
                   onPressed: () {

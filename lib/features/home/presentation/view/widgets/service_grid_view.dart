@@ -9,7 +9,7 @@ class ServiceGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260,
+      height: 250,
       child: GridView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

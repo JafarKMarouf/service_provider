@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/home/presentation/view/desc_service_view.dart';
@@ -23,20 +24,40 @@ class CustomeServiceItem extends StatelessWidget {
         );
       },
       child: Card(
-        elevation: 0,
+        elevation: .7,
         child: Column(
           children: [
             Expanded(
-              child: (data.photo == null)
-                  ? Image.asset('assets/images/profile.png')
-                  : FadeInImage.assetNetwork(
-                      placeholder: 'asd',
-                      image: ('${data.photo}'),
+              child: CachedNetworkImage(
+                imageUrl: '${data.photo}',
+                placeholder: (context, url) {
+                  return  Center(
+                    child: Text(
+                      '${data.serviceName} image',
+                      style:const TextStyle(
+                        color:kPrimaryColor,
+                      ),
                     ),
-              // child: Image.network('${data.photo}')
-              // child: Text('${data.photo}'),
-              // child: Image.network('${data.photo}'),
+                  );
+                },
+                errorWidget: (context, url, error) {
+                  return const Icon(
+                    Icons.error,
+                    color: kPrimaryColor,
+                  );
+                },
+              ),
             ),
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       image: DecorationImage(
+            //         image: NetworkImage('${data.photo}'),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // child: Image(image: NetworkImage('${data.photo}')),
+
             Text(
               data.serviceName!,
               // 'تصليح',

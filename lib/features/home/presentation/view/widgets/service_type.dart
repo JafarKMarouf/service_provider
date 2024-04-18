@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
 
 class ServiceType extends StatelessWidget {
@@ -21,21 +22,27 @@ class ServiceType extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Image.network('${data.photo}'),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 clipBehavior: Clip.antiAlias,
-                child: SvgPicture.asset('${data.photo}'),
-                // child: Image.network(
-                //   '${data.photo}',
-                // ),
+                child: CachedNetworkImage(
+                  imageUrl: '${data.photo}',
+                  placeholder: (context, url) {
+                    return const CircularProgressIndicator();
+                  },
+                  errorWidget: (context, url, error) {
+                    return const Icon(
+                      Icons.error,
+                      color: kPrimaryColor,
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: 8.0,
               ),
               Text(
                 '${data.serviceName}',
-                // 'تصليح مكيفات',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,

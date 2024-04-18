@@ -24,8 +24,10 @@ class AuthRepoImpl implements AuthRepo {
         },
       );
       UserModel user = UserModel.fromJson(data);
+
       await ApiService.storeToken(user.data!.token!);
       await ApiService.storeUserId(user.data!.user!.id!.toString());
+      await ApiService.storeUserName(user.data!.user!.name.toString());
 
       return right(user);
     } catch (e) {

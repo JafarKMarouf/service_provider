@@ -23,6 +23,7 @@ class ApiService {
     var response = await _dio.get(
       uri,
     );
+    // return response.
     return response.data;
   }
 
@@ -59,5 +60,13 @@ class ApiService {
 
   Future<String?> getUserId() async {
     return await storage.read(key: 'userId');
+  }
+
+  static Future<void> storeUserName(String userName) async {
+    await storage.write(key: 'userName', value: userName);
+  }
+
+  static Future<String?> getUserName() async {
+    return await storage.read(key: 'userName');
   }
 }
