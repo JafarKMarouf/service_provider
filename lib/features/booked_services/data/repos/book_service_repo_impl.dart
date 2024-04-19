@@ -14,7 +14,9 @@ class BookServiceRepoImpl implements BookServiceRepo {
   @override
   Future<Either<Failure, BookServiceModel>> fetchAllBookServices() async {
     try {
-      var data = await apiService.get(endPoint: 'customer/book_service');
+      var data = await apiService.get(
+        endPoint: 'customer/book_service',
+      );
       print('================data: $data =============');
       return right(BookServiceModel.fromJson(data));
     } catch (e) {
