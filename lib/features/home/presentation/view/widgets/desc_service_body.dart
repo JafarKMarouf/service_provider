@@ -22,7 +22,7 @@ class DescServiceBody extends StatelessWidget {
           horizontal: 16,
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const CustomeServiceBar(title: "وصف الخدمة"),
             ServiceType(
@@ -37,6 +37,9 @@ class DescServiceBody extends StatelessWidget {
             CustomeServiceInfo(
               price: '${data.price!.toInt()}',
               description: '${data.serviceDescription}',
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 4.5,
             ),
             CustomButton(
               title: 'حجز',

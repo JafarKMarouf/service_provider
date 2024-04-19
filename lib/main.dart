@@ -8,12 +8,8 @@ import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
-    SystemUiOverlay.bottom,
-  ]);
 
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());

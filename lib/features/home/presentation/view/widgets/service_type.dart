@@ -19,48 +19,63 @@ class ServiceType extends StatelessWidget {
             horizontal: 32.0,
             vertical: 16,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                clipBehavior: Clip.antiAlias,
-                child: CachedNetworkImage(
-                  imageUrl: '${data.photo}',
-                  placeholder: (context, url) {
-                    return const CircularProgressIndicator();
-                  },
-                  errorWidget: (context, url, error) {
-                    return const Icon(
-                      Icons.error,
-                      color: kPrimaryColor,
-                    );
-                  },
+          child: SizedBox(
+            width: 160,
+            height: 160,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  // width: 105,
+                  height: 95,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: CachedNetworkImage(
+                      imageUrl: '${data.photo}',
+                      placeholder: (context, url) {
+                        return Center(
+                          child: Text(
+                            '${data.serviceName} image',
+                            style: const TextStyle(
+                              color: kPrimaryColor,
+                            ),
+                          ),
+                        );
+                      },
+                      errorWidget: (context, url, error) {
+                        return const Icon(
+                          Icons.error,
+                          color: kPrimaryColor,
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                '${data.serviceName}',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                const SizedBox(
+                  height: 8.0,
                 ),
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                '${data.price}',
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.green,
-                  fontWeight: FontWeight.w600,
+                Text(
+                  '${data.serviceName}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Text(
+                  '${data.price}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.green,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+              ],
+            ),
           ),
         ),
       ),
