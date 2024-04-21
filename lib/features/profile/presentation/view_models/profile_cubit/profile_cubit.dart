@@ -20,7 +20,9 @@ class ProfileCubit extends Cubit<ProfileState> {
       );
     }, (user) {
       emit(
-        ProfileSuccess(profileModel: user),
+        ProfileSuccess(
+          profileModel: user,
+        ),
       );
     });
   }

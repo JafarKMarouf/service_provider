@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
-import 'package:freelancer_app/features/splash/presentation/view/splash_view.dart';
+import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
+
 import 'package:get/get.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
@@ -10,7 +11,6 @@ import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/
 import 'package:dio/dio.dart';
 
 void main() {
-
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           primaryColorLight: kPrimaryColor,
           applyElevationOverlayColor: true,
         ),
-        home: const SplashView(),
+        home: const CustomeNavBar(),
       ),
     );
   }

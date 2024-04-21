@@ -26,9 +26,10 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return const Scaffold(
-          body: ProfileBody(),
-        );
+        return const ProfileBody();
+        // return const Scaffold(
+        //   body: ProfileBody(),
+        // );
       },
     );
   }
