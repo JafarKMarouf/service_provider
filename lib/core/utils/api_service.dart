@@ -6,8 +6,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
 class ApiService {
-  // final _baseUrl = 'http://192.168.1.6:8000/api/';
-  final _baseUrl = 'http://192.168.54.128:8000/api/';
+  final _baseUrl = 'http://192.168.1.7:8000/api/';
+  // final _baseUrl = 'http://192.168.54.128:8000/api/';
 
   final Dio _dio;
   static var storage = const FlutterSecureStorage();

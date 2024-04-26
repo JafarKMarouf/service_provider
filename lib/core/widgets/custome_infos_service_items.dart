@@ -7,10 +7,12 @@ class CustomeInfosServiceItems extends StatelessWidget {
     required this.date,
     required this.time,
     this.location,
+    this.phone,
   });
   final String time;
   final String? location;
   final String date;
+  final String? phone;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,24 +24,27 @@ class CustomeInfosServiceItems extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          location != null
-              ? CustomeInfosService(
-                  text: location!,
-                  icon: Icons.location_on_outlined,
-                )
-              : const Text(''),
+          CustomeInfosService(
+            text: date,
+            icon: Icons.date_range_rounded,
+          ),
           const SizedBox(
-            width: 16,
+            width: 4,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              CustomeInfosService(
-                text: date,
-                icon: Icons.date_range_rounded,
-              ),
+              location != null
+                  ? CustomeInfosService(
+                      text: location!,
+                      icon: Icons.location_on_outlined,
+                    )
+                  : CustomeInfosService(
+                      text: phone!,
+                      icon: Icons.phone,
+                    ),
               const SizedBox(
-                height: 16,
+                height: 8,
               ),
               CustomeInfosService(
                 text: time,

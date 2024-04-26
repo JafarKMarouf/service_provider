@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomeServiceInfo extends StatelessWidget {
-  const CustomeServiceInfo(
-      {super.key, required this.price, required this.description});
+  const CustomeServiceInfo({
+    super.key,
+    required this.price,
+    required this.description,
+  });
   final String price;
   final String description;
   @override

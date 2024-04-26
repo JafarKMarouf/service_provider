@@ -5,6 +5,7 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booking_infos_view.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart' as format;
 
 class OnGoingList extends StatelessWidget {
   const OnGoingList({
@@ -15,6 +16,8 @@ class OnGoingList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formatDate = format.DateFormat('dd/MM/yyy').format(data.deliveryTime!);
+    var formatTime = format.DateFormat('hh:mm aa').format(data.deliveryTime!);
     return GestureDetector(
       onTap: () {
         Get.to(
@@ -136,8 +139,7 @@ class OnGoingList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '${data.deliveryTime}',
-                        // '12/08/2023',
+                        formatDate,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -146,9 +148,9 @@ class OnGoingList extends StatelessWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      const Text(
-                        '6 مساءً',
-                        style: TextStyle(
+                      Text(
+                        formatTime,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),

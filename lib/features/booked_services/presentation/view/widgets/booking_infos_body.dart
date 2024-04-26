@@ -6,16 +6,19 @@ import 'package:freelancer_app/features/booked_services/data/models/book_service
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/book_service_type.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/display_location.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_service_infos.dart';
+import 'package:intl/intl.dart';
 
 class BookingInfosBody extends StatelessWidget {
   const BookingInfosBody({
     super.key,
     required this.data,
   });
-
   final DatumBooked data;
   @override
   Widget build(BuildContext context) {
+    var formatDate = DateFormat('dd/MM/yyy').format(data.deliveryTime!);
+    var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -26,10 +29,11 @@ class BookingInfosBody extends StatelessWidget {
           children: [
             const CustomeServiceBar(title: "معلومات الحجز"),
             BookServiceType(data: data),
-            const CustomeInfosServiceItems(
-              date: '12/08/2023',
-              // location: 'تحديد الموقع',
-              time: '2-3 وقت الظهيرة',
+
+            CustomeInfosServiceItems(
+              date: formatDate,
+              phone: data.service!.expert!.expertInfos!.mobile,
+              time: formatTime,
             ),
             const DisplayLocation(),
             // const Spacer(),

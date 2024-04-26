@@ -7,7 +7,7 @@ class DatumBooked extends Equatable {
   final int? customerId;
   final int? serviceId;
   final String? description;
-  final String? deliveryTime;
+  final DateTime? deliveryTime;
   final String? status;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -30,11 +30,15 @@ class DatumBooked extends Equatable {
         customerId: json['customer_id'] as int?,
         serviceId: json['service_id'] as int?,
         description: json['description'] as String?,
-        deliveryTime: json['delivery_time'] as String?,
+        deliveryTime: DateTime.parse(
+          json['delivery_time'] as String,
+        ),
         status: json['status'] as String?,
         createdAt: json['created_at'] == null
             ? null
-            : DateTime.parse(json['created_at'] as String),
+            : DateTime.parse(
+                json['created_at'] as String,
+              ),
         updatedAt: json['updated_at'] == null
             ? null
             : DateTime.parse(json['updated_at'] as String),
@@ -48,7 +52,7 @@ class DatumBooked extends Equatable {
         'customer_id': customerId,
         'service_id': serviceId,
         'description': description,
-        'delivery_time': deliveryTime,
+        'delivery_time': deliveryTime?.toIso8601String(),
         'status': status,
         'created_at': createdAt?.toIso8601String(),
         'updated_at': updatedAt?.toIso8601String(),

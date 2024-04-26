@@ -17,8 +17,8 @@ class BookedServicesBody extends StatelessWidget {
       padding: const EdgeInsets.only(
         right: 16,
         left: 16,
-        top: 40,
-        bottom: 30,
+        top: 45,
+        bottom: 20,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -63,7 +63,9 @@ class BookedServicesBody extends StatelessWidget {
               } else {
                 return SizedBox(
                   height: MediaQuery.of(context).size.height * .5,
-                  child: const Center(child: CircularProgressIndicator()),
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 );
               }
             },

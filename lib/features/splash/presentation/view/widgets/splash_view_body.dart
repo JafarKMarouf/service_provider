@@ -35,15 +35,25 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: SlidingText(
-            slidingAnimation: slidingAnimation,
-          ),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomLeft,
+          end:Alignment.topLeft ,
+          colors: [
+            kPrimaryColor,
+            Colors.black26,
+            kSecondaryColor,
+            // Colors,
+            // Colors.white,
+          ],
         ),
-      ],
+      ),
+      child: Center(
+        child: SlidingText(
+          slidingAnimation: slidingAnimation,
+        ),
+      ),
     );
   }
 
@@ -56,7 +66,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     );
 
     slidingAnimation = Tween<Offset>(
-      begin: const Offset(2, 2),
+      begin: const Offset(-0, 6),
       end: Offset.zero,
     ).animate(
       animationController,

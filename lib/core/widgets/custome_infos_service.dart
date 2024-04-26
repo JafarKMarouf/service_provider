@@ -40,8 +40,8 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
               Text(
                 widget.text,
                 style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
                   color: tapped ? Colors.white : Colors.grey[800],
                 ),
               ),
@@ -50,7 +50,7 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
               ),
               Icon(
                 widget.icon,
-                color: tapped ? Colors.white :Colors.grey[800],
+                color: tapped ? Colors.white : Colors.grey[800],
               ),
             ],
           ),
