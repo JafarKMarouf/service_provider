@@ -7,9 +7,10 @@ class DisplayLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
+      height: 200,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.grey[200]
+        borderRadius: BorderRadius.circular(5),
+        color: Colors.grey[100],
       ),
       // child: Card(),
     );

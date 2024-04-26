@@ -19,6 +19,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
   late String token = '';
+
   @override
   void initState() {
     super.initState();
@@ -50,7 +51,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 150,
+        milliseconds: 1500,
       ),
     );
 
@@ -75,7 +76,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToLogin() {
     Future.delayed(
       const Duration(
-        microseconds: 200,
+        milliseconds: 2000,
       ),
       () {
         g.Get.offAll(
@@ -90,7 +91,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToHome() {
     Future.delayed(
       const Duration(
-        microseconds: 200,
+        milliseconds: 2000,
       ),
       () {
         g.Get.offAll(

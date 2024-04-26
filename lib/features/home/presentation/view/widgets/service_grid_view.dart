@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
+import 'package:freelancer_app/features/home/data/models/service_model/datum_service.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_item.dart';
 
 class ServiceGridView extends StatelessWidget {
   const ServiceGridView({super.key, required this.data});
-  final List<Datum> data;
-  // int length = data.length/2;
+  final List<DatumService> data;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

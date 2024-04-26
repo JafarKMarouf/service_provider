@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/home/presentation/view/desc_service_view.dart';
-import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
+import 'package:freelancer_app/features/home/data/models/service_model/datum_service.dart';
 import 'package:get/get.dart';
 
 class CustomeServiceItem extends StatelessWidget {
@@ -10,7 +10,7 @@ class CustomeServiceItem extends StatelessWidget {
     super.key,
     required this.data,
   });
-  final Datum data;
+  final DatumService data;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,18 +24,19 @@ class CustomeServiceItem extends StatelessWidget {
         );
       },
       child: Card(
-        elevation: .7,
+        elevation: 0,
         child: Column(
           children: [
             Expanded(
               child: CachedNetworkImage(
+                fit: BoxFit.fill,
                 imageUrl: '${data.photo}',
                 placeholder: (context, url) {
-                  return  Center(
+                  return Center(
                     child: Text(
                       '${data.serviceName} image',
-                      style:const TextStyle(
-                        color:kPrimaryColor,
+                      style: const TextStyle(
+                        color: kPrimaryColor,
                       ),
                     ),
                   );
@@ -48,23 +49,17 @@ class CustomeServiceItem extends StatelessWidget {
                 },
               ),
             ),
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       image: DecorationImage(
-            //         image: NetworkImage('${data.photo}'),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // child: Image(image: NetworkImage('${data.photo}')),
-
+            const SizedBox(
+              height: 2,
+            ),
             Text(
               data.serviceName!,
-              // 'تصليح',
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service_model/book_service_model.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_service/book_service.dart';
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo_impl.dart';
 
 part 'book_service_state.dart';
@@ -10,7 +10,7 @@ class BookServiceCubit extends Cubit<BookServiceState> {
 
   final BookServiceRepoImpl bookServiceRepoImpl;
 
-  Future<void> fetchAllBookServices() async {
+  Future<void> fetchBookServices() async {
     emit(BookServiceLoading());
 
     var result = await bookServiceRepoImpl.fetchAllBookServices();
@@ -24,7 +24,7 @@ class BookServiceCubit extends Cubit<BookServiceState> {
     }, (bookService) {
       emit(
         BookServiceSuccess(
-          bookServiceModel: bookService,
+          bookService: bookService,
         ),
       );
     });

@@ -1,19 +1,26 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booking_infos_view.dart';
 import 'package:get/get.dart';
 
 class OnGoingList extends StatelessWidget {
-  const OnGoingList({super.key});
-  // final Datum data;
+  const OnGoingList({
+    super.key,
+    required this.data,
+  });
+  final DatumBooked data;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => const BookingInfosView(),
+          () => BookingInfosView(
+            data: data,
+          ),
           transition: Transition.fadeIn,
           duration: kDurationTransition,
         );
@@ -22,7 +29,7 @@ class OnGoingList extends StatelessWidget {
         elevation: .7,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 15.0,
+            vertical: 8.0,
             horizontal: 16.0,
           ),
           child: Column(
@@ -41,17 +48,20 @@ class OnGoingList extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            // '${data.serviceName}',
-                            'تصليح مكيفات',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800, fontSize: 16),
+                            '${data.service!.serviceName}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
                           ),
                           // Text('${data.expert!.name}'),
-                          Text('هشام'),
+                          Text(
+                            '${data.service!.expert!.name}',
+                          ),
                         ],
                       ),
                       const SizedBox(
@@ -61,12 +71,27 @@ class OnGoingList extends StatelessWidget {
                         width: 48,
                         height: 48,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: kPrimaryColor),
-                        child: const Icon(
-                          Icons.settings,
-                          size: 30,
-                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          color: kPrimaryColor,
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: '${data.service!.photo}',
+                          placeholder: (context, url) {
+                            return Center(
+                              child: Text(
+                                '${data.service!.serviceName} image',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            );
+                          },
+                          errorWidget: (context, url, error) {
+                            return const Icon(
+                              Icons.error,
+                              color: Colors.white,
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -77,7 +102,10 @@ class OnGoingList extends StatelessWidget {
                 height: 8,
               ),
               const SizedBox(
-                child: Divider(color: Colors.grey, thickness: 3),
+                child: Divider(
+                  color: Colors.grey,
+                  thickness: 3,
+                ),
               ),
               const SizedBox(
                 height: 12,
@@ -98,26 +126,32 @@ class OnGoingList extends StatelessWidget {
                     child: const Text(
                       'فحص',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600),
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '12/08/2023',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
+                        '${data.deliveryTime}',
+                        // '12/08/2023',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                      SizedBox(
-                        height: 8,
+                      const SizedBox(
+                        height: 12,
                       ),
-                      Text(
+                      const Text(
                         '6 مساءً',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
@@ -125,34 +159,44 @@ class OnGoingList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text(
-                        'طرطوس',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                      Text(
+                        '${data.service!.expert!.expertInfos!.country}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       const SizedBox(
-                        height: 4,
+                        height: 8,
                       ),
-                      const Text(
-                        'ساعه/9000 ل.س',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                      Text(
+                        '${data.service!.price} ل.س',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textDirection: TextDirection.rtl,
                       ),
                       const SizedBox(
-                        height: 4,
+                        height: 8,
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 4, horizontal: 8),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: kPrimaryColor, width: 3)),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: kPrimaryColor,
+                            width: 3,
+                          ),
+                        ),
                         child: const Text(
                           'في الموقع',
                           style: TextStyle(
-                              color: kPrimaryColor,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16),
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],

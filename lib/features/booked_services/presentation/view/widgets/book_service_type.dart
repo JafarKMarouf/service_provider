@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/home/data/models/service_model/datum_service.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 
-class ServiceType extends StatelessWidget {
-  const ServiceType({
+class BookServiceType extends StatelessWidget {
+  const BookServiceType({
     super.key,
     required this.data,
   });
-  final DatumService data;
+  final DatumBooked data;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -28,11 +28,11 @@ class ServiceType extends StatelessWidget {
                 Expanded(
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
-                    imageUrl: '${data.photo}',
+                    imageUrl: '${data.service!.photo}',
                     placeholder: (context, url) {
                       return Center(
                         child: Text(
-                          '${data.serviceName} image',
+                          '${data.service!.serviceName} image',
                           style: const TextStyle(
                             color: kPrimaryColor,
                           ),
@@ -51,7 +51,7 @@ class ServiceType extends StatelessWidget {
                   height: 8.0,
                 ),
                 Text(
-                  '${data.serviceName}',
+                  '${data.service!.serviceName}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -61,7 +61,7 @@ class ServiceType extends StatelessWidget {
                   height: 8.0,
                 ),
                 Text(
-                  '${data.price} ل.س',
+                  '${data.service!.price.toString()} ل.س',
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.green,

@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service_model/book_service_model.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_service/book_service.dart';
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo.dart';
 
 class BookServiceRepoImpl implements BookServiceRepo {
@@ -14,13 +14,12 @@ class BookServiceRepoImpl implements BookServiceRepo {
   });
 
   @override
-  Future<Either<Failure, BookServiceModel>> fetchAllBookServices() async {
+  Future<Either<Failure, BookService>> fetchAllBookServices() async {
     try {
       var data = await apiService.get(
         endPoint: 'customer/book_service',
       );
-      print('================data: $data =============');
-      return right(BookServiceModel.fromJson(data));
+      return right(BookService.fromJson(data));
     } catch (e) {
       if (e is DioException) {
         return left(
@@ -36,21 +35,21 @@ class BookServiceRepoImpl implements BookServiceRepo {
   }
 
   @override
-  Future<Either<Failure, BookServiceModel>> deleteBookService({
+  Future<Either<Failure, BookService>> deleteBookService({
     required int id,
   }) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, BookServiceModel>> showOneBookService({
+  Future<Either<Failure, BookService>> showOneBookService({
     required int id,
   }) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, BookServiceModel>> updateBookService({
+  Future<Either<Failure, BookService>> updateBookService({
     required int id,
   }) {
     throw UnimplementedError();

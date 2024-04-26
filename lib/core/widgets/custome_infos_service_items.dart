@@ -6,27 +6,28 @@ class CustomeInfosServiceItems extends StatelessWidget {
     super.key,
     required this.date,
     required this.time,
-    required this.location,
+    this.location,
   });
   final String time;
-  final String location;
+  final String? location;
   final String date;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 32,
-        bottom: 16,
+      padding: const EdgeInsets.symmetric(
+        vertical: 16,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomeInfosService(
-            text: location,
-            icon: Icons.location_on_outlined,
-          ),
+          location != null
+              ? CustomeInfosService(
+                  text: location!,
+                  icon: Icons.location_on_outlined,
+                )
+              : const Text(''),
           const SizedBox(
             width: 16,
           ),
@@ -44,7 +45,6 @@ class CustomeInfosServiceItems extends StatelessWidget {
                 text: time,
                 icon: Icons.alarm,
               ),
-
             ],
           ),
         ],

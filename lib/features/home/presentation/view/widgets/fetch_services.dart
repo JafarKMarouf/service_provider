@@ -4,17 +4,21 @@ import 'package:freelancer_app/core/utils/constant.dart';
 class FetchServices extends StatelessWidget {
   const FetchServices({
     super.key,
-    required this.onPressed,
+    this.onPressed,
     required this.title,
+    // required this.length,
   });
   final void Function()? onPressed;
   final String title;
+  // final int length;
   @override
   Widget build(BuildContext context) {
+    // print('================length : $length=================');
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        TextButton(
+       // length > 0 ?
+       TextButton(
           onPressed: onPressed,
           child: const Text(
             'رؤية الكل',
@@ -25,6 +29,7 @@ class FetchServices extends StatelessWidget {
             ),
           ),
         ),
+           // : Container(),
         Text(
           title,
           style: const TextStyle(

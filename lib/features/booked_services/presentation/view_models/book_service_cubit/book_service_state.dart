@@ -19,9 +19,9 @@ final class BookServiceFailure extends BookServiceState {
 }
 
 final class BookServiceSuccess extends BookServiceState {
-  final BookServiceModel bookServiceModel;
+  final BookService bookService;
 
   const BookServiceSuccess({
-    required this.bookServiceModel,
+    required this.bookService,
   });
 }

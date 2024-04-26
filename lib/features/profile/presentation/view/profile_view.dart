@@ -27,9 +27,6 @@ class _ProfileViewState extends State<ProfileView> {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         return const ProfileBody();
-        // return const Scaffold(
-        //   body: ProfileBody(),
-        // );
       },
     );
   }

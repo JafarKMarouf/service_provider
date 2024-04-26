@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'category.dart';
 import 'expert.dart';
 
-class Datum extends Equatable {
+class DatumService extends Equatable {
 	final int? id;
 	final int? expertId;
 	final int? categoryId;
@@ -16,7 +16,7 @@ class Datum extends Equatable {
 	final Category? category;
 	final Expert? expert;
 
-	const Datum({
+	const DatumService({
 		this.id, 
 		this.expertId, 
 		this.categoryId, 
@@ -30,7 +30,7 @@ class Datum extends Equatable {
 		this.expert, 
 	});
 
-	factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+	factory DatumService.fromJson(Map<String, dynamic> json) => DatumService(
 				id: json['id'] as int?,
 				expertId: json['expert_id'] as int?,
 				categoryId: json['category_id'] as int?,

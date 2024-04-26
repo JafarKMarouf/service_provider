@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
-import 'package:freelancer_app/features/home/data/models/service_model/datum.dart';
+import 'package:freelancer_app/features/home/data/models/service_model/datum_service.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_service_infos.dart';
@@ -12,7 +12,7 @@ class DescServiceBody extends StatelessWidget {
     super.key,
     required this.data,
   });
-  final Datum data;
+  final DatumService data;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -22,9 +22,10 @@ class DescServiceBody extends StatelessWidget {
           horizontal: 16,
         ),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const CustomeServiceBar(title: "وصف الخدمة"),
+            const CustomeServiceBar(
+              title: "وصف الخدمة",
+            ),
             ServiceType(
               data: data,
             ),
@@ -34,12 +35,15 @@ class DescServiceBody extends StatelessWidget {
               time: 'اختيار الوقت',
             ),
             const DisplayLocation(),
+            const SizedBox(
+              height: 16,
+            ),
             CustomeServiceInfo(
               price: '${data.price!.toInt()}',
               description: '${data.serviceDescription}',
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 4.5,
+            const SizedBox(
+              height: 16,
             ),
             CustomButton(
               title: 'حجز',
