@@ -78,7 +78,9 @@ class _HomeBodyState extends State<HomeBody> {
               builder: (context, state) {
                 if (state is ServiceSuccess) {
                   services.addAll(state.service.data!.toList());
-                  return ServiceGridView(data: services);
+                  return ServiceGridView(
+                    data: services,
+                  );
                 } else if (state is ServiceFailure) {
                   return SizedBox(
                     height: MediaQuery.of(context).size.height * .15,

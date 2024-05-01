@@ -3,9 +3,9 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_text.dart';
-import 'package:freelancer_app/features/home/presentation/view/freelancer_infos_view.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_freelancer_image.dart';
-import 'package:get/get.dart' as g;
+// import 'package:freelancer_app/features/home/presentation/view/freelancer_infos_view.dart';
+// import 'package:freelancer_app/features/home/presentation/view/widgets/custome_freelancer_image.dart';
+// import 'package:get/get.dart' as g;
 
 class AvailableFreelancerView extends StatelessWidget {
   const AvailableFreelancerView({super.key});
@@ -62,25 +62,25 @@ class AvailableFreelancerBody extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Future.delayed(
-                      const Duration(microseconds: 250),
-                      () {
-                        g.Get.to(
-                          () => const FreelancerInfosView(),
-                          transition: g.Transition.fadeIn,
-                          duration: kDurationTransition,
-                        );
-                      },
-                    );
+                    // Future.delayed(
+                    //   const Duration(microseconds: 250),
+                    //   () {
+                    //     g.Get.to(
+                    //       () => FreelancerInfosView(),
+                    //       transition: g.Transition.fadeIn,
+                    //       duration: kDurationTransition,
+                    //     );
+                    //   },
+                    // );
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Expanded(
-                        child: CutomeFreelancerImage(
-                          height: 80,
-                        ),
-                      ),
+                      // const Expanded(
+                      //   child: CutomeFreelancerImage(
+                      //     height: 80,
+                      //   ),
+                      // ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

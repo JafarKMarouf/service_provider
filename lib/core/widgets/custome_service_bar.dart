@@ -16,19 +16,20 @@ class CustomeServiceBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              'assets/images/img_bookmark.svg',
-              height: 30,
+            Image.asset(
+              'assets/png/img_bookmark.png',
             ),
-            SvgPicture.asset(
-              'assets/images/img_save.svg',
-              height: 30,
+            Image.asset(
+              'assets/png/img_save.png',
             ),
           ],
         ),
         Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+          style: const TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+          ),
           textDirection: TextDirection.rtl,
         ),
         TextButton(

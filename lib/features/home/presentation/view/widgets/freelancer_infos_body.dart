@@ -1,15 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_style_service_infos.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_service/service.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/custome_freelancer_image.dart';
 
 class FreelancerInfosBody extends StatelessWidget {
   const FreelancerInfosBody({
     super.key,
+    required this.freelanceInfos,
   });
-
+  final Service freelanceInfos;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,54 +21,84 @@ class FreelancerInfosBody extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const CustomeServiceBar(
-              title: 'هشام حداد',
+            CustomeServiceBar(
+              title: '${freelanceInfos.expert!.name}',
             ),
-            const CutomeFreelancerImage(
-              height: 120,
+            const SizedBox(
+              height: 16,
+            ),
+            Center(
+              child: CutomeFreelancerImage(
+                height: 120,
+                image: '${freelanceInfos.expert!.expertInfos!.photo}',
+              ),
             ),
             const SizedBox(
               height: 24,
             ),
-            const Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                CustomeStyleServiceInfos(
-                  title: 'الاسم : ',
-                  info: 'هشام حداد',
+                Text(
+                  'الاسم :   ${freelanceInfos.expert!.name}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
                 ),
-                CustomeStyleServiceInfos(
-                  title: 'التقييم : ',
-                  rating: true,
-                  clicked: false,
+                const SizedBox(
+                  height: 8,
                 ),
-                CustomeStyleServiceInfos(
-                  title: 'الوصف : ',
-                  info: 'تتضمن خدمة العملاء إجراءات، مثل تقد'
-                      'يم اقتراحات المنتجات أو استكشاف '
-                      'المشكلات والشكاوى وحلها أو الرد ع'
-                      'لى الأسئلة العامة.',
+                Text(
+                  'التقييم :   ${freelanceInfos.expert!.expertInfos!.rating}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
                 ),
-                CustomeStyleServiceInfos(
-                  title: 'الشهادات الحاصل عليها : ',
-                  info: 'تتضمن خدمة العملاء إجراءات، مثل تقد'
-                      'يم اقتراحات المنتجات أو استكشاف '
-                      'المشكلات والشكاوى وحلها أو الرد ع'
-                      'لى الأسئلة العامة.',
+                const SizedBox(
+                  height: 8,
                 ),
-                CustomeStyleServiceInfos(
-                  title: 'الخدمات التي يقدمها : ',
-                  info: 'تصليح مكيفات',
+                Text(
+                  'الوصف :   ${freelanceInfos.expert!.expertInfos!.description}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
                 ),
-                CustomeStyleServiceInfos(
-                  title: 'الاجرة : ',
-                  info: '9000 ل.س/ساعه',
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'الشهادات الحاصل عليها :   '
+                  '${freelanceInfos.expert!.expertInfos!.certificate}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'الخدمات التي يقدمها :   '
+                  '${freelanceInfos.expert!.expertInfos!.certificate}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
                 ),
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height / 4.5,
+              height: MediaQuery.of(context).size.height / 3.4,
             ),
             CustomButton(
               title: 'حجز',

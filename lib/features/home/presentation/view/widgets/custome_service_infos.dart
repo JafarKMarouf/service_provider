@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CustomeServiceInfo extends StatelessWidget {
-  const CustomeServiceInfo({
+class CustomeServiceInfos extends StatelessWidget {
+  const CustomeServiceInfos({
     super.key,
     required this.price,
     required this.description,
   });
   final String price;
   final String description;
+
   @override
   Widget build(BuildContext context) {
     return Padding(

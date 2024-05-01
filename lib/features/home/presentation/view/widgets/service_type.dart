@@ -13,7 +13,7 @@ class ServiceType extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        elevation: .2,
+        elevation: .4,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 32.0,
