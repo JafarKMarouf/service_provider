@@ -19,118 +19,117 @@ class FreelancerInfosBody extends StatelessWidget {
         horizontal: 14.0,
         vertical: 40,
       ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            CustomeServiceBar(
-              title: '${freelanceInfos.expert!.name}',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          CustomeServiceBar(
+            title: '${freelanceInfos.expert!.name}',
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Center(
+            child: CutomeFreelancerImage(
+              height: 120,
+              image: '${freelanceInfos.expert!.expertInfos!.photo}',
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            Center(
-              child: CutomeFreelancerImage(
-                height: 120,
-                image: '${freelanceInfos.expert!.expertInfos!.photo}',
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'الاسم :   ${freelanceInfos.expert!.name}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                textDirection: TextDirection.rtl,
               ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'الاسم :   ${freelanceInfos.expert!.name}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textDirection: TextDirection.rtl,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      children: List.generate(
-                          rating, (index) {
-                        return const Icon(
-                          Icons.star,
-                          color: kPrimaryColor,
-                        );
-                      }),
-                    ),
-                    Row(children: List.generate(
-                         5-rating, (index) {
+              const SizedBox(
+                height: 8,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: List.generate(
+                        rating, (index) {
                       return const Icon(
-                        Icons.star_border,
+                        Icons.star,
                         color: kPrimaryColor,
                       );
-                    }),),
-                    const Text(
-                      'التقييم :   ',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      textDirection: TextDirection.rtl,
+                    }),
+                  ),
+                  Row(children: List.generate(
+                       5-rating, (index) {
+                    return const Icon(
+                      Icons.star_border,
+                      color: kPrimaryColor,
+                    );
+                  }),),
+                  const Text(
+                    'التقييم :   ',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  'الوصف :   ${freelanceInfos.expert!.expertInfos!.description}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
+                ],
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'الوصف :   ${freelanceInfos.expert!.expertInfos!.description}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
                 ),
-                const SizedBox(
-                  height: 8,
+                textDirection: TextDirection.rtl,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'الشهادات الحاصل عليها :   '
+                '${freelanceInfos.expert!.expertInfos!.certificate}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
                 ),
-                Text(
-                  'الشهادات الحاصل عليها :   '
-                  '${freelanceInfos.expert!.expertInfos!.certificate}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textDirection: TextDirection.rtl,
+                textDirection: TextDirection.rtl,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'الخدمات التي يقدمها :   '
+                '${freelanceInfos.expert!.expertInfos!.certificate}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  'الخدمات التي يقدمها :   '
-                  '${freelanceInfos.expert!.expertInfos!.certificate}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textDirection: TextDirection.rtl,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 3.4,
-            ),
-            CustomButton(
-              title: 'حجز',
-              width: MediaQuery.of(context).size.width,
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-          ],
-        ),
+                textDirection: TextDirection.rtl,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+            ],
+          ),
+          const Spacer(),
+          CustomButton(
+            title: 'حجز',
+            width: MediaQuery.of(context).size.width,
+            onTap: () {},
+          ),
+          const SizedBox(
+            height: 14,
+          ),
+        ],
       ),
     );
   }

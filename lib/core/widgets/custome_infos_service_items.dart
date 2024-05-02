@@ -20,7 +20,7 @@ class CustomeInfosServiceItems extends StatelessWidget {
         vertical: 16,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        // mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

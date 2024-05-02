@@ -5,7 +5,6 @@ import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/display_location.dart';
-import 'package:freelancer_app/features/home/presentation/view/widgets/custome_service_infos.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/service_type.dart';
 
 class DescServiceBody extends StatelessWidget {
@@ -36,12 +35,37 @@ class DescServiceBody extends StatelessWidget {
               time: 'اختيار الوقت',
             ),
             const DisplayLocation(),
+
             const SizedBox(
               height: 16,
             ),
-            const CustomeServiceInfos(
-              price: '',
-              description: '',
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'رسوم الفحص :${data.price}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'الوصف :   ${data.serviceDescription}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+              ],
             ),
             const SizedBox(
               height: 16,
