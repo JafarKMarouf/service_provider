@@ -152,7 +152,7 @@ class StarRating extends StatelessWidget {
                 : () {},
             child: Icon(
               index < value
-                  ? filledStar ?? Icons.star
+                  ? filledStar   ?? Icons.star
                   : unfilledStar ?? Icons.star_border,
               color: color,
               size: size,

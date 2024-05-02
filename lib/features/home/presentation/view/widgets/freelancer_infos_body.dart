@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/service.dart';
@@ -14,6 +13,7 @@ class FreelancerInfosBody extends StatelessWidget {
   final Service freelanceInfos;
   @override
   Widget build(BuildContext context) {
+    int rating = freelanceInfos.expert!.expertInfos!.rating;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 14.0,
@@ -52,13 +52,34 @@ class FreelancerInfosBody extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Text(
-                  'التقييم :   ${freelanceInfos.expert!.expertInfos!.rating}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textDirection: TextDirection.rtl,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: List.generate(
+                          rating, (index) {
+                        return const Icon(
+                          Icons.star,
+                          color: kPrimaryColor,
+                        );
+                      }),
+                    ),
+                    Row(children: List.generate(
+                         5-rating, (index) {
+                      return const Icon(
+                        Icons.star_border,
+                        color: kPrimaryColor,
+                      );
+                    }),),
+                    const Text(
+                      'التقييم :   ',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textDirection: TextDirection.rtl,
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 8,
