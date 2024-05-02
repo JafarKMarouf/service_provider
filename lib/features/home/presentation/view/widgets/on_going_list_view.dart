@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 import '../../../../booked_services/presentation/view/widgets/on_going_list.dart';
 
-class OnGoingPageView extends StatelessWidget {
-  const OnGoingPageView({
+class OnGoingListView extends StatelessWidget {
+  const OnGoingListView({
     super.key,
     required this.data,
   });
@@ -13,16 +13,15 @@ class OnGoingPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 220,
-      child: PageView.builder(
-        itemCount: data.length,
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
         reverse: true,
+        itemCount: data.length,
         itemBuilder: (context, index) {
-          return OnGoingList(
-            data: data[index],
-          );
+          return OnGoingList(data: data[index]);
         },
       ),
+
     );
   }
 }

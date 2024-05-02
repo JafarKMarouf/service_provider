@@ -27,23 +27,6 @@ class _BookedServicesListViewState extends State<BookedServicesListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: BlocConsumer<BookServiceCubit, BookServiceState>(
-      //     listener: (context, state) {
-      //   if (state is BookServiceFailure) {
-      //     loading = false;
-      //     ScaffoldMessenger.of(context).showSnackBar(
-      //       SnackBar(
-      //         content: Text(state.errMessage),
-      //       ),
-      //     );
-      //   } else if (state is BookServiceSuccess) {
-      //     loading = false;
-      //     booked.addAll(state.bookService.data!.toList());
-      //   }
-      // }, builder: (context, state) {
-      //   return BookedServicesBody(booked: booked);
-      // }),
-
       body: BookedServicesBody(booked: booked),
     );
   }

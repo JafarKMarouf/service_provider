@@ -9,9 +9,11 @@ import 'package:freelancer_app/features/home/data/models/service_model/datum_ser
 import 'package:freelancer_app/features/home/presentation/view/services_list_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/custome_home_bar.dart';
 import 'package:freelancer_app/features/home/presentation/view_models/service_cubit/service_cubit.dart';
+import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
+import 'package:freelancer_app/features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
 import 'package:get/get.dart' as g;
 import 'fetch_services.dart';
-import 'on_going_page_view.dart';
+import 'on_going_list_view.dart';
 import 'service_grid_view.dart';
 
 class HomeBody extends StatefulWidget {
@@ -27,11 +29,13 @@ class _HomeBodyState extends State<HomeBody> {
   bool loading = true;
   List<DatumService> services = [];
   List<DatumBooked> booked = [];
+  List<CustomerInfo> customerInfo = [];
 
   @override
   void initState() {
     BlocProvider.of<ServiceCubit>(context).fetchService();
     BlocProvider.of<BookServiceCubit>(context).fetchBookServices();
+    BlocProvider.of<ProfileCubit>(context).showProfile();
     super.initState();
   }
 
@@ -50,8 +54,22 @@ class _HomeBodyState extends State<HomeBody> {
             const SizedBox(
               height: 8,
             ),
-            const CustomeHomeBar(
-              name: 'زبون4',
+            BlocConsumer<ProfileCubit,ProfileState>(
+                 listener: (context,state){
+                   if(state is ProfileSuccess){
+                     customerInfo.addAll(
+                       state.profileModel.customerInfos!.toList(),
+                     );                   }
+                 },
+                builder: (context,state){
+                return  CustomeHomeBar(
+                    name: (state is ProfileSuccess) ? '${customerInfo[0].customer!.name}' : 'loading..'
+                );
+              },
+              // child: CustomeHomeBar(
+              //   // name: 'زبون4',
+              //   name: '${BlocProvider.of<ProfileCubit>(context).showProfile()}',
+              // ),
             ),
             const SizedBox(
               height: 15,
@@ -118,7 +136,7 @@ class _HomeBodyState extends State<HomeBody> {
               builder: (context, state) {
                 if (state is BookServiceSuccess) {
                   booked.addAll(state.bookService.data!.toList());
-                  return OnGoingPageView(
+                  return OnGoingListView(
                     data: booked,
                   );
                 } else if (state is BookServiceFailure) {

@@ -13,7 +13,6 @@ class FetchServices extends StatelessWidget {
   // final int length;
   @override
   Widget build(BuildContext context) {
-    // print('================length : $length=================');
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -25,7 +24,7 @@ class FetchServices extends StatelessWidget {
             style: TextStyle(
               color: kPrimaryColor,
               fontSize: 16,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ),

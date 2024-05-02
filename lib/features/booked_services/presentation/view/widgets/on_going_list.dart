@@ -28,29 +28,37 @@ class OnGoingList extends StatelessWidget {
           duration: kDurationTransition,
         );
       },
-      child: Card(
-        elevation: .7,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: 16.0,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          right: 2,
+          left: 4,
+          top: 8,
+          bottom: 4,
+        ),
+        child: Card(
+          margin: EdgeInsets.zero,
+          elevation: 1,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width - 44,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+                horizontal: 16.0,
+              ),
+              child: Column(
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/img_bookmark.svg',
-                    height: 34,
-                    colorFilter: const ColorFilter.mode(
-                      kPrimaryColor,
-                      BlendMode.srcIn,
-                    ),
-                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      SvgPicture.asset(
+                        'assets/images/img_bookmark.svg',
+                        height: 34,
+                        colorFilter: const ColorFilter.mode(
+                          kPrimaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -61,7 +69,6 @@ class OnGoingList extends StatelessWidget {
                               fontSize: 16,
                             ),
                           ),
-                          // Text('${data.expert!.name}'),
                           Text(
                             '${data.service!.expert!.name}',
                           ),
@@ -98,114 +105,114 @@ class OnGoingList extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const SizedBox(
-                child: Divider(
-                  color: Colors.grey,
-                  thickness: 3,
-                ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      color: Colors.orangeAccent,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 4,
-                    ),
-                    child: const Text(
-                      'فحص',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const SizedBox(
+                    child: Divider(
+                      color: Colors.grey,
+                      thickness: 3,
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        formatDate,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        formatTime,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 12,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '${data.service!.expert!.expertInfos!.country}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        '${data.service!.price} ل.س',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 8),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: kPrimaryColor,
-                            width: 3,
-                          ),
+                          borderRadius: BorderRadius.circular(4),
+                          color: Colors.orangeAccent,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 4,
                         ),
                         child: const Text(
-                          'في الموقع',
+                          'فحص',
                           style: TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
                             fontSize: 16,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            formatDate,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Text(
+                            formatTime,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            '${data.service!.expert!.expertInfos!.country}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            '${data.service!.price} ل.س',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textDirection: TextDirection.rtl,
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 4, horizontal: 8),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: kPrimaryColor,
+                                width: 3,
+                              ),
+                            ),
+                            child: const Text(
+                              'في الموقع',
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),

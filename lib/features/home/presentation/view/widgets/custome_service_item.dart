@@ -28,25 +28,27 @@ class CustomeServiceItem extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: CachedNetworkImage(
-                fit: BoxFit.fill,
-                imageUrl: '${data.photo}',
-                placeholder: (context, url) {
-                  return Center(
-                    child: Text(
-                      '${data.serviceName} image',
+              child: CircleAvatar(
+                radius: 90,
+                backgroundColor: kPrimaryColor,
+                child: CachedNetworkImage(
+                  imageUrl: '${data.photo}',
+                  placeholder: (context, url) {
+                    return Text(
+                      '${data.serviceName} loading..',
                       style: const TextStyle(
-                        color: kPrimaryColor,
+                        color: Colors.white,
                       ),
-                    ),
-                  );
-                },
-                errorWidget: (context, url, error) {
-                  return const Icon(
-                    Icons.error,
-                    color: kPrimaryColor,
-                  );
-                },
+                      textAlign: TextAlign.center,
+                    );
+                  },
+                  errorWidget: (context, url, error) {
+                    return const Icon(
+                      Icons.error,
+                      color: Colors.white,
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/bookmark_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/home_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view/profile_view.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -15,7 +16,7 @@ class CustomeNavBar extends StatefulWidget {
 class _CustomeNavBarState extends State<CustomeNavBar> {
   List<Widget> screens = const [
     ProfileView(),
-    BookedServicesListView(),
+    BookmarkServicesView(),
     BookedServicesListView(),
     HomeView(),
   ];
@@ -50,15 +51,15 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
               textColor: Colors.white,
             ),
             GButton(
-              icon: Icons.task_alt,
-              text: 'booked',
+              icon: Icons.bookmarks_outlined,
+              text: 'Bookmark',
               iconSize: 32,
               iconActiveColor: Colors.white,
               textColor: Colors.white,
             ),
             GButton(
-              icon: Icons.bookmarks_outlined,
-              text: 'Bookmark',
+              icon: Icons.task_alt,
+              text: 'booked',
               iconSize: 32,
               iconActiveColor: Colors.white,
               textColor: Colors.white,
