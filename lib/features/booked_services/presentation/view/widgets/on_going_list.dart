@@ -33,7 +33,7 @@ class OnGoingList extends StatelessWidget {
           right: 2,
           left: 4,
           top: 8,
-          bottom: 4,
+          bottom: 2,
         ),
         child: Card(
           margin: EdgeInsets.zero,
@@ -119,6 +119,7 @@ class OnGoingList extends StatelessWidget {
                     height: 12,
                   ),
                   Row(
+                    // mainAxisSize: Mai?nAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -166,11 +167,16 @@ class OnGoingList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
-                            '${data.service!.expert!.expertInfos!.country}',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              '${data.service!.expert!.expertInfos!.country}',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              textDirection: TextDirection.rtl,
                             ),
                           ),
                           const SizedBox(
@@ -182,6 +188,7 @@ class OnGoingList extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
+                            overflow: TextOverflow.ellipsis,
                             textDirection: TextDirection.rtl,
                           ),
                           const SizedBox(
@@ -189,7 +196,9 @@ class OnGoingList extends StatelessWidget {
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 4, horizontal: 8),
+                              vertical: 4,
+                              horizontal: 8,
+                            ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(

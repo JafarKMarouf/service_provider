@@ -7,9 +7,11 @@ class CustomeInfosService extends StatefulWidget {
     super.key,
     required this.text,
     required this.icon,
+    this.onPressed,
   });
   final String text;
   final IconData icon;
+  final void Function()? onPressed;
   @override
   State<CustomeInfosService> createState() => _CustomeInfosServiceState();
 }
@@ -32,7 +34,6 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
-            vertical: 12.0,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -48,9 +49,12 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
               const SizedBox(
                 width: 2.0,
               ),
-              Icon(
-                widget.icon,
-                color: tapped ? Colors.white : Colors.grey[800],
+              IconButton(
+                onPressed:widget.onPressed,
+                icon: Icon(
+                  widget.icon,
+                  color: tapped ? Colors.white : Colors.grey[800],
+                ),
               ),
             ],
           ),

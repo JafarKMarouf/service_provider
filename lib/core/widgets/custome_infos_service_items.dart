@@ -26,6 +26,13 @@ class CustomeInfosServiceItems extends StatelessWidget {
         children: [
           CustomeInfosService(
             text: date,
+            onPressed: (){
+              showDatePicker(
+                  context: context,
+                  firstDate: DateTime.now(),
+                  lastDate: DateTime(2024),
+              );
+            },
             icon: Icons.date_range_rounded,
           ),
           const SizedBox(

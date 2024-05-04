@@ -15,13 +15,12 @@ class OnGoingListView extends StatelessWidget {
       height: 220,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        reverse: true,
+        // reverse: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
           return OnGoingList(data: data[index]);
         },
       ),
-
     );
   }
 }

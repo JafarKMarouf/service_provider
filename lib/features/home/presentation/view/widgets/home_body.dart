@@ -12,6 +12,7 @@ import 'package:freelancer_app/features/home/presentation/view_models/service_cu
 import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
 import 'package:freelancer_app/features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
 import 'package:get/get.dart' as g;
+import 'package:shimmer/shimmer.dart';
 import 'fetch_services.dart';
 import 'on_going_list_view.dart';
 import 'service_grid_view.dart';
@@ -54,17 +55,28 @@ class _HomeBodyState extends State<HomeBody> {
             const SizedBox(
               height: 8,
             ),
-            BlocConsumer<ProfileCubit,ProfileState>(
-                 listener: (context,state){
-                   if(state is ProfileSuccess){
-                     customerInfo.addAll(
-                       state.profileModel.customerInfos!.toList(),
-                     );                   }
-                 },
-                builder: (context,state){
-                return  CustomeHomeBar(
-                    name: (state is ProfileSuccess) ? '${customerInfo[0].customer!.name}' : 'loading..'
-                );
+            BlocConsumer<ProfileCubit, ProfileState>(
+              listener: (context, state) {
+                if (state is ProfileSuccess) {
+                  customerInfo.addAll(
+                    state.profileModel.customerInfos!.toList(),
+                  );
+                }
+              },
+              builder: (context, state) {
+                return (state is ProfileSuccess)
+                    ? CustomeHomeBar(
+                        customerInfos: customerInfo[0],
+                      )
+                    : const CustomeHomeBar(
+                        loading: true,
+                        // customerInfos: ,
+                      );
+                // return  CustomeHomeBar(
+                //   name: (state is ProfileSuccess)
+                //       ? '${customerInfo[0].customer!.name}'
+                //       : 'loading..',
+                // );
               },
               // child: CustomeHomeBar(
               //   // name: 'زبون4',
@@ -108,9 +120,31 @@ class _HomeBodyState extends State<HomeBody> {
                   );
                 } else {
                   return SizedBox(
-                    height: MediaQuery.of(context).size.height * .15,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
+                    height: 135,
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                        ),
+                        itemCount: 3,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 80,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   );
                 }
@@ -148,9 +182,28 @@ class _HomeBodyState extends State<HomeBody> {
                   );
                 } else {
                   return SizedBox(
-                    height: MediaQuery.of(context).size.height * .15,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
+                    height: 220,
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          right: 2,
+                          left: 4,
+                          top: 8,
+                          bottom: 2,
+                        ),
+                        child: Card(
+                          margin: EdgeInsets.zero,
+                          child: ListTile(
+                            title: Container(
+                              height: 40,
+                              width: double.infinity,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../../core/widgets/custome_search_arrowback_bar.dart';
 import 'on_going_list.dart';
 
@@ -61,10 +62,22 @@ class BookedServicesBody extends StatelessWidget {
                   ),
                 );
               } else {
-                return SizedBox(
-                  height: MediaQuery.of(context).size.height * .5,
-                  child: const Center(
-                    child: CircularProgressIndicator(),
+                return Expanded(
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: ListView.builder(
+                        itemCount: 6,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Container(
+                              height: 20,
+                              width: 40,
+                              color: Colors.white,
+                            ),
+                          );
+                        }),
                   ),
                 );
               }
