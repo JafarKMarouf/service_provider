@@ -17,32 +17,58 @@ class CustomeHomeBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            color: Colors.grey[200],
-          ),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications_active,
-              size: 30,
-              color: kPrimaryColor,
-            ),
-          ),
-        ),
+        !loading
+            ? Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  color: Colors.grey[200],
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications_active,
+                    size: 30,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              )
+            : Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                ),
+              ),
         Row(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const Text(
-                  'مرحبا',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w600,
-                  ),
+                !loading
+                    ? const Text(
+                        'مرحبا',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    : Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          width: 30,
+                          height: 10,
+                          color: Colors.white,
+                        ),
+                      ),
+                const SizedBox(
+                  height: 3,
                 ),
                 !loading
                     ? Text(
@@ -57,8 +83,8 @@ class CustomeHomeBar extends StatelessWidget {
                         baseColor: Colors.grey[300]!,
                         highlightColor: Colors.grey[100]!,
                         child: Container(
-                          width: 50,
-                          height: 20,
+                          width: 70,
+                          height: 15,
                           color: Colors.white,
                         ),
                       ),
@@ -87,7 +113,7 @@ class CustomeHomeBar extends StatelessWidget {
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
                     child: const CircleAvatar(
-                      radius: 32,
+                      radius: 38,
                     ),
                   ),
           ],

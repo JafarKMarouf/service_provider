@@ -66,18 +66,27 @@ class BookedServicesBody extends StatelessWidget {
                   child: Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
-                    child: ListView.builder(
-                        itemCount: 6,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return ListTile(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        right: 2,
+                        left: 4,
+                        top: 8,
+                        bottom: 2,
+                      ),
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: 12,
+                        itemBuilder: (context, index) => Card(
+                          child: ListTile(
                             title: Container(
-                              height: 20,
-                              width: 40,
-                              color: Colors.white,
+                              height: 200,
+                              width: double.infinity,
+                              color: Colors.blue,
                             ),
-                          );
-                        }),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 );
               }

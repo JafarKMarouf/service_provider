@@ -72,16 +72,7 @@ class _HomeBodyState extends State<HomeBody> {
                         loading: true,
                         // customerInfos: ,
                       );
-                // return  CustomeHomeBar(
-                //   name: (state is ProfileSuccess)
-                //       ? '${customerInfo[0].customer!.name}'
-                //       : 'loading..',
-                // );
               },
-              // child: CustomeHomeBar(
-              //   // name: 'زبون4',
-              //   name: '${BlocProvider.of<ProfileCubit>(context).showProfile()}',
-              // ),
             ),
             const SizedBox(
               height: 15,
@@ -98,6 +89,7 @@ class _HomeBodyState extends State<HomeBody> {
                 g.Get.to(
                   () => ServicesListView(
                     data: services,
+                    loading: loading,
                   ),
                   transition: g.Transition.fadeIn,
                   duration: kDurationTransition,

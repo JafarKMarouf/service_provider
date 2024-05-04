@@ -6,12 +6,17 @@ class ServicesListView extends StatelessWidget {
   const ServicesListView({
     super.key,
     required this.data,
+    this.loading = true,
   });
   final List<DatumService> data;
+  final bool loading;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ServiceListBody(data:data),
+      body: ServiceListBody(
+        data: data,
+        loading: loading,
+      ),
     );
   }
 }
