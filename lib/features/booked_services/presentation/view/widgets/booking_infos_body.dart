@@ -23,25 +23,22 @@ class BookingInfosBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: 40.0,
+          vertical: 40,
           horizontal: 16,
         ),
         child: Column(
           children: [
             const CustomeServiceBar(title: "معلومات الحجز"),
             BookServiceType(data: data),
-
             CustomeInfosServiceItems(
               date: formatDate,
               phone: data.service!.expert!.expertInfos!.mobile,
               time: formatTime,
             ),
             const DisplayLocation(),
-            // const Spacer(),
             CustomeBookServiceInfo(
               data: data,
             ),
-            // const Spacer(),s
             CustomButton(
               title: 'تقدم',
               onTap: () {},

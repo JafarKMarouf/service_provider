@@ -89,7 +89,7 @@ class _HomeBodyState extends State<HomeBody> {
                 g.Get.to(
                   () => ServicesListView(
                     data: services,
-                    loading: loading,
+                    loading: !loading,
                   ),
                   transition: g.Transition.fadeIn,
                   duration: kDurationTransition,

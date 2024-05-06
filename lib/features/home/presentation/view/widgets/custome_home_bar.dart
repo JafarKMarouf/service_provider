@@ -102,8 +102,9 @@ class CustomeHomeBar extends StatelessWidget {
                         imageUrl: customerInfos!.photo!,
                         errorWidget: (context, url, error) {
                           return const Icon(
-                            Icons.error,
-                            color: Colors.white,
+                            Icons.account_box,
+                            size: 48,
+                            color: kPrimaryColor,
                           );
                         },
                       ),

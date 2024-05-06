@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
+import 'package:shimmer/shimmer.dart';
 
-class CutomeFreelancerImage extends StatelessWidget {
-  const CutomeFreelancerImage({
+class CustomeFreelancerImage extends StatelessWidget {
+  const CustomeFreelancerImage({
     super.key,
     required this.height,
     required this.image,
@@ -22,12 +23,11 @@ class CutomeFreelancerImage extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: image,
           placeholder: (context, url) {
-            return const Center(
-              child: Text(
-                'loading freelancer photo ..',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                ),
+            return Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: const CircleAvatar(
+                radius: 90,
               ),
             );
           },

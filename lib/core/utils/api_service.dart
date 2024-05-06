@@ -1,13 +1,8 @@
-// ignore_for_file: unused_import
-
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get/get.dart';
 
 class ApiService {
-  // final _baseUrl = 'http://192.168.1.7:8000/api/';
-  final _baseUrl = 'http://192.168.37.128:8000/api/';
+  final _baseUrl = 'http://192.168.68.128:8000/api/';
 
   final Dio _dio;
   static var storage = const FlutterSecureStorage();
@@ -34,7 +29,6 @@ class ApiService {
     dynamic body,
   }) async {
     String? token = await getToken();
-    // await getUserDetails();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
     var response = await _dio.post(

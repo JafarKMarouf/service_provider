@@ -6,6 +6,7 @@ import 'package:freelancer_app/features/booked_services/data/models/book_service
 import 'package:freelancer_app/features/booked_services/presentation/view/booking_infos_view.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as format;
+import 'package:shimmer/shimmer.dart';
 
 class OnGoingList extends StatelessWidget {
   const OnGoingList({
@@ -87,11 +88,13 @@ class OnGoingList extends StatelessWidget {
                         child: CachedNetworkImage(
                           imageUrl: '${data.service!.photo}',
                           placeholder: (context, url) {
-                            return Center(
-                              child: Text(
-                                '${data.service!.serviceName} image',
-                                style: const TextStyle(
-                                  color: Colors.white,
+                            return Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color:  Colors.white,
                                 ),
                               ),
                             );

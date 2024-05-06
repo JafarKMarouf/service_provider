@@ -15,7 +15,7 @@ class ServicesListView extends StatelessWidget {
     return Scaffold(
       body: ServiceListBody(
         data: data,
-        loading: loading,
+        // loading: loading,
       ),
     );
   }

@@ -19,43 +19,43 @@ class CustomeInfosServiceItems extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         vertical: 16,
       ),
-      child: Row(
-        // mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
         children: [
-          CustomeInfosService(
-            text: date,
-            onPressed: (){
-              showDatePicker(
-                  context: context,
-                  firstDate: DateTime.now(),
-                  lastDate: DateTime(2024),
-              );
-            },
-            icon: Icons.date_range_rounded,
-          ),
+          location != null
+              ? CustomeInfosService(
+                  text: location!,
+                  icon: Icons.location_on_outlined,
+                )
+              : CustomeInfosService(
+                  text: phone!,
+                  icon: Icons.phone,
+                ),
           const SizedBox(
-            width: 4,
+            height: 8,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+          Row(
             children: [
-              location != null
-                  ? CustomeInfosService(
-                      text: location!,
-                      icon: Icons.location_on_outlined,
-                    )
-                  : CustomeInfosService(
-                      text: phone!,
-                      icon: Icons.phone,
-                    ),
-              const SizedBox(
-                height: 8,
+              Expanded(
+                child: CustomeInfosService(
+                  text: date,
+                  onPressed: () {
+                    showDatePicker(
+                      context: context,
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2024),
+                    );
+                  },
+                  icon: Icons.date_range_rounded,
+                ),
               ),
-              CustomeInfosService(
-                text: time,
-                icon: Icons.alarm,
+              const SizedBox(
+                width: 8,
+              ),
+              Expanded(
+                child: CustomeInfosService(
+                  text: time,
+                  icon: Icons.alarm,
+                ),
               ),
             ],
           ),

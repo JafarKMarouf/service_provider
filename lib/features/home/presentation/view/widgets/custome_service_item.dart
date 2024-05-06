@@ -4,6 +4,7 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/home/presentation/view/desc_service_view.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum_service.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CustomeServiceItem extends StatelessWidget {
   const CustomeServiceItem({
@@ -34,12 +35,17 @@ class CustomeServiceItem extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: '${data.photo}',
                   placeholder: (context, url) {
-                    return Text(
-                      '${data.serviceName} loading..',
-                      style: const TextStyle(
-                        color: Colors.white,
+                    return Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        width: 90,
+                        height: 90,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(90),
+                          color:  Colors.white,
+                        ),
                       ),
-                      textAlign: TextAlign.center,
                     );
                   },
                   errorWidget: (context, url, error) {

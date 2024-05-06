@@ -29,7 +29,7 @@ class FreelancerInfosBody extends StatelessWidget {
             height: 16,
           ),
           Center(
-            child: CutomeFreelancerImage(
+            child: CustomeFreelancerImage(
               height: 120,
               image: '${freelanceInfos.expert!.expertInfos!.photo}',
             ),

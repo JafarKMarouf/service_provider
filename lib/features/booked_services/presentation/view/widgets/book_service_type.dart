@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
+import 'package:shimmer/shimmer.dart';
 
 class BookServiceType extends StatelessWidget {
   const BookServiceType({
@@ -13,10 +14,10 @@ class BookServiceType extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        elevation: .4,
+        elevation: .6,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 32.0,
+            horizontal: 32,
             vertical: 8,
           ),
           child: SizedBox(
@@ -30,11 +31,15 @@ class BookServiceType extends StatelessWidget {
                     fit: BoxFit.fill,
                     imageUrl: '${data.service!.photo}',
                     placeholder: (context, url) {
-                      return Center(
-                        child: Text(
-                          '${data.service!.serviceName} image',
-                          style: const TextStyle(
-                            color: kPrimaryColor,
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
                           ),
                         ),
                       );
