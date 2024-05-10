@@ -55,22 +55,19 @@ class _HomeBodyState extends State<HomeBody> {
             const SizedBox(
               height: 8,
             ),
-            BlocConsumer<ProfileCubit, ProfileState>(
-              listener: (context, state) {
-                if (state is ProfileSuccess) {
+            BlocBuilder<ProfileCubit, ProfileState>(
+              builder: (context, state) {
+                 if (state is ProfileSuccess) {
                   customerInfo.addAll(
                     state.profileModel.customerInfos!.toList(),
                   );
                 }
-              },
-              builder: (context, state) {
                 return (state is ProfileSuccess)
                     ? CustomeHomeBar(
                         customerInfos: customerInfo[0],
                       )
                     : const CustomeHomeBar(
                         loading: true,
-                        // customerInfos: ,
                       );
               },
             ),

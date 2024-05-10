@@ -15,7 +15,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var formatDate = intl.DateFormat('dd/MM/yyy').format(data.createdAt!);
-int rating = data.service!.expert!.expertInfos!.rating;
+    int rating = data.service!.expert!.expertInfos!.rating;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
@@ -24,8 +24,11 @@ int rating = data.service!.expert!.expertInfos!.rating;
           InkWell(
             onTap: () {
               g.Get.to(
-                () => FreelancerInfosView(freelanceInfos: data.service!),
+                () => FreelancerInfosView(
+                  freelanceInfos: data.service!.expert!,
+                ),
                 transition: g.Transition.fadeIn,
+                duration: kDurationTransition,
               );
             },
             child: Text(
@@ -44,21 +47,21 @@ int rating = data.service!.expert!.expertInfos!.rating;
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
-                children: List.generate(
-                    rating, (index) {
+                children: List.generate(rating, (index) {
                   return const Icon(
                     Icons.star,
                     color: kPrimaryColor,
                   );
                 }),
               ),
-              Row(children: List.generate(
-                  5-rating, (index) {
-                return const Icon(
-                  Icons.star_border,
-                  color: kPrimaryColor,
-                );
-              }),),
+              Row(
+                children: List.generate(5 - rating, (index) {
+                  return const Icon(
+                    Icons.star_border,
+                    color: kPrimaryColor,
+                  );
+                }),
+              ),
               const Text(
                 'التقييم :   ',
                 style: TextStyle(

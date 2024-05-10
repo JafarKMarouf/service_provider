@@ -22,7 +22,8 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: widget.onPressed,
+      onLongPress: () {
         tapped = !tapped;
         setState(
           () {},
@@ -32,27 +33,33 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
         margin: EdgeInsets.zero,
         elevation: .6,
         color: tapped ? kPrimaryColor : CardTheme.of(context).color,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            AutoSizeText(
-              widget.text,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-                color: tapped ? Colors.white : Colors.grey[800],
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 16,
+            top: 8,
+            bottom: 8,
+            right: 4,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AutoSizeText(
+                widget.text,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  color: tapped ? Colors.white : Colors.grey[800],
+                ),
+                maxLines: 2,
+                maxFontSize: 14,
               ),
-              maxLines: 2,
-              maxFontSize: 14,
-            ),
-            IconButton(
-              onPressed: widget.onPressed,
-              icon: Icon(
+              Icon(
                 widget.icon,
                 color: tapped ? Colors.white : Colors.grey[800],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiService {
-  final _baseUrl = 'http://192.168.68.128:8000/api/';
+  final _baseUrl = 'http://192.168.1.6:8000/api/';
 
   final Dio _dio;
   static var storage = const FlutterSecureStorage();
@@ -20,7 +20,6 @@ class ApiService {
     var response = await _dio.get(
       uri,
     );
-    // return response.
     return response.data;
   }
 

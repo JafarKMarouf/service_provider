@@ -16,7 +16,7 @@ class CustomeFreelancerImage extends StatelessWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(240),
+        borderRadius: BorderRadius.circular(200),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(240),

@@ -2,18 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/service.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_service/expert.dart'
+    as books;
+import 'package:freelancer_app/features/home/data/models/service_model/expert.dart'
+    as service;
 import 'package:freelancer_app/features/home/presentation/view/widgets/custome_freelancer_image.dart';
 
 class FreelancerInfosBody extends StatelessWidget {
   const FreelancerInfosBody({
     super.key,
-    required this.freelanceInfos,
+    this.freelanceInfos,
+    this.expert,
   });
-  final Service freelanceInfos;
+  final books.Expert? freelanceInfos;
+  final service.Expert? expert;
   @override
   Widget build(BuildContext context) {
-    int rating = freelanceInfos.expert!.expertInfos!.rating;
+    // freelanceInfos.
+    // print('=========expert : ${expert!.expertInfos!.rating} ================');
+
+    // print(
+    //     '=========freelancer : ${freelanceInfos!.expertInfos!.rating} ================');
+
+    int rating = 0;
+    if (freelanceInfos != null) {
+      rating = freelanceInfos!.expertInfos!.rating;
+    } else if (expert != null) {
+      rating = expert!.expertInfos!.rating;
+    } else {
+      rating = 0;
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 14.0,
@@ -23,7 +41,7 @@ class FreelancerInfosBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           CustomeServiceBar(
-            title: '${freelanceInfos.expert!.name}',
+            title: '${freelanceInfos?.name ?? expert?.name}',
           ),
           const SizedBox(
             height: 16,
@@ -31,7 +49,8 @@ class FreelancerInfosBody extends StatelessWidget {
           Center(
             child: CustomeFreelancerImage(
               height: 120,
-              image: '${freelanceInfos.expert!.expertInfos!.photo}',
+              image:
+                  '${freelanceInfos?.expertInfos?.photo ?? expert?.expertInfos?.photo }',
             ),
           ),
           const SizedBox(
@@ -41,7 +60,7 @@ class FreelancerInfosBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                'الاسم :   ${freelanceInfos.expert!.name}',
+                'الاسم :   ${freelanceInfos?.name ?? expert?.name }',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -56,20 +75,23 @@ class FreelancerInfosBody extends StatelessWidget {
                 children: [
                   Row(
                     children: List.generate(
-                        rating, (index) {
+                      rating,
+                      (index) {
+                        return const Icon(
+                          Icons.star,
+                          color: kPrimaryColor,
+                        );
+                      },
+                    ),
+                  ),
+                  Row(
+                    children: List.generate(5 - rating, (index) {
                       return const Icon(
-                        Icons.star,
+                        Icons.star_border,
                         color: kPrimaryColor,
                       );
                     }),
                   ),
-                  Row(children: List.generate(
-                       5-rating, (index) {
-                    return const Icon(
-                      Icons.star_border,
-                      color: kPrimaryColor,
-                    );
-                  }),),
                   const Text(
                     'التقييم :   ',
                     style: TextStyle(
@@ -84,7 +106,7 @@ class FreelancerInfosBody extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'الوصف :   ${freelanceInfos.expert!.expertInfos!.description}',
+                'الوصف :   ${freelanceInfos?.expertInfos?.description ?? expert?.expertInfos?.description }',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -96,7 +118,7 @@ class FreelancerInfosBody extends StatelessWidget {
               ),
               Text(
                 'الشهادات الحاصل عليها :   '
-                '${freelanceInfos.expert!.expertInfos!.certificate}',
+                '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate } ',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -108,7 +130,7 @@ class FreelancerInfosBody extends StatelessWidget {
               ),
               Text(
                 'الخدمات التي يقدمها :   '
-                '${freelanceInfos.expert!.expertInfos!.certificate}',
+                '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate }',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

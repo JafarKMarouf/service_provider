@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/features/home/data/models/service_model/datum_service.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/display_location.dart';
+import 'package:freelancer_app/features/home/presentation/view/freelancer_infos_view.dart';
 import 'package:freelancer_app/features/home/presentation/view/widgets/service_type.dart';
+import 'package:get/get.dart' as g;
 
 class DescServiceBody extends StatelessWidget {
   const DescServiceBody({
@@ -13,6 +16,7 @@ class DescServiceBody extends StatelessWidget {
     required this.data,
   });
   final DatumService data;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -29,22 +33,33 @@ class DescServiceBody extends StatelessWidget {
             ServiceType(
               data: data,
             ),
-            const CustomeInfosServiceItems(
+            CustomeInfosServiceItems(
               date: 'احجز تاريخاً للخدمة',
-              location: 'تحديد الموقع',
+              onPressedDate: () async {
+                await showDatePicker(
+                  context: context,
+                  firstDate: DateTime.now(),
+                  lastDate: DateTime(2034),
+                );
+              },
               time: 'اختيار الوقت',
+              onPressedTime: () async {
+                await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                );
+              },
+              location: 'تحديد الموقع',
             ),
             const DisplayLocation(),
-
             const SizedBox(
               height: 16,
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'رسوم الفحص :${data.price}',
+                  'رسوم الفحص: ${data.price} ل.س ',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -71,10 +86,23 @@ class DescServiceBody extends StatelessWidget {
               height: 16,
             ),
             CustomButton(
-              title: 'حجز',
-              onTap: () {},
+              title: 'تقدم',
+              onTap: () {
+                Future.delayed(
+                  const Duration(microseconds: 250),
+                  () {
+                    g.Get.to(
+                      () => FreelancerInfosView(
+                        expert: data.expert,
+                      ),
+                      transition: g.Transition.fadeIn,
+                      duration: kDurationTransition,
+                    );
+                  },
+                );
+              },
               width: MediaQuery.of(context).size.width,
-            )
+            ),
           ],
         ),
       ),
