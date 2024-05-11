@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/booked_services_list_view.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/bookmark_view.dart';
-import 'package:freelancer_app/features/home/presentation/view/home_view.dart';
+import 'package:freelancer_app/features/bookmark/presentation/view/bookmark_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/fetch_book_services/booked_services_list_view.dart';
+import 'package:freelancer_app/features/main/presentation/view/home/home_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view/profile_view.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 

@@ -17,13 +17,14 @@ class CustomeSearchArrowBackBar extends StatelessWidget {
           width: 300,
         ),
         IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: SvgPicture.asset(
-              'assets/images/img_arrow_right.svg',
-              width: 34,
-            ),),
+          onPressed: () {
+            Get.back();
+          },
+          icon: SvgPicture.asset(
+            'assets/images/img_arrow_right.svg',
+            width: 34,
+          ),
+        ),
       ],
     );
   }

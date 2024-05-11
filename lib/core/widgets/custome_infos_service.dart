@@ -41,8 +41,8 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
             right: 4,
           ),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
                 widget.text,
@@ -53,6 +53,9 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
                 ),
                 maxLines: 2,
                 maxFontSize: 14,
+              ),
+              const SizedBox(
+                width: 4,
               ),
               Icon(
                 widget.icon,
