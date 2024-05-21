@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/constants/app_colors.dart';
+import 'package:freelancer_app/core/constants/app_images.dart';
 
 class SlidingText extends StatelessWidget {
   const SlidingText({
@@ -12,15 +14,21 @@ class SlidingText extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: slidingAnimation,
-      builder: (context,_) =>  SlideTransition(
+      builder: (context, _) => SlideTransition(
         position: slidingAnimation,
-        child: const Text(
-          'Service Provider',
-          style: TextStyle(
-            fontWeight: FontWeight.w800,
-            fontSize: 34,
-            color: Colors.white,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(AppImages.splash),
+            const Text(
+              'Freelancer',
+              style: TextStyle(
+                fontFamily: 'Ribeye',
+                fontSize: 48,
+                color: AppColors.white,
+              ),
+            ),
+          ],
         ),
       ),
     );
