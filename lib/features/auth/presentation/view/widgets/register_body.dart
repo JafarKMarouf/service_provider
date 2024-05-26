@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freelancer_app/core/constants/app_colors.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/auth/presentation/view/email_verify_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
@@ -66,50 +69,68 @@ class _RegisterBodyState extends State<RegisterBody> {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: loading,
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: 30,
-              horizontal: 20,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const RegisterForm(),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          g.Get.to(
-                            () => const LoginView(),
-                            transition: g.Transition.fadeIn,
-                            duration: kDurationTransition,
-                          );
-                        },
-                        child: const Text(
-                          'تسجيل الدخول',
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                      const Text(
-                        'لديك حساب بالفعل؟',
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 5.5,
+                    ),
+                    const Expanded(
+                      child: Text(
+                        "إنشاء حساب",
                         style: TextStyle(
-                          fontSize: 16,
-                          color: Color(0xff9E9D9D),
+                          fontFamily: 'Poppins SemiBold',
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26,
                         ),
-                        textAlign: TextAlign.end,
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    const Expanded(
+                      flex: 4,
+                      child: RegisterForm(),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              g.Get.to(
+                                () => const LoginView(),
+                                transition: g.Transition.fadeIn,
+                                duration: kDurationTransition,
+                              );
+                            },
+                            child: const Text(
+                              'تسجيل الدخول',
+                              style: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins SemiBold',
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                          const Text(
+                            'لديك حساب بالفعل؟',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: AppColors.dustyGray,
+                            ),
+                            textAlign: TextAlign.end,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

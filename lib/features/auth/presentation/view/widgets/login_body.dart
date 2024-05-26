@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freelancer_app/core/constants/app_colors.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/data/models/user_model/user.dart';
@@ -33,9 +34,7 @@ class _LoginBodyState extends State<LoginBody> {
               content: Text(
                 state.errorMessage,
               ),
-              duration: const Duration(
-                seconds: 3,
-              ),
+              duration: const Duration(seconds: 3),
             ),
           );
         } else if (state is AuthSuccess) {
@@ -65,53 +64,82 @@ class _LoginBodyState extends State<LoginBody> {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: loading,
-          child: Container(
-            padding: const EdgeInsets.only(
-              top: 120,
-              bottom: 30,
-              left: 24,
-              right: 24,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const LoginForm(),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Get.to(
-                            () => const RegisterView(),
-                            transition: g.Transition.fadeIn,
-                          );
-                        },
-                        child: const Text(
-                          'إنشاء حساب',
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                      const Text(
-                        'ليس لديك حساب؟',
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 3.5,
+                    ),
+                    const Expanded(
+                      child: Text(
+                        "تسجيل الدخول",
                         style: TextStyle(
-                          fontSize: 16,
-                          color: Color(
-                            0xff9E9D9D,
-                          ),
+                          fontFamily: 'Poppins SemiBold',
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26,
                         ),
-                        textAlign: TextAlign.end,
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        children: [
+                          const LoginForm(),
+                          const SizedBox(height: 10),
+                          InkWell(
+                            onTap: () {},
+                            child: const Text(
+                              'أعد تعيين كلمة السر',
+                              style: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Get.to(
+                                () => const RegisterView(),
+                                transition: g.Transition.fadeIn,
+                              );
+                            },
+                            child: const Text(
+                              'إنشاء حساب',
+                              style: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins SemiBold',
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                          const Text(
+                            'ليس لديك حساب؟',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: AppColors.dustyGray,
+                            ),
+                            textAlign: TextAlign.end,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

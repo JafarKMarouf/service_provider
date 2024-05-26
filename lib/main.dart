@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
@@ -71,7 +70,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.light,
-          fontFamily: 'Poppins',
+          fontFamily: 'Poppins Regular',
           primaryColorLight: kPrimaryColor,
           applyElevationOverlayColor: true,
         ),

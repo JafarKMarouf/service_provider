@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/constants/app_colors.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 
 class CustomeTextFormField extends StatelessWidget {
@@ -7,15 +8,15 @@ class CustomeTextFormField extends StatelessWidget {
   final TextInputType type;
   final String? title;
   final bool isSuffix;
-  final bool? isObscure;
-  final IconData? suffixIcon;
-  final IconData? prefixIcon;
+  final bool isObscure;
   final String? prefixText;
   final String? Function(String?)? validate;
   final void Function(String)? onChange;
   final String? Function(String?)? onSubmit;
   final VoidCallback? onPressedSuffix;
   final bool dir;
+  final Widget? suffix;
+  final Widget? prefix;
 
   const CustomeTextFormField({
     super.key,
@@ -23,72 +24,56 @@ class CustomeTextFormField extends StatelessWidget {
     this.title,
     this.customController,
     this.hintText,
-    this.prefixIcon,
     this.prefixText,
     required this.type,
     required this.isSuffix,
-    this.suffixIcon,
-    this.isObscure,
+    this.isObscure = false,
     this.onPressedSuffix,
     this.onChange,
     this.onSubmit,
     this.dir = true,
+    this.prefix,
+    this.suffix,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: isObscure ?? false,
-      style: TextStyle(color: Colors.grey[800]),
-      decoration: InputDecoration(
-        prefixText: prefixText,
-        hintText: hintText,
-        hintTextDirection: dir ? TextDirection.rtl : TextDirection.ltr,
-        filled: true,
-        fillColor: Colors.grey[200],
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        border: buildBorder(),
-        enabledBorder: buildBorder(Colors.blueGrey[200]),
-        focusedBorder: buildBorder(kPrimaryColor),
-        prefixIcon: Icon(
-          prefixIcon,
-          color: const Color(0xff9E9D9D),
-        ),
-        suffixIcon: (isSuffix)
-            ? IconButton(
-          onPressed: onPressedSuffix,
-          icon: Icon(
-            suffixIcon,
-            color: Colors.grey[600],
-            size: 20,
-          ),
-        )
-            : null,
-        hintStyle: const TextStyle(
-          // color: Colors.black,
-          fontSize: 16,
-        ),
-      ),
+      style: const TextStyle(color: AppColors.primary),
+      obscureText: isObscure,
       cursorColor: kPrimaryColor,
       controller: customController,
       keyboardType: type,
       onChanged: onChange,
-
-      // style: const TextStyle(color: Colors.black),
       onFieldSubmitted: onSubmit,
       validator: validate,
-      // validator: (){
-      //
-      // },
+      decoration: InputDecoration(
+        prefixText: prefixText,
+        filled: true,
+        fillColor: AppColors.filledForm,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        border: buildBorder(),
+        enabledBorder: buildBorder(const Color(0xFFFAFAFA)),
+        focusedBorder: buildBorder(kPrimaryColor),
+        prefixIcon: prefix,
+        suffixIcon: suffix,
+        hintTextDirection: dir ? TextDirection.rtl : TextDirection.ltr,
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          color: AppColors.dustyGray,
+          fontSize: 14,
+        ),
+      ),
     );
   }
 }
 
 OutlineInputBorder buildBorder([color]) {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(
-      12,
+    borderRadius: BorderRadius.circular(12),
+    borderSide: BorderSide(
+      color: color ?? const Color(0xffFAFAFA),
     ),
-    borderSide: BorderSide(color: color ?? Colors.white),
   );
 }

@@ -62,17 +62,25 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/vectors/  
-  
+    - assets/vectors/
+
   fonts:
-    - family: Poppins
+    - family: Poppins Regular
+      fonts:
+        - asset: assets/fonts/PoppinsRegular.ttf
+
+    - family: Poppins Light
       fonts:
         - asset: assets/fonts/PoppinsLight.ttf
+
+    - family: Poppins Medium
+      fonts:
         - asset: assets/fonts/PoppinsMedium.ttf
-        - asset: assets/fonts/PoppinsRegular.ttf
+
+    - family: Poppins SemiBold
+      fonts:
         - asset: assets/fonts/PoppinsSemiBold.ttf
-        
+
     - family: Ribeye
       fonts:
         - asset: assets/fonts/Ribeye-Regular.ttf
-

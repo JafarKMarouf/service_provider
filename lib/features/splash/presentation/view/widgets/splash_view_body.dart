@@ -24,7 +24,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     initSlidingAnimation();
-    // _loadingUserInfo();
+    loadingUserInfo();
   }
 
   @override
@@ -36,33 +36,26 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
-      child: Center(
-        child: SlidingText(
-          slidingAnimation: slidingAnimation,
-        ),
-      ),
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+      child: SlidingText(slidingAnimation: slidingAnimation),
     );
   }
 
   void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(
-        seconds: 3,
-      ),
+      duration: const Duration(seconds: 2),
     );
 
     slidingAnimation = Tween<Offset>(
-      begin: const Offset(-0, 6),
+      begin: const Offset(-0, 2),
       end: Offset.zero,
-    ).animate(
-      animationController,
-    );
+    ).animate(animationController);
     animationController.forward();
   }
 
-  _loadingUserInfo() async {
+  void loadingUserInfo() async {
     token = await ApiService.getToken() ?? '';
     if (token == '') {
       navigateToLogin();

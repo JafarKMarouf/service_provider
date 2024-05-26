@@ -130,7 +130,7 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                         isSuffix: false,
                         dir: false,
                         hintText: '$email',
-                        prefixIcon: Icons.email,
+                        // prefixIcon: Icons.email,
                         customController: emailAddress,
                         onChange: (val) {
                           emailAddress.text = val;

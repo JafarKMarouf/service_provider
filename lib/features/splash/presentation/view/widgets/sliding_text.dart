@@ -17,7 +17,7 @@ class SlidingText extends StatelessWidget {
       builder: (context, _) => SlideTransition(
         position: slidingAnimation,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(AppImages.splash),
             const Text(
