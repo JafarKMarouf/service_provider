@@ -8,29 +8,17 @@ class BookmarkServicesBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(
-        right: 16,
-        left: 16,
-        top: 45,
-        bottom: 20,
-      ),
+      padding: EdgeInsets.only(right: 16, left: 16, top: 45, bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           CustomeSearchArrowBackBar(),
-          SizedBox(
-            height: 16,
-          ),
-           Text(
+          SizedBox(height: 16),
+          Text(
             'الخدمات المرجعية',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w800,
-            ),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
           ),
-           SizedBox(
-            height: 16,
-          ),
+          SizedBox(height: 16),
         ],
       ),
     );

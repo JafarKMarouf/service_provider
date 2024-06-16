@@ -15,9 +15,7 @@ class CustomeFreelancerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(200),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(200)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(240),
         child: CachedNetworkImage(
@@ -26,9 +24,7 @@ class CustomeFreelancerImage extends StatelessWidget {
             return Shimmer.fromColors(
               baseColor: Colors.grey[300]!,
               highlightColor: Colors.grey[100]!,
-              child: const CircleAvatar(
-                radius: 90,
-              ),
+              child: const CircleAvatar(radius: 90),
             );
           },
           errorWidget: (context, url, error) {

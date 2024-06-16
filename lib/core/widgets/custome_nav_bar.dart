@@ -32,10 +32,7 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
           selectedIndex: currentIndex,
           color: Colors.grey.shade700,
           tabBackgroundColor: kPrimaryColor,
-          padding: const EdgeInsets.symmetric(
-            vertical: 4,
-            horizontal: 8,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           gap: 20,
           onTabChange: (val) => {
             setState(() {

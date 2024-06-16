@@ -36,9 +36,7 @@ class BookingInfosBody extends StatelessWidget {
               time: formatTime,
             ),
             const DisplayLocation(),
-            CustomeBookServiceInfo(
-              data: data,
-            ),
+            CustomeBookServiceInfo(data: data),
             CustomButton(
               title: 'تقدم',
               onTap: () {},

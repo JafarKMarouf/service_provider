@@ -42,9 +42,7 @@ class FreelancerInfosBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          CustomeServiceBar(
-            title: '${freelanceInfos?.name ?? expert?.name}',
-          ),
+          CustomeServiceBar(title: '${freelanceInfos?.name ?? expert?.name}'),
           const SizedBox(
             height: 16,
           ),

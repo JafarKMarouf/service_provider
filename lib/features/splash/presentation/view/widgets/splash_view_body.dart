@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
@@ -49,7 +51,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     );
 
     slidingAnimation = Tween<Offset>(
-      begin: const Offset(-0, 2),
+      begin: const Offset(0, 2),
       end: Offset.zero,
     ).animate(animationController);
     animationController.forward();
@@ -57,6 +59,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void loadingUserInfo() async {
     token = await ApiService.getToken() ?? '';
+    log('====================token===$token===============');
     if (token == '') {
       navigateToLogin();
     } else {
@@ -66,9 +69,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToLogin() {
     Future.delayed(
-      const Duration(
-        milliseconds: 2000,
-      ),
+      const Duration(milliseconds: 2000),
       () {
         g.Get.offAll(
           () => const LoginView(),
@@ -81,9 +82,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToHome() {
     Future.delayed(
-      const Duration(
-        milliseconds: 2000,
-      ),
+      const Duration(milliseconds: 2000),
       () {
         g.Get.offAll(
           () => const CustomeNavBar(),

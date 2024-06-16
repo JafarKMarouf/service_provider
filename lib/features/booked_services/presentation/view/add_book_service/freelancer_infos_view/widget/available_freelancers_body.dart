@@ -8,7 +8,6 @@ import 'package:freelancer_app/features/booked_services/presentation/view/add_bo
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/custome_freelancer_image.dart';
 import 'package:get/get.dart' as g;
 
-
 class AvailableFreelancerBody extends StatelessWidget {
   const AvailableFreelancerBody({super.key});
 
@@ -43,8 +42,7 @@ class AvailableFreelancerBody extends StatelessWidget {
               scrollDirection: Axis.vertical,
               // shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-              ),
+                  crossAxisCount: 3),
               padding: const EdgeInsets.only(
                 top: 15,
                 bottom: 10,
@@ -91,20 +89,16 @@ class AvailableFreelancerBody extends StatelessWidget {
                               color: Colors.grey.shade700,
                             ),
                             Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                5,
-                                (index) => const Icon(
-                                  Icons.star,
-                                  size: 16,
-                                  color: kPrimaryColor,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: List.generate(
+                                    5,
+                                    (index) => const Icon(
+                                          Icons.star,
+                                          size: 16,
+                                          color: kPrimaryColor,
+                                        ))),
+                            const SizedBox(height: 5),
                           ],
                         )
                       ],

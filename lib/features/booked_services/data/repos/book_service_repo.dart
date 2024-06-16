@@ -4,16 +4,10 @@ import 'package:freelancer_app/features/booked_services/data/models/book_service
 
 abstract class BookServiceRepo {
   Future<Either<Failure, BookService>> fetchAllBookServices();
-  
-  Future<Either<Failure, BookService>> showOneBookService({
-    required int id,
-  });
 
-  Future<Either<Failure, BookService>> updateBookService({
-    required int id,
-  });
+  Future<Either<Failure, BookService>> showOneBookService({required int id});
 
-  Future<Either<Failure, BookService>> deleteBookService({
-    required int id,
-  });
+  Future<Either<Failure, BookService>> updateBookService({required int id});
+
+  Future<Either<Failure, BookService>> deleteBookService({required int id});
 }

@@ -16,10 +16,7 @@ class BookServiceType extends StatelessWidget {
       child: Card(
         elevation: .6,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 32,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
           child: SizedBox(
             width: 160,
             height: 160,
@@ -27,34 +24,36 @@ class BookServiceType extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: CachedNetworkImage(
-                    fit: BoxFit.fill,
-                    imageUrl: '${data.service!.photo}',
-                    placeholder: (context, url) {
-                      return Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: 90,
-                          height: 90,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
+                  child: Card(
+                    color: kPrimaryColor,
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl: '${data.service!.photo}',
+                      placeholder: (context, url) {
+                        return Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(
+                            width: 90,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              // color: kPrimaryColor,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    errorWidget: (context, url, error) {
-                      return const Icon(
-                        Icons.error,
-                        color: kPrimaryColor,
-                      );
-                    },
+                        );
+                      },
+                      errorWidget: (context, url, error) {
+                        return const Icon(
+                          Icons.error,
+                          color: kPrimaryColor,
+                        );
+                      },
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 8.0,
-                ),
+                const SizedBox(height: 8.0),
                 Text(
                   '${data.service!.serviceName}',
                   style: const TextStyle(
@@ -62,9 +61,7 @@ class BookServiceType extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(
-                  height: 8.0,
-                ),
+                const SizedBox(height: 8.0),
                 Text(
                   '${data.service!.price.toString()} ل.س',
                   style: const TextStyle(

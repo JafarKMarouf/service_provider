@@ -111,7 +111,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
             CustomeTextFormField(
               hintText: 'أعد كتابة كلمة السر',
-              customController: password,
+              customController: passwordConfirm,
               type: TextInputType.visiblePassword,
               isSuffix: true,
               isObscure: !passwordVisibleConfirm,

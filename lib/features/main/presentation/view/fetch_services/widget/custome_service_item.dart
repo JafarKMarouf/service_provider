@@ -17,15 +17,14 @@ class CustomeServiceItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => ServiceInfosView(
-            data: data,
-          ),
+          () => ServiceInfosView(data: data),
           transition: Transition.fadeIn,
           duration: kDurationTransition,
         );
       },
       child: Card(
         elevation: 0,
+        // color: kPrimaryColor,
         child: Column(
           children: [
             Expanded(

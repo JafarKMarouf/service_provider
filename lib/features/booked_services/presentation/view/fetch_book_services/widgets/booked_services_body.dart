@@ -15,30 +15,17 @@ class BookedServicesBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        right: 16,
-        left: 16,
-        top: 45,
-        bottom: 20,
-      ),
+      padding: const EdgeInsets.only(right: 16, left: 16, top: 45, bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const CustomeSearchArrowBackBar(),
-          const SizedBox(
-            height: 16,
-          ),
+          const SizedBox(height: 16),
           const Text(
             'الخدمات المحجوزة',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w800,
-            ),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
           ),
-          const SizedBox(
-            height: 16,
-          ),
+          const SizedBox(height: 16),
           BlocBuilder<BookServiceCubit, BookServiceState>(
             builder: (context, state) {
               if (state is BookServiceSuccess) {
@@ -48,18 +35,14 @@ class BookedServicesBody extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     itemCount: booked.length,
                     itemBuilder: (context, index) {
-                      return OnGoingList(
-                        data: booked[index],
-                      );
+                      return OnGoingList(data: booked[index]);
                     },
                   ),
                 );
               } else if (state is BookServiceFailure) {
                 return SizedBox(
                   height: MediaQuery.of(context).size.height * .5,
-                  child: Center(
-                    child: Text(state.errMessage),
-                  ),
+                  child: Center(child: Text(state.errMessage)),
                 );
               } else {
                 return Expanded(
@@ -68,11 +51,7 @@ class BookedServicesBody extends StatelessWidget {
                     highlightColor: Colors.grey[100]!,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        right: 2,
-                        left: 4,
-                        top: 8,
-                        bottom: 2,
-                      ),
+                          right: 2, left: 4, top: 8, bottom: 2),
                       child: ListView.builder(
                         padding: EdgeInsets.zero,
                         itemCount: 12,

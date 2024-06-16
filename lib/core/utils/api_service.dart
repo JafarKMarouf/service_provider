@@ -2,9 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiService {
-  final _baseUrl = 'http://192.168.1.6:8000/api/';
+  final _baseUrl = 'http://192.168.1.7:8000/api/';
 
   final Dio _dio;
+  // static var
+  // GetStorage
   static var storage = const FlutterSecureStorage();
   ApiService(this._dio);
 
@@ -17,9 +19,7 @@ class ApiService {
     _dio.options.headers['Authorization'] = 'Bearer $token';
 
     String uri = id == null ? '$_baseUrl$endPoint' : '$_baseUrl$endPoint$id';
-    var response = await _dio.get(
-      uri,
-    );
+    var response = await _dio.get(uri);
     return response.data;
   }
 
@@ -45,7 +45,7 @@ class ApiService {
     return await storage.read(key: 'token');
   }
 
-  Future<void> removeToken() async {
+  static Future<void> removeToken() async {
     await storage.delete(key: 'token');
   }
 

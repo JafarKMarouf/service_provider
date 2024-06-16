@@ -11,9 +11,7 @@ class BookingInfosView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BookingInfosBody(
-        data: data,
-      ),
+      body: BookingInfosBody(data: data),
     );
   }
 }

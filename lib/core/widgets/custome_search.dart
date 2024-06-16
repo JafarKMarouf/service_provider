@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/constants/app_colors.dart';
+import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 
 class CustomeSearch extends StatelessWidget {
@@ -12,23 +14,14 @@ class CustomeSearch extends StatelessWidget {
       child: TextField(
         cursorColor: kPrimaryColor,
         textDirection: TextDirection.rtl,
-        style: TextStyle(
-          color: Colors.grey[800],
-        ),
+        style: TextStyle(color: Colors.grey[800]),
         decoration: InputDecoration(
-          suffixIcon: Image.asset(
-            'assets/png/img_search_gray_300.png',
-            color: Colors.grey,
-          ),
-          prefixIcon: Image.asset(
-            'assets/png/img_curved_filters.png',
-          ),
+          prefixIcon: Image.asset(AppImages.filters),
+          suffixIcon: Image.asset(AppImages.search, color: AppColors.primary),
           hintTextDirection: TextDirection.rtl,
           hintText: 'ابحث عن خدمة',
           contentPadding: const EdgeInsets.only(top: 8),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(18),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Colors.white)),

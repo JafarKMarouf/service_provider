@@ -6,7 +6,7 @@ import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  String? name ;
+  String? name;
 
   AuthCubit(this.authRepoImpl) : super(AuthInitial());
 
@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
       password: password,
     );
-     // name = await ApiService.getUserName();
+    // name = await ApiService.getUserName();
     // name = await authRepoImpl.getUser();
     result.fold(
       (failure) {
@@ -87,16 +87,12 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> logout() async {
-    emit(AuthLoading());
+    // emit(AuthLoading());
     var result = await authRepoImpl.logout();
 
     return result.fold(
-      (fail) => emit(
-        AuthFailure(errorMessage: fail.errMessage),
-      ),
-      (sucess) => emit(
-        AuthSuccess(userModel: sucess),
-      ),
+      (fail) => emit(AuthFailure(errorMessage: fail.errMessage)),
+      (sucess) => emit(AuthSuccess(userModel: sucess)),
     );
   }
 }

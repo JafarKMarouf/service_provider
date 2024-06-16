@@ -36,11 +36,7 @@ class AuthRepoImpl implements AuthRepo {
           ServerFailure.fromDioError(e),
         );
       }
-      return left(
-        ServerFailure(
-          e.toString(),
-        ),
-      );
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -70,15 +66,9 @@ class AuthRepoImpl implements AuthRepo {
       return right(user);
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioError(e),
-        );
+        return left(ServerFailure.fromDioError(e));
       }
-      return left(
-        ServerFailure(
-          e.toString(),
-        ),
-      );
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -91,14 +81,10 @@ class AuthRepoImpl implements AuthRepo {
       return right(UserModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioError(e),
-        );
+        return left(ServerFailure.fromDioError(e));
       }
       return left(
-        ServerFailure(
-          e.toString(),
-        ),
+        ServerFailure(e.toString()),
       );
     }
   }
@@ -119,39 +105,23 @@ class AuthRepoImpl implements AuthRepo {
       return right(UserModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioError(e),
-        );
+        return left(ServerFailure.fromDioError(e));
       }
-      return left(
-        ServerFailure(
-          e.toString(),
-        ),
-      );
+      return left(ServerFailure(e.toString()));
     }
   }
 
   @override
   Future<Either<Failure, UserModel>> logout() async {
     try {
-      var data = await apiService.post(
-        endPoint: 'logout',
-      );
-      apiService.removeToken();
-      return right(
-        UserModel.fromJson(data),
-      );
+      ApiService.removeToken();
+      var data = await apiService.post(endPoint: 'logout');
+      return right(UserModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioError(e),
-        );
+        return left(ServerFailure.fromDioError(e));
       }
-      return left(
-        ServerFailure(
-          e.toString(),
-        ),
-      );
+      return left(ServerFailure(e.toString()));
     }
   }
 

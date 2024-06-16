@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
 import 'package:shimmer/shimmer.dart';
@@ -23,13 +26,9 @@ class CustomeHomeBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   color: Colors.grey[200],
                 ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications_active,
-                    size: 30,
-                    color: kPrimaryColor,
-                  ),
+                child: Image.asset(
+                  AppImages.notification,
+                  width: 30,
                 ),
               )
             : Shimmer.fromColors(
@@ -67,9 +66,7 @@ class CustomeHomeBar extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                const SizedBox(
-                  height: 3,
-                ),
+                const SizedBox(height: 3),
                 !loading
                     ? Text(
                         customerInfos!.customer!.name!,
@@ -90,9 +87,7 @@ class CustomeHomeBar extends StatelessWidget {
                       ),
               ],
             ),
-            const SizedBox(
-              width: 5,
-            ),
+            const SizedBox(width: 5),
             !loading
                 ? CircleAvatar(
                     radius: 32,
@@ -113,9 +108,7 @@ class CustomeHomeBar extends StatelessWidget {
                 : Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
-                    child: const CircleAvatar(
-                      radius: 38,
-                    ),
+                    child: const CircleAvatar(radius: 38),
                   ),
           ],
         )

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/show_book_service/booking_infos_view.dart';
@@ -22,9 +23,7 @@ class OnGoingList extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => BookingInfosView(
-            data: data,
-          ),
+          () => BookingInfosView(data: data),
           transition: Transition.fadeIn,
           duration: kDurationTransition,
         );
@@ -52,7 +51,7 @@ class OnGoingList extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SvgPicture.asset(
-                        'assets/images/img_bookmark.svg',
+                        AppImages.bookmarksvg,
                         height: 34,
                         colorFilter: const ColorFilter.mode(
                           kPrimaryColor,
@@ -75,9 +74,7 @@ class OnGoingList extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        width: 16.0,
-                      ),
+                      const SizedBox(width: 16.0),
                       Container(
                         width: 48,
                         height: 48,
@@ -94,7 +91,7 @@ class OnGoingList extends StatelessWidget {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  color:  Colors.white,
+                                  color: Colors.white,
                                 ),
                               ),
                             );
@@ -109,9 +106,7 @@ class OnGoingList extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  const SizedBox(height: 8),
                   const SizedBox(
                     child: Divider(
                       color: Colors.grey,

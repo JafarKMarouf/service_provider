@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
@@ -43,51 +45,30 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        right: 8,
-        left: 8,
-        top: 30,
-        bottom: 15,
-      ),
+      padding: const EdgeInsets.only(right: 8, left: 8, top: 30, bottom: 15),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 8,
-            ),
+            const SizedBox(height: 8),
             BlocBuilder<ProfileCubit, ProfileState>(
               builder: (context, state) {
                 if (state is ProfileSuccess) {
-                  customerInfo.addAll(
-                    state.profileModel.customerInfos!.toList(),
-                  );
+                  customerInfo
+                      .addAll(state.profileModel.customerInfos!.toList());
+                  log('${customerInfo[0].customer}');
+                  return CustomeHomeBar(customerInfos: customerInfo[0]);
                 }
-                return (state is ProfileSuccess)
-                    ? CustomeHomeBar(
-                        customerInfos: customerInfo[0],
-                      )
-                    : const CustomeHomeBar(
-                        loading: true,
-                      );
+                return const CustomeHomeBar(loading: true);
               },
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            CustomeSearch(
-              width: MediaQuery.of(context).size.width,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 15),
+            CustomeSearch(width: MediaQuery.of(context).size.width),
+            const SizedBox(height: 16),
             FetchServices(
               title: 'الخدمات المتاحة',
               onPressed: () {
                 g.Get.to(
-                  () => ServicesListView(
-                    data: services,
-                    loading: !loading,
-                  ),
+                  () => ServicesListView(data: services, loading: !loading),
                   transition: g.Transition.fadeIn,
                   duration: kDurationTransition,
                 );
@@ -97,15 +78,11 @@ class _HomeBodyState extends State<HomeBody> {
               builder: (context, state) {
                 if (state is ServiceSuccess) {
                   services.addAll(state.service.data!.toList());
-                  return ServiceGridView(
-                    data: services,
-                  );
+                  return ServiceGridView(data: services);
                 } else if (state is ServiceFailure) {
                   return SizedBox(
                     height: MediaQuery.of(context).size.height * .15,
-                    child: Center(
-                      child: Text(state.errMessage),
-                    ),
+                    child: Center(child: Text(state.errMessage)),
                   );
                 } else {
                   return SizedBox(
@@ -139,9 +116,7 @@ class _HomeBodyState extends State<HomeBody> {
                 }
               },
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             FetchServices(
               title: 'الخدمات المحجوزة',
               onPressed: () {
@@ -152,22 +127,16 @@ class _HomeBodyState extends State<HomeBody> {
                 );
               },
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             BlocBuilder<BookServiceCubit, BookServiceState>(
               builder: (context, state) {
                 if (state is BookServiceSuccess) {
                   booked.addAll(state.bookService.data!.toList());
-                  return OnGoingListView(
-                    data: booked,
-                  );
+                  return OnGoingListView(data: booked);
                 } else if (state is BookServiceFailure) {
                   return SizedBox(
                     height: MediaQuery.of(context).size.height * .15,
-                    child: Center(
-                      child: Text(state.errMessage),
-                    ),
+                    child: Center(child: Text(state.errMessage)),
                   );
                 } else {
                   return SizedBox(
