@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -28,6 +30,11 @@ class ApiService {
     dynamic body,
   }) async {
     String? token = await getToken();
+
+    log('===========endPoint : $_baseUrl$endPoint======');
+    log('===========token : $token======');
+    log('===========body: $body========');
+
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
     var response = await _dio.post(

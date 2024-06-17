@@ -31,9 +31,7 @@ class _LoginBodyState extends State<LoginBody> {
           loading = false;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(
-                state.errorMessage,
-              ),
+              content: Text(state.errorMessage),
               duration: const Duration(seconds: 3),
             ),
           );
@@ -43,9 +41,7 @@ class _LoginBodyState extends State<LoginBody> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('${user.name} is Logged Successfully'),
-              duration: const Duration(
-                seconds: 3,
-              ),
+              duration: const Duration(seconds: 3),
             ),
           );
           Future.delayed(
