@@ -17,8 +17,8 @@ class CustomeServiceBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(AppImages.bookmark),
-            Image.asset(AppImages.save),
+            SvgPicture.asset(AppImages.bookmarksvg, height: 24, width: 24),
+            SvgPicture.asset(AppImages.savesvg, height: 24, width: 24),
           ],
         ),
         Text(

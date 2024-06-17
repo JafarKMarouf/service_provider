@@ -5,7 +5,7 @@ import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_text.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
 
-import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/custome_freelancer_image.dart';
+import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
 import 'package:get/get.dart' as g;
 
 class AvailableFreelancerBody extends StatelessWidget {

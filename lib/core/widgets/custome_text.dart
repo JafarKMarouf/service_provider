@@ -5,13 +5,15 @@ class CustomeText extends StatelessWidget {
     super.key,
     required this.text,
     required this.size,
-    required this.weight,
+    this.weight,
+    this.fontFamily,
     this.color = Colors.black,
   });
   final String text;
   final double size;
-  final FontWeight weight;
+  final FontWeight? weight;
   final Color color;
+  final String? fontFamily;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -20,6 +22,7 @@ class CustomeText extends StatelessWidget {
         fontSize: size,
         fontWeight: weight,
         color: color,
+        fontFamily: fontFamily,
       ),
       overflow: TextOverflow.ellipsis,
       // maxLines: 3,

@@ -7,7 +7,7 @@ import 'package:freelancer_app/features/booked_services/data/models/book_service
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/booking_confirmation/booking_confirmation_view.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/expert.dart'
     as service;
-import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/custome_freelancer_image.dart';
+import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
 import 'package:get/get.dart' as g;
 
 class FreelancerInfosBody extends StatelessWidget {

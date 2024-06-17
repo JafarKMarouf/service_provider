@@ -17,6 +17,7 @@ class CustomeTextFormField extends StatelessWidget {
   final bool dir;
   final Widget? suffix;
   final Widget? prefix;
+  final bool readOnly;
 
   const CustomeTextFormField({
     super.key,
@@ -34,11 +35,13 @@ class CustomeTextFormField extends StatelessWidget {
     this.dir = true,
     this.prefix,
     this.suffix,
+    this.readOnly = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly,
       style: const TextStyle(color: AppColors.primary),
       obscureText: isObscure,
       cursorColor: kPrimaryColor,
@@ -62,7 +65,7 @@ class CustomeTextFormField extends StatelessWidget {
         hintText: hintText,
         hintStyle: const TextStyle(
           color: AppColors.dustyGray,
-          fontSize: 14,
+          fontSize: 16,
         ),
       ),
     );

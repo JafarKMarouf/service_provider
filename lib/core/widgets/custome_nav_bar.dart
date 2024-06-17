@@ -21,7 +21,7 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
     HomeView(),
   ];
 
-  int currentIndex = 3;
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
