@@ -54,7 +54,7 @@ class _HomeBodyState extends State<HomeBody> {
               builder: (context, state) {
                 if (state is ProfileSuccess) {
                   customerInfo
-                      .addAll(state.profileModel.customerInfos!.toList());
+                      .addAll(state.profileModel!.customerInfos!.toList());
                   log('${customerInfo[0].customer}');
                   return CustomeHomeBar(customerInfos: customerInfo[0]);
                 }

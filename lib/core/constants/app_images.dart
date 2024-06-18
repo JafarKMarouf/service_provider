@@ -11,6 +11,8 @@ class AppImages {
   static const String notification = '$routeImage/notification.png';
   static const String lock = '$routeImage/lock.png';
   static const String email = '$routeImage/email.png';
+  static const String profile = '$routeImage/default_profile.png';
+
 
   static const String bookmarksvg = '$routeVector/bookmark.svg';
   static const String savesvg = '$routeVector/save.svg';

@@ -34,14 +34,15 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthCubit(AuthRepoImpl(ApiService(Dio()))),
         ),
         BlocProvider(
-            create: (context) =>
-                ProfileCubit(ProfileRepoImpl(ApiService(Dio())))),
+          create: (context) => ProfileCubit(ProfileRepoImpl(ApiService(Dio()))),
+        ),
         BlocProvider(
-            create: (context) =>
-                ServiceCubit(ServiceRepoImpl(ApiService(Dio())))),
+          create: (context) => ServiceCubit(ServiceRepoImpl(ApiService(Dio()))),
+        ),
         BlocProvider(
-            create: (context) => BookServiceCubit(
-                BookServiceRepoImpl(apiService: ApiService(Dio()))))
+          create: (context) => BookServiceCubit(
+              BookServiceRepoImpl(apiService: ApiService(Dio()))),
+        )
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -76,7 +76,7 @@ OutlineInputBorder buildBorder([color]) {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(12),
     borderSide: BorderSide(
-      color: color ?? const Color(0xffFAFAFA),
+      color: color ?? const Color(0xffFAFAFA)
     ),
   );
 }

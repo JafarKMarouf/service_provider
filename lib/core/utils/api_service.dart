@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiService {
-  final _baseUrl = 'http://192.168.1.7:8000/api/';
+  final _baseUrl = 'http://192.168.3.198:8000/api/';
 
   final Dio _dio;
   // static var
@@ -27,7 +27,7 @@ class ApiService {
 
   Future<Map<String, dynamic>> post({
     required String endPoint,
-    dynamic body,
+    Map<String, dynamic>? body,
   }) async {
     String? token = await getToken();
 

@@ -6,9 +6,7 @@ abstract class ProfileRepo {
   Future<Either<Failure, ProfileModel>> showProfile();
   Future<Either<Failure, ProfileModel>> updateProfile({
     required String userId,
-    String? email,
-    String? password,
-    String? photo,
+    Map<String, dynamic>? body,
   });
   // Future<Either<Failure, ProfileModel>> deleteProfile({required int id});
 }

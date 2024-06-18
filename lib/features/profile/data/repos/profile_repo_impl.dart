@@ -33,23 +33,18 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<Either<Failure, ProfileModel>> updateProfile({
     required String userId,
-    String? email,
-    String? password,
-    String? photo,
+    Map<String, dynamic>? body,
   }) async {
     try {
       var user = await apiService.post(
         endPoint: 'customer/profile/$userId',
-        body: {
-          'email': email ?? '',
-          // 'photo': photo ?? '',
-          // 'password': password ?? '',
-        },
+        body: body,
       );
       return right(ProfileModel.fromJson(user));
     } catch (e) {
-      log('==========exception :${e.toString()}========');
       if (e is DioException) {
+        log('==========exception :${e.toString()}========');
+
         return left(ServerFailure.fromDioError(e));
       }
       log('==========faile :${e.toString()}========');

@@ -23,8 +23,35 @@ class CustomeProfileBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(AppImages.bookmarksvg, height: 24, width: 24),
-            SvgPicture.asset(AppImages.savesvg, height: 24, width: 24),
+            !isLoading
+                ? SvgPicture.asset(AppImages.bookmarksvg, height: 30)
+                : Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      width: 35,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+            const SizedBox(width: 4),
+            !isLoading
+                ? SvgPicture.asset(AppImages.savesvg, height: 30)
+                : Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      width: 35,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
           ],
         ),
         !isLoading
@@ -41,21 +68,34 @@ class CustomeProfileBar extends StatelessWidget {
                 highlightColor: Colors.grey[100]!,
                 child: Container(
                   width: 80,
-                  height: 20,
+                  height: 25,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
                     color: Colors.white,
                   ),
                 ),
               ),
-        IconButton(
-          onPressed: onPressed,
-          icon: const Icon(
-            Icons.exit_to_app,
-            color: kPrimaryColor,
-            size: 32,
-          ),
-        )
+        !isLoading
+            ? IconButton(
+                onPressed: onPressed,
+                icon: const Icon(
+                  Icons.exit_to_app,
+                  color: kPrimaryColor,
+                  size: 32,
+                ),
+              )
+            : Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  width: 45,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color: Colors.white,
+                  ),
+                ),
+              ),
       ],
     );
   }

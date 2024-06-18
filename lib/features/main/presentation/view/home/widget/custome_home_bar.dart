@@ -93,16 +93,18 @@ class CustomeHomeBar extends StatelessWidget {
                     radius: 32,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50),
-                      child: CachedNetworkImage(
-                        imageUrl: customerInfos!.photo!,
-                        errorWidget: (context, url, error) {
-                          return const Icon(
-                            Icons.account_box,
-                            size: 48,
-                            color: kPrimaryColor,
-                          );
-                        },
-                      ),
+                      child: customerInfos!.photo != null
+                          ? CachedNetworkImage(
+                              imageUrl: customerInfos!.photo!,
+                              errorWidget: (context, url, error) {
+                                return const Icon(
+                                  Icons.account_box,
+                                  size: 48,
+                                  color: kPrimaryColor,
+                                );
+                              },
+                            )
+                          : Image.asset(AppImages.profile),
                     ),
                   )
                 : Shimmer.fromColors(
