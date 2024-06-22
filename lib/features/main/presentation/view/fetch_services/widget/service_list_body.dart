@@ -14,8 +14,8 @@ class ServiceListBody extends StatelessWidget {
   final List<DatumService> data;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ServiceCubit,ServiceState>(
-      builder:(context,state)=> Padding(
+    return BlocBuilder<ServiceCubit, ServiceState>(
+      builder: (context, state) => Padding(
         padding: const EdgeInsets.only(
           right: 16,
           left: 16,
@@ -40,11 +40,7 @@ class ServiceListBody extends StatelessWidget {
               height: 15,
             ),
             state is ServiceSuccess
-                ? Expanded(
-                    child: ServiceGridView(
-                      data: data,
-                    ),
-                  )
+                ? Expanded(child: ServiceGridView(data: data))
                 : Expanded(
                     child: Shimmer.fromColors(
                       baseColor: Colors.grey[300]!,

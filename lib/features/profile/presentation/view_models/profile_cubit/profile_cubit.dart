@@ -10,14 +10,10 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this.profileRepoImpl) : super(ProfileInitial());
-  // String name;
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode? autovalidateMod = AutovalidateMode.disabled;
   TextEditingController? emailAddress = TextEditingController();
   TextEditingController? password = TextEditingController();
-  // bool editEmail = true;
-  // bool editPassword = true;
-  // bool passwordVisible = false;
 
   final ProfileRepoImpl profileRepoImpl;
 
@@ -41,27 +37,10 @@ class ProfileCubit extends Cubit<ProfileState> {
       userId: userId.toString(),
       body: body,
     );
-    // log('==========result: $result===========');
     result.fold((fail) {
       emit(ProfileFailure(errMessage: fail.errMessage));
     }, (user) {
       emit(ProfileSuccess(profileModel: user));
     });
   }
-
-  // void updateEmail() {
-  //   editEmail = !editEmail;
-  //   emit(ProfileEditEmail());
-  //   // emit(const ProfileSuccess());
-  // }
-
-  // void updatePassword() {
-  //   editPassword = !editPassword;
-  //   emit(const ProfileSuccess());
-  // }
-
-  // void showPassword() {
-  //   passwordVisible = !passwordVisible;
-  //   emit(const ProfileSuccess());
-  // }
 }

@@ -1,14 +1,11 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiService {
-  final _baseUrl = 'http://192.168.3.198:8000/api/';
+  final _baseUrl = 'http://192.168.126.50:8000/api/';
 
   final Dio _dio;
-  // static var
-  // GetStorage
+
   static var storage = const FlutterSecureStorage();
   ApiService(this._dio);
 
@@ -30,10 +27,6 @@ class ApiService {
     Map<String, dynamic>? body,
   }) async {
     String? token = await getToken();
-
-    log('===========endPoint : $_baseUrl$endPoint======');
-    log('===========token : $token======');
-    log('===========body: $body========');
 
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';

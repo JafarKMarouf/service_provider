@@ -24,7 +24,6 @@ class CustomeServiceItem extends StatelessWidget {
       },
       child: Card(
         elevation: 0,
-        // color: kPrimaryColor,
         child: Column(
           children: [
             Expanded(

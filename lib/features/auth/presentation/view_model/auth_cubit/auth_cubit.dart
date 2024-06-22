@@ -17,20 +17,13 @@ class AuthCubit extends Cubit<AuthState> {
     required String password,
   }) async {
     emit(AuthLoading());
-    var result = await authRepoImpl.login(
-      email: email,
-      password: password,
-    );
-    // name = await ApiService.getUserName();
-    // name = await authRepoImpl.getUser();
+    var result = await authRepoImpl.login(email: email, password: password);
     result.fold(
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (user) {
-        emit(
-          AuthSuccess(userModel: user),
-        );
+        emit(AuthSuccess(userModel: user));
       },
     );
   }
@@ -48,7 +41,6 @@ class AuthCubit extends Cubit<AuthState> {
       password: password,
       passwordConfirm: passwordConfirm,
     );
-    // name = await authRepoImpl.getUser();
     result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) {
@@ -87,7 +79,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> logout() async {
-    // emit(AuthLoading());
+    emit(AuthLoading());
     var result = await authRepoImpl.logout();
 
     return result.fold(

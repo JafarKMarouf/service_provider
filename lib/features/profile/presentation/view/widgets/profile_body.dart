@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 
 import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
-import 'package:freelancer_app/features/profile/presentation/view/profile_view.dart';
+
 import 'package:freelancer_app/features/profile/presentation/view/widgets/custome_profile_bar.dart';
 import 'package:freelancer_app/features/profile/presentation/view/widgets/profile_success_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
@@ -35,7 +33,9 @@ class _ProfileBodyState extends State<ProfileBody> {
           listener: (context, state) {
             if (state is ProfileSuccess) {
               customerInfo = [];
-              customerInfo.addAll(state.profileModel!.customerInfos!.toList());
+              customerInfo.addAll(
+                state.profileModel!.customerInfos!.toList(),
+              );
             } else if (state is ProfileFailure) {
               Get.snackbar(
                 'faild',

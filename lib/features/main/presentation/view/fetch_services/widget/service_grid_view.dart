@@ -22,9 +22,7 @@ class ServiceGridView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 15, bottom: 10),
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return CustomeServiceItem(
-            data: data[index],
-          );
+          return CustomeServiceItem(data: data[index]);
         },
       ),
     );

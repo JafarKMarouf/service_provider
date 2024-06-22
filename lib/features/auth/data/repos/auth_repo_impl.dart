@@ -18,23 +18,17 @@ class AuthRepoImpl implements AuthRepo {
     try {
       var data = await apiService.post(
         endPoint: 'login',
-        body: {
-          'email': email,
-          'password': password,
-        },
+        body: {'email': email, 'password': password},
       );
       UserModel user = UserModel.fromJson(data);
 
       await ApiService.storeToken(user.data!.token!);
       await ApiService.storeUserId(user.data!.user!.id!.toString());
       await ApiService.storeUserName(user.data!.user!.name.toString());
-
       return right(user);
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioError(e),
-        );
+        return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
     }
@@ -46,7 +40,6 @@ class AuthRepoImpl implements AuthRepo {
     required String email,
     required String password,
     required String passwordConfirm,
-    // required String role,
   }) async {
     try {
       var data = await apiService.post(
@@ -75,17 +68,13 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, UserModel>> resend() async {
     try {
-      var data = await apiService.get(
-        endPoint: 'email_verification/send',
-      );
+      var data = await apiService.get(endPoint: 'email_verification/send');
       return right(UserModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
-      return left(
-        ServerFailure(e.toString()),
-      );
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -97,10 +86,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       var data = await apiService.post(
         endPoint: 'email_verification/verify',
-        body: {
-          'email': email,
-          'otp': otp,
-        },
+        body: {'email': email, 'otp': otp},
       );
       return right(UserModel.fromJson(data));
     } catch (e) {
@@ -124,8 +110,4 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-
-//   Future<String?> getUser() async {
-//     return await ApiService.getUserDetails();
-//   }
 }
