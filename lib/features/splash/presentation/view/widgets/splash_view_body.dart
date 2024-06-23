@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/constants/app_storage.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
+import 'package:freelancer_app/features/auth/presentation/view/email_verify_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 import 'package:get/get.dart' as g;
 
@@ -20,19 +22,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
-  late String token = '';
 
   @override
   void initState() {
     super.initState();
     initSlidingAnimation();
     loadingUserInfo();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    animationController.dispose();
   }
 
   @override
@@ -57,13 +52,23 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.forward();
   }
 
-  void loadingUserInfo() async {
-    token = await ApiService.getToken() ?? '';
-    log('====================token===$token===============');
-    if (token == '') {
-      navigateToLogin();
-    } else {
+  Future<void> loadingUserInfo() async {
+    var token = await AppStorage.getToken();
+    var isVerifed = await AppStorage.getVerifiedEmail();
+    var get = await AppStorage.getEmail();
+
+    log('======token:$token===');
+    log('======verify:$isVerifed===');
+    log('======email:$get===');
+
+    if (token != null && isVerifed != null) {
       navigateToHome();
+    } else {
+      if (isVerifed == null && token != null) {
+        navigateToVerify();
+      } else {
+        navigateToLogin();
+      }
     }
   }
 
@@ -91,5 +96,24 @@ class _SplashViewBodyState extends State<SplashViewBody>
         );
       },
     );
+  }
+
+  void navigateToVerify() {
+    Future.delayed(
+      const Duration(milliseconds: 2000),
+      () {
+        g.Get.offAll(
+          () => const EmailVerifyView(),
+          transition: g.Transition.fadeIn,
+          duration: kDurationTransition,
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
   }
 }

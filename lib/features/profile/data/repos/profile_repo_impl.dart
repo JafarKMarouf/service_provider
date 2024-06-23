@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:freelancer_app/core/constants/app_storage.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/profile/data/models/profile_model/profile_model.dart';
@@ -14,7 +15,7 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<Either<Failure, ProfileModel>> showProfile() async {
     try {
-      var id = await apiService.getUserId();
+      var id = await AppStorage.getUserId();
       var user = await apiService.get(
         endPoint: 'customer/profile/',
         id: id,

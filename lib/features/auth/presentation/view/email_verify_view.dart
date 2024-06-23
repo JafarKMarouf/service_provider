@@ -17,11 +17,7 @@ class EmailVerifyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthCubit(
-        AuthRepoImpl(
-          ApiService(
-            Dio(),
-          ),
-        ),
+        AuthRepoImpl(ApiService(Dio())),
       ),
       child: Scaffold(
         appBar: AppBar(

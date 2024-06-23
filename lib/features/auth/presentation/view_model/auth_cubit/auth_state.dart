@@ -26,3 +26,13 @@ final class AuthFailure extends AuthState {
     required this.errorMessage,
   });
 }
+
+final class AuthVisible extends AuthState {}
+
+final class AuthInVisible extends AuthState {}
+
+final class AuthStartTimer extends AuthState {}
+
+final class AuthUpdateTimer extends AuthState {}
+
+final class AuthCancelTimer extends AuthState {}

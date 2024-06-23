@@ -33,9 +33,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           listener: (context, state) {
             if (state is ProfileSuccess) {
               customerInfo = [];
-              customerInfo.addAll(
-                state.profileModel!.customerInfos!.toList(),
-              );
+              customerInfo.addAll(state.profileModel!.customerInfos!.toList());
             } else if (state is ProfileFailure) {
               Get.snackbar(
                 'faild',
