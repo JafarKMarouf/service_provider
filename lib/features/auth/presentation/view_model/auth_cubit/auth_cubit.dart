@@ -1,12 +1,14 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/constants/app_storage.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
+import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/data/models/user_model/user_model.dart';
 import 'package:freelancer_app/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:freelancer_app/features/auth/presentation/view/email_verify_view.dart';
+import 'package:get/get.dart' as g;
 
 part 'auth_state.dart';
 
@@ -42,11 +44,11 @@ class AuthCubit extends Cubit<AuthState> {
   bool isResendAgain = false;
   late Timer timer;
   int start = 120;
+
   //======================Logout variables=================================
+  final AuthRepoImpl authRepoImpl;
 
   AuthCubit(this.authRepoImpl) : super(AuthInitial());
-
-  final AuthRepoImpl authRepoImpl;
 
   Future<void> login({
     required String email,
@@ -58,8 +60,34 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
-      (user) {
+      (user) async {
         emit(AuthSuccess(userModel: user));
+
+        await AppStorage.storeToken(user.data!.token!);
+        await AppStorage.storeUserId(user.data!.user!.id!.toString());
+        await AppStorage.storeUserName(user.data!.user!.name.toString());
+        await AppStorage.storeEmail(email);
+
+        var isVerify = await AppStorage.getVerifiedEmail();
+
+        Future.delayed(
+          const Duration(microseconds: 250),
+          () {
+            isVerify != null
+                ? g.Get.offAll(
+                    () => const CustomeNavBar(),
+                    transition: g.Transition.fadeIn,
+                    duration: kDurationTransition,
+                    arguments: user.data!.user!.name,
+                  )
+                : g.Get.to(
+                    () => const EmailVerifyView(),
+                    transition: g.Transition.fadeIn,
+                    duration: kDurationTransition,
+                  );
+          },
+        );
+        if (isVerify == null) await resend();
       },
     );
   }
@@ -80,16 +108,14 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) async {
+      await AppStorage.storeToken(user.data!.token!);
+      await AppStorage.storeUserId(user.data!.user!.name!);
       await AppStorage.storeEmail(email);
-      // var x = await getEmail();
-      // log('=========x:$x');
       emit(AuthSuccess(userModel: user));
     });
   }
 
-  Future<void> verify({
-    required String otp,
-  }) async {
+  Future<void> verify({required String otp}) async {
     emit(AuthLoading());
     emailAddressVerify.text = await AppStorage.getEmail() ?? '';
     var result = await authRepoImpl.verify(
@@ -99,25 +125,33 @@ class AuthCubit extends Cubit<AuthState> {
 
     result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
-    }, (user) {
+    }, (user) async {
+      await AppStorage.removeEmail();
+      await AppStorage.storeVerifedEmail(true);
       otpCodeVerify.clear();
-
+      Future.delayed(
+        const Duration(microseconds: 250),
+        () {
+          g.Get.to(
+            () => const CustomeNavBar(),
+            transition: g.Transition.fadeIn,
+            duration: kDurationTransition,
+          );
+        },
+      );
       emit(AuthSuccess(userModel: user));
     });
   }
 
   Future<void> resend() async {
     emit(AuthLoading());
-
     var result = await authRepoImpl.resend();
-    log('=====result: $result====');
     return result.fold(
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (data) {
         startTimer();
-
         emit(AuthSuccess(userModel: data));
       },
     );
@@ -129,7 +163,12 @@ class AuthCubit extends Cubit<AuthState> {
 
     return result.fold(
       (fail) => emit(AuthFailure(errorMessage: fail.errMessage)),
-      (sucess) => emit(AuthSuccess(userModel: sucess)),
+      (sucess) async {
+        await AppStorage.removeToken();
+        await AppStorage.removeEmail();
+        await AppStorage.removeVerify();
+        emit(AuthSuccess(userModel: sucess));
+      },
     );
   }
 
@@ -159,12 +198,12 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthUpdateTimer());
         start--;
       }
-      // emit(AuthUpdateTimer());
     });
   }
 
-  // Future<void> getEmail() async {
-  //   email = await AppStorage.getEmail() ?? '';
-  //   // return email;
-  // }
+  Future<void> getEmail() async {
+    emit(AuthLoading());
+    email = await AppStorage.getEmail() ?? '';
+    emit(AuthStoredEmailVerify());
+  }
 }

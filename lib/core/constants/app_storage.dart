@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppStorage {
@@ -60,6 +58,22 @@ class AppStorage {
     return prefs!.getString('userName');
   }
 
+  static Future<void> storeEmail(String email) async {
+    prefs = await SharedPreferences.getInstance();
+    await prefs!.setString('email_remember', email);
+  }
+
+  static Future<String?> getEmail() async {
+    prefs = await SharedPreferences.getInstance();
+
+    return prefs!.getString('email_remember');
+  }
+
+  static Future<void> removeEmail() async {
+    prefs = await SharedPreferences.getInstance();
+    await prefs!.remove('email_remember');
+  }
+
 // =====================
   static Future<void> rememeberMe(bool remembered) async {
     prefs = await SharedPreferences.getInstance();
@@ -70,17 +84,6 @@ class AppStorage {
     prefs = await SharedPreferences.getInstance();
 
     return prefs!.getBool('rememberMe');
-  }
-
-  static Future<void> storeEmail(String email) async {
-    prefs = await SharedPreferences.getInstance();
-    await prefs!.setString('email_remember', email);
-  }
-
-  static Future<String?> getEmail() async {
-    prefs = await SharedPreferences.getInstance();
-
-    return prefs!.getString('email_remember');
   }
 
   static Future<void> removeRemeberedCred() async {

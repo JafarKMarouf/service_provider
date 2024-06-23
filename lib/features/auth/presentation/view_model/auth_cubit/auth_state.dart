@@ -36,3 +36,5 @@ final class AuthStartTimer extends AuthState {}
 final class AuthUpdateTimer extends AuthState {}
 
 final class AuthCancelTimer extends AuthState {}
+
+final class AuthStoredEmailVerify extends AuthState {}

@@ -26,19 +26,20 @@ class LoginBody extends StatelessWidget {
           Get.snackbar('failed', state.errorMessage);
         } else if (state is AuthSuccess) {
           cubit.loadingLogin = false;
-          User user = state.userModel.data!.user!;
+          // User user = state.userModel.data!.user!;
           Get.snackbar('success', '${state.userModel.message}');
-          Future.delayed(
-            const Duration(microseconds: 250),
-            () {
-              Get.offAll(
-                () => const CustomeNavBar(),
-                transition: g.Transition.fadeIn,
-                duration: kDurationTransition,
-                arguments: user.name,
-              );
-            },
-          );
+
+          // Future.delayed(
+          //   const Duration(microseconds: 250),
+          //   () {
+          //     Get.offAll(
+          //       () => const CustomeNavBar(),
+          //       transition: g.Transition.fadeIn,
+          //       duration: kDurationTransition,
+          //       arguments: user.name,
+          //     );
+          //   },
+          // );
         }
       },
       builder: (context, state) {

@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:freelancer_app/core/constants/app_storage.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/auth/data/models/user_model/user_model.dart';
@@ -23,9 +22,6 @@ class AuthRepoImpl implements AuthRepo {
       );
       UserModel user = UserModel.fromJson(data);
 
-      await AppStorage.storeToken(user.data!.token!);
-      await AppStorage.storeUserId(user.data!.user!.id!.toString());
-      await AppStorage.storeUserName(user.data!.user!.name.toString());
       return right(user);
     } catch (e) {
       if (e is DioException) {
@@ -54,8 +50,6 @@ class AuthRepoImpl implements AuthRepo {
         },
       );
       UserModel user = UserModel.fromJson(data);
-      await AppStorage.storeToken(user.data!.token!);
-      await AppStorage.storeUserId(user.data!.user!.name!);
 
       return right(user);
     } catch (e) {
@@ -89,6 +83,7 @@ class AuthRepoImpl implements AuthRepo {
         endPoint: 'email_verification/verify',
         body: {'email': email, 'otp': otp},
       );
+
       return right(UserModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
@@ -101,7 +96,6 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, UserModel>> logout() async {
     try {
-      AppStorage.removeToken();
       var data = await apiService.post(endPoint: 'logout');
       return right(UserModel.fromJson(data));
     } catch (e) {
