@@ -37,6 +37,8 @@ class AuthCubit extends Cubit<AuthState> {
   AutovalidateMode autoValidateVerify = AutovalidateMode.disabled;
   String email = '';
   bool loadingVerify = false;
+  bool loadingResend = false;
+
   bool isResendAgain = false;
   late Timer timer;
   int start = 120;
@@ -86,17 +88,20 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> verify({
-    required String email,
     required String otp,
   }) async {
     emit(AuthLoading());
+    emailAddressVerify.text = await AppStorage.getEmail() ?? '';
     var result = await authRepoImpl.verify(
-      email: email,
+      email: emailAddressVerify.text,
       otp: otp,
     );
-    return result.fold((failure) {
+
+    result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) {
+      otpCodeVerify.clear();
+
       emit(AuthSuccess(userModel: user));
     });
   }
@@ -105,6 +110,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
 
     var result = await authRepoImpl.resend();
+    log('=====result: $result====');
     return result.fold(
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
@@ -157,8 +163,8 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-  Future<void> getEmail() async {
-    email = await AppStorage.getEmail() ?? '';
-    // return email;
-  }
+  // Future<void> getEmail() async {
+  //   email = await AppStorage.getEmail() ?? '';
+  //   // return email;
+  // }
 }

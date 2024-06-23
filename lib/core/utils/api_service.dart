@@ -21,6 +21,12 @@ class ApiService {
     _dio.options.headers['Authorization'] = 'Bearer $token';
 
     String uri = id == null ? '$_baseUrl$endPoint' : '$_baseUrl$endPoint$id';
+
+    log('======token: $token======');
+    log('======url: $_baseUrl$endPoint======');
+
+    // log('======body: $body======');
+
     var response = await _dio.get(uri);
     return response.data;
   }
@@ -32,14 +38,15 @@ class ApiService {
     String? token = await AppStorage.getToken();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers['Authorization'] = 'Bearer $token';
-    var response = await _dio.post(
-      '$_baseUrl$endPoint',
-      data: body,
-    );
     log('======token: $token======');
     log('======url: $_baseUrl$endPoint======');
 
     log('======body: $body======');
+
+    var response = await _dio.post(
+      '$_baseUrl$endPoint',
+      data: body,
+    );
 
     return response.data;
   }

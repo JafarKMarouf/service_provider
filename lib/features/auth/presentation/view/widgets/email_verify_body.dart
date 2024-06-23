@@ -29,56 +29,50 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
   // }
   // final cubit = BlocProvider.of<AuthCubit>(context);
 
-  @override
-  void initState() {
-    BlocProvider.of<AuthCubit>(context).getEmail();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   BlocProvider.of<AuthCubit>(context).getEmail();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<AuthCubit>(context);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 16),
-            Text(
-              'أدخل رمز التحقق المكون من 6 أرقام والذي تم إرساله إلى بريدك الإلكتروني.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[400],
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 48),
-            BlocConsumer<AuthCubit, AuthState>(
-              listener: (context, state) {
-                if (state is AuthLoading) {
-                  cubit.loadingVerify = true;
-                } else if (state is AuthFailure) {
-                  cubit.loadingVerify = false;
-                  Get.snackbar('failed', state.errorMessage);
-                } else if (state is AuthSuccess) {
-                  // User user = state.userModel.data!.user!;
-                  cubit.loadingVerify = false;
-                  Get.snackbar('success', state.userModel.message!);
-
-                  Get.offAll(
-                    () => const LoginView(),
-                    transition: g.Transition.fadeIn,
-                    duration: kDurationTransition,
-                  );
-                }
-              },
-              builder: (context, state) {
-                return Form(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is AuthLoading) {
+          cubit.loadingVerify = true;
+        } else if (state is AuthFailure) {
+          cubit.loadingVerify = false;
+          Get.snackbar('failed', state.errorMessage);
+        } else if (state is AuthSuccess) {
+          // User user = state.userModel.data!.user!;
+          cubit.loadingVerify = false;
+          Get.snackbar('success', state.userModel.message!);
+        }
+      },
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 16),
+                Text(
+                  'أدخل رمز التحقق المكون من 6 أرقام والذي تم إرساله إلى بريدك الإلكتروني.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[400],
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 48),
+                Form(
                   key: cubit.formKeyVerify,
                   autovalidateMode: cubit.autoValidateVerify,
                   child: Column(
@@ -130,7 +124,6 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                         onTap: () async {
                           if (cubit.formKeyVerify.currentState!.validate()) {
                             await cubit.verify(
-                              email: cubit.emailAddressVerify.text,
                               otp: cubit.otpCodeVerify.text,
                             );
                           } else {
@@ -140,48 +133,44 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
                       ),
                     ],
                   ),
-                );
-              },
-            ),
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // BlocBuilder<AuthCubit, AuthState>(
-                //   builder: (context, state) {
-                //     return TextButton(
-                //       onPressed: () async {
-                //         await cubit.resend();
-                //       },
-                //       child: cubit.loadingVerify
-                //           ? const CircularProgressIndicator()
-                //           : Text(
-                //               cubit.isResendAgain
-                //                   ? "s ${cubit.start}"
-                //                   : "إعادة الإرسال",
-                //               style: const TextStyle(
-                //                 color: kPrimaryColor,
-                //                 fontWeight: FontWeight.w700,
-                //                 fontSize: 16,
-                //               ),
-                //             ),
-                //     );
-                //   },
-                // ),
-                Text(
-                  "ألم تتلقى الكود ؟",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey.shade500,
-                  ),
-                  textDirection: TextDirection.rtl,
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () async {
+                        await cubit.resend();
+                      },
+                      child: cubit.loadingResend
+                          ? const CircularProgressIndicator()
+                          : Text(
+                              cubit.isResendAgain
+                                  ? "s ${cubit.start}"
+                                  : "إعادة الإرسال",
+                              style: const TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                    ),
+                    Text(
+                      "ألم تتلقى الكود ؟",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey.shade500,
+                      ),
+                      textDirection: TextDirection.rtl,
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
