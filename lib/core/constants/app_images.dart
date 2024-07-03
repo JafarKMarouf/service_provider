@@ -13,13 +13,13 @@ class AppImages {
   static const String email = '$routeImage/email.png';
   static const String profile = '$routeImage/default_profile.png';
 
-
   static const String bookmarksvg = '$routeVector/bookmark.svg';
   static const String savesvg = '$routeVector/save.svg';
   static const String editsvg = '$routeVector/edit.svg';
   static const String arrowright = '$routeVector/arrow-small-right.svg';
   static const String locksvg = '$routeVector/lock-on.svg';
   static const String emailsvg = '$routeVector/emailsvg.svg';
+  static const String notificationsvg = '$routeVector/notificationsvg.svg';
   // assets\vectors\
 }
 // assets\images\splash.png

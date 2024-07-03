@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
@@ -19,16 +20,7 @@ class CustomeHomeBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         !loading
-            ? Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  color: Colors.grey[200],
-                ),
-                child: Image.asset(
-                  AppImages.notification,
-                  width: 30,
-                ),
-              )
+            ? SvgPicture.asset(AppImages.notificationsvg, height: 35)
             : Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
@@ -45,36 +43,37 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8, left: 8, top: 30, bottom: 15),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 8),
-            BlocBuilder<ProfileCubit, ProfileState>(
-              builder: (context, state) {
-                if (state is ProfileSuccess) {
-                  customerInfo
-                      .addAll(state.profileModel!.customerInfos!.toList());
-                  log('${customerInfo[0].customer}');
-                  return CustomeHomeBar(customerInfos: customerInfo[0]);
-                }
-                return const CustomeHomeBar(loading: true);
-              },
-            ),
-            const SizedBox(height: 15),
-            CustomeSearch(width: MediaQuery.of(context).size.width),
-            const SizedBox(height: 16),
-            FetchServices(
-              title: 'الخدمات المتاحة',
-              onPressed: () {
-                g.Get.to(
-                  () => ServicesListView(data: services, loading: !loading),
-                  transition: g.Transition.fadeIn,
-                  duration: kDurationTransition,
-                );
-              },
-            ),
-            BlocBuilder<ServiceCubit, ServiceState>(
+      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
+      child: Column(
+        children: [
+          const Expanded(flex: 1, child: SizedBox()),
+          BlocBuilder<ProfileCubit, ProfileState>(
+            builder: (context, state) {
+              if (state is ProfileSuccess) {
+                customerInfo
+                    .addAll(state.profileModel!.customerInfos!.toList());
+                // log('${customerInfo[0].customer}');
+                return CustomeHomeBar(customerInfos: customerInfo[0]);
+              }
+              return const CustomeHomeBar(loading: true);
+            },
+          ),
+          const SizedBox(height: 15),
+          CustomeSearch(width: MediaQuery.of(context).size.width),
+          const SizedBox(height: 16),
+          FetchServices(
+            title: 'الخدمات المتاحة',
+            onPressed: () {
+              g.Get.to(
+                () => ServicesListView(data: services, loading: !loading),
+                transition: g.Transition.fadeIn,
+                duration: kDurationTransition,
+              );
+            },
+          ),
+          Expanded(
+            flex: 3,
+            child: BlocBuilder<ServiceCubit, ServiceState>(
               builder: (context, state) {
                 if (state is ServiceSuccess) {
                   services.addAll(state.service.data!.toList());
@@ -116,19 +115,22 @@ class _HomeBodyState extends State<HomeBody> {
                 }
               },
             ),
-            const SizedBox(height: 16),
-            FetchServices(
-              title: 'الخدمات المحجوزة',
-              onPressed: () {
-                g.Get.to(
-                  () => const BookedServicesListView(),
-                  transition: g.Transition.fadeIn,
-                  duration: kDurationTransition,
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            BlocBuilder<BookServiceCubit, BookServiceState>(
+          ),
+          const SizedBox(height: 16),
+          FetchServices(
+            title: 'الخدمات المحجوزة',
+            onPressed: () {
+              g.Get.to(
+                () => const BookedServicesListView(),
+                transition: g.Transition.fadeIn,
+                duration: kDurationTransition,
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+          Expanded(
+            flex: 3,
+            child: BlocBuilder<BookServiceCubit, BookServiceState>(
               builder: (context, state) {
                 if (state is BookServiceSuccess) {
                   booked.addAll(state.bookService.data!.toList());
@@ -167,8 +169,8 @@ class _HomeBodyState extends State<HomeBody> {
                 }
               },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -60,18 +60,14 @@ class OtpConfirmForm extends StatelessWidget {
                 },
                 onSubmitted: (value) async {
                   if (cubit.formKeyVerify.currentState!.validate()) {
-                    await cubit.verify(
-                      otp: cubit.otpCodeVerify.text,
-                    );
+                    await cubit.verify(otp: cubit.otpCodeVerify.text);
                   } else {
                     cubit.autoValidateVerify = AutovalidateMode.always;
                   }
                 },
                 onCompleted: (value) async {
                   if (cubit.formKeyVerify.currentState!.validate()) {
-                    await cubit.verify(
-                      otp: cubit.otpCodeVerify.text,
-                    );
+                    await cubit.verify(otp: cubit.otpCodeVerify.text);
                   } else {
                     cubit.autoValidateVerify = AutovalidateMode.always;
                   }

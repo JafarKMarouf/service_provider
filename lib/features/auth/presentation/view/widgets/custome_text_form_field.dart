@@ -27,7 +27,7 @@ class CustomeTextFormField extends StatelessWidget {
     this.hintText,
     this.prefixText,
     required this.type,
-    required this.isSuffix,
+    this.isSuffix = false,
     this.isObscure = false,
     this.onPressedSuffix,
     this.onChange,
@@ -75,8 +75,6 @@ class CustomeTextFormField extends StatelessWidget {
 OutlineInputBorder buildBorder([color]) {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(12),
-    borderSide: BorderSide(
-      color: color ?? const Color(0xffFAFAFA)
-    ),
+    borderSide: BorderSide(color: color ?? const Color(0xffFAFAFA)),
   );
 }

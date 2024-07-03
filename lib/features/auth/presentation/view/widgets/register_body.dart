@@ -33,9 +33,7 @@ class _RegisterBodyState extends State<RegisterBody> {
           cubit.loadingRegister = false;
           Get.snackbar('success', '${state.userModel.message}');
           Future.delayed(
-            const Duration(
-              microseconds: 250,
-            ),
+            const Duration(microseconds: 250),
             () {
               g.Get.to(
                 () => const EmailVerifyView(),
@@ -55,7 +53,7 @@ class _RegisterBodyState extends State<RegisterBody> {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               children: [
-                const Expanded(flex: 2, child: SizedBox()),
+                const Expanded(flex: 3, child: SizedBox()),
                 const Expanded(
                   child: Text(
                     "إنشاء حساب",
