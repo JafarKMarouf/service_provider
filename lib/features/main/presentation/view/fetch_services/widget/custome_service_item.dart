@@ -27,9 +27,11 @@ class CustomeServiceItem extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: CircleAvatar(
-                radius: 90,
-                backgroundColor: kPrimaryColor,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: CachedNetworkImage(
                   imageUrl: '${data.photo}',
                   placeholder: (context, url) {
@@ -40,7 +42,7 @@ class CustomeServiceItem extends StatelessWidget {
                         width: 90,
                         height: 90,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(90),
+                          borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
                         ),
                       ),
@@ -55,9 +57,7 @@ class CustomeServiceItem extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 2,
-            ),
+            const SizedBox(height: 2),
             Text(
               data.serviceName!,
               style: const TextStyle(

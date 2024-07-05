@@ -27,29 +27,32 @@ class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 45, right: 16, left: 16),
-      child: SingleChildScrollView(
-        child: BlocConsumer<ProfileCubit, ProfileState>(
-          listener: (context, state) {
-            if (state is ProfileSuccess) {
-              customerInfo = [];
-              customerInfo.addAll(state.profileModel!.customerInfos!.toList());
-            } else if (state is ProfileFailure) {
-              Get.snackbar(
-                'faild',
-                state.errMessage,
-                duration: const Duration(seconds: 20),
-              );
-            }
-          },
-          builder: (context, state) {
-            if (state is ProfileSuccess) {
-              return ProfileSuccessView(customerInfo: customerInfo);
-            } else {
-              return const CustomeProfileBar(isLoading: true);
-            }
-          },
-        ),
+      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
+      child: BlocConsumer<ProfileCubit, ProfileState>(
+        listener: (context, state) {
+          if (state is ProfileSuccess) {
+            customerInfo = [];
+            customerInfo.addAll(state.profileModel!.customerInfos!.toList());
+          } else if (state is ProfileFailure) {
+            Get.snackbar(
+              'faild',
+              state.errMessage,
+              duration: const Duration(seconds: 20),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is ProfileSuccess) {
+            return ProfileSuccessView(customerInfo: customerInfo);
+          } else {
+            return const Column(
+              children: [
+                AspectRatio(aspectRatio: 7),
+                CustomeProfileBar(isLoading: true)
+              ],
+            );
+          }
+        },
       ),
     );
   }

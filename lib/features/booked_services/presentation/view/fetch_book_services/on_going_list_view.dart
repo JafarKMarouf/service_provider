@@ -3,10 +3,7 @@ import 'package:freelancer_app/features/booked_services/data/models/book_service
 import 'widgets/on_going_list.dart';
 
 class OnGoingListView extends StatelessWidget {
-  const OnGoingListView({
-    super.key,
-    required this.data,
-  });
+  const OnGoingListView({super.key, required this.data});
   final List<DatumBooked> data;
 
   @override
@@ -15,11 +12,8 @@ class OnGoingListView extends StatelessWidget {
       height: 220,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        reverse: true,
         itemCount: data.length,
-        itemBuilder: (context, index) {
-          return OnGoingList(data: data[index]);
-        },
+        itemBuilder: (context, index) => OnGoingList(data: data[index]),
       ),
     );
   }

@@ -109,7 +109,8 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) async {
       await AppStorage.storeToken(user.data!.token!);
-      await AppStorage.storeUserId(user.data!.user!.name!);
+      await AppStorage.storeUserId(user.data!.user!.id!.toString());
+      await AppStorage.storeUserName(user.data!.user!.name!.toString());
       await AppStorage.storeEmail(email);
       emit(AuthSuccess(userModel: user));
     });

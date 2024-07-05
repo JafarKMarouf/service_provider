@@ -4,7 +4,6 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
 
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo_impl.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/payment_view/payment_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
 import 'package:freelancer_app/features/main/data/repos/service_repo_impl.dart';
 

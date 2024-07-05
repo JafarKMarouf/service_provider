@@ -41,6 +41,8 @@ class _ProfileSuccessViewState extends State<ProfileSuccessView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          const AspectRatio(aspectRatio: 7),
+
           CustomeProfileBar(
             title: '${widget.customerInfo[0].customer!.name}',
             onPressed: () {

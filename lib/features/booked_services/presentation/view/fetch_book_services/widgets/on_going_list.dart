@@ -10,10 +10,7 @@ import 'package:intl/intl.dart' as format;
 import 'package:shimmer/shimmer.dart';
 
 class OnGoingList extends StatelessWidget {
-  const OnGoingList({
-    super.key,
-    required this.data,
-  });
+  const OnGoingList({super.key, required this.data});
   final DatumBooked data;
 
   @override
@@ -41,10 +38,8 @@ class OnGoingList extends StatelessWidget {
           child: SizedBox(
             width: MediaQuery.of(context).size.width - 44,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 8.0,
-                horizontal: 16.0,
-              ),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: Column(
                 children: [
                   Row(
@@ -69,9 +64,7 @@ class OnGoingList extends StatelessWidget {
                               fontSize: 16,
                             ),
                           ),
-                          Text(
-                            '${data.service!.expert!.name}',
-                          ),
+                          Text('${data.service!.expert!.name}'),
                         ],
                       ),
                       const SizedBox(width: 16.0),
@@ -96,28 +89,17 @@ class OnGoingList extends StatelessWidget {
                               ),
                             );
                           },
-                          errorWidget: (context, url, error) {
-                            return const Icon(
-                              Icons.error,
-                              color: Colors.white,
-                            );
-                          },
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error, color: Colors.white),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
                   const SizedBox(
-                    child: Divider(
-                      color: Colors.grey,
-                      thickness: 3,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
+                      child: Divider(color: Colors.grey, thickness: 3)),
+                  const SizedBox(height: 12),
                   Row(
-                    // mainAxisSize: Mai?nAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -149,9 +131,7 @@ class OnGoingList extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const SizedBox(
-                            height: 12,
-                          ),
+                          const SizedBox(height: 12),
                           Text(
                             formatTime,
                             style: const TextStyle(
@@ -177,9 +157,7 @@ class OnGoingList extends StatelessWidget {
                               textDirection: TextDirection.rtl,
                             ),
                           ),
-                          const SizedBox(
-                            height: 8,
-                          ),
+                          const SizedBox(height: 8),
                           Text(
                             '${data.service!.price} ل.س',
                             style: const TextStyle(
@@ -189,9 +167,7 @@ class OnGoingList extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             textDirection: TextDirection.rtl,
                           ),
-                          const SizedBox(
-                            height: 8,
-                          ),
+                          const SizedBox(height: 8),
                           Container(
                             padding: const EdgeInsets.symmetric(
                               vertical: 4,

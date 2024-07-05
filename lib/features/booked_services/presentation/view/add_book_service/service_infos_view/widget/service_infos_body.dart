@@ -6,16 +6,12 @@ import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 
 import 'package:freelancer_app/core/widgets/display_location.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/available_freelancer_view.dart';
-// import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/service_infos_view/widget/service_type.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
 import 'package:get/get.dart' as g;
 
 class ServiceInfosBody extends StatelessWidget {
-  const ServiceInfosBody({
-    super.key,
-    required this.data,
-  });
+  const ServiceInfosBody({super.key, required this.data});
   final DatumService data;
 
   @override
@@ -24,18 +20,11 @@ class ServiceInfosBody extends StatelessWidget {
     DateTime selectedDate = DateTime.now();
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 40,
-          horizontal: 16,
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
         child: Column(
           children: [
-            const CustomeServiceBar(
-              title: "وصف الخدمة",
-            ),
-            ServiceType(
-              data: data,
-            ),
+            const CustomeServiceBar(title: "وصف الخدمة"),
+            ServiceType(data: data),
             CustomeInfosServiceItems(
               date: 'احجز تاريخاً للخدمة',
               onPressedDate: () async {
@@ -101,7 +90,7 @@ class ServiceInfosBody extends StatelessWidget {
                   const Duration(microseconds: 250),
                   () {
                     g.Get.to(
-                      ()=>const AvailableFreelancerView(),
+                      () => const AvailableFreelancerView(),
                       // () => FreelancerInfosView(
                       //   expert: data.expert,
                       // ),

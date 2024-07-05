@@ -11,9 +11,7 @@ class ServiceInfosView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ServiceInfosBody(
-        data: data,
-      ),
+      body: ServiceInfosBody(data: data),
     );
   }
 }

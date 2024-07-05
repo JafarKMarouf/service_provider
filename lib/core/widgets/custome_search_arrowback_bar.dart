@@ -5,9 +5,7 @@ import 'package:freelancer_app/core/widgets/custome_search.dart';
 import 'package:get/get.dart';
 
 class CustomeSearchArrowBackBar extends StatelessWidget {
-  const CustomeSearchArrowBackBar({
-    super.key,
-  });
+  const CustomeSearchArrowBackBar({super.key});
 
   @override
   Widget build(BuildContext context) {
