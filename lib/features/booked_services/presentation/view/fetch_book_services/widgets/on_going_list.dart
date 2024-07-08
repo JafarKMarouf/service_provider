@@ -6,8 +6,8 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/show_book_service/booking_infos_view.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart' as format;
 import 'package:shimmer/shimmer.dart';
+import 'package:intl/intl.dart' as intl;
 
 class OnGoingList extends StatelessWidget {
   const OnGoingList({super.key, required this.data});
@@ -15,8 +15,8 @@ class OnGoingList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var formatDate = format.DateFormat('dd/MM/yyy').format(data.deliveryTime!);
-    var formatTime = format.DateFormat('hh:mm aa').format(data.deliveryTime!);
+    var formatDate = intl.DateFormat('dd/MM/yyy').format(data.deliveryTime!);
+    var formatTime = intl.DateFormat('hh:mm aa').format(data.deliveryTime!);
     return GestureDetector(
       onTap: () {
         Get.to(

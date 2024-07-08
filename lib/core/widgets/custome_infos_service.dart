@@ -9,30 +9,31 @@ class CustomeInfosService extends StatefulWidget {
     required this.text,
     required this.icon,
     this.onPressed,
+    this.tapped = false,
   });
   final String text;
   final IconData icon;
   final void Function()? onPressed;
+  final bool tapped;
+
   @override
   State<CustomeInfosService> createState() => _CustomeInfosServiceState();
 }
 
 class _CustomeInfosServiceState extends State<CustomeInfosService> {
-  bool tapped = false;
+  // bool tapped = false;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onPressed,
-      onLongPress: () {
-        tapped = !tapped;
-        setState(
-          () {},
-        );
-      },
+      // onLongPress: () {
+      //   tapped = !tapped;
+      //   setState(() {});
+      // },
       child: Card(
         margin: EdgeInsets.zero,
         elevation: .6,
-        color: tapped ? kPrimaryColor : CardTheme.of(context).color,
+        color: widget.tapped ? kPrimaryColor : CardTheme.of(context).color,
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16,
@@ -49,7 +50,7 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
-                  color: tapped ? Colors.white : Colors.grey[800],
+                  color: widget.tapped ? Colors.white : Colors.grey[800],
                 ),
                 maxLines: 2,
                 maxFontSize: 14,
@@ -59,7 +60,7 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
               ),
               Icon(
                 widget.icon,
-                color: tapped ? Colors.white : Colors.grey[800],
+                color: widget.tapped ? Colors.white : Colors.grey[800],
               ),
             ],
           ),

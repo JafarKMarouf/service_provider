@@ -4,24 +4,18 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
 
 class ServiceType extends StatelessWidget {
-  const ServiceType({
-    super.key,
-    required this.data,
-  });
   final DatumService data;
+  const ServiceType({super.key, required this.data});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Expanded(
       child: Card(
-        elevation: .4,
+        color: kPrimaryColor,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 32.0,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8),
           child: SizedBox(
-            width: 160,
-            height: 160,
+            width: MediaQuery.sizeOf(context).width / 2,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -33,38 +27,28 @@ class ServiceType extends StatelessWidget {
                       return Center(
                         child: Text(
                           '${data.serviceName} image',
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                          ),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       );
                     },
                     errorWidget: (context, url, error) {
-                      return const Icon(
-                        Icons.error,
-                        color: kPrimaryColor,
-                      );
+                      return const Icon(Icons.error, color: Colors.white);
                     },
                   ),
-                ),
-                const SizedBox(
-                  height: 8.0,
                 ),
                 Text(
                   '${data.serviceName}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
-                ),
-                const SizedBox(
-                  height: 8.0,
                 ),
                 Text(
                   '${data.price} ل.س',
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.green,
+                    color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
                   textDirection: TextDirection.rtl,

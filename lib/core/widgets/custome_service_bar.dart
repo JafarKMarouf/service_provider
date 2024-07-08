@@ -3,12 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 
 class CustomeServiceBar extends StatelessWidget {
-  const CustomeServiceBar({
-    super.key,
-    required this.title,
-  });
-
   final String title;
+  const CustomeServiceBar({super.key, required this.title});
+
   @override
   Widget build(BuildContext context) {
     return Row(

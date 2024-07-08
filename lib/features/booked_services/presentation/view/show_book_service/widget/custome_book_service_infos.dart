@@ -6,11 +6,8 @@ import 'package:get/get.dart' as g;
 import 'package:intl/intl.dart' as intl;
 
 class CustomeBookServiceInfo extends StatelessWidget {
-  const CustomeBookServiceInfo({
-    super.key,
-    required this.data,
-  });
   final DatumBooked data;
+  const CustomeBookServiceInfo({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +86,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
             ),
             textDirection: TextDirection.rtl,
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
           Text(
             'رسوم الخدمة :   ${data.service!.price} ل.س',
             style: const TextStyle(
@@ -100,9 +95,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
             ),
             textDirection: TextDirection.rtl,
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
           Text(
             'الوصف :   ${data.description}',
             style: const TextStyle(
@@ -111,9 +104,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
             ),
             textDirection: TextDirection.rtl,
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
         ],
       ),
     );
