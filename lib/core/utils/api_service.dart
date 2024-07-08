@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:freelancer_app/core/constants/app_storage.dart';
 
 class ApiService {
-  final _baseUrl = 'http://192.168.1.5:8000/api/';
+  final _baseUrl = 'http://192.168.149.185:8000/api/';
 
   final Dio _dio;
 

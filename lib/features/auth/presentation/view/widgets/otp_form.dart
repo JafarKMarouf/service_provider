@@ -38,7 +38,7 @@ class OtpConfirmForm extends StatelessWidget {
                 closeKeyboardWhenCompleted: true,
                 keyboardType: TextInputType.number,
                 pinAnimationType: PinAnimationType.fade,
-                animationCurve: accelerateEasing,
+                animationCurve: Easing.legacyAccelerate,
                 animationDuration: const Duration(milliseconds: 200),
                 defaultPinTheme: PinTheme(
                   width: MediaQuery.of(context).size.width,

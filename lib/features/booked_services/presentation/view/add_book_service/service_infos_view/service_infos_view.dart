@@ -3,15 +3,11 @@ import 'package:freelancer_app/features/booked_services/presentation/view/add_bo
 import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
 
 class ServiceInfosView extends StatelessWidget {
-  const ServiceInfosView({
-    super.key,
-    required this.data,
-  });
   final DatumService data;
+  const ServiceInfosView({super.key, required this.data});
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ServiceInfosBody(data: data),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        body: ServiceInfosBody(data: data),
+      );
 }

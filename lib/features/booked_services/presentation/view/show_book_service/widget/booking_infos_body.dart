@@ -19,7 +19,6 @@ class BookingInfosBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var formatDate = DateFormat('dd/MM/yyy').format(data.deliveryTime!);
     var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
-
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(
