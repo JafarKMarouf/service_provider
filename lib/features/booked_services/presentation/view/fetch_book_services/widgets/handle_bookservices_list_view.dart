@@ -6,8 +6,8 @@ import 'package:freelancer_app/features/booked_services/presentation/view_models
 import 'package:shimmer/shimmer.dart';
 
 class HandleBookServiceListView extends StatelessWidget {
-  const HandleBookServiceListView({super.key, required this.booked});
   final List<DatumBooked> booked;
+  const HandleBookServiceListView({super.key, required this.booked});
 
   @override
   Widget build(BuildContext context) {

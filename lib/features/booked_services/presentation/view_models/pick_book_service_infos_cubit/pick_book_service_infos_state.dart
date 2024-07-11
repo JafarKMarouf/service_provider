@@ -1,4 +1,4 @@
-part of 'pick_book_service_infos_cubit.dart';
+import 'package:equatable/equatable.dart';
 
 sealed class PickBookServiceInfosState extends Equatable {
   const PickBookServiceInfosState();

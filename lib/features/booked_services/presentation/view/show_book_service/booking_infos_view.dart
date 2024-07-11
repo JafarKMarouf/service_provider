@@ -26,16 +26,19 @@ class BookingInfosView extends StatelessWidget {
         child: Column(
           children: [
             const Expanded(child: CustomeServiceBar(title: "معلومات الحجز")),
-            Expanded(flex: 1, child: BookServiceType(data: data)),
+            Expanded(flex: 2, child: BookServiceType(data: data)),
+            const SizedBox(height: 8),
             Expanded(
+              flex: 1,
               child: CustomeInfosServiceItems(
-                // date: formatDate,
-                location: 'asds',
+                location: 'Santa Clara County, United States',
                 phone: data.service!.expert!.expertInfos!.mobile,
                 time: formatTime,
+                timeTapped: true,
+                locationTapped: true,
+                phoneTapped: true,
               ),
             ),
-            // const DisplayLocation(),
             Expanded(flex: 2, child: CustomeBookServiceInfo(data: data)),
             CustomButton(
               title: 'تقدم',

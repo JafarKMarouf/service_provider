@@ -5,7 +5,7 @@ import 'package:freelancer_app/features/main/data/models/service_model/datum_ser
 
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/service_infos_view/widget/service_infos_book.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view_models/pick_book_service_cubit/cubit/pick_book_service_infos_cubit.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view_models/pick_book_service_infos_cubit/pick_book_service_infos_cubit.dart';
 
 import 'widget/service_type.dart';
 
@@ -21,9 +21,13 @@ class ServiceInfosView extends StatelessWidget {
             children: [
               const Expanded(child: CustomeServiceBar(title: "وصف الخدمة")),
               Expanded(flex: 2, child: ServiceType(data: data)),
+              const SizedBox(height: 16),
               BlocProvider(
                 create: (context) => PickBookServiceInfosCubit(),
-                child: const Expanded(flex: 2, child: ServiceInfosBook()),
+                child: const Expanded(
+                  flex: 1,
+                  child: ServiceInfosBook(),
+                ),
               ),
               const SizedBox(height: 16),
               Expanded(

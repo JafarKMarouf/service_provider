@@ -1,10 +1,11 @@
-import 'package:equatable/equatable.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/functions/handle_location_permission.dart';
 import 'package:geolocator/geolocator.dart';
 
-part 'pick_book_service_infos_state.dart';
+import 'pick_book_service_infos_state.dart';
 
 class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
   TimeOfDay? newTime;
@@ -38,6 +39,7 @@ class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
     currentPosition = await LocationHandler.getCurrentPosition();
     currentAddress =
         await LocationHandler.getAddressFromLatLng(currentPosition!);
+    log('$currentAddress');
     currentAddress == null
         ? emit(PickLocationFailure())
         : emit(PickLocationUpdated());

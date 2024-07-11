@@ -17,6 +17,7 @@ class BookServiceType extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
         child: SizedBox(
           width: MediaQuery.sizeOf(context).width / 2,
+          height: MediaQuery.sizeOf(context).height / 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

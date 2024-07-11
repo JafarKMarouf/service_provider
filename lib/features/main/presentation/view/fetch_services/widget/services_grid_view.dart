@@ -3,8 +3,9 @@ import 'package:freelancer_app/features/main/data/models/service_model/datum_ser
 import 'package:freelancer_app/features/main/presentation/view/fetch_services/widget/custome_service_item.dart';
 
 class ServicesGridView extends StatelessWidget {
-  const ServicesGridView({super.key, required this.data});
   final List<DatumService> data;
+
+  const ServicesGridView({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../utils/constant.dart';
 
 class CustomeInfosService extends StatefulWidget {
+  final String text;
+  final String image;
+  final void Function()? onPressed;
+  final bool tapped;
   const CustomeInfosService({
     super.key,
     required this.text,
@@ -11,11 +15,6 @@ class CustomeInfosService extends StatefulWidget {
     this.onPressed,
     this.tapped = false,
   });
-  final String text;
-
-  final String image;
-  final void Function()? onPressed;
-  final bool tapped;
 
   @override
   State<CustomeInfosService> createState() => _CustomeInfosServiceState();
