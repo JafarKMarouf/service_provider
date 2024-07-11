@@ -17,15 +17,17 @@ class HomeView extends StatelessWidget {
     bool loading = true;
 
     return Padding(
-      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
-      child: Column(
+      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15, top: 8),
+      child: ListView(
         children: [
           const Expanded(flex: 1, child: SizedBox()),
 
           const HandleUserDetails(),
           const SizedBox(height: 6),
 
-          CustomeSearch(width: MediaQuery.of(context).size.width),
+          CustomeSearch(
+            width: MediaQuery.of(context).size.width,
+          ),
           const SizedBox(height: 3),
 
           //============================ الخدمات المتاحة=====================

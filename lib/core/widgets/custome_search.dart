@@ -4,8 +4,10 @@ import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 
 class CustomeSearch extends StatelessWidget {
-  const CustomeSearch({super.key, required this.width});
   final double width;
+
+  const CustomeSearch({super.key, required this.width});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -13,6 +15,7 @@ class CustomeSearch extends StatelessWidget {
       height: 50,
       child: TextField(
         cursorColor: kPrimaryColor,
+        readOnly: true,
         textDirection: TextDirection.rtl,
         style: TextStyle(color: Colors.grey[800]),
         decoration: InputDecoration(

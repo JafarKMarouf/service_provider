@@ -37,34 +37,21 @@ class CustomeBookServiceInfo extends StatelessWidget {
               textDirection: TextDirection.rtl,
             ),
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
                 children: List.generate(
                   rating,
-                  (index) {
-                    return const Icon(
-                      Icons.star,
-                      color: kPrimaryColor,
-                    );
-                  },
+                  (index) => const Icon(Icons.star, color: kPrimaryColor),
                 ),
               ),
               Row(
-                children: List.generate(
-                  5 - rating,
-                  (index) {
-                    return const Icon(
-                      Icons.star_border,
-                      color: kPrimaryColor,
-                    );
-                  },
-                ),
-              ),
+                  children: List.generate(
+                5 - rating,
+                (index) => const Icon(Icons.star_border, color: kPrimaryColor),
+              )),
               const Text(
                 'التقييم :   ',
                 style: TextStyle(
@@ -75,9 +62,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
           Text(
             'تاريخ الحجز :  $formatDate',
             style: const TextStyle(

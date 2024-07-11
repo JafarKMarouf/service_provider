@@ -15,12 +15,41 @@ class ResendCode extends StatelessWidget {
       children: [
         BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
+            // if (cubit.loadingResend) {
+            //   return TextButton(
+            //     onPressed: () {},
+            //     child: const CircularProgressIndicator(),
+            //   );
+            // } else if (cubit.) {
+            //   return TextButton(
+            //     onPressed: () {},
+            //     child: Text(
+            //       "s ${cubit.start}",
+            //       style: const TextStyle(
+            //         color: kPrimaryColor,
+            //         fontWeight: FontWeight.w700,
+            //         fontSize: 16,
+            //       ),
+            //     ),
+            //   );
+            // } else {
+            //   return TextButton(
+            //     onPressed: () async {
+            //       await cubit.resend();
+            //     },
+            //     child: const Text(
+            //       "إعادة الإرسال",
+            //       style: TextStyle(
+            //         color: kPrimaryColor,
+            //         fontWeight: FontWeight.w700,
+            //         fontSize: 16,
+            //       ),
+            //     ),
+            //   );
+            // }
             return TextButton(
               onPressed: () async {
                 await cubit.resend();
-                if (state is AuthSuccess) {
-                  cubit.startTimer();
-                }
               },
               child: cubit.loadingResend
                   ? const CircularProgressIndicator()

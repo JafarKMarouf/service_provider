@@ -9,9 +9,7 @@ import 'package:freelancer_app/features/booked_services/data/repos/book_service_
 
 class BookServiceRepoImpl implements BookServiceRepo {
   ApiService apiService;
-  BookServiceRepoImpl({
-    required this.apiService,
-  });
+  BookServiceRepoImpl({required this.apiService});
 
   @override
   Future<Either<Failure, BookService>> fetchAllBookServices() async {
@@ -22,22 +20,14 @@ class BookServiceRepoImpl implements BookServiceRepo {
       return right(BookService.fromJson(data));
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioError(e),
-        );
+        return left(ServerFailure.fromDioError(e));
       }
-      return left(
-        ServerFailure(
-          e.toString(),
-        ),
-      );
+      return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, BookService>> deleteBookService({
-    required int id,
-  }) {
+  Future<Either<Failure, BookService>> deleteBookService({required int id}) {
     throw UnimplementedError();
   }
 

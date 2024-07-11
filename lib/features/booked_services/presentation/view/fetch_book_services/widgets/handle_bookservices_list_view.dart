@@ -20,9 +20,8 @@ class HandleBookServiceListView extends StatelessWidget {
               child: ListView.builder(
                 padding: EdgeInsets.zero,
                 itemCount: booked.length,
-                itemBuilder: (context, index) {
-                  return OnGoingList(data: booked[index]);
-                },
+                itemBuilder: (context, index) =>
+                    OnGoingList(data: booked[index]),
               ),
             );
           } else if (state is BookServiceFailure) {

@@ -34,8 +34,7 @@ class HandleServicesUi extends StatelessWidget {
                 highlightColor: Colors.grey[100]!,
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  ),
+                      crossAxisCount: 3),
                   itemCount: 3,
                   padding: EdgeInsets.zero,
                   itemBuilder: (context, index) {

@@ -7,12 +7,13 @@ class CustomeInfosService extends StatefulWidget {
   const CustomeInfosService({
     super.key,
     required this.text,
-    required this.icon,
+    required this.image,
     this.onPressed,
     this.tapped = false,
   });
   final String text;
-  final IconData icon;
+
+  final String image;
   final void Function()? onPressed;
   final bool tapped;
 
@@ -21,15 +22,10 @@ class CustomeInfosService extends StatefulWidget {
 }
 
 class _CustomeInfosServiceState extends State<CustomeInfosService> {
-  // bool tapped = false;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onPressed,
-      // onLongPress: () {
-      //   tapped = !tapped;
-      //   setState(() {});
-      // },
       child: Card(
         margin: EdgeInsets.zero,
         elevation: .6,
@@ -42,7 +38,6 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
             right: 4,
           ),
           child: Row(
-            // mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
@@ -55,11 +50,9 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
                 maxLines: 2,
                 maxFontSize: 14,
               ),
-              const SizedBox(
-                width: 4,
-              ),
-              Icon(
-                widget.icon,
+              const SizedBox(width: 4),
+              Image.asset(
+                widget.image,
                 color: widget.tapped ? Colors.white : Colors.grey[800],
               ),
             ],

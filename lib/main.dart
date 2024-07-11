@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freelancer_app/core/functions/handle_location_permission.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/utils/bloc_observer.dart';
 
@@ -8,7 +9,7 @@ import 'package:freelancer_app/features/booked_services/presentation/view_models
 import 'package:freelancer_app/features/main/data/repos/service_repo_impl.dart';
 
 import 'package:freelancer_app/features/main/presentation/view_models/service_cubit/service_cubit.dart';
-import 'package:freelancer_app/features/splash/presentation/view/splash_view.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:get/get.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
@@ -18,6 +19,7 @@ import 'package:dio/dio.dart';
 
 import 'features/profile/data/repos/profile_repo_impl.dart';
 import 'features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
+import 'features/splash/presentation/view/splash_view.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();

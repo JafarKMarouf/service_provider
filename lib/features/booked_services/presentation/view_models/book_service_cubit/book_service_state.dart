@@ -13,9 +13,7 @@ final class BookServiceLoading extends BookServiceState {}
 
 final class BookServiceFailure extends BookServiceState {
   final String errMessage;
-  const BookServiceFailure({
-    required this.errMessage,
-  });
+  const BookServiceFailure({required this.errMessage});
 }
 
 final class BookServiceSuccess extends BookServiceState {
@@ -25,3 +23,21 @@ final class BookServiceSuccess extends BookServiceState {
     required this.bookService,
   });
 }
+
+final class BookServicePickDateInitial extends BookServiceState {}
+
+final class BookServicePickDateUpdated extends BookServiceState {}
+
+final class BookServicePickDateFailure extends BookServiceState {}
+
+final class BookServicePickTimeInitial extends BookServiceState {}
+
+final class BookServicePickTimeUpdated extends BookServiceState {}
+
+final class BookServicePickTimeFailure extends BookServiceState {}
+
+final class BookServicePickLocationLoading extends BookServiceState {}
+
+final class BookServicePickLocationUpdated extends BookServiceState {}
+
+final class BookServicePickLocationFailure extends BookServiceState {}

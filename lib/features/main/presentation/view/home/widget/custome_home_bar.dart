@@ -80,19 +80,17 @@ class CustomeHomeBar extends StatelessWidget {
             const SizedBox(width: 5),
             !loading
                 ? CircleAvatar(
-                    radius: 32,
+                    radius: 38,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: customerInfos!.photo != null
                           ? CachedNetworkImage(
                               imageUrl: customerInfos!.photo!,
-                              errorWidget: (context, url, error) {
-                                return const Icon(
-                                  Icons.account_box,
-                                  size: 48,
-                                  color: kPrimaryColor,
-                                );
-                              },
+                              errorWidget: (context, url, error) => const Icon(
+                                Icons.account_box,
+                                size: 48,
+                                color: kPrimaryColor,
+                              ),
                             )
                           : Image.asset(AppImages.profile),
                     ),

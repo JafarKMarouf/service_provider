@@ -15,27 +15,24 @@ class CustomeServiceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.to(
-          () => ServiceInfosView(data: data),
-          transition: Transition.fadeIn,
-          duration: kDurationTransition,
-        );
-      },
+      onTap: () => Get.to(
+        () => ServiceInfosView(data: data),
+        transition: Transition.fadeIn,
+        duration: kDurationTransition,
+      ),
       child: Card(
         elevation: 0,
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: '${data.photo}',
-                  placeholder: (context, url) {
-                    return Shimmer.fromColors(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  child: CachedNetworkImage(
+                    imageUrl: '${data.photo}',
+                    placeholder: (context, url) => Shimmer.fromColors(
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
                       child: Container(
@@ -46,28 +43,25 @@ class CustomeServiceItem extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                    );
-                  },
-                  errorWidget: (context, url, error) {
-                    return const Icon(
-                      Icons.error,
-                      color: Colors.white,
-                    );
-                  },
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error, color: kPrimaryColor, size: 45),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 2),
-            Text(
-              data.serviceName!,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+              const SizedBox(height: 4),
+              Text(
+                data.serviceName!,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+              const SizedBox(height: 4),
+            ],
+          ),
         ),
       ),
     );

@@ -46,6 +46,8 @@ class AuthCubit extends Cubit<AuthState> {
   int start = 120;
 
   //======================Logout variables=================================
+  bool loadingLogout = false;
+
   final AuthRepoImpl authRepoImpl;
 
   AuthCubit(this.authRepoImpl) : super(AuthInitial());
@@ -127,7 +129,7 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold((failure) {
       emit(AuthFailure(errorMessage: failure.errMessage));
     }, (user) async {
-      await AppStorage.removeEmail();
+      if (start < 120) cancelTimer();
       await AppStorage.storeVerifedEmail(true);
       otpCodeVerify.clear();
       Future.delayed(
@@ -151,8 +153,9 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
-      (data) {
-        startTimer();
+      (data) async {
+        await startTimer();
+        otpCodeVerify.clear();
         emit(AuthSuccess(userModel: data));
       },
     );
@@ -185,21 +188,31 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthVisible());
   }
 
-  void startTimer() {
+  Future<void> startTimer() async {
     isResendAgain = true;
     const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(oneSec, (timer) {
       emit(AuthStartTimer());
 
-      if (start == 0) {
-        emit(AuthCancelTimer());
+      if (start <= 120 && start > 0) {
+        start--;
+        emit(AuthUpdateTimer());
+      } else if (start == 0) {
         isResendAgain = false;
         timer.cancel();
-      } else {
-        emit(AuthUpdateTimer());
-        start--;
+        emit(AuthCancelTimer());
+
+        // cancelTimer();
+        // timer.cancel();
+        // emit(AuthCancelTimer());
       }
     });
+  }
+
+  Future<void> cancelTimer() async {
+    isResendAgain = false;
+    timer.cancel();
+    emit(AuthCancelTimer());
   }
 
   Future<void> getEmail() async {

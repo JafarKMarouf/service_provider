@@ -30,10 +30,7 @@ class CustomeServiceBar extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: SvgPicture.asset(
-            AppImages.arrowright,
-            width: 34,
-          ),
+          child: SvgPicture.asset(AppImages.arrowright, width: 34),
           // icon: const Icon(Icons.arrow_back_rounded)
         ),
       ],
