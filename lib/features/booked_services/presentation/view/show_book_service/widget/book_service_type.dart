@@ -14,17 +14,15 @@ class BookServiceType extends StatelessWidget {
     return Card(
       elevation: .6,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: SizedBox(
-          width: MediaQuery.sizeOf(context).width / 2,
-          height: MediaQuery.sizeOf(context).height / 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: CachedNetworkImage(
-                  fit: BoxFit.fill,
                   imageUrl: '${data.service!.photo}',
+                  color: kPrimaryColor,
                   placeholder: (context, url) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
@@ -32,7 +30,6 @@ class BookServiceType extends StatelessWidget {
                       width: MediaQuery.sizeOf(context).width / 2,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -47,16 +44,17 @@ class BookServiceType extends StatelessWidget {
               Text(
                 '${data.service!.serviceName}',
                 style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                  color: kPrimaryColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(height: 8.0),
               Text(
                 '${data.service!.price.toString()} ل.س',
                 style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.green,
+                  fontSize: 18,
+                  color: kPrimaryColor,
                   fontWeight: FontWeight.w600,
                 ),
                 textDirection: TextDirection.rtl,

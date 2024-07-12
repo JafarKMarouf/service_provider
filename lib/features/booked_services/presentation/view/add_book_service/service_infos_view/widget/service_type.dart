@@ -16,14 +16,14 @@ class ServiceType extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
         child: SizedBox(
-          width: MediaQuery.sizeOf(context).width / 2,
+          // width: MediaQuery.sizeOf(context).width / 1.9,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: CachedNetworkImage(
-                  fit: BoxFit.fill,
                   imageUrl: '${data.photo}',
+                  color: kPrimaryColor,
                   placeholder: (context, url) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
@@ -31,7 +31,6 @@ class ServiceType extends StatelessWidget {
                       width: MediaQuery.sizeOf(context).width / 2,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -46,16 +45,19 @@ class ServiceType extends StatelessWidget {
               Text(
                 '${data.serviceName}',
                 style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: kPrimaryColor,
+                  // color: Colors.white,
                 ),
               ),
               const SizedBox(height: 8.0),
               Text(
                 '${data.price} ل.س',
                 style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.green,
+                  fontSize: 18,
+                  color: kPrimaryColor,
+                  // color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
                 textDirection: TextDirection.rtl,

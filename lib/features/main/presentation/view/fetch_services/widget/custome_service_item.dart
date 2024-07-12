@@ -32,6 +32,7 @@ class CustomeServiceItem extends StatelessWidget {
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
                   child: CachedNetworkImage(
                     imageUrl: '${data.photo}',
+                    color: kPrimaryColor,
                     placeholder: (context, url) => Shimmer.fromColors(
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
@@ -44,8 +45,11 @@ class CustomeServiceItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error, color: kPrimaryColor, size: 45),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                      color: kPrimaryColor,
+                      size: 45,
+                    ),
                   ),
                 ),
               ),
@@ -54,6 +58,7 @@ class CustomeServiceItem extends StatelessWidget {
                 data.serviceName!,
                 style: const TextStyle(
                   fontSize: 16,
+                  color: kPrimaryColor,
                   fontWeight: FontWeight.w600,
                 ),
                 maxLines: 1,

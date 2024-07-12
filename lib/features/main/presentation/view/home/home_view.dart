@@ -25,9 +25,7 @@ class HomeView extends StatelessWidget {
           const HandleUserDetails(),
           const SizedBox(height: 6),
 
-          CustomeSearch(
-            width: MediaQuery.of(context).size.width,
-          ),
+          CustomeSearch(width: MediaQuery.of(context).size.width),
           const SizedBox(height: 3),
 
           //============================ الخدمات المتاحة=====================

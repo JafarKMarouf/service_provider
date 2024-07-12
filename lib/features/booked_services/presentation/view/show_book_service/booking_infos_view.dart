@@ -17,7 +17,6 @@ class BookingInfosView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var formatDate = DateFormat('dd/MM/yyy').format(data.deliveryTime!);
     var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
 
     return Scaffold(
@@ -29,7 +28,6 @@ class BookingInfosView extends StatelessWidget {
             Expanded(flex: 2, child: BookServiceType(data: data)),
             const SizedBox(height: 8),
             Expanded(
-              flex: 1,
               child: CustomeInfosServiceItems(
                 location: 'Santa Clara County, United States',
                 phone: data.service!.expert!.expertInfos!.mobile,

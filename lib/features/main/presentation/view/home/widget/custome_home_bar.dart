@@ -79,26 +79,40 @@ class CustomeHomeBar extends StatelessWidget {
             ),
             const SizedBox(width: 5),
             !loading
-                ? CircleAvatar(
-                    radius: 38,
+                ? SizedBox(
+                    width: 70.0,
+                    height: 70.0,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: customerInfos!.photo != null
-                          ? CachedNetworkImage(
-                              imageUrl: customerInfos!.photo!,
-                              errorWidget: (context, url, error) => const Icon(
-                                Icons.account_box,
-                                size: 48,
-                                color: kPrimaryColor,
-                              ),
-                            )
-                          : Image.asset(AppImages.profile),
+                      borderRadius: BorderRadius.circular(45),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fill,
+                        imageUrl: customerInfos!.photo!,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width / 2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            Image.asset(AppImages.profile),
+                      ),
                     ),
                   )
                 : Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
-                    child: const CircleAvatar(radius: 38),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(45),
+                      child: Container(
+                        color: Colors.white,
+                        width: 70,
+                        height: 70,
+                      ),
+                    ),
                   ),
           ],
         )
