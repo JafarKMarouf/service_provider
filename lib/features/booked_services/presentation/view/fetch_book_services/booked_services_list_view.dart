@@ -15,8 +15,9 @@ class BookedServicesListView extends StatelessWidget {
     List<DatumBooked> booked = [];
 
     return Scaffold(
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
+        height: MediaQuery.sizeOf(context).height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

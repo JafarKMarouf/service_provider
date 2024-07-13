@@ -6,7 +6,7 @@ class Service extends Equatable {
   final int? id;
   final String? serviceName;
   final String? photo;
-  final double? price;
+  final num? price;
   final int? expertId;
   final Expert? expert;
 
@@ -23,7 +23,7 @@ class Service extends Equatable {
         id: json['id'] as int?,
         serviceName: json['service_name'] as String?,
         photo: json['photo'] as String?,
-        price: json['price'] as double?,
+        price: json['price'] as num?,
         expertId: json['expert_id'] as int?,
         expert: json['expert'] == null
             ? null
@@ -34,11 +34,11 @@ class Service extends Equatable {
         'id': id,
         'service_name': serviceName,
         'photo': photo,
-        'price' : price,
+        'price': price,
         'expert_id': expertId,
         'expert': expert?.toJson(),
       };
 
   @override
-  List<Object?> get props => [id, serviceName,photo,price, expertId, expert];
+  List<Object?> get props => [id, serviceName, photo, price, expertId, expert];
 }

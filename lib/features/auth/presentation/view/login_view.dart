@@ -15,9 +15,7 @@ class LoginView extends StatelessWidget {
       create: (context) => AuthCubit(
         AuthRepoImpl(ApiService(Dio())),
       ),
-      child: const Scaffold(
-        body: LoginBody(),
-      ),
+      child: const Scaffold(body: LoginBody()),
     );
   }
 }

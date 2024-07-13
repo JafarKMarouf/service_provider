@@ -20,24 +20,26 @@ class BookingInfosView extends StatelessWidget {
     var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
 
     return Scaffold(
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
+        height: MediaQuery.sizeOf(context).height,
         child: Column(
           children: [
             const Expanded(child: CustomeServiceBar(title: "معلومات الحجز")),
             Expanded(flex: 2, child: BookServiceType(data: data)),
             const SizedBox(height: 8),
-            Expanded(
-              child: CustomeInfosServiceItems(
-                location: 'Santa Clara County, United States',
-                phone: data.service!.expert!.expertInfos!.mobile,
-                time: formatTime,
-                timeTapped: true,
-                locationTapped: true,
-                phoneTapped: true,
-              ),
+            CustomeInfosServiceItems(
+              location: 'Santa Clara County, United States',
+              phone: data.service!.expert!.expertInfos!.mobile,
+              time: formatTime,
+              timeTapped: true,
+              locationTapped: true,
+              phoneTapped: true,
             ),
-            Expanded(flex: 2, child: CustomeBookServiceInfo(data: data)),
+            Expanded(
+              flex: 2,
+              child: CustomeBookServiceInfo(data: data),
+            ),
             CustomButton(
               title: 'تقدم',
               onTap: () {},

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/fetch_book_services/on_going_list_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/fetch_book_services/widgets/book_service_info_minimum.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/show_book_service/booking_infos_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:get/get.dart' as g;
 
 class HandleBookServiceUi extends StatelessWidget {
   const HandleBookServiceUi({super.key});
@@ -19,7 +22,20 @@ class HandleBookServiceUi extends StatelessWidget {
         builder: (context, state) {
           if (state is BookServiceSuccess) {
             booked.addAll(state.bookService.data!.toList());
-            return OnGoingListView(data: booked);
+            return SizedBox(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: booked.length,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () => g.Get.to(
+                    () => BookingInfosView(data: booked[index]),
+                    transition: g.Transition.fadeIn,
+                    duration: kDurationTransition,
+                  ),
+                  child: BookServiceInfosMinimum(data: booked[index]),
+                ),
+              ),
+            );
           } else if (state is BookServiceFailure) {
             return SizedBox(
               height: MediaQuery.of(context).size.height * .15,
@@ -43,9 +59,6 @@ class HandleBookServiceUi extends StatelessWidget {
                       color: Colors.blue,
                     ),
                   ),
-                  // child: ListTile(
-                  //   title:,
-                  // ),
                 ),
               ),
             );

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
 
-class ServiceInfosMinimum extends StatelessWidget {
-  final DatumService data;
-  const ServiceInfosMinimum({super.key, required this.data});
+class CategoryInfosMinimum extends StatelessWidget {
+  final Datum data;
+  const CategoryInfosMinimum({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class ServiceInfosMinimum extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            data.serviceName!,
+            data.title!,
             style: const TextStyle(
               fontSize: 14,
               fontFamily: 'Poppins SemiBold',

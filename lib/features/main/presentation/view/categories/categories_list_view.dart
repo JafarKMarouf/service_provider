@@ -1,25 +1,27 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
+import 'package:freelancer_app/features/main/presentation/view_models/category_cubit/category_cubit.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../view_models/service_cubit/service_cubit.dart';
-import 'services_grid_view.dart';
+import 'widgets/categories_grid_view.dart';
 
-class ServicesListView extends StatelessWidget {
-  const ServicesListView({super.key, this.loading = true});
+class CategoriesListView extends StatelessWidget {
   final bool loading;
+  const CategoriesListView({super.key, this.loading = true});
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ServiceCubit>(context).fetchService();
-    List<DatumService> services = [];
+    BlocProvider.of<CategoryCubit>(context).fetchCategories();
+    List<Datum> categories = [];
+
     return Scaffold(
-      body: BlocConsumer<ServiceCubit, ServiceState>(
+      body: BlocConsumer<CategoryCubit, CategoryState>(
         listener: (context, state) {
-          if (state is ServiceSuccess) {
-            services.addAll(state.service.data!.toList());
+          if (state is CategorySuccess) {
+            categories.addAll(state.category.data!.toList());
           }
         },
         builder: (context, state) => Padding(
@@ -31,12 +33,16 @@ class ServicesListView extends StatelessWidget {
               const CustomeSearchArrowBackBar(),
               const SizedBox(height: 6),
               const Text(
-                'الخدمات المتاحة',
+                'الخدمات',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 6),
-              state is ServiceSuccess
-                  ? Expanded(child: ServicesGridView(data: services))
+              // state is CategorySuccess
+              // ?Expanded(child: child)
+              state is CategorySuccess
+                  ? Expanded(
+                      child: CategoriesGridView(data: categories),
+                    )
                   : Expanded(
                       child: Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,

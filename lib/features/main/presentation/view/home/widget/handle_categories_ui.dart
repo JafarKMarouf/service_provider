@@ -1,27 +1,31 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
-import 'package:freelancer_app/features/main/presentation/view_models/service_cubit/service_cubit.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
+
+import 'package:freelancer_app/features/main/presentation/view/categories/widgets/categories_grid_view.dart';
+
+import 'package:freelancer_app/features/main/presentation/view_models/category_cubit/category_cubit.dart';
+
 import 'package:shimmer/shimmer.dart';
 
-import '../../fetch_services/widget/services_grid_view.dart';
-
-class HandleServicesUi extends StatelessWidget {
-  const HandleServicesUi({super.key});
+class HandleCategoriesUi extends StatelessWidget {
+  const HandleCategoriesUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ServiceCubit>(context).fetchService();
-    List<DatumService> services = [];
+    List<Datum> categories = [];
+
+    BlocProvider.of<CategoryCubit>(context).fetchCategories();
 
     return Expanded(
       flex: 4,
-      child: BlocBuilder<ServiceCubit, ServiceState>(
+      child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
-          if (state is ServiceSuccess) {
-            services.addAll(state.service.data!.toList());
-            return ServicesGridView(data: services);
-          } else if (state is ServiceFailure) {
+          if (state is CategorySuccess) {
+            categories.addAll(state.category.data!.toList());
+            return CategoriesGridView(data: categories);
+          } else if (state is CategoryFailure) {
             return SizedBox(
               height: MediaQuery.of(context).size.height * .15,
               child: Center(child: Text(state.errMessage)),

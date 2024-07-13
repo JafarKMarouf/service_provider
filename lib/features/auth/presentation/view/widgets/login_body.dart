@@ -30,7 +30,6 @@ class LoginBody extends StatelessWidget {
         return ModalProgressHUD(
           inAsyncCall: cubit.loadingLogin,
           child: Container(
-            // color: kPrimaryColor,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
