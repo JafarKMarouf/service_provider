@@ -5,10 +5,11 @@ import 'package:freelancer_app/core/utils/bloc_observer.dart';
 
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo_impl.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
-import 'package:freelancer_app/features/main/data/repos/service_repo_impl.dart';
+import 'package:freelancer_app/features/main/data/repos/category_repo/category_repo_impl.dart';
+import 'package:freelancer_app/features/main/data/repos/service_repo/service_repo_impl.dart';
+import 'package:freelancer_app/features/main/presentation/view_models/category_cubit/category_cubit.dart';
 
 import 'package:freelancer_app/features/main/presentation/view_models/service_cubit/service_cubit.dart';
-import 'package:freelancer_app/features/splash/presentation/view/splash_view.dart';
 
 import 'package:get/get.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
@@ -18,6 +19,7 @@ import 'package:dio/dio.dart';
 
 import 'features/profile/data/repos/profile_repo_impl.dart';
 import 'features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
+import 'features/splash/presentation/view/splash_view.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
@@ -38,12 +40,16 @@ class MyApp extends StatelessWidget {
           create: (context) => ProfileCubit(ProfileRepoImpl(ApiService(Dio()))),
         ),
         BlocProvider(
+          create: (context) =>
+              CategoryCubit(CategoryRepoImpl(ApiService(Dio()))),
+        ),
+        BlocProvider(
           create: (context) => ServiceCubit(ServiceRepoImpl(ApiService(Dio()))),
         ),
         BlocProvider(
           create: (context) => BookServiceCubit(
               BookServiceRepoImpl(apiService: ApiService(Dio()))),
-        )
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
@@ -53,6 +59,7 @@ class MyApp extends StatelessWidget {
           primaryColorLight: kPrimaryColor,
           applyElevationOverlayColor: true,
         ),
+        // home: const HandleCategoriesGridItems(),
         home: const SplashView(),
       ),
     );

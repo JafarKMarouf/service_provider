@@ -20,12 +20,6 @@ class FreelancerInfosBody extends StatelessWidget {
   final service.Expert? expert;
   @override
   Widget build(BuildContext context) {
-    // freelanceInfos.
-    // print('=========expert : ${expert!.expertInfos!.rating} ================');
-
-    // print(
-    //     '=========freelancer : ${freelanceInfos!.expertInfos!.rating} ================');
-
     int rating = 0;
     if (freelanceInfos != null) {
       rating = freelanceInfos!.expertInfos!.rating;
@@ -43,9 +37,7 @@ class FreelancerInfosBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           CustomeServiceBar(title: '${freelanceInfos?.name ?? expert?.name}'),
-          const SizedBox(
-            height: 16,
-          ),
+          const SizedBox(height: 16),
           Center(
             child: CustomeFreelancerImage(
               height: 120,
@@ -53,9 +45,7 @@ class FreelancerInfosBody extends StatelessWidget {
                   '${freelanceInfos?.expertInfos?.photo ?? expert?.expertInfos?.photo}',
             ),
           ),
-          const SizedBox(
-            height: 24,
-          ),
+          const SizedBox(height: 24),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -67,9 +57,7 @@ class FreelancerInfosBody extends StatelessWidget {
                 ),
                 textDirection: TextDirection.rtl,
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -85,12 +73,15 @@ class FreelancerInfosBody extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    children: List.generate(5 - rating, (index) {
-                      return const Icon(
-                        Icons.star_border,
-                        color: kPrimaryColor,
-                      );
-                    }),
+                    children: List.generate(
+                      5 - rating,
+                      (index) {
+                        return const Icon(
+                          Icons.star_border,
+                          color: kPrimaryColor,
+                        );
+                      },
+                    ),
                   ),
                   const Text(
                     'التقييم :   ',
@@ -102,9 +93,7 @@ class FreelancerInfosBody extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               Text(
                 'الوصف :   ${freelanceInfos?.expertInfos?.description ?? expert?.expertInfos?.description}',
                 style: const TextStyle(
@@ -113,9 +102,7 @@ class FreelancerInfosBody extends StatelessWidget {
                 ),
                 textDirection: TextDirection.rtl,
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               Text(
                 'الشهادات الحاصل عليها :   '
                 '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate} ',
@@ -125,9 +112,7 @@ class FreelancerInfosBody extends StatelessWidget {
                 ),
                 textDirection: TextDirection.rtl,
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               Text(
                 'الخدمات التي يقدمها :   '
                 '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate}',
@@ -137,9 +122,7 @@ class FreelancerInfosBody extends StatelessWidget {
                 ),
                 textDirection: TextDirection.rtl,
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
             ],
           ),
           const Spacer(),
@@ -159,9 +142,7 @@ class FreelancerInfosBody extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(
-            height: 14,
-          ),
+          const SizedBox(height: 14),
         ],
       ),
     );

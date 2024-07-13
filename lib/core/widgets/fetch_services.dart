@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 
 class FetchServices extends StatelessWidget {
+  final void Function()? onPressed;
+  final String title;
   const FetchServices({
     super.key,
     this.onPressed,
     required this.title,
-    // required this.length,
   });
-  final void Function()? onPressed;
-  final String title;
-  // final int length;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-       // length > 0 ?
-       TextButton(
+        TextButton(
           onPressed: onPressed,
           child: const Text(
             'رؤية الكل',
@@ -28,13 +26,10 @@ class FetchServices extends StatelessWidget {
             ),
           ),
         ),
-           // : Container(),
+        // : Container(),
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-          ),
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
         ),
       ],
     );

@@ -19,15 +19,11 @@ class CustomeBookServiceInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           InkWell(
-            onTap: () {
-              g.Get.to(
-                () => FreelancerInfosView(
-                  freelanceInfos: data.service!.expert!,
-                ),
-                transition: g.Transition.fadeIn,
-                duration: kDurationTransition,
-              );
-            },
+            onTap: () => g.Get.to(
+              () => FreelancerInfosView(freelanceInfos: data.service!.expert!),
+              transition: g.Transition.fadeIn,
+              duration: kDurationTransition,
+            ),
             child: Text(
               'اسم الفريلانسر :  ${data.service!.expert!.name}',
               style: const TextStyle(
@@ -37,34 +33,24 @@ class CustomeBookServiceInfo extends StatelessWidget {
               textDirection: TextDirection.rtl,
             ),
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
                 children: List.generate(
                   rating,
-                  (index) {
-                    return const Icon(
-                      Icons.star,
-                      color: kPrimaryColor,
-                    );
-                  },
+                  (index) => const Icon(
+                    Icons.star,
+                    color: Color(0xffFFD541),
+                  ),
                 ),
               ),
               Row(
-                children: List.generate(
-                  5 - rating,
-                  (index) {
-                    return const Icon(
-                      Icons.star_border,
-                      color: kPrimaryColor,
-                    );
-                  },
-                ),
-              ),
+                  children: List.generate(
+                5 - rating,
+                (index) => const Icon(Icons.star_border, color: kPrimaryColor),
+              )),
               const Text(
                 'التقييم :   ',
                 style: TextStyle(
@@ -75,9 +61,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
           Text(
             'تاريخ الحجز :  $formatDate',
             style: const TextStyle(

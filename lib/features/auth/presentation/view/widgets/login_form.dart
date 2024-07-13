@@ -28,9 +28,7 @@ class LoginForm extends StatelessWidget {
                 CustomeTextFormField(
                   isSuffix: false,
                   validate: (value) {
-                    if (value!.isEmpty) {
-                      return "هذا الحقل مطلوب";
-                    }
+                    if (value!.isEmpty) return "هذا الحقل مطلوب";
                     return null;
                   },
                   hintText: 'الإيميل',
@@ -59,9 +57,8 @@ class LoginForm extends StatelessWidget {
                           ),
                   ),
                   validate: (value) {
-                    if (value!.isEmpty) {
-                      return "هذا الحقل مطلوب";
-                    }
+                    if (value!.isEmpty) return "هذا الحقل مطلوب";
+
                     if (value.length < 8) {
                       return 'كلمة السر يجب ان تحتوي 8 حروف على الأقل';
                     }

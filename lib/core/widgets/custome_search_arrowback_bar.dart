@@ -5,14 +5,15 @@ import 'package:freelancer_app/core/widgets/custome_search.dart';
 import 'package:get/get.dart';
 
 class CustomeSearchArrowBackBar extends StatelessWidget {
-  const CustomeSearchArrowBackBar({super.key});
+  final String? title;
+  const CustomeSearchArrowBackBar({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CustomeSearch(width: 300),
+        CustomeSearch(width: 300, hintText: title),
         IconButton(
           onPressed: () {
             Get.back();

@@ -12,6 +12,10 @@ class AppImages {
   static const String lock = '$routeImage/lock.png';
   static const String email = '$routeImage/email.png';
   static const String profile = '$routeImage/default_profile.png';
+  static const String calender = '$routeImage/calender.png';
+  static const String location = '$routeImage/location.png';
+  static const String time = '$routeImage/time.png';
+  static const String phone = '$routeImage/phone.png';
 
   static const String bookmarksvg = '$routeVector/bookmark.svg';
   static const String savesvg = '$routeVector/save.svg';

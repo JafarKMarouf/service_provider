@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
+import 'package:freelancer_app/core/constants/app_storage.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
@@ -10,6 +11,9 @@ import 'custome_text_form_field.dart';
 
 class OtpConfirmForm extends StatelessWidget {
   const OtpConfirmForm({super.key});
+  void getEmail() async {
+    await AppStorage.getEmail();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,9 +83,7 @@ class OtpConfirmForm extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 onTap: () async {
                   if (cubit.formKeyVerify.currentState!.validate()) {
-                    await cubit.verify(
-                      otp: cubit.otpCodeVerify.text,
-                    );
+                    await cubit.verify(otp: cubit.otpCodeVerify.text);
                   } else {
                     cubit.autoValidateVerify = AutovalidateMode.always;
                   }

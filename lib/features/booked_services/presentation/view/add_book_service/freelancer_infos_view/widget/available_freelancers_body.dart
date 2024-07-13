@@ -7,47 +7,50 @@ import 'package:freelancer_app/features/booked_services/presentation/view/add_bo
 
 import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
 import 'package:get/get.dart' as g;
+import 'package:intl/intl.dart';
 
 class AvailableFreelancerBody extends StatelessWidget {
-  const AvailableFreelancerBody({super.key});
+  final DateTime date;
+  final TimeOfDay time;
+  final String location;
+
+  const AvailableFreelancerBody({
+    super.key,
+    required this.date,
+    required this.time,
+    required this.location,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 40,
-        horizontal: 16,
-      ),
+      padding: const EdgeInsets.only(bottom: 15, right: 8, left: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const CustomeSearchArrowBackBar(),
-          const SizedBox(
-            height: 16,
-          ),
+          const Expanded(child: CustomeSearchArrowBackBar()),
           const Text(
             'الفريلانسر المتاحين',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-          const CustomeInfosServiceItems(
-            date: '12/05/2024',
-            time: '2-3 وقت الظهيرة',
-            location: 'طرطوس',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
           ),
           Expanded(
+            child: CustomeInfosServiceItems(
+              date: DateFormat('dd/MM/yyy').format(date),
+              time: time.format(context),
+              location: location,
+              dateTapped: true,
+              timeTapped: true,
+              locationTapped: true,
+            ),
+          ),
+          Expanded(
+            flex: 3,
             child: GridView.builder(
               scrollDirection: Axis.vertical,
-              // shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3),
-              padding: const EdgeInsets.only(
-                top: 15,
-                bottom: 10,
-              ),
-              itemCount: 100,
+              padding: EdgeInsets.zero,
+              itemCount: 10,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -70,7 +73,7 @@ class AvailableFreelancerBody extends StatelessWidget {
                         const Expanded(
                           child: CustomeFreelancerImage(
                             image:
-                                'http://192.168.194.128:8000/storage/experts/1715082626.png',
+                                'http://192.168.68.166:8000/storage/experts/1720626012.png',
                             height: 80,
                           ),
                         ),
@@ -89,16 +92,18 @@ class AvailableFreelancerBody extends StatelessWidget {
                               color: Colors.grey.shade700,
                             ),
                             Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List.generate(
-                                    5,
-                                    (index) => const Icon(
-                                          Icons.star,
-                                          size: 16,
-                                          color: kPrimaryColor,
-                                        ))),
-                            const SizedBox(height: 5),
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                5,
+                                (index) => const Icon(
+                                  Icons.star,
+                                  size: 16,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                            ),
+                            // const SizedBox(height: 5),
                           ],
                         )
                       ],

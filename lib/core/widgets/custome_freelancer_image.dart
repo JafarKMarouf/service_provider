@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
@@ -16,7 +14,7 @@ class CustomeFreelancerImage extends StatelessWidget {
   final String? image;
   @override
   Widget build(BuildContext context) {
-    log('====image: $image');
+    // log('====image: $image');
     return Container(
       height: height,
       width: height,
@@ -25,6 +23,7 @@ class CustomeFreelancerImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(240),
         child: image != null
             ? CachedNetworkImage(
+                // fit: BoxFit.fill,
                 imageUrl: image!,
                 placeholder: (context, url) {
                   return Shimmer.fromColors(

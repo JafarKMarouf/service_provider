@@ -13,14 +13,10 @@ final class ServiceLoading extends ServiceState {}
 
 final class ServiceFailure extends ServiceState {
   final String errMessage;
-  const ServiceFailure({
-    required this.errMessage,
-  });
+  const ServiceFailure({required this.errMessage});
 }
 
 final class ServiceSuccess extends ServiceState {
   final Service service;
-  const ServiceSuccess({
-    required this.service,
-  });
+  const ServiceSuccess({required this.service});
 }
