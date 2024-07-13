@@ -29,8 +29,13 @@ class ServiceInfosBook extends StatelessWidget {
             onPressedTime: () async => await cubit.pickTime(context),
             timeTapped: cubit.newTime != null ? true : false,
             // =================================
-            location: cubit.currentAddress ?? 'تحديد الموقع',
-            locationTapped: cubit.currentAddress != null ? true : false,
+            location: cubit.currentPosition == null
+                ? 'تحديد الموقع'
+                : cubit.currentPosition.toString(),
+            locationTapped: cubit.currentPosition != null ? true : false,
+
+            // location: cubit.currentAddress ?? 'تحديد الموقع',
+            // locationTapped: cubit.currentAddress != null ? true : false,
             onPressedLocation: () async {
               loading = true;
               await cubit.pickLocation();

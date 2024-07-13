@@ -19,15 +19,11 @@ class CustomeBookServiceInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           InkWell(
-            onTap: () {
-              g.Get.to(
-                () => FreelancerInfosView(
-                  freelanceInfos: data.service!.expert!,
-                ),
-                transition: g.Transition.fadeIn,
-                duration: kDurationTransition,
-              );
-            },
+            onTap: () => g.Get.to(
+              () => FreelancerInfosView(freelanceInfos: data.service!.expert!),
+              transition: g.Transition.fadeIn,
+              duration: kDurationTransition,
+            ),
             child: Text(
               'اسم الفريلانسر :  ${data.service!.expert!.name}',
               style: const TextStyle(
@@ -44,7 +40,10 @@ class CustomeBookServiceInfo extends StatelessWidget {
               Row(
                 children: List.generate(
                   rating,
-                  (index) => const Icon(Icons.star, color: kPrimaryColor),
+                  (index) => const Icon(
+                    Icons.star,
+                    color: Color(0xffFFD541),
+                  ),
                 ),
               ),
               Row(

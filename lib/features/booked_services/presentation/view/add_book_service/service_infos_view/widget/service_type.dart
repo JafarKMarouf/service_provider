@@ -11,25 +11,32 @@ class ServiceType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: .6,
+    return Container(
+      width: MediaQuery.sizeOf(context).width / 1.5,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: const Color(0xffF5F5F5),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-        child: SizedBox(
-          // width: MediaQuery.sizeOf(context).width / 1.9,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Container(
+                width: MediaQuery.sizeOf(context).width / 2,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: kPrimaryColor,
+                ),
                 child: CachedNetworkImage(
                   imageUrl: '${data.photo}',
-                  color: kPrimaryColor,
                   placeholder: (context, url) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width / 2,
                       decoration: BoxDecoration(
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
@@ -41,29 +48,29 @@ class ServiceType extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 8.0),
-              Text(
-                '${data.serviceName}',
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: kPrimaryColor,
-                  // color: Colors.white,
-                ),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              '${data.serviceName}',
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Poppins SemiBold',
+                color: Color(0xff0F0E0E),
               ),
-              const SizedBox(height: 8.0),
-              Text(
-                '${data.price} ل.س',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: kPrimaryColor,
-                  // color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                ),
-                textDirection: TextDirection.rtl,
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              '${data.price} ل.س',
+              style: const TextStyle(
+                fontSize: 16,
+                color: Color(0xff0ABA31),
+                fontFamily: 'Poppins Medium',
+                fontWeight: FontWeight.w600,
               ),
-            ],
-          ),
+              textDirection: TextDirection.rtl,
+            ),
+          ],
         ),
       ),
     );

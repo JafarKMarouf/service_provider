@@ -7,10 +7,11 @@ import 'package:freelancer_app/features/booked_services/presentation/view/add_bo
 
 import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
 import 'package:get/get.dart' as g;
+import 'package:intl/intl.dart';
 
 class AvailableFreelancerBody extends StatelessWidget {
-  final String date;
-  final String time;
+  final DateTime date;
+  final TimeOfDay time;
   final String location;
 
   const AvailableFreelancerBody({
@@ -34,8 +35,8 @@ class AvailableFreelancerBody extends StatelessWidget {
           ),
           Expanded(
             child: CustomeInfosServiceItems(
-              date: date,
-              time: time,
+              date: DateFormat('dd/MM/yyy').format(date),
+              time: time.format(context),
               location: location,
               dateTapped: true,
               timeTapped: true,

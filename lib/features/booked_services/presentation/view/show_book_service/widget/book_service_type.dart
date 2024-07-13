@@ -11,8 +11,12 @@ class BookServiceType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: .6,
+    return Container(
+      width: MediaQuery.sizeOf(context).width / 1.5,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: const Color(0xffF5F5F5),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: SizedBox(
@@ -20,23 +24,30 @@ class BookServiceType extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: CachedNetworkImage(
-                  imageUrl: '${data.service!.photo}',
-                  color: kPrimaryColor,
-                  placeholder: (context, url) => Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width / 2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width / 2,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    color: kPrimaryColor,
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: '${data.service!.photo}',
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width / 2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(
-                    Icons.error,
-                    size: 45,
-                    color: kPrimaryColor,
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                      size: 45,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -44,17 +55,19 @@ class BookServiceType extends StatelessWidget {
               Text(
                 '${data.service!.serviceName}',
                 style: const TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w700,
+                  fontFamily: 'Poppins SemiBold',
+                  color: Color(0xff0F0E0E),
                 ),
               ),
               const SizedBox(height: 8.0),
               Text(
                 '${data.service!.price.toString()} ل.س',
                 style: const TextStyle(
-                  fontSize: 18,
-                  color: kPrimaryColor,
+                  fontSize: 16,
+                  color: Color(0xff0ABA31),
+                  fontFamily: 'Poppins Medium',
                   fontWeight: FontWeight.w600,
                 ),
                 textDirection: TextDirection.rtl,

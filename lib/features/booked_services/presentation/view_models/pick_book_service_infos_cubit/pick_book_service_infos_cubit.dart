@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,11 +36,16 @@ class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
   Future<void> pickLocation() async {
     emit(PickLocationLoading());
     currentPosition = await LocationHandler.getCurrentPosition();
-    currentAddress =
-        await LocationHandler.getAddressFromLatLng(currentPosition!);
-    log('$currentAddress');
-    currentAddress == null
+    currentPosition == null
         ? emit(PickLocationFailure())
         : emit(PickLocationUpdated());
+
+    // currentAddress =
+    //     await LocationHandler.getAddressFromLatLng(currentPosition!);
+    // log('$currentAddress');
+
+    // currentAddress == null
+    //     ? emit(PickLocationFailure())
+    //     : emit(PickLocationUpdated());
   }
 }

@@ -26,28 +26,26 @@ class HandleBookServiceUi extends StatelessWidget {
               child: Center(child: Text(state.errMessage)),
             );
           } else {
-            return SizedBox(
-              height: 220,
-              child: Shimmer.fromColors(
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    right: 2,
-                    left: 4,
-                    top: 8,
-                    bottom: 2,
-                  ),
-                  child: Card(
-                    margin: EdgeInsets.zero,
-                    child: ListTile(
-                      title: Container(
-                        height: 40,
-                        width: double.infinity,
-                        color: Colors.blue,
-                      ),
+            return Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (context, index) => Card(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.only(right: 22),
+                    // height: 40,
+                    width: MediaQuery.sizeOf(context).width * .8,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: Colors.blue,
                     ),
                   ),
+                  // child: ListTile(
+                  //   title:,
+                  // ),
                 ),
               ),
             );

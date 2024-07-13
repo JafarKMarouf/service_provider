@@ -52,6 +52,7 @@ class CustomeInfosServiceItems extends StatelessWidget {
                       ),
                     )
                   : Container(),
+              // const SizedBox(width: 4),
               time != null
                   ? Expanded(
                       child: CustomeInfosService(
@@ -64,7 +65,7 @@ class CustomeInfosServiceItems extends StatelessWidget {
                   : Container(),
             ],
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
           phone != null
               ? CustomeInfosService(
                   text: phone!,
@@ -72,7 +73,7 @@ class CustomeInfosServiceItems extends StatelessWidget {
                   tapped: phoneTapped,
                 )
               : Container(),
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
           location != null
               ? CustomeInfosService(
                   image: AppImages.location,

@@ -18,9 +18,9 @@ class HomeView extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15, top: 8),
-      child: ListView(
+      child: Column(
         children: [
-          const Expanded(flex: 1, child: SizedBox()),
+          const Expanded(child: SizedBox()),
 
           const HandleUserDetails(),
           const SizedBox(height: 6),
