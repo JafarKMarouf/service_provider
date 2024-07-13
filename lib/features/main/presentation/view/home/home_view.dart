@@ -36,6 +36,7 @@ class HomeView extends StatelessWidget {
           const HandleCategoriesUi(),
 
           //============================  الخدمات المحجوزة========================
+
           FetchServices(
             title: 'الخدمات المحجوزة',
             onPressed: () => g.Get.to(

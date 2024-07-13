@@ -10,9 +10,9 @@ class ServiceCubit extends Cubit<ServiceState> {
 
   ServiceCubit(this.serviceRepoImpl) : super(ServiceInitial());
 
-  Future<void> fetchService() async {
+  Future<void> fetchService({categoryId}) async {
     emit(ServiceLoading());
-    var result = await serviceRepoImpl.fetchServices();
+    var result = await serviceRepoImpl.fetchServices(categoryId: categoryId);
 
     result.fold(
       (fail) => emit(ServiceFailure(errMessage: fail.errMessage)),

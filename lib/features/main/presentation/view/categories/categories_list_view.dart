@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
@@ -40,9 +39,7 @@ class CategoriesListView extends StatelessWidget {
               // state is CategorySuccess
               // ?Expanded(child: child)
               state is CategorySuccess
-                  ? Expanded(
-                      child: CategoriesGridView(data: categories),
-                    )
+                  ? Expanded(child: CategoriesGridView(data: categories))
                   : Expanded(
                       child: Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,

@@ -23,7 +23,7 @@ class CategoriesGridView extends StatelessWidget {
         itemCount: data.length,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () => g.Get.to(
-            () => const CategoryItemView(),
+            () => CategoryItemView(data: data[index]),
             transition: g.Transition.fadeIn,
             duration: kDurationTransition,
           ),

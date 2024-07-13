@@ -11,9 +11,10 @@ class ServiceRepoImpl implements ServiceRepo {
   ServiceRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, Service>> fetchServices() async {
+  Future<Either<Failure, Service>> fetchServices({categoryId}) async {
     try {
-      var data = await apiService.get(endPoint: 'customer/service/');
+      var data = await apiService.get(
+          endPoint: 'customer/service/category/$categoryId');
       return right(Service.fromJson(data));
     } catch (e) {
       if (e is DioException) {

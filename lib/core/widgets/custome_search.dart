@@ -5,8 +5,8 @@ import 'package:freelancer_app/core/utils/constant.dart';
 
 class CustomeSearch extends StatelessWidget {
   final double width;
-
-  const CustomeSearch({super.key, required this.width});
+  final String? hintText;
+  const CustomeSearch({super.key, required this.width, this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CustomeSearch extends StatelessWidget {
           prefixIcon: Image.asset(AppImages.filters),
           suffixIcon: Image.asset(AppImages.search, color: AppColors.primary),
           hintTextDirection: TextDirection.rtl,
-          hintText: 'ابحث عن خدمة',
+          hintText: hintText ?? 'ابحث عن خدمة',
           contentPadding: const EdgeInsets.only(top: 8),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
           enabledBorder: OutlineInputBorder(
