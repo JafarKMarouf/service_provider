@@ -36,7 +36,7 @@ class CategoryInfosMinimum extends StatelessWidget {
                 ),
                 errorWidget: (context, url, error) => const Icon(
                   Icons.error,
-                  color: kPrimaryColor,
+                  color: Colors.white,
                   size: 45,
                 ),
               ),

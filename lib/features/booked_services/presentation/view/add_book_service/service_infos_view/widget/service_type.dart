@@ -43,7 +43,7 @@ class ServiceType extends StatelessWidget {
                   ),
                   errorWidget: (context, url, error) => const Icon(
                     Icons.error,
-                    color: kPrimaryColor,
+                    color: Colors.white,
                     size: 45,
                   ),
                 ),

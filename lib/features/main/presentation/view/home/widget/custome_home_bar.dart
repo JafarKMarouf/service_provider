@@ -98,6 +98,7 @@ class CustomeHomeBar extends StatelessWidget {
                               width: MediaQuery.sizeOf(context).width / 2,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
+                                color: kPrimaryColor,
                               ),
                             ),
                           ),
