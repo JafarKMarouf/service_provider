@@ -4,8 +4,6 @@ import 'package:freelancer_app/features/booked_services/presentation/view/add_bo
 import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
 
 import 'package:freelancer_app/features/booked_services/presentation/view_models/pick_book_service_infos_cubit/pick_book_service_infos_cubit.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/service.dart'
-    as servicemodel;
 
 class ServiceInfosView extends StatelessWidget {
   final DatumService data;

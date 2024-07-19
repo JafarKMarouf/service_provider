@@ -82,7 +82,7 @@ class AuthCubit extends Cubit<AuthState> {
                     duration: kDurationTransition,
                     arguments: user.data!.user!.name,
                   )
-                : g.Get.to(
+                : g.Get.offAll(
                     () => const EmailVerifyView(),
                     transition: g.Transition.fadeIn,
                     duration: kDurationTransition,
@@ -189,11 +189,10 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> startTimer() async {
+    emit(AuthStartTimer());
     isResendAgain = true;
     const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(oneSec, (timer) {
-      emit(AuthStartTimer());
-
       if (start <= 120 && start > 0) {
         start--;
         emit(AuthUpdateTimer());
@@ -201,10 +200,6 @@ class AuthCubit extends Cubit<AuthState> {
         isResendAgain = false;
         timer.cancel();
         emit(AuthCancelTimer());
-
-        // cancelTimer();
-        // timer.cancel();
-        // emit(AuthCancelTimer());
       }
     });
   }
