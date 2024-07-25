@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
@@ -53,6 +55,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return right(user);
     } catch (e) {
+      log('====register: $e========');
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }

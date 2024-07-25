@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/freelancer_infos_body.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/expert.dart'
+import 'package:freelancer_app/features/booked_services/data/models/book_services/expert.dart'
     as books;
 import 'package:freelancer_app/features/main/data/models/service_model/expert.dart'
     as service;

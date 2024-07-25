@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/datum.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:shimmer/shimmer.dart';
 
 class BookServiceInfosMinimum extends StatelessWidget {
   final DatumBooked data;
@@ -55,7 +55,7 @@ class BookServiceInfosMinimum extends StatelessWidget {
                             fontSize: 16,
                           ),
                         ),
-                        Text('${data.service!.expert!.name}'),
+                        Text('${data.expert!.user!.name}'),
                       ],
                     ),
                     const SizedBox(width: 16.0),
@@ -139,7 +139,7 @@ class BookServiceInfosMinimum extends StatelessWidget {
                         SizedBox(
                           width: 120,
                           child: Text(
-                            '${data.service!.expert!.expertInfos!.country}',
+                            '${data.expert!.country}',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -150,7 +150,7 @@ class BookServiceInfosMinimum extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          '${data.service!.price} ل.س',
+                          '${data.expert!.price} ل.س',
                           style: const TextStyle(
                             fontSize: 14,
                             fontFamily: 'Poppins Medium',

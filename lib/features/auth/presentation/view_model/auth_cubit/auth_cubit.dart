@@ -63,8 +63,6 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (user) async {
-        emit(AuthSuccess(userModel: user));
-
         await AppStorage.storeToken(user.data!.token!);
         await AppStorage.storeUserId(user.data!.user!.id!.toString());
         await AppStorage.storeUserName(user.data!.user!.name.toString());
@@ -90,6 +88,7 @@ class AuthCubit extends Cubit<AuthState> {
           },
         );
         if (isVerify == null) await resend();
+        emit(AuthSuccess(userModel: user));
       },
     );
   }

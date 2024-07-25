@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/expert.dart'
+import 'package:freelancer_app/features/booked_services/data/models/book_services/expert.dart'
     as books;
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/booking_confirmation/booking_confirmation_view.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/expert.dart'
@@ -22,7 +22,7 @@ class FreelancerInfosBody extends StatelessWidget {
   Widget build(BuildContext context) {
     int rating = 0;
     if (freelanceInfos != null) {
-      rating = freelanceInfos!.expertInfos!.rating;
+      rating = freelanceInfos!.rating!;
     } else if (expert != null) {
       rating = expert!.expertInfos!.rating;
     } else {
@@ -36,95 +36,92 @@ class FreelancerInfosBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          CustomeServiceBar(title: '${freelanceInfos?.name ?? expert?.name}'),
+          CustomeServiceBar(
+              title: '${freelanceInfos?.user!.name ?? expert?.name}'),
           const SizedBox(height: 16),
-          Center(
-            child: CustomeFreelancerImage(
-              height: 120,
-              image:
-                  '${freelanceInfos?.expertInfos?.photo ?? expert?.expertInfos?.photo}',
+          Expanded(
+            child: Center(
+              child: CustomeFreelancerImage(
+                height: 120,
+                image: '${freelanceInfos?.photo ?? expert?.expertInfos?.photo}',
+              ),
             ),
           ),
           const SizedBox(height: 24),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+          Text(
+            'الاسم :   ${freelanceInfos?.user!.name ?? expert?.name}',
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+            textDirection: TextDirection.rtl,
+          ),
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                'الاسم :   ${freelanceInfos?.name ?? expert?.name}',
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              const SizedBox(height: 8),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    children: List.generate(
-                      rating,
-                      (index) {
-                        return const Icon(
-                          Icons.star,
-                          color: kPrimaryColor,
-                        );
-                      },
-                    ),
-                  ),
-                  Row(
-                    children: List.generate(
-                      5 - rating,
-                      (index) {
-                        return const Icon(
-                          Icons.star_border,
-                          color: kPrimaryColor,
-                        );
-                      },
-                    ),
-                  ),
-                  const Text(
-                    'التقييم :   ',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ],
+                children: List.generate(
+                  rating,
+                  (index) {
+                    return const Icon(
+                      Icons.star,
+                      color: kPrimaryColor,
+                    );
+                  },
+                ),
               ),
-              const SizedBox(height: 8),
-              Text(
-                'الوصف :   ${freelanceInfos?.expertInfos?.description ?? expert?.expertInfos?.description}',
-                style: const TextStyle(
+              Row(
+                children: List.generate(
+                  5 - rating,
+                  (index) {
+                    return const Icon(
+                      Icons.star_border,
+                      color: kPrimaryColor,
+                    );
+                  },
+                ),
+              ),
+              const Text(
+                'التقييم :   ',
+                style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
                 textDirection: TextDirection.rtl,
               ),
-              const SizedBox(height: 8),
-              Text(
-                'الشهادات الحاصل عليها :   '
-                '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate} ',
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'الخدمات التي يقدمها :   '
-                '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate}',
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              const SizedBox(height: 8),
             ],
           ),
+          const SizedBox(height: 8),
+          Text(
+            'الوصف :   ${freelanceInfos!.description ?? expert?.expertInfos?.description}',
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+            textDirection: TextDirection.rtl,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'ساعات العمل :   '
+            '${freelanceInfos!.workHours} ',
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+            textDirection: TextDirection.rtl,
+          ),
+          // const SizedBox(height: 8),
+          // Text(
+          //   'الخدمات التي يقدمها :   '
+          //   '${freelanceInfos?.expertInfos?.certificate ?? expert?.expertInfos?.certificate}',
+          //   style: const TextStyle(
+          //     fontSize: 16,
+          //     fontWeight: FontWeight.w600,
+          //   ),
+          //   textDirection: TextDirection.rtl,
+          // ),
+          const SizedBox(height: 8),
           const Spacer(),
           CustomButton(
             title: 'تفدم',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/datum.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
 import 'package:get/get.dart' as g;
 import 'package:intl/intl.dart' as intl;
@@ -12,7 +12,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var formatDate = intl.DateFormat('dd/MM/yyy').format(data.createdAt!);
-    int rating = data.service!.expert!.expertInfos!.rating;
+    int rating = data.expert!.rating!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
@@ -20,12 +20,12 @@ class CustomeBookServiceInfo extends StatelessWidget {
         children: [
           InkWell(
             onTap: () => g.Get.to(
-              () => FreelancerInfosView(freelanceInfos: data.service!.expert!),
+              () => FreelancerInfosView(freelanceInfos: data.expert!),
               transition: g.Transition.fadeIn,
               duration: kDurationTransition,
             ),
             child: Text(
-              'اسم الفريلانسر :  ${data.service!.expert!.name}',
+              'اسم الفريلانسر :  ${data.expert!.user!.name}',
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -72,7 +72,7 @@ class CustomeBookServiceInfo extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'رسوم الخدمة :   ${data.service!.price} ل.س',
+            'رسوم الخدمة :   ${data.expert!.price} ل.س',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,

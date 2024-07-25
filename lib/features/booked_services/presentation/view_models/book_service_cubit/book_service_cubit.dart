@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/book_service.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_services.dart';
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo_impl.dart';
 import 'package:geolocator/geolocator.dart';
 

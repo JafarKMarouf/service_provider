@@ -1,12 +1,8 @@
-// ignore_for_file: avoid_print
-
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/book_service.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_services.dart';
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo.dart';
 
 class BookServiceRepoImpl implements BookServiceRepo {
@@ -14,35 +10,34 @@ class BookServiceRepoImpl implements BookServiceRepo {
   BookServiceRepoImpl({required this.apiService});
 
   @override
-  Future<Either<Failure, BookService>> fetchAllBookServices() async {
+  Future<Either<Failure, BookServices>> fetchAllBookServices() async {
     try {
       var data = await apiService.get(endPoint: 'customer/book_service');
-      // log('====bookService: $data=======');
-      return right(BookService.fromJson(data));
+      // log('======bookservices:${data.data.delivery_time}');
+      return right(BookServices.fromMap(data));
     } catch (e) {
       if (e is DioException) {
-        log('here');
         return left(ServerFailure.fromDioError(e));
       }
-      log('here2');
+
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, BookService>> deleteBookService({required int id}) {
+  Future<Either<Failure, BookServices>> deleteBookService({required int id}) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, BookService>> showOneBookService({
+  Future<Either<Failure, BookServices>> showOneBookService({
     required int id,
   }) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, BookService>> updateBookService({
+  Future<Either<Failure, BookServices>> updateBookService({
     required int id,
   }) {
     throw UnimplementedError();
