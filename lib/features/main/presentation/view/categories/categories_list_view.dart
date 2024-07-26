@@ -36,8 +36,6 @@ class CategoriesListView extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 6),
-              // state is CategorySuccess
-              // ?Expanded(child: child)
               state is CategorySuccess
                   ? Expanded(child: CategoriesGridView(data: categories))
                   : Expanded(

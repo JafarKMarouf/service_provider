@@ -17,6 +17,6 @@ final class ServiceFailure extends ServiceState {
 }
 
 final class ServiceSuccess extends ServiceState {
-  final Service service;
+  final ServiceModel service;
   const ServiceSuccess({required this.service});
 }

@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/service_infos_view/widget/service_type.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/pick_book_service_infos_cubit/pick_book_service_infos_cubit.dart';
-
+import 'package:freelancer_app/features/main/data/models/service_model/service_datum.dart';
 import 'package:get/get.dart';
-
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/service_infos_view/widget/service_infos_book.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/available_freelancer_view.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
 
 class BookServiceInit extends StatelessWidget {
-  final DatumService data;
+  final ServiceDatum data;
 
   const BookServiceInit({super.key, required this.data});
 
@@ -32,7 +30,7 @@ class BookServiceInit extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'رسوم الفحص: ${data.price} ل.س ',
+                  'رسوم الفحص: ${data.expert!.first.price} ل.س ',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,

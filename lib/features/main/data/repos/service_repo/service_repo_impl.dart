@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/service.dart';
+import 'package:freelancer_app/features/main/data/models/service_model/service_model.dart';
 
 import 'service_repo.dart';
 
@@ -11,11 +11,11 @@ class ServiceRepoImpl implements ServiceRepo {
   ServiceRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, Service>> fetchServices({categoryId}) async {
+  Future<Either<Failure, ServiceModel>> fetchServices({categoryId}) async {
     try {
       var data = await apiService.get(
           endPoint: 'customer/service/category/$categoryId');
-      return right(Service.fromJson(data));
+      return right(ServiceModel.fromMap(data));
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
@@ -25,7 +25,7 @@ class ServiceRepoImpl implements ServiceRepo {
   }
 
   @override
-  Future<Either<Failure, Service>> showService({required int id}) {
+  Future<Either<Failure, ServiceModel>> showService({required int id}) {
     throw UnimplementedError();
   }
 }

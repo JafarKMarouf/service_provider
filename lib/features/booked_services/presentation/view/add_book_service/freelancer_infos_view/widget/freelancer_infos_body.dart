@@ -24,7 +24,7 @@ class FreelancerInfosBody extends StatelessWidget {
     if (freelanceInfos != null) {
       rating = freelanceInfos!.rating!;
     } else if (expert != null) {
-      rating = expert!.expertInfos!.rating;
+      rating = expert!.rating!;
     } else {
       rating = 0;
     }
@@ -37,19 +37,19 @@ class FreelancerInfosBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           CustomeServiceBar(
-              title: '${freelanceInfos?.user!.name ?? expert?.name}'),
+              title: '${freelanceInfos?.user!.name ?? expert?.user!.name}'),
           const SizedBox(height: 16),
           Expanded(
             child: Center(
               child: CustomeFreelancerImage(
                 height: 120,
-                image: '${freelanceInfos?.photo ?? expert?.expertInfos?.photo}',
+                image: '${freelanceInfos?.photo ?? expert?.photo}',
               ),
             ),
           ),
           const SizedBox(height: 24),
           Text(
-            'الاسم :   ${freelanceInfos?.user!.name ?? expert?.name}',
+            'الاسم :   ${freelanceInfos?.user!.name ?? expert?.user!.name}',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -94,7 +94,7 @@ class FreelancerInfosBody extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'الوصف :   ${freelanceInfos!.description ?? expert?.expertInfos?.description}',
+            'الوصف :   ${freelanceInfos!.description ?? expert?.description}',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,

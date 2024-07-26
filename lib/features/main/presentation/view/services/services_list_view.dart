@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
+import 'package:freelancer_app/features/main/data/models/service_model/service_datum.dart';
 import 'package:freelancer_app/features/main/presentation/view/services/widget/service_grid_view.dart';
 import 'package:freelancer_app/features/main/presentation/view_models/service_cubit/service_cubit.dart';
 import 'package:shimmer/shimmer.dart';
@@ -10,7 +10,7 @@ class ServicesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<DatumService> services = [];
+    List<ServiceDatum> services = [];
     return BlocConsumer<ServiceCubit, ServiceState>(
       listener: (context, state) {
         if (state is ServiceSuccess) {
