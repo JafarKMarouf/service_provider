@@ -20,10 +20,10 @@ class CustomeFreelancerImage extends StatelessWidget {
       width: height,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(200)),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(240),
+        borderRadius: BorderRadius.circular(160),
         child: image != null
             ? CachedNetworkImage(
-                // fit: BoxFit.fill,
+                fit: BoxFit.fill,
                 imageUrl: image!,
                 placeholder: (context, url) {
                   return Shimmer.fromColors(

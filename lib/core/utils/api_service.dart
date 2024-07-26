@@ -26,7 +26,7 @@ class ApiService {
     log('======url: $uri======');
 
     var response = await _dio.get(uri);
-
+    log('=response:${response}');
     return response.data;
   }
 

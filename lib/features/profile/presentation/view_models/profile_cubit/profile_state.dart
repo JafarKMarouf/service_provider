@@ -20,9 +20,7 @@ final class ProfileFailure extends ProfileState {
 
 final class ProfileSuccess extends ProfileState {
   final ProfileModel? profileModel;
-  const ProfileSuccess({
-    this.profileModel,
-  });
+  const ProfileSuccess({this.profileModel});
 }
 
 final class ProfileEditEmail extends ProfileState {}

@@ -1,25 +1,39 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
-import 'customer_info.dart';
+import 'customer_infos.dart';
 
 class ProfileModel extends Equatable {
-	final String? status;
-	final List<CustomerInfo>? customerInfos;
+  final String? status;
+  final List<CustomerInfos>? customerInfos;
 
-	const ProfileModel({this.status, this.customerInfos});
+  const ProfileModel({this.status, this.customerInfos});
 
-	factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
-				status: json['status'] as String?,
-				customerInfos: (json['customer_infos'] as List<dynamic>?)
-						?.map((e) => CustomerInfo.fromJson(e as Map<String, dynamic>))
-						.toList(),
-			);
+  factory ProfileModel.fromMap(Map<String, dynamic> data) => ProfileModel(
+        status: data['status'] as String?,
+        customerInfos: (data['data'] as List<dynamic>?)
+            ?.map((e) => CustomerInfos.fromMap(e as Map<String, dynamic>))
+            .toList(),
+      );
 
-	Map<String, dynamic> toJson() => {
-				'status': status,
-				'customer_infos': customerInfos?.map((e) => e.toJson()).toList(),
-			};
+  Map<String, dynamic> toMap() => {
+        'status': status,
+        'data': customerInfos?.map((e) => e.toMap()).toList(),
+      };
 
-	@override
-	List<Object?> get props => [status, customerInfos];
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [ProfileModel].
+  factory ProfileModel.fromJson(String data) {
+    return ProfileModel.fromMap(json.decode(data) as Map<String, dynamic>);
+  }
+
+  /// `dart:convert`
+  ///
+  /// Converts [ProfileModel] to a JSON string.
+  String toJson() => json.encode(toMap());
+
+  @override
+  List<Object?> get props => [status, customerInfos];
 }

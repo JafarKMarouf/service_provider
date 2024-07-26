@@ -69,6 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
         await AppStorage.storeEmail(email);
 
         var isVerify = await AppStorage.getVerifiedEmail();
+        emit(AuthSuccess(userModel: user));
 
         Future.delayed(
           const Duration(microseconds: 250),

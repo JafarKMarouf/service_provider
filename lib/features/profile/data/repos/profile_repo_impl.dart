@@ -16,13 +16,11 @@ class ProfileRepoImpl implements ProfileRepo {
   Future<Either<Failure, ProfileModel>> showProfile() async {
     try {
       var id = await AppStorage.getUserId();
-      var user = await apiService.get(
-        endPoint: 'customer/profile/',
-        id: id,
-      );
-      // print('===============user: $user ===================');
-      return right(ProfileModel.fromJson(user));
+      var user = await apiService.get(endPoint: 'customer/profile/');
+      log('===============user: $user ===================');
+      return right(ProfileModel.fromMap(user));
     } catch (e) {
+      // log('==profile error :${e.toString()}');
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
@@ -33,15 +31,14 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<Either<Failure, ProfileModel>> updateProfile({
-    required String userId,
     Map<String, dynamic>? body,
   }) async {
     try {
       var user = await apiService.post(
-        endPoint: 'customer/profile/$userId',
+        endPoint: 'customer/profile/',
         body: body,
       );
-      return right(ProfileModel.fromJson(user));
+      return right(ProfileModel.fromMap(user));
     } catch (e) {
       if (e is DioException) {
         log('==========exception :${e.toString()}========');

@@ -28,14 +28,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> updateProfile({
-    required int userId,
     Map<String, dynamic>? body,
   }) async {
     emit(ProfileLoading());
-    var result = await profileRepoImpl.updateProfile(
-      userId: userId.toString(),
-      body: body,
-    );
+    var result = await profileRepoImpl.updateProfile(body: body);
     result.fold((fail) {
       emit(ProfileFailure(errMessage: fail.errMessage));
     }, (user) {
