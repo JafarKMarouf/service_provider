@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'customer_infos.dart';
+import 'customer_datum.dart';
 
 class ProfileModel extends Equatable {
   final String? status;

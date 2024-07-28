@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_services/datum.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 
 import 'package:freelancer_app/features/booked_services/presentation/view/show_book_service/widget/book_service_type.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +17,8 @@ class BookingInfosView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
+    var formatTime = data.deliveryTime!;
+    // var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
 
     return Scaffold(
       body: Container(
@@ -31,7 +32,7 @@ class BookingInfosView extends StatelessWidget {
             CustomeInfosServiceItems(
               location: 'Santa Clara County, United States',
               phone: data.expert!.mobile,
-              time: formatTime,
+              time: '$formatTime',
               timeTapped: true,
               locationTapped: true,
               phoneTapped: true,

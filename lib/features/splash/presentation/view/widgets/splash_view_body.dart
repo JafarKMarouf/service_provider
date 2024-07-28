@@ -52,6 +52,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   Future<void> loadingUserInfo() async {
+    // await AppStorage.removeToken();
     var token = await AppStorage.getToken();
     var isVerifed = await AppStorage.getVerifiedEmail();
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:freelancer_app/features/profile/data/models/profile_model/customer_infos.dart';
+import 'package:freelancer_app/features/profile/data/models/profile_model/customer_datum.dart';
 
 import 'package:freelancer_app/features/profile/presentation/view/widgets/custome_profile_bar.dart';
 import 'package:freelancer_app/features/profile/presentation/view/widgets/profile_success_view.dart';

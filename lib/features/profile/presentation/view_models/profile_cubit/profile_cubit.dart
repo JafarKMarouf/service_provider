@@ -13,7 +13,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   AutovalidateMode? autovalidateMod = AutovalidateMode.disabled;
   TextEditingController? emailAddress = TextEditingController();
   TextEditingController? password = TextEditingController();
-
+  int? customerId;
   final ProfileRepoImpl profileRepoImpl;
 
   Future<void> showProfile() async {

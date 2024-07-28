@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'user.dart';
 
 class Expert extends Equatable {
+  final int? id;
   final int? userId;
   final int? serviceId;
   final String? mobile;
@@ -18,6 +19,7 @@ class Expert extends Equatable {
   final User? user;
 
   const Expert({
+    this.id,
     this.userId,
     this.serviceId,
     this.mobile,
@@ -32,6 +34,7 @@ class Expert extends Equatable {
   });
 
   factory Expert.fromMap(Map<String, dynamic> data) => Expert(
+        id: data['id'] as int?,
         userId: data['user_id'] as int?,
         serviceId: data['service_id'] as int?,
         mobile: data['mobile'] as String?,
@@ -48,6 +51,7 @@ class Expert extends Equatable {
       );
 
   Map<String, dynamic> toMap() => {
+        'id': id,
         'user_id': userId,
         'service_id': serviceId,
         'mobile': mobile,
@@ -76,6 +80,7 @@ class Expert extends Equatable {
   @override
   List<Object?> get props {
     return [
+      id,
       userId,
       serviceId,
       mobile,

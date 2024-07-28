@@ -19,4 +19,13 @@ class ServiceCubit extends Cubit<ServiceState> {
       (service) => emit(ServiceSuccess(service: service)),
     );
   }
+
+  Future<void> showService({serviceId}) async {
+    emit(ServiceLoading());
+    var result = await serviceRepoImpl.showService(id: serviceId);
+    result.fold(
+      (fail) => emit(ServiceFailure(errMessage: fail.errMessage)),
+      (service) => emit(ServiceSuccess(service: service)),
+    );
+  }
 }

@@ -33,7 +33,9 @@ final class AuthInVisible extends AuthState {}
 
 final class AuthStartTimer extends AuthState {}
 
-final class AuthUpdateTimer extends AuthState {}
+final class AuthUpdate1Timer extends AuthState {}
+
+final class AuthUpdate2Timer extends AuthState {}
 
 final class AuthCancelTimer extends AuthState {}
 

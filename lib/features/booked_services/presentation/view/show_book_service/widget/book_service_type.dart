@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_services/datum.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BookServiceType extends StatelessWidget {

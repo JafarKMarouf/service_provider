@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_services/datum.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
 import 'package:get/get.dart' as g;
 import 'package:intl/intl.dart' as intl;

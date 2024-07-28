@@ -14,7 +14,7 @@ class EmailVerifyBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<AuthCubit>(context);
-
+    // cubit.resend();
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoading) {
@@ -34,36 +34,38 @@ class EmailVerifyBody extends StatelessWidget {
             padding: EdgeInsets.only(
               top: MediaQuery.sizeOf(context).height * .07,
             ),
-            child: Column(
-              children: [
-                const CustomeVerifyBar(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 16),
-                        Text(
-                          'أدخل رمز التحقق المكون من 6 أرقام والذي تم إرساله إلى بريدك الإلكتروني.',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[400],
-                            fontWeight: FontWeight.w600,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const CustomeVerifyBar(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 16),
+                          Text(
+                            'أدخل رمز التحقق المكون من 6 أرقام والذي تم إرساله إلى بريدك الإلكتروني.',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[400],
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textDirection: TextDirection.rtl,
+                            textAlign: TextAlign.center,
                           ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 48),
-                        const OtpConfirmForm(),
-                        const SizedBox(height: 24),
-                        const ResendCode(),
-                      ],
+                          const SizedBox(height: 48),
+                          const OtpConfirmForm(),
+                          const SizedBox(height: 24),
+                          const ResendCode(),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/expert.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/service.dart';
 
@@ -10,7 +11,8 @@ class DatumBooked extends Equatable {
   final int? expertId;
   final int? serviceId;
   final String? description;
-  final DateTime? deliveryTime;
+  final String? deliveryTime;
+  final String? deliveryDate;
   final String? status;
   final Expert? expert;
   final Service? service;
@@ -22,6 +24,7 @@ class DatumBooked extends Equatable {
     this.serviceId,
     this.description,
     this.deliveryTime,
+    this.deliveryDate,
     this.status,
     this.expert,
     this.service,
@@ -34,7 +37,8 @@ class DatumBooked extends Equatable {
       expertId: data['expert_id'] as int?,
       serviceId: data['service_id'] as int?,
       description: data['description'] as String?,
-      deliveryTime: DateTime.parse(data['delivery_time'] as String),
+      deliveryTime: data['delivery_time'] as String?,
+      deliveryDate: data['delivery_date'] as String?,
       status: data['status'] as String?,
       expert: data['expert'] == null
           ? null
@@ -51,6 +55,7 @@ class DatumBooked extends Equatable {
         'service_id': serviceId,
         'description': description,
         'delivery_time': deliveryTime,
+        'delivey_date': deliveryDate,
         'status': status,
         'expert': expert?.toMap(),
         'service': service?.toMap(),
@@ -78,6 +83,7 @@ class DatumBooked extends Equatable {
       serviceId,
       description,
       deliveryTime,
+      deliveryDate,
       status,
       expert,
       service,

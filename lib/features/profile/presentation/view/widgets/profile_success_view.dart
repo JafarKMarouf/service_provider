@@ -11,17 +11,15 @@ import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/widgets/custome_text_form_field.dart';
 import 'package:freelancer_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
-import 'package:freelancer_app/features/profile/data/models/profile_model/customer_infos.dart';
+import 'package:freelancer_app/features/profile/data/models/profile_model/customer_datum.dart';
 import 'package:freelancer_app/features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
 import 'package:get/get.dart' as g;
 import 'custome_profile_bar.dart';
 
 class ProfileSuccessView extends StatefulWidget {
-  const ProfileSuccessView({
-    super.key,
-    required this.customerInfo,
-  });
   final List<CustomerInfos> customerInfo;
+
+  const ProfileSuccessView({super.key, required this.customerInfo});
 
   @override
   State<ProfileSuccessView> createState() => _ProfileSuccessViewState();

@@ -26,7 +26,6 @@ class ApiService {
     log('======url: $uri======');
 
     var response = await _dio.get(uri);
-    log('=response:${response}');
     return response.data;
   }
 
@@ -40,10 +39,7 @@ class ApiService {
     log('======token: $token======');
     log('======url: $_baseUrl$endPoint======');
 
-    var response = await _dio.post(
-      '$_baseUrl$endPoint',
-      data: body,
-    );
+    var response = await _dio.post('$_baseUrl$endPoint', data: body);
 
     return response.data;
   }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,10 +28,11 @@ class BookServiceCubit extends Cubit<BookServiceState> {
     var result = await bookServiceRepoImpl.fetchAllBookServices();
 
     result.fold(
-      (fail) => emit(
-        BookServiceFailure(errMessage: fail.errMessage),
-      ),
-      (bookService) => emit(BookServiceSuccess(bookService: bookService)),
-    );
+        (fail) => emit(
+              BookServiceFailure(errMessage: fail.errMessage),
+            ), (bookService) {
+      log('$bookService');
+      emit(BookServiceSuccess(bookService: bookService));
+    });
   }
 }

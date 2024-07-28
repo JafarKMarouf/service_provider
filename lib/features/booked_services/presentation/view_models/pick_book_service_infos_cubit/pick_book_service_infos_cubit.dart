@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/functions/handle_location_permission.dart';
@@ -15,6 +14,11 @@ class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
 
   String? currentAddress;
   Position? currentPosition;
+
+  int? serviceId;
+  int? expertId;
+  int? customerId;
+
   PickBookServiceInfosCubit() : super(PickBookServiceInfosInitial());
   Future<void> pickDate(BuildContext context) async {
     newDate = await showDatePicker(
@@ -42,7 +46,6 @@ class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
 
     // currentAddress =
     //     await LocationHandler.getAddressFromLatLng(currentPosition!);
-    // log('$currentAddress');
 
     // currentAddress == null
     //     ? emit(PickLocationFailure())

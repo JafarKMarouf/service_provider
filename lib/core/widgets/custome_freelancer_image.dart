@@ -14,13 +14,12 @@ class CustomeFreelancerImage extends StatelessWidget {
   final String? image;
   @override
   Widget build(BuildContext context) {
-    // log('====image: $image');
     return Container(
       height: height,
       width: height,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(200)),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(160),
+        borderRadius: BorderRadius.circular(240),
         child: image != null
             ? CachedNetworkImage(
                 fit: BoxFit.fill,

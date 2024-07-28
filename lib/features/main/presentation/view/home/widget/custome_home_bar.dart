@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/profile/data/models/profile_model/customer_infos.dart';
+import 'package:freelancer_app/features/profile/data/models/profile_model/customer_datum.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomeHomeBar extends StatelessWidget {

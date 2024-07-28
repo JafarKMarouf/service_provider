@@ -5,6 +5,8 @@ import 'package:equatable/equatable.dart';
 import 'user.dart';
 
 class CustomerInfos extends Equatable {
+  final int? id;
+
   final int? userId;
   final String? mobile;
   final String? city;
@@ -14,6 +16,7 @@ class CustomerInfos extends Equatable {
   final User? user;
 
   const CustomerInfos({
+    this.id,
     this.userId,
     this.mobile,
     this.city,
@@ -24,6 +27,7 @@ class CustomerInfos extends Equatable {
   });
 
   factory CustomerInfos.fromMap(Map<String, dynamic> data) => CustomerInfos(
+        id: data['id'] as int?,
         userId: data['user_id'] as int?,
         mobile: data['mobile'] as String?,
         city: data['city'] as String?,
@@ -38,6 +42,7 @@ class CustomerInfos extends Equatable {
       );
 
   Map<String, dynamic> toMap() => {
+        'id': id,
         'user_id': userId,
         'mobile': mobile,
         'city': city,
@@ -62,6 +67,7 @@ class CustomerInfos extends Equatable {
   @override
   List<Object?> get props {
     return [
+      id,
       userId,
       mobile,
       city,

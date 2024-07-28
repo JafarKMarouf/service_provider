@@ -1,8 +1,6 @@
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:freelancer_app/core/constants/app_storage.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/profile/data/models/profile_model/profile_model.dart';
@@ -15,18 +13,14 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<Either<Failure, ProfileModel>> showProfile() async {
     try {
-      var id = await AppStorage.getUserId();
       var user = await apiService.get(endPoint: 'customer/profile/');
-      log('===============user: $user ===================');
       return right(ProfileModel.fromMap(user));
     } catch (e) {
-      // log('==profile error :${e.toString()}');
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
     }
-    // throw UnimplementedError();
   }
 
   @override
@@ -41,11 +35,8 @@ class ProfileRepoImpl implements ProfileRepo {
       return right(ProfileModel.fromMap(user));
     } catch (e) {
       if (e is DioException) {
-        log('==========exception :${e.toString()}========');
-
         return left(ServerFailure.fromDioError(e));
       }
-      log('==========faile :${e.toString()}========');
 
       return left(ServerFailure(e.toString()));
     }
