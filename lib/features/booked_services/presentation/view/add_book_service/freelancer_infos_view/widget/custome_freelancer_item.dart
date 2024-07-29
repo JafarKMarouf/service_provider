@@ -18,13 +18,11 @@ class CustomeFreelancerItem extends StatelessWidget {
       onTap: () {
         Future.delayed(
           const Duration(microseconds: 250),
-          () {
-            g.Get.to(
-              () => FreelancerInfosView(expert: expert),
-              transition: g.Transition.fadeIn,
-              duration: kDurationTransition,
-            );
-          },
+          () => g.Get.to(
+            () => FreelancerInfosView(expert: expert),
+            transition: g.Transition.fadeIn,
+            duration: kDurationTransition,
+          ),
         );
       },
       child: Padding(
@@ -33,10 +31,10 @@ class CustomeFreelancerItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              flex: 3,
+              flex: 4,
               child: CustomeFreelancerImage(
                 image: '${expert.photo}',
-                height: 75,
+                height: 80,
               ),
             ),
             Column(
@@ -53,19 +51,6 @@ class CustomeFreelancerItem extends StatelessWidget {
                   color: Colors.grey.shade700,
                 ),
                 RatingFreelancer(rating: expert.rating!),
-                // Row(
-                //   mainAxisSize: MainAxisSize.max,
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: List.generate(
-                //     expert.rating!,
-                //     (index) => const Icon(
-                //       Icons.star,
-                //       size: 16,
-                //       color: kPrimaryColor,
-                //     ),
-                //   ),
-                // ),
-                // const SizedBox(height: 5),
               ],
             )
           ],

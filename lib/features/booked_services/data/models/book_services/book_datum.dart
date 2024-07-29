@@ -30,6 +30,16 @@ class DatumBooked extends Equatable {
     this.createdAt,
   });
 
+  factory DatumBooked.addBooked(Map<String, dynamic> data) => DatumBooked(
+        id: data['id'] as int?,
+        customerId: data['customer_id'] as int?,
+        expertId: data['expert_id'] as int?,
+        serviceId: data['service_id'] as int?,
+        description: data['description'] as String?,
+        deliveryTime: data['delivery_time'] as String?,
+        deliveryDate: data['delivery_date'] as String?,
+      );
+
   factory DatumBooked.fromMap(Map<String, dynamic> data) => DatumBooked(
       id: data['id'] as int?,
       customerId: data['customer_id'] as int?,

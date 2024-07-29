@@ -25,7 +25,6 @@ class FreelancerInfosView extends StatelessWidget {
     super.key,
     this.freelanceInfos,
     this.expert,
-    // this.booked,
   });
 
   @override
@@ -41,6 +40,7 @@ class FreelancerInfosView extends StatelessWidget {
       rating = 0;
     }
     bookService.rating = rating;
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),

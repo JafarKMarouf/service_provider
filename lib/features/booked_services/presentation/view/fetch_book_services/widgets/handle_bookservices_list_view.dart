@@ -19,7 +19,7 @@ class HandleBookServiceListView extends StatelessWidget {
       child: BlocBuilder<BookServiceCubit, BookServiceState>(
         builder: (context, state) {
           if (state is BookServiceSuccess) {
-            booked.addAll(state.bookService.data!.toList());
+            booked.addAll(state.bookService!.data!.toList());
             return ListView.builder(
               padding: EdgeInsets.zero,
               itemCount: booked.length,

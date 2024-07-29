@@ -21,7 +21,7 @@ class HandleBookServiceUi extends StatelessWidget {
       child: BlocBuilder<BookServiceCubit, BookServiceState>(
         builder: (context, state) {
           if (state is BookServiceSuccess) {
-            booked.addAll(state.bookService.data!.toList());
+            booked.addAll(state.bookService!.data!.toList());
             return SizedBox(
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,

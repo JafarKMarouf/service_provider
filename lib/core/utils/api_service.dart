@@ -38,6 +38,7 @@ class ApiService {
     _dio.options.headers['Authorization'] = 'Bearer $token';
     log('======token: $token======');
     log('======url: $_baseUrl$endPoint======');
+    log('======body:$body=======');
 
     var response = await _dio.post('$_baseUrl$endPoint', data: body);
 
