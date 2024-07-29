@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/expert.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/service.dart';
 

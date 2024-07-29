@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/service_model.dart';
@@ -13,6 +15,7 @@ class ServiceCubit extends Cubit<ServiceState> {
   Future<void> fetchService({categoryId}) async {
     emit(ServiceLoading());
     var result = await serviceRepoImpl.fetchServices(categoryId: categoryId);
+    log('====service by categoryies:$result');
 
     result.fold(
       (fail) => emit(ServiceFailure(errMessage: fail.errMessage)),

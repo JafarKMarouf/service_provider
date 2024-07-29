@@ -1,30 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/custome_freelancer_item.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/expert.dart';
-import 'package:intl/intl.dart';
 
 class AvailableFreelancerView extends StatelessWidget {
-  final DateTime date;
-  final TimeOfDay time;
-  final String location;
   final List<Expert> expert;
-  final DatumBooked? booked;
 
-  const AvailableFreelancerView({
-    super.key,
-    required this.date,
-    required this.time,
-    required this.location,
-    required this.expert,
-    this.booked,
-  });
+  const AvailableFreelancerView({super.key, required this.expert});
 
   @override
   Widget build(BuildContext context) {
+    var book = BlocProvider.of<BookServiceCubit>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(bottom: 15, right: 8, left: 8),
@@ -33,9 +23,9 @@ class AvailableFreelancerView extends StatelessWidget {
           children: [
             const Expanded(child: CustomeSearchArrowBackBar()),
             CustomeInfosServiceItems(
-              date: DateFormat('dd/MM/yyy').format(date),
-              time: time.format(context),
-              location: location,
+              date: book.newDate,
+              time: book.newTime!,
+              location: '${book.currentPosition!}',
               dateTapped: true,
               timeTapped: true,
               locationTapped: true,
@@ -54,10 +44,11 @@ class AvailableFreelancerView extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   itemCount: expert.length,
                   itemBuilder: (context, index) {
-                    return CustomeFreelancerItem(
-                      expert: expert[index],
-                      booked: booked,
-                    );
+                    book.expertId = expert[index].id;
+                    book.expertName = expert[index].user!.name;
+                    book.price = expert[index].price;
+                    book.mobile = expert[index].mobile;
+                    return CustomeFreelancerItem(expert: expert[index]);
                   }),
             )
           ],

@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
-import 'package:intl/intl.dart' as intl;
 import 'package:shimmer/shimmer.dart';
 
 class BookServiceInfosMinimum extends StatelessWidget {

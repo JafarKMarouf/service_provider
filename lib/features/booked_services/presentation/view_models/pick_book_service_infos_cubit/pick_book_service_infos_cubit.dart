@@ -15,10 +15,6 @@ class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
   String? currentAddress;
   Position? currentPosition;
 
-  int? serviceId;
-  int? expertId;
-  int? customerId;
-
   PickBookServiceInfosCubit() : super(PickBookServiceInfosInitial());
   Future<void> pickDate(BuildContext context) async {
     newDate = await showDatePicker(

@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
 import 'package:freelancer_app/core/widgets/custome_text.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/rating_freelancer.dart';
 import 'package:get/get.dart' as g;
 import 'package:freelancer_app/features/main/data/models/service_model/expert.dart';
 
 class CustomeFreelancerItem extends StatelessWidget {
   final Expert expert;
-  final DatumBooked? booked;
 
-  const CustomeFreelancerItem({
-    super.key,
-    required this.expert,
-    this.booked,
-  });
+  const CustomeFreelancerItem({super.key, required this.expert});
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +40,6 @@ class CustomeFreelancerItem extends StatelessWidget {
               ),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 CustomeText(
                   text: expert.user!.name!,
@@ -59,18 +52,19 @@ class CustomeFreelancerItem extends StatelessWidget {
                   weight: FontWeight.w600,
                   color: Colors.grey.shade700,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    expert.rating!,
-                    (index) => const Icon(
-                      Icons.star,
-                      size: 16,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ),
+                RatingFreelancer(rating: expert.rating!),
+                // Row(
+                //   mainAxisSize: MainAxisSize.max,
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: List.generate(
+                //     expert.rating!,
+                //     (index) => const Icon(
+                //       Icons.star,
+                //       size: 16,
+                //       color: kPrimaryColor,
+                //     ),
+                //   ),
+                // ),
                 // const SizedBox(height: 5),
               ],
             )

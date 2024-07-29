@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/expert.dart'
     as books;
+import 'package:freelancer_app/features/booked_services/data/models/book_services/service.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/user.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/booking_confirmation/booking_confirmation_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/freelancer_infos.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/rating_freelancer.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
 import 'package:freelancer_app/features/main/data/models/service_model/expert.dart'
     as service;
 import 'package:freelancer_app/core/widgets/custome_freelancer_image.dart';
@@ -14,129 +20,45 @@ import 'package:get/get.dart' as g;
 class FreelancerInfosView extends StatelessWidget {
   final books.Expert? freelanceInfos;
   final service.Expert? expert;
-  final DatumBooked? booked;
 
   const FreelancerInfosView({
     super.key,
     this.freelanceInfos,
     this.expert,
-    this.booked,
+    // this.booked,
   });
 
   @override
   Widget build(BuildContext context) {
+    var bookService = BlocProvider.of<BookServiceCubit>(context);
+
     int rating = 0;
     if (freelanceInfos != null) {
       rating = freelanceInfos!.rating!;
     } else if (expert != null) {
-      // cubit.expertId = expert!.id;
-
       rating = expert!.rating!;
     } else {
       rating = 0;
     }
+    bookService.rating = rating;
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 40),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
+        height: MediaQuery.sizeOf(context).height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            CustomeServiceBar(
-              title: '${freelanceInfos?.user!.name ?? expert?.user!.name}',
-            ),
-            const SizedBox(height: 16),
             Expanded(
-              child: Center(
-                child: CustomeFreelancerImage(
-                  height: 120,
-                  image: '${freelanceInfos?.photo ?? expert?.photo}',
-                ),
+              child: CustomeServiceBar(
+                  title: '${freelanceInfos?.user!.name ?? expert?.user!.name}'),
+            ),
+            Expanded(
+              flex: 7,
+              child: FreelancerInfos(
+                expert: expert,
+                freelanceInfos: freelanceInfos,
               ),
             ),
-            const SizedBox(height: 24),
-            Text(
-              'الاسم :   ${freelanceInfos?.user!.name ?? expert?.user!.name}',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'رقم الموبايل :   '
-              '${freelanceInfos?.mobile ?? expert?.mobile}',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'الوصف :   ${freelanceInfos?.description ?? expert?.description}',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'سعر الخدمة :  \$ ${freelanceInfos?.price ?? expert?.price}',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'عدد ساعات العمل :   '
-              '${freelanceInfos?.workHours ?? expert?.workingHours} ',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-            ),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Row(
-                  children: List.generate(
-                    rating,
-                    (index) {
-                      return const Icon(
-                        Icons.star,
-                        color: kPrimaryColor,
-                      );
-                    },
-                  ),
-                ),
-                Row(
-                  children: List.generate(
-                    5 - rating,
-                    (index) {
-                      return const Icon(
-                        Icons.star_border,
-                        color: kPrimaryColor,
-                      );
-                    },
-                  ),
-                ),
-                const Text(
-                  'التقييم :   ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textDirection: TextDirection.rtl,
-                ),
-              ],
-            ),
-            const Spacer(),
             CustomButton(
               title: 'تفدم',
               width: MediaQuery.of(context).size.width,
@@ -145,7 +67,23 @@ class FreelancerInfosView extends StatelessWidget {
                   const Duration(microseconds: 250),
                   () {
                     DatumBooked booked = DatumBooked(
-                      expertId: expert!.id,
+                      expertId: bookService.expertId,
+                      customerId: bookService.customerId,
+                      serviceId: bookService.serviceId,
+                      deliveryDate: bookService.newDate.toString(),
+                      deliveryTime: bookService.newTime.toString(),
+                      service: Service(
+                        serviceName: bookService.serviceName,
+                        photo: bookService.photo,
+                      ),
+                      expert: books.Expert(
+                        user: User(
+                          name: bookService.expertName,
+                        ),
+                        rating: bookService.rating,
+                        mobile: bookService.mobile,
+                        price: bookService.price,
+                      ),
                     );
                     g.Get.to(
                       () => BookingConfirmationView(booked: booked),
@@ -156,7 +94,7 @@ class FreelancerInfosView extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 14),
+            // const SizedBox(height: 14),
           ],
         ),
       ),

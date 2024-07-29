@@ -13,7 +13,6 @@ class BookServiceRepoImpl implements BookServiceRepo {
   Future<Either<Failure, BookServices>> fetchAllBookServices() async {
     try {
       var data = await apiService.get(endPoint: 'customer/book_service');
-      // log('======bookservices:${data.data.delivery_time}');
       return right(BookServices.fromMap(data));
     } catch (e) {
       if (e is DioException) {
