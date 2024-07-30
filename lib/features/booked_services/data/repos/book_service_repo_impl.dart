@@ -7,7 +7,6 @@ import 'package:freelancer_app/core/utils/api_service.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_services.dart';
 import 'package:freelancer_app/features/booked_services/data/repos/book_service_repo.dart';
-import 'package:get/get.dart';
 
 class BookServiceRepoImpl implements BookServiceRepo {
   ApiService apiService;
@@ -51,7 +50,7 @@ class BookServiceRepoImpl implements BookServiceRepo {
       // log('=======data:${data}');
       return right(DatumBooked.addBooked(data));
     } catch (e) {
-      log('=====exception:${e}');
+      log('=====exception:$e');
       if (e is DioException) {
         log('=====dioException:${e.response!.data}');
         return left(ServerFailure.fromDioError(e));

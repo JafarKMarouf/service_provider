@@ -64,7 +64,8 @@ class BookServiceCubit extends Cubit<BookServiceState> {
       emit(BookServiceFailure(errMessage: fail.errMessage));
     }, (booked) {
       log('=========success:$booked=============');
-      emit(BookServiceSuccess(booked: booked));
+      emit(BookServiceAddSuccess(bookService: booked));
+      // emit(BookServiceSuccess(booked: booked));
     });
   }
 }

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
+import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/confirmed_booked_view.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/fetch_book_services/booked_services_list_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/confirmed_booked.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
@@ -27,12 +28,13 @@ class BookingConfirmationView extends StatelessWidget {
             g.Get.snackbar('error', state.errMessage);
           } else if (state is BookServiceLoading) {
             loading = true;
-          } else if (state is BookServiceSuccess) {
-            // g.Get.to(
-            //   () => const ConfirmedBookedView(),
-            //   transition: g.Transition.fadeIn,
-            //   duration: kDurationTransition,
-            // );
+          } else if (state is BookServiceAddSuccess) {
+            g.Get.offAll(
+              () => const CustomeNavBar(),
+              transition: g.Transition.fadeIn,
+              duration: kDurationTransition,
+            );
+            g.Get.snackbar('success', 'Book services add successfully');
           }
         },
         child: ModalProgressHUD(

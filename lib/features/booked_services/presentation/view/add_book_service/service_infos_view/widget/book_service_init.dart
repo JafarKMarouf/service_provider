@@ -69,44 +69,27 @@ class BookServiceInit extends StatelessWidget {
                 Get.snackbar(
                   'warning',
                   'you have to set date first',
-                  // colorText: Colors.white,
-                  // backgroundColor: kPrimaryColor,
                 );
               } else if (cubit.newTime == null) {
                 Get.snackbar(
                   'warning',
                   'you have to set time first',
-                  // backgroundColor: kPrimaryColor,
-                  // colorText: Colors.white,
                 );
               } else if (cubit.currentPosition == null) {
                 Get.snackbar(
                   'warning',
                   'you have to set your location first',
-                  // backgroundColor: kPrimaryColor,
-                  // colorText: Colors.white,
                 );
               } else {
                 Get.to(() {
-                  // var formatDate = intl.DateFormat('yyyy-mm-dd')
-                  //     .format(cubit.newDate!)
-                  //     .toString();
                   var formatDate =
                       intl.DateFormat('dd/MM/yyy').format(cubit.newDate!);
                   booked.newDate = formatDate;
 
                   booked.newTime = cubit.newTime!.format(context);
-                  log('=====newDate${booked.newDate}');
                   booked.currentPosition = cubit.currentPosition;
 
-                  return AvailableFreelancerView(
-                    // date: cubit.newDate!,
-                    // location:
-                    //     '${cubit.currentPosition!.latitude}, ${cubit.currentPosition!.longitude}',
-                    // time: cubit.newTime!,
-                    expert: data.expert!,
-                    // booked: booked,
-                  );
+                  return AvailableFreelancerView(expert: data.expert!);
                 });
               }
             },

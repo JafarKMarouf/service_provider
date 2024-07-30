@@ -32,7 +32,6 @@ class CategoryItemView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 6),
             const ServicesListView(),
           ],
         ),
