@@ -1,23 +1,23 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/core/constants/app_colors.dart';
 import 'package:freelancer_app/core/constants/app_storage.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/core/widgets/custome_nav_bar.dart';
 import 'package:freelancer_app/features/auth/presentation/view/email_verify_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
+import 'package:freelancer_app/features/splash/widgets/sliding_text.dart';
 import 'package:get/get.dart' as g;
 
-import 'sliding_text.dart';
-
-class SplashViewBody extends StatefulWidget {
-  const SplashViewBody({super.key});
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
 
   @override
-  State<SplashViewBody> createState() => _SplashViewBodyState();
+  State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody>
+class _SplashViewState extends State<SplashView>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
@@ -31,10 +31,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
-      child: SlidingText(slidingAnimation: slidingAnimation),
+    return Scaffold(
+      backgroundColor: AppColors.primary,
+      body: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+        child: SlidingText(slidingAnimation: slidingAnimation),
+      ),
     );
   }
 
@@ -52,15 +55,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   Future<void> loadingUserInfo() async {
-    // await AppStorage.removeToken();
     var token = await AppStorage.getToken();
     var isVerifed = await AppStorage.getVerifiedEmail();
-
-    var get = await AppStorage.getEmail();
+    var getEmail = await AppStorage.getEmail();
 
     log('======token:$token===');
     log('======verify:$isVerifed===');
-    log('======email:$get===');
+    log('======email:$getEmail===');
 
     if (token != null && isVerifed != null) {
       navigateToHome();
@@ -71,19 +72,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
         navigateToLogin();
       }
     }
-  }
-
-  void navigateToLogin() {
-    Future.delayed(
-      const Duration(milliseconds: 2000),
-      () {
-        g.Get.offAll(
-          () => const LoginView(),
-          transition: g.Transition.fadeIn,
-          duration: kDurationTransition,
-        );
-      },
-    );
   }
 
   void navigateToHome() {
@@ -105,6 +93,19 @@ class _SplashViewBodyState extends State<SplashViewBody>
       () {
         g.Get.offAll(
           () => const EmailVerifyView(),
+          transition: g.Transition.fadeIn,
+          duration: kDurationTransition,
+        );
+      },
+    );
+  }
+
+  void navigateToLogin() {
+    Future.delayed(
+      const Duration(milliseconds: 2000),
+      () {
+        g.Get.offAll(
+          () => const LoginView(),
           transition: g.Transition.fadeIn,
           duration: kDurationTransition,
         );

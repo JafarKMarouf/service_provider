@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_services.dart';
@@ -19,9 +20,10 @@ class BookServiceCubit extends Cubit<BookServiceState> {
   double? price;
   String? mobile;
   int? rating;
-  String? newTime;
-  String? newDate;
+  String? deliveryTime;
+  String? deliveryDate;
   Position? currentPosition;
+  TextEditingController? description;
 
   final BookServiceRepoImpl bookServiceRepoImpl;
   BookServiceCubit(this.bookServiceRepoImpl) : super(BookServiceInitial());
@@ -32,40 +34,41 @@ class BookServiceCubit extends Cubit<BookServiceState> {
     var result = await bookServiceRepoImpl.fetchAllBookServices();
 
     result.fold(
-        (fail) => emit(
-              BookServiceFailure(errMessage: fail.errMessage),
-            ), (bookService) {
-      log('$bookService');
-      emit(BookServiceSuccess(bookService: bookService));
-    });
+      (fail) {
+        emit(BookServiceFailure(errMessage: fail.errMessage));
+      },
+      (bookService) {
+        emit(BookServiceSuccess(bookService: bookService));
+      },
+    );
   }
 
   Future<void> addBookedServices({
-    required int customerId,
     required int expertId,
     required int serviceId,
     required String deliveryTime,
     required String deliveryDate,
+    required String location,
     String? description,
   }) async {
     emit(BookServiceLoading());
 
     var result = await bookServiceRepoImpl.addBookService(
-      customerId: customerId,
       expertId: expertId,
       serviceId: serviceId,
       deliveryTime: deliveryTime,
       deliveryDate: deliveryDate,
+      location: location,
       description: description,
     );
 
-    result.fold((fail) {
-      log('=====fail:$fail========');
-      emit(BookServiceFailure(errMessage: fail.errMessage));
-    }, (booked) {
-      log('=========success:$booked=============');
-      emit(BookServiceAddSuccess(bookService: booked));
-      // emit(BookServiceSuccess(booked: booked));
-    });
+    result.fold(
+      (fail) {
+        emit(BookServiceFailure(errMessage: fail.errMessage));
+      },
+      (booked) {
+        emit(BookServiceAddSuccess(bookService: booked));
+      },
+    );
   }
 }

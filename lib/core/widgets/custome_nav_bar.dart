@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/bookmark/presentation/view/bookmark_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/fetch_book_services/booked_services_list_view.dart';
 import 'package:freelancer_app/features/main/presentation/view/home/home_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view/profile_view.dart';
@@ -16,12 +15,12 @@ class CustomeNavBar extends StatefulWidget {
 class _CustomeNavBarState extends State<CustomeNavBar> {
   List<Widget> screens = const [
     ProfileView(),
-    BookmarkServicesView(),
+    // BookmarkServicesView(),
     BookedServicesListView(),
     HomeView(),
   ];
 
-  int currentIndex = 3;
+  int currentIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +33,9 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
           tabBackgroundColor: kPrimaryColor,
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           gap: 20,
-          onTabChange: (val) => {
-            setState(() {
-              currentIndex = val;
-            }),
-          },
+          onTabChange: (val) => setState(() {
+            currentIndex = val;
+          }),
           tabs: const [
             GButton(
               icon: Icons.person,
@@ -47,13 +44,13 @@ class _CustomeNavBarState extends State<CustomeNavBar> {
               iconActiveColor: Colors.white,
               textColor: Colors.white,
             ),
-            GButton(
-              icon: Icons.bookmarks_outlined,
-              text: 'Bookmark',
-              iconSize: 32,
-              iconActiveColor: Colors.white,
-              textColor: Colors.white,
-            ),
+            // GButton(
+            //   icon: Icons.bookmarks_outlined,
+            //   text: 'Bookmark',
+            //   iconSize: 32,
+            //   iconActiveColor: Colors.white,
+            //   textColor: Colors.white,
+            // ),
             GButton(
               icon: Icons.task_alt,
               text: 'booked',

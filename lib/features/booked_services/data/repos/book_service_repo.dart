@@ -7,11 +7,11 @@ abstract class BookServiceRepo {
   Future<Either<Failure, BookServices>> fetchAllBookServices();
 
   Future<Either<Failure, DatumBooked>> addBookService({
-    required int customerId,
     required int expertId,
     required int serviceId,
     required String deliveryTime,
     required String deliveryDate,
+    required String location,
     String? description,
   });
 

@@ -12,6 +12,7 @@ class DatumBooked extends Equatable {
   final String? description;
   final String? deliveryTime;
   final String? deliveryDate;
+  final String? location;
   final String? status;
   final Expert? expert;
   final Service? service;
@@ -24,6 +25,7 @@ class DatumBooked extends Equatable {
     this.description,
     this.deliveryTime,
     this.deliveryDate,
+    this.location,
     this.status,
     this.expert,
     this.service,
@@ -38,6 +40,7 @@ class DatumBooked extends Equatable {
         description: data['description'] as String?,
         deliveryTime: data['delivery_time'] as String?,
         deliveryDate: data['delivery_date'] as String?,
+        location: data['location'] as String?,
       );
 
   factory DatumBooked.fromMap(Map<String, dynamic> data) => DatumBooked(
@@ -48,6 +51,7 @@ class DatumBooked extends Equatable {
       description: data['description'] as String?,
       deliveryTime: data['delivery_time'] as String?,
       deliveryDate: data['delivery_date'] as String?,
+      location: data['location'] as String?,
       status: data['status'] as String?,
       expert: data['expert'] == null
           ? null
@@ -65,6 +69,7 @@ class DatumBooked extends Equatable {
         'description': description,
         'delivery_time': deliveryTime,
         'delivey_date': deliveryDate,
+        'location': location,
         'status': status,
         'expert': expert?.toMap(),
         'service': service?.toMap(),
@@ -93,6 +98,7 @@ class DatumBooked extends Equatable {
       description,
       deliveryTime,
       deliveryDate,
+      location,
       status,
       expert,
       service,

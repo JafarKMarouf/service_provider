@@ -7,7 +7,7 @@ import 'package:freelancer_app/features/booked_services/presentation/view/widget
 class ConfirmedBooked extends StatelessWidget {
   final DatumBooked booked;
   const ConfirmedBooked({super.key, required this.booked});
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -58,7 +58,6 @@ class ConfirmedBooked extends StatelessWidget {
           info: '${booked.expert!.mobile}',
         ),
         const SizedBox(height: 16),
-        const AddNotesBook(),
       ],
     );
   }

@@ -64,12 +64,14 @@ class FreelancerInfosView extends StatelessWidget {
                 Future.delayed(
                   const Duration(microseconds: 250),
                   () {
+                    var location =
+                        '${bookService.currentPosition!.latitude},${bookService.currentPosition!.longitude}';
                     DatumBooked booked = DatumBooked(
                       expertId: bookService.expertId,
                       customerId: bookService.customerId,
                       serviceId: bookService.serviceId,
-                      deliveryDate: bookService.newDate.toString(),
-                      deliveryTime: bookService.newTime.toString(),
+                      deliveryDate: bookService.deliveryDate.toString(),
+                      deliveryTime: bookService.deliveryTime.toString(),
                       service: Service(
                         serviceName: bookService.serviceName,
                         photo: bookService.photo,
@@ -82,6 +84,9 @@ class FreelancerInfosView extends StatelessWidget {
                         mobile: bookService.mobile,
                         price: bookService.price,
                       ),
+                      // description: bookService.description!.text,
+                      // location: bookService.currentPosition.toString(),
+                      location: location,
                     );
                     g.Get.to(
                       () => BookingConfirmationView(booked: booked),

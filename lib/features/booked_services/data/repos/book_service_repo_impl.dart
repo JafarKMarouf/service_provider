@@ -28,35 +28,33 @@ class BookServiceRepoImpl implements BookServiceRepo {
 
   @override
   Future<Either<Failure, DatumBooked>> addBookService({
-    required int customerId,
     required int expertId,
     required int serviceId,
     required String deliveryTime,
     required String deliveryDate,
+    required String location,
     String? description,
   }) async {
     try {
       var data = await apiService.post(
         endPoint: 'customer/service/$serviceId/book_service',
         body: {
-          'customer_id': customerId,
-          'service_id': serviceId,
           'expert_id': expertId,
           'delivery_time': deliveryTime,
           'delivery_date': deliveryDate,
-          'description': 'descriptiondescriptiondescription',
+          'location': location,
+          'description': description,
         },
       );
-      // log('=======data:${data}');
+      log('===data:$data');
       return right(DatumBooked.addBooked(data));
     } catch (e) {
-      log('=====exception:$e');
+      log('error ${e.toString()}');
       if (e is DioException) {
-        log('=====dioException:${e.response!.data}');
+        log('exception ${e.response}');
+
         return left(ServerFailure.fromDioError(e));
       }
-      // log('=====exception:${e.toString()}');
-
       return left(ServerFailure(e.toString()));
     }
   }

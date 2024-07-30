@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/service_infos_view/widget/service_type.dart';
@@ -81,16 +79,18 @@ class BookServiceInit extends StatelessWidget {
                   'you have to set your location first',
                 );
               } else {
-                Get.to(() {
-                  var formatDate =
-                      intl.DateFormat('dd/MM/yyy').format(cubit.newDate!);
-                  booked.newDate = formatDate;
+                Get.to(
+                  () {
+                    var formatDate =
+                        intl.DateFormat('dd/MM/yyy').format(cubit.newDate!);
+                    booked.deliveryDate = formatDate;
 
-                  booked.newTime = cubit.newTime!.format(context);
-                  booked.currentPosition = cubit.currentPosition;
+                    booked.deliveryTime = cubit.newTime!.format(context);
+                    booked.currentPosition = cubit.currentPosition;
 
-                  return AvailableFreelancerView(expert: data.expert!);
-                });
+                    return AvailableFreelancerView(expert: data.expert!);
+                  },
+                );
               }
             },
             width: MediaQuery.of(context).size.width,
