@@ -18,6 +18,7 @@ class CustomeFreelancerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
+      width: 85,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(240),
         child: image != null

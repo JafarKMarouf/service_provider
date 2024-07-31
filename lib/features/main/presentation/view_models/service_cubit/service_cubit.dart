@@ -15,7 +15,6 @@ class ServiceCubit extends Cubit<ServiceState> {
   Future<void> fetchService({categoryId}) async {
     emit(ServiceLoading());
     var result = await serviceRepoImpl.fetchServices(categoryId: categoryId);
-    log('====service by categoryies:$result');
 
     result.fold(
       (fail) => emit(ServiceFailure(errMessage: fail.errMessage)),

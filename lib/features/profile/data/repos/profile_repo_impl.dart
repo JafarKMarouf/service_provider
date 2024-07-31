@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -24,9 +25,8 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, ProfileModel>> updateProfile({
-    Map<String, dynamic>? body,
-  }) async {
+  Future<Either<Failure, ProfileModel>> updateProfile(
+      {Map<String, dynamic>? body}) async {
     try {
       var user = await apiService.post(
         endPoint: 'customer/profile/',
@@ -34,7 +34,10 @@ class ProfileRepoImpl implements ProfileRepo {
       );
       return right(ProfileModel.fromMap(user));
     } catch (e) {
+      log('++++error $e');
       if (e is DioException) {
+        log('++++excption ${e.response}');
+
         return left(ServerFailure.fromDioError(e));
       }
 

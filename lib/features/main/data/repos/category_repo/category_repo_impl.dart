@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
@@ -14,7 +13,6 @@ class CategoryRepoImpl extends CategoryRepo {
   Future<Either<Failure, CategoryDatum>> fetchCategories() async {
     try {
       var data = await apiService.get(endPoint: 'customer/category/');
-      // log('====data:$data');
 
       return right(CategoryDatum.fromMap(data));
     } catch (e) {

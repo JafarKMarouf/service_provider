@@ -13,9 +13,7 @@ final class ProfileLoading extends ProfileState {}
 
 final class ProfileFailure extends ProfileState {
   final String errMessage;
-  const ProfileFailure({
-    required this.errMessage,
-  });
+  const ProfileFailure({required this.errMessage});
 }
 
 final class ProfileSuccess extends ProfileState {

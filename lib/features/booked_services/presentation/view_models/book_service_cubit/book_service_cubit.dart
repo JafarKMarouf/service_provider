@@ -44,23 +44,11 @@ class BookServiceCubit extends Cubit<BookServiceState> {
   }
 
   Future<void> addBookedServices({
-    required int expertId,
-    required int serviceId,
-    required String deliveryTime,
-    required String deliveryDate,
-    required String location,
-    String? description,
+    required Map<String, dynamic> body,
   }) async {
     emit(BookServiceLoading());
 
-    var result = await bookServiceRepoImpl.addBookService(
-      expertId: expertId,
-      serviceId: serviceId,
-      deliveryTime: deliveryTime,
-      deliveryDate: deliveryDate,
-      location: location,
-      description: description,
-    );
+    var result = await bookServiceRepoImpl.addBookService(body: body);
 
     result.fold(
       (fail) {

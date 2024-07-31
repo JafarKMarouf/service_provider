@@ -99,14 +99,14 @@ class BookingConfirmationView extends StatelessWidget {
                       const Duration(microseconds: 250),
                       () {
                         BlocProvider.of<BookServiceCubit>(context)
-                            .addBookedServices(
-                          expertId: booked!.expertId!,
-                          serviceId: booked!.serviceId!,
-                          deliveryTime: booked!.deliveryTime!,
-                          deliveryDate: booked!.deliveryDate!,
-                          location: booked!.location!,
-                          description: description ?? '',
-                        );
+                            .addBookedServices(body: {
+                          'expert_id': booked!.expertId!,
+                          'service_id': booked!.serviceId!,
+                          'delivery_time': booked!.deliveryTime!,
+                          'delivery_date': booked!.deliveryDate!,
+                          'location': booked!.location!,
+                          'description': description ?? '',
+                        });
                       },
                     );
                   },

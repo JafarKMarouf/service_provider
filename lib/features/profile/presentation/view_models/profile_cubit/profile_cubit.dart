@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,9 +29,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  Future<void> updateProfile({
-    Map<String, dynamic>? body,
-  }) async {
+  Future<void> updateProfile({Map<String, dynamic>? body}) async {
+    log('=====body: $body=======');
     emit(ProfileLoading());
     var result = await profileRepoImpl.updateProfile(body: body);
     result.fold((fail) {
