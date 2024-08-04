@@ -12,7 +12,7 @@ final class CategoryInitial extends CategoryState {}
 final class CategoryLoading extends CategoryState {}
 
 final class CategorySuccess extends CategoryState {
-  final CategoryDatum category;
+  final CategoryModel category;
   const CategorySuccess({required this.category});
 }
 

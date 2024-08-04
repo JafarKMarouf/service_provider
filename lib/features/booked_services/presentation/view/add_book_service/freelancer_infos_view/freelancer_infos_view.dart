@@ -11,13 +11,13 @@ import 'package:freelancer_app/features/booked_services/data/models/book_service
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/booking_confirmation/booking_confirmation_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/freelancer_infos.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/expert.dart'
+import 'package:freelancer_app/features/main/data/models/service_model/service_expert.dart'
     as service;
 import 'package:get/get.dart' as g;
 
 class FreelancerInfosView extends StatelessWidget {
   final books.Expert? freelanceInfos;
-  final service.Expert? expert;
+  final service.ServiceExpert? expert;
 
   const FreelancerInfosView({
     super.key,

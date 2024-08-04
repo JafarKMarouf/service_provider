@@ -1,10 +1,9 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'service_user.dart';
 
-import 'user.dart';
-
-class Expert extends Equatable {
+class ServiceExpert extends Equatable {
   final int? id;
   final int? userId;
   final int? serviceId;
@@ -16,9 +15,9 @@ class Expert extends Equatable {
   final String? photo;
   final String? description;
   final String? workingHours;
-  final User? user;
+  final ServiceUser? user;
 
-  const Expert({
+  const ServiceExpert({
     this.id,
     this.userId,
     this.serviceId,
@@ -33,7 +32,7 @@ class Expert extends Equatable {
     this.user,
   });
 
-  factory Expert.fromMap(Map<String, dynamic> data) => Expert(
+  factory ServiceExpert.fromMap(Map<String, dynamic> data) => ServiceExpert(
         id: data['id'] as int?,
         userId: data['user_id'] as int?,
         serviceId: data['service_id'] as int?,
@@ -47,7 +46,7 @@ class Expert extends Equatable {
         workingHours: data['working_hours'] as String?,
         user: data['user'] == null
             ? null
-            : User.fromMap(data['user'] as Map<String, dynamic>),
+            : ServiceUser.fromMap(data['user'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toMap() => {
@@ -67,14 +66,14 @@ class Expert extends Equatable {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [Expert].
-  factory Expert.fromJson(String data) {
-    return Expert.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [ServiceExpert].
+  factory ServiceExpert.fromJson(String data) {
+    return ServiceExpert.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [Expert] to a JSON string.
+  /// Converts [ServiceExpert] to a JSON string.
   String toJson() => json.encode(toMap());
 
   @override

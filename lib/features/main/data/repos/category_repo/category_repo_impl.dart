@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:freelancer_app/core/errors/failure.dart';
 import 'package:freelancer_app/core/utils/api_service.dart';
-import 'package:freelancer_app/features/main/data/models/category_model/category.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/category_model.dart';
 import 'package:freelancer_app/features/main/data/repos/category_repo/category_repo.dart';
 
 class CategoryRepoImpl extends CategoryRepo {
@@ -10,11 +10,11 @@ class CategoryRepoImpl extends CategoryRepo {
   CategoryRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, CategoryDatum>> fetchCategories() async {
+  Future<Either<Failure, CategoryModel>> fetchCategories() async {
     try {
       var data = await apiService.get(endPoint: 'customer/category/');
 
-      return right(CategoryDatum.fromMap(data));
+      return right(CategoryModel.fromMap(data));
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
@@ -24,7 +24,18 @@ class CategoryRepoImpl extends CategoryRepo {
   }
 
   @override
-  Future<Either<Failure, CategoryDatum>> showCategory({required int id}) {
-    throw UnimplementedError();
+  Future<Either<Failure, CategoryModel>> showCategory({required int id}) async {
+    try {
+      var data = await apiService.get(
+        endPoint: 'customer/category/$id',
+      );
+
+      return right(CategoryModel.fromMap(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
 }

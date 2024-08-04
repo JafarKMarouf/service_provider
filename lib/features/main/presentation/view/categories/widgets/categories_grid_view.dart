@@ -3,10 +3,10 @@ import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/main/presentation/view/categories/widgets/category_infos_minimum.dart';
 import 'package:freelancer_app/features/main/presentation/view/categories/category_item_view.dart';
 import 'package:get/get.dart' as g;
-import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/category_datum.dart';
 
 class CategoriesGridView extends StatelessWidget {
-  final List<Datum> data;
+  final List<CategoryDatum> data;
 
   const CategoriesGridView({super.key, required this.data});
 

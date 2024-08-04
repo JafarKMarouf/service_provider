@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
 import 'package:freelancer_app/features/main/presentation/view_models/category_cubit/category_cubit.dart';
-import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/category_datum.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'widgets/categories_grid_view.dart';
@@ -14,7 +14,7 @@ class CategoriesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<CategoryCubit>(context).fetchCategories();
-    List<Datum> categories = [];
+    List<CategoryDatum> categories = [];
 
     return Scaffold(
       body: BlocConsumer<CategoryCubit, CategoryState>(

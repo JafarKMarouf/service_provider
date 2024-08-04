@@ -5,10 +5,10 @@ import 'package:freelancer_app/core/widgets/custome_text.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/rating_freelancer.dart';
 import 'package:get/get.dart' as g;
-import 'package:freelancer_app/features/main/data/models/service_model/expert.dart';
+import 'package:freelancer_app/features/main/data/models/service_model/service_expert.dart';
 
 class CustomeFreelancerItem extends StatelessWidget {
-  final Expert expert;
+  final ServiceExpert expert;
 
   const CustomeFreelancerItem({super.key, required this.expert});
 

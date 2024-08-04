@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/category_datum.dart';
 
 class CategoryInfosMinimum extends StatelessWidget {
-  final Datum data;
+  final CategoryDatum data;
   const CategoryInfosMinimum({super.key, required this.data});
 
   @override

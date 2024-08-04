@@ -5,10 +5,10 @@ import 'package:freelancer_app/core/widgets/custome_search_arrowback_bar.dart';
 
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/custome_freelancer_item.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/expert.dart';
+import 'package:freelancer_app/features/main/data/models/service_model/service_expert.dart';
 
 class AvailableFreelancerView extends StatelessWidget {
-  final List<Expert> expert;
+  final List<ServiceExpert> expert;
 
   const AvailableFreelancerView({super.key, required this.expert});
 

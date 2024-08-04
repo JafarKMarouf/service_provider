@@ -2,27 +2,31 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'datum.dart';
-
 class CategoryDatum extends Equatable {
-  final String? status;
-  final int? count;
-  final List<Datum>? data;
+  final int? id;
+  final String? title;
+  final String? description;
+  final String? photo;
 
-  const CategoryDatum({this.status, this.count, this.data});
+  const CategoryDatum({
+    this.id,
+    this.title,
+    this.description,
+    this.photo,
+  });
 
   factory CategoryDatum.fromMap(Map<String, dynamic> data) => CategoryDatum(
-        status: data['status'] as String?,
-        count: data['count'] as int?,
-        data: (data['data'] as List<dynamic>?)
-            ?.map((e) => Datum.fromMap(e as Map<String, dynamic>))
-            .toList(),
+        id: data['id'] as int?,
+        title: data['title'] as String?,
+        description: data['description'] as String?,
+        photo: data['photo'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
-        'status': status,
-        'count': count,
-        'data': data?.map((e) => e.toMap()).toList(),
+        'id': id,
+        'title': title,
+        'description': description,
+        'photo': photo,
       };
 
   /// `dart:convert`
@@ -38,5 +42,12 @@ class CategoryDatum extends Equatable {
   String toJson() => json.encode(toMap());
 
   @override
-  List<Object?> get props => [status, count, data];
+  List<Object?> get props {
+    return [
+      id,
+      title,
+      description,
+      photo,
+    ];
+  }
 }

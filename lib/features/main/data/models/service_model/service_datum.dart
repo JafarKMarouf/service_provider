@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'category.dart';
-import 'expert.dart';
+import 'service_category.dart';
+import 'service_expert.dart';
 
 class ServiceDatum extends Equatable {
   final int? id;
@@ -11,8 +11,8 @@ class ServiceDatum extends Equatable {
   final String? serviceName;
   final String? serviceDescription;
   final String? photo;
-  final Category? category;
-  final List<Expert>? expert;
+  final ServiceCategory? category;
+  final List<ServiceExpert>? expert;
 
   const ServiceDatum({
     this.id,
@@ -32,9 +32,9 @@ class ServiceDatum extends Equatable {
         photo: data['photo'] as String?,
         category: data['category'] == null
             ? null
-            : Category.fromMap(data['category'] as Map<String, dynamic>),
+            : ServiceCategory.fromMap(data['category'] as Map<String, dynamic>),
         expert: (data['expert'] as List<dynamic>?)
-            ?.map((e) => Expert.fromMap(e as Map<String, dynamic>))
+            ?.map((e) => ServiceExpert.fromMap(e as Map<String, dynamic>))
             .toList(),
       );
 
