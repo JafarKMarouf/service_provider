@@ -23,14 +23,18 @@ class HandleBookServiceListView extends StatelessWidget {
             return ListView.builder(
               padding: EdgeInsets.zero,
               itemCount: booked.length,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () => g.Get.to(
-                  () => BookingInfosView(data: booked[index]),
-                  transition: g.Transition.fadeIn,
-                  duration: kDurationTransition,
-                ),
-                child: BookServiceInfosMinimum(data: booked[index]),
-              ),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    g.Get.to(
+                      () => BookingInfosView(data: booked[index]),
+                      transition: g.Transition.fadeIn,
+                      duration: kDurationTransition,
+                    );
+                  },
+                  child: BookServiceInfosMinimum(data: booked[index]),
+                );
+              },
             );
           } else if (state is BookServiceFailure) {
             return SizedBox(

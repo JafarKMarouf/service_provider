@@ -17,10 +17,9 @@ class AddNotesBook extends StatelessWidget {
         color: Colors.grey[800],
       ),
       controller: cubit.description,
-      // onSubmitted: (value) {},
-      // onChanged: (value) {
-      //   cubit.description!.text = value;
-      // },
+      onChanged: (value) {
+        cubit.description!.text = value;
+      },
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         suffixIcon: const Icon(

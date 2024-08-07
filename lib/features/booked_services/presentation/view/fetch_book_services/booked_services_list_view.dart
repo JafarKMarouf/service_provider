@@ -32,12 +32,6 @@ class BookedServicesListView extends StatelessWidget {
         ),
       ),
     );
-    // return BlocProvider(
-    //   create: (context) => BookServiceCubit(
-    //     BookServiceRepoImpl(apiService: ApiService(Dio())),
-    //   ),
-    //   child: const BookedServicesBody(),
-    // );
   }
 }
 

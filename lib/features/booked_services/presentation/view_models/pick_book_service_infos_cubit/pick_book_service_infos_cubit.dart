@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/functions/handle_location_permission.dart';
@@ -36,6 +38,7 @@ class PickBookServiceInfosCubit extends Cubit<PickBookServiceInfosState> {
   Future<void> pickLocation() async {
     emit(PickLocationLoading());
     currentPosition = await LocationHandler.getCurrentPosition();
+    log('====position :$currentPosition');
     currentPosition == null
         ? emit(PickLocationFailure())
         : emit(PickLocationUpdated());

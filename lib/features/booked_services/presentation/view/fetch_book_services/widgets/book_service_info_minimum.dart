@@ -14,7 +14,6 @@ class BookServiceInfosMinimum extends StatelessWidget {
   Widget build(BuildContext context) {
     var formatDate = data.deliveryDate;
     var formatTime = data.deliveryTime;
-    // var formatTime = intl.DateFormat('hh:mm aa').format(data.deliveryTime);
 
     return Padding(
       padding: const EdgeInsets.only(

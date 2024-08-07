@@ -24,6 +24,4 @@ class AppImages {
   static const String locksvg = '$routeVector/lock-on.svg';
   static const String emailsvg = '$routeVector/emailsvg.svg';
   static const String notificationsvg = '$routeVector/notificationsvg.svg';
-  // assets\vectors\
 }
-// assets\images\splash.png

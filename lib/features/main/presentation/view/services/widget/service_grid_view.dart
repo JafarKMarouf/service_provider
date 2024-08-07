@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/service_infos_view/service_infos_view.dart';
@@ -22,15 +23,18 @@ class ServiceGridView extends StatelessWidget {
                   crossAxisCount: 3),
               padding: const EdgeInsets.only(top: 15, bottom: 10),
               itemCount: data.length,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () => g.Get.to(
-                  () => ServiceInfosView(data: data[index]),
-                  transition: g.Transition.fadeIn,
-                  duration: kDurationTransition,
-                ),
-                child: ServiceInfosMinimum(data: data[index]),
-              ),
-            )
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    g.Get.to(
+                      () => ServiceInfosView(data: data[index]),
+                      transition: g.Transition.fadeIn,
+                      duration: kDurationTransition,
+                    );
+                  },
+                  child: ServiceInfosMinimum(data: data[index]),
+                );
+              })
           : const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

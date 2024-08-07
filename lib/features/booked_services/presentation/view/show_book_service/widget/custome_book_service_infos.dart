@@ -19,21 +19,22 @@ class CustomeBookServiceInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           InkWell(
-            onTap: () => g.Get.to(
-              () => FreelancerInfosView(freelanceInfos: data.expert!),
-              transition: g.Transition.fadeIn,
-              duration: kDurationTransition,
-            ),
+            onTap: () {
+              g.Get.to(
+                () => FreelancerInfosView(freelanceInfos: data.expert!),
+                transition: g.Transition.fadeIn,
+                duration: kDurationTransition,
+              );
+            },
             child: Text(
               'اسم الفريلانسر :  ${data.expert!.user!.name}',
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
               ),
               textDirection: TextDirection.rtl,
             ),
           ),
-          const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -47,48 +48,50 @@ class CustomeBookServiceInfo extends StatelessWidget {
                 ),
               ),
               Row(
-                  children: List.generate(
-                5 - rating,
-                (index) => const Icon(Icons.star_border, color: kPrimaryColor),
-              )),
+                children: List.generate(
+                  5 - rating,
+                  (index) =>
+                      const Icon(Icons.star_border, color: kPrimaryColor),
+                ),
+              ),
               const Text(
                 'التقييم :   ',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
                 textDirection: TextDirection.rtl,
               ),
             ],
           ),
-          const SizedBox(height: 8),
           Text(
             'تاريخ الحجز :  $formatDate',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
             textDirection: TextDirection.rtl,
           ),
           const SizedBox(height: 8),
           Text(
-            'رسوم الخدمة :   ${data.expert!.price} ل.س',
+            'رسوم الخدمة :  \$ ${data.expert!.price} ',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
             textDirection: TextDirection.rtl,
           ),
-          const SizedBox(height: 8),
-          Text(
-            'الوصف :   ${data.description}',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-            textDirection: TextDirection.rtl,
-          ),
-          const SizedBox(height: 8),
+          // const SizedBox(height: 8),
+          data.description != null
+              ? Text(
+                  'الوصف :   ${data.description}',
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                )
+              : const SizedBox(),
         ],
       ),
     );

@@ -22,7 +22,6 @@ class LoginView extends StatelessWidget {
             Get.snackbar('failed', state.errorMessage);
           } else if (state is AuthSuccess) {
             cubit.loadingLogin = false;
-            Get.snackbar('success', '${state.userModel.message}');
           }
         },
         builder: (context, state) {

@@ -73,7 +73,6 @@ class AuthCubit extends Cubit<AuthState> {
         Future.delayed(
           const Duration(microseconds: 250),
           () {
-            // await resend();
             isVerify != null
                 ? g.Get.offAll(
                     () => const CustomeNavBar(),
@@ -88,6 +87,9 @@ class AuthCubit extends Cubit<AuthState> {
                   );
           },
         );
+        if (isVerify == null) {
+          await resend();
+        }
         emit(AuthSuccess(userModel: user));
       },
     );

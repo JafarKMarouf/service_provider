@@ -74,7 +74,6 @@ class AppStorage {
     await prefs!.remove('email_remember');
   }
 
-// =====================
   static Future<void> rememeberMe(bool remembered) async {
     prefs = await SharedPreferences.getInstance();
     await prefs!.setBool('rememberMe', remembered);

@@ -5,7 +5,6 @@ import 'package:freelancer_app/core/constants/app_colors.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/functions/input_validate.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_text.dart';
 import 'package:freelancer_app/features/auth/presentation/view/login_view.dart';
 import 'package:freelancer_app/features/auth/presentation/view/widgets/custome_text_form_field.dart';

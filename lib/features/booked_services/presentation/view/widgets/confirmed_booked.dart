@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/booking_confirmation/widget/add_notes_for_book.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/rating_freelancer.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_style_service_infos.dart';
 

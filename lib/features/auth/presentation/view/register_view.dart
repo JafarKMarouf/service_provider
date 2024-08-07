@@ -28,7 +28,7 @@ class RegisterView extends StatelessWidget {
             Future.delayed(
               const Duration(microseconds: 250),
               () {
-                g.Get.to(
+                g.Get.offAll(
                   () => const EmailVerifyView(),
                   transition: g.Transition.fadeIn,
                   duration: kDurationTransition,

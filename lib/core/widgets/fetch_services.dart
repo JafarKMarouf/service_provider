@@ -21,7 +21,7 @@ class FetchServices extends StatelessWidget {
             'رؤية الكل',
             style: TextStyle(
               color: kPrimaryColor,
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.w700,
             ),
           ),

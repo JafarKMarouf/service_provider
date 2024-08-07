@@ -53,16 +53,22 @@ class FreelancerInfos extends StatelessWidget {
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
-          textDirection: TextDirection.rtl,
+
         ),
         const SizedBox(height: 8),
-        Text(
-          'الوصف :   ${freelanceInfos?.description ?? expert?.description}',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-          textDirection: TextDirection.rtl,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            RatingFreelancer(rating: rating, size: 24),
+            const Text(
+              'التقييم :   ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+              textDirection: TextDirection.rtl,
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         Text(
@@ -84,19 +90,14 @@ class FreelancerInfos extends StatelessWidget {
           textDirection: TextDirection.rtl,
         ),
         const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            RatingFreelancer(rating: rating, size: 24),
-            const Text(
-              'التقييم :   ',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-              textDirection: TextDirection.rtl,
-            ),
-          ],
+
+        Text(
+          'الوصف :   ${freelanceInfos?.description ?? expert?.description}',
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+          textDirection: TextDirection.rtl,
         ),
         const Expanded(child: SizedBox()),
       ],

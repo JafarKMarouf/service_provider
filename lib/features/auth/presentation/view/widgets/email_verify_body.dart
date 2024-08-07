@@ -29,16 +29,16 @@ class EmailVerifyBody extends StatelessWidget {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: cubit.loadingVerify,
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: MediaQuery.sizeOf(context).height * .07,
-            ),
-            child: Column(
-              children: [
-                const CustomeVerifyBar(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.sizeOf(context).height * .07,
+              ),
+              child: Column(
+                children: [
+                  const CustomeVerifyBar(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,8 +61,8 @@ class EmailVerifyBody extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

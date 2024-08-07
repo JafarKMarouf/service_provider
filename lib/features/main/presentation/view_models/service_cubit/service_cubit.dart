@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,10 +14,13 @@ class ServiceCubit extends Cubit<ServiceState> {
   Future<void> fetchService({categoryId}) async {
     emit(ServiceLoading());
     var result = await serviceRepoImpl.fetchServices(categoryId: categoryId);
-
     result.fold(
-      (fail) => emit(ServiceFailure(errMessage: fail.errMessage)),
-      (service) => emit(ServiceSuccess(service: service)),
+      (fail) {
+        emit(ServiceFailure(errMessage: fail.errMessage));
+      },
+      (service) {
+        emit(ServiceSuccess(service: service));
+      },
     );
   }
 

@@ -31,10 +31,10 @@ class CustomeFreelancerItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              flex: 4,
+              flex: 3,
               child: CustomeFreelancerImage(
                 image: '${expert.photo}',
-                height: 80,
+                height:65 ,
               ),
             ),
             Column(

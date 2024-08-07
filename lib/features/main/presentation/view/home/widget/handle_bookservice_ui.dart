@@ -16,7 +16,7 @@ class HandleBookServiceUi extends StatelessWidget {
     List<DatumBooked> booked = [];
     BlocProvider.of<BookServiceCubit>(context).fetchBookServices();
     return Expanded(
-      flex: 4,
+      flex: 3,
       child: BlocBuilder<BookServiceCubit, BookServiceState>(
         builder: (context, state) {
           if (state is BookServiceSuccess) {
@@ -25,14 +25,18 @@ class HandleBookServiceUi extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: booked.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () => g.Get.to(
-                    () => BookingInfosView(data: booked[index]),
-                    transition: g.Transition.fadeIn,
-                    duration: kDurationTransition,
-                  ),
-                  child: BookServiceInfosMinimum(data: booked[index]),
-                ),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      g.Get.to(
+                        () => BookingInfosView(data: booked[index]),
+                        transition: g.Transition.fadeIn,
+                        duration: kDurationTransition,
+                      );
+                    },
+                    child: BookServiceInfosMinimum(data: booked[index]),
+                  );
+                },
               ),
             );
           } else if (state is BookServiceFailure) {
@@ -65,13 +69,6 @@ class HandleBookServiceUi extends StatelessWidget {
         },
       ),
     );
-
-    // return BlocProvider(
-    //   create: (context) => BookServiceCubit(
-    //     BookServiceRepoImpl(apiService: ApiService(Dio())),
-    //   ),
-    //   child: const HandleBookServiceBody(),
-    // );
   }
 }
 
@@ -91,17 +88,18 @@ class HandleBookServiceBody extends StatelessWidget {
             booked.addAll(state.bookService.data!.toList());
             return SizedBox(
               child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: booked.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () => g.Get.to(
-                    () => BookingInfosView(data: booked[index]),
-                    transition: g.Transition.fadeIn,
-                    duration: kDurationTransition,
-                  ),
-                  child: BookServiceInfosMinimum(data: booked[index]),
-                ),
-              ),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: booked.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () => g.Get.to(
+                        () => BookingInfosView(data: booked[index]),
+                        transition: g.Transition.fadeIn,
+                        duration: kDurationTransition,
+                      ),
+                      child: BookServiceInfosMinimum(data: booked[index]),
+                    );
+                  }),
             );
           } else if (state is BookServiceFailure) {
             return SizedBox(

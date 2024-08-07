@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:freelancer_app/core/widgets/custome_button.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 import 'package:freelancer_app/core/widgets/custome_infos_service_items.dart';
 import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
-
 import 'package:freelancer_app/features/booked_services/presentation/view/show_book_service/widget/book_service_type.dart';
-
 import 'widget/custome_book_service_infos.dart';
 
 class BookingInfosView extends StatelessWidget {
@@ -17,7 +14,6 @@ class BookingInfosView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var formatTime = data.deliveryTime!;
-    // var formatTime = DateFormat('hh:mm aa').format(data.deliveryTime!);
 
     return Scaffold(
       body: Container(
@@ -27,14 +23,17 @@ class BookingInfosView extends StatelessWidget {
           children: [
             const Expanded(child: CustomeServiceBar(title: "معلومات الحجز")),
             Expanded(flex: 2, child: BookServiceType(data: data)),
-            const SizedBox(height: 8),
-            CustomeInfosServiceItems(
-              location: 'Santa Clara County, United States',
-              phone: data.expert!.mobile,
-              time: formatTime,
-              timeTapped: true,
-              locationTapped: true,
-              phoneTapped: true,
+            const SizedBox(height: 16),
+            Expanded(
+              flex: 3,
+              child: CustomeInfosServiceItems(
+                location: data.location,
+                phone: data.expert!.mobile,
+                time: formatTime,
+                timeTapped: true,
+                locationTapped: true,
+                phoneTapped: true,
+              ),
             ),
             Expanded(
               flex: 2,
@@ -44,7 +43,7 @@ class BookingInfosView extends StatelessWidget {
               title: 'تقدم',
               onTap: () {},
               width: MediaQuery.of(context).size.width,
-            )
+            ),
           ],
         ),
       ),

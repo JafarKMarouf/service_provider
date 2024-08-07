@@ -18,7 +18,7 @@ class HandleCategoriesUi extends StatelessWidget {
     BlocProvider.of<CategoryCubit>(context).fetchCategories();
 
     return Expanded(
-      flex: 4,
+      flex: 3,
       child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
           if (state is CategorySuccess) {
