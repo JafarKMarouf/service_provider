@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
+import 'package:freelancer_app/features/main/data/models/service_model/service_datum.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ServiceType extends StatelessWidget {
-  final DatumService data;
+  final ServiceDatum data;
   const ServiceType({super.key, required this.data});
 
   @override
@@ -61,7 +60,7 @@ class ServiceType extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Text(
-              '${data.price} ل.س',
+              '${data.expert!.first.price} ل.س',
               style: const TextStyle(
                 fontSize: 16,
                 color: Color(0xff0ABA31),

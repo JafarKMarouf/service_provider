@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/fetch_book_services/widgets/book_service_info_minimum.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/show_book_service/booking_infos_view.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view_models/book_service_cubit/book_service_cubit.dart';
@@ -23,14 +23,18 @@ class HandleBookServiceListView extends StatelessWidget {
             return ListView.builder(
               padding: EdgeInsets.zero,
               itemCount: booked.length,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () => g.Get.to(
-                  () => BookingInfosView(data: booked[index]),
-                  transition: g.Transition.fadeIn,
-                  duration: kDurationTransition,
-                ),
-                child: BookServiceInfosMinimum(data: booked[index]),
-              ),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    g.Get.to(
+                      () => BookingInfosView(data: booked[index]),
+                      transition: g.Transition.fadeIn,
+                      duration: kDurationTransition,
+                    );
+                  },
+                  child: BookServiceInfosMinimum(data: booked[index]),
+                );
+              },
             );
           } else if (state is BookServiceFailure) {
             return SizedBox(

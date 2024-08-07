@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/main/data/models/service_model/datum_service.dart';
+import 'package:freelancer_app/features/main/data/models/service_model/service_datum.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ServiceInfosMinimum extends StatelessWidget {
-  final DatumService data;
+  final ServiceDatum data;
   const ServiceInfosMinimum({super.key, required this.data});
 
   @override

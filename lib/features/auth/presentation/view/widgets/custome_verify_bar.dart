@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomeVerifyBar extends StatelessWidget {
-  const CustomeVerifyBar({
-    super.key,
-  });
+  const CustomeVerifyBar({super.key});
 
   @override
   Widget build(BuildContext context) {

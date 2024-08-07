@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/widgets/custome_button.dart';
-import 'package:freelancer_app/features/booked_services/presentation/view/widgets/confirmed_booked.dart';
 import 'package:freelancer_app/core/widgets/custome_service_bar.dart';
 
 class ConfirmedBookedBody extends StatelessWidget {
@@ -15,13 +14,11 @@ class ConfirmedBookedBody extends StatelessWidget {
       ),
       child: Column(
         children: [
-        const  CustomeServiceBar(
+          const CustomeServiceBar(
             title: "حالة الطلب",
           ),
-        const  SizedBox(
-            height: 50,
-          ),
-          const ConfirmedBooked(),
+          const SizedBox(height: 50),
+          // const ConfirmedBooked(),
           const Spacer(),
           CustomButton(
             title: 'حسناً',

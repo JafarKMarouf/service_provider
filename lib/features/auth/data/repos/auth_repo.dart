@@ -12,7 +12,6 @@ abstract class AuthRepo {
     required String email,
     required String password,
     required String passwordConfirm,
-    // required String role,
   });
 
   Future<Either<Failure, UserModel>> verify({
@@ -22,5 +21,5 @@ abstract class AuthRepo {
 
   Future<Either<Failure, UserModel>> resend();
 
-  Future<Either<Failure,UserModel>> logout();
+  Future<Either<Failure, UserModel>> logout();
 }

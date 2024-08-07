@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/features/main/data/models/category_model/datum.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/category_datum.dart';
 
 import 'package:freelancer_app/features/main/presentation/view/categories/widgets/categories_grid_view.dart';
 
@@ -14,12 +13,12 @@ class HandleCategoriesUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Datum> categories = [];
+    List<CategoryDatum> categories = [];
 
     BlocProvider.of<CategoryCubit>(context).fetchCategories();
 
     return Expanded(
-      flex: 4,
+      flex: 3,
       child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
           if (state is CategorySuccess) {

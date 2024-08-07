@@ -19,7 +19,7 @@ import 'package:dio/dio.dart';
 
 import 'features/profile/data/repos/profile_repo_impl.dart';
 import 'features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
-import 'features/splash/presentation/view/splash_view.dart';
+import 'features/splash/splash_view.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
@@ -59,7 +59,6 @@ class MyApp extends StatelessWidget {
           primaryColorLight: kPrimaryColor,
           applyElevationOverlayColor: true,
         ),
-        // home: const HandleCategoriesGridItems(),
         home: const SplashView(),
       ),
     );

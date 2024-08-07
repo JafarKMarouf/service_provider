@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/booked_services/data/models/book_service/datum_booked.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/freelancer_infos_view.dart';
 import 'package:get/get.dart' as g;
 import 'package:intl/intl.dart' as intl;
@@ -12,28 +12,29 @@ class CustomeBookServiceInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var formatDate = intl.DateFormat('dd/MM/yyy').format(data.createdAt!);
-    int rating = data.service!.expert!.expertInfos!.rating;
+    int rating = data.expert!.rating!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           InkWell(
-            onTap: () => g.Get.to(
-              () => FreelancerInfosView(freelanceInfos: data.service!.expert!),
-              transition: g.Transition.fadeIn,
-              duration: kDurationTransition,
-            ),
+            onTap: () {
+              g.Get.to(
+                () => FreelancerInfosView(freelanceInfos: data.expert!),
+                transition: g.Transition.fadeIn,
+                duration: kDurationTransition,
+              );
+            },
             child: Text(
-              'اسم الفريلانسر :  ${data.service!.expert!.name}',
+              'اسم الفريلانسر :  ${data.expert!.user!.name}',
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
               ),
               textDirection: TextDirection.rtl,
             ),
           ),
-          const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -47,48 +48,50 @@ class CustomeBookServiceInfo extends StatelessWidget {
                 ),
               ),
               Row(
-                  children: List.generate(
-                5 - rating,
-                (index) => const Icon(Icons.star_border, color: kPrimaryColor),
-              )),
+                children: List.generate(
+                  5 - rating,
+                  (index) =>
+                      const Icon(Icons.star_border, color: kPrimaryColor),
+                ),
+              ),
               const Text(
                 'التقييم :   ',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
                 textDirection: TextDirection.rtl,
               ),
             ],
           ),
-          const SizedBox(height: 8),
           Text(
             'تاريخ الحجز :  $formatDate',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
             textDirection: TextDirection.rtl,
           ),
           const SizedBox(height: 8),
           Text(
-            'رسوم الخدمة :   ${data.service!.price} ل.س',
+            'رسوم الخدمة :  \$ ${data.expert!.price} ',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
             textDirection: TextDirection.rtl,
           ),
-          const SizedBox(height: 8),
-          Text(
-            'الوصف :   ${data.description}',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-            textDirection: TextDirection.rtl,
-          ),
-          const SizedBox(height: 8),
+          // const SizedBox(height: 8),
+          data.description != null
+              ? Text(
+                  'الوصف :   ${data.description}',
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textDirection: TextDirection.rtl,
+                )
+              : const SizedBox(),
         ],
       ),
     );

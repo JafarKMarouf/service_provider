@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freelancer_app/features/main/data/models/category_model/category.dart';
+import 'package:freelancer_app/features/main/data/models/category_model/category_model.dart';
 import 'package:freelancer_app/features/main/data/repos/category_repo/category_repo_impl.dart';
 
 part 'category_state.dart';

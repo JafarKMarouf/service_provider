@@ -6,10 +6,6 @@ validate({
   min = 6,
   max = 30,
 }) {
-  // if (value.isEmpty) {
-  //   return '$type is required';
-  // }
-
   if (value.isNotEmpty) {
     if (type == 'username') {
       if (!GetUtils.isUsername(value)) {

@@ -17,11 +17,14 @@ final class BookServiceFailure extends BookServiceState {
 }
 
 final class BookServiceSuccess extends BookServiceState {
-  final BookService bookService;
+  final BookServices bookService;
 
-  const BookServiceSuccess({
-    required this.bookService,
-  });
+  const BookServiceSuccess({required this.bookService});
+}
+
+final class BookServiceAddSuccess extends BookServiceState {
+  final DatumBooked bookService;
+  const BookServiceAddSuccess({required this.bookService});
 }
 
 final class BookServicePickDateInitial extends BookServiceState {}

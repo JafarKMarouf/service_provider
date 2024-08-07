@@ -15,15 +15,11 @@ class EmailVerifyView extends StatelessWidget {
     AppStorage.getEmail();
     return BlocProvider(
       create: (context) {
-        final cubit = AuthCubit(
-          AuthRepoImpl(ApiService(Dio())),
-        );
+        final cubit = AuthCubit(AuthRepoImpl(ApiService(Dio())));
         cubit.getEmail();
         return cubit;
       },
-      child: const Scaffold(
-        body: EmailVerifyBody(),
-      ),
+      child: const Scaffold(body: EmailVerifyBody()),
     );
   }
 }

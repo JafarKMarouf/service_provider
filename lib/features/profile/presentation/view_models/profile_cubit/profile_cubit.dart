@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +15,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   AutovalidateMode? autovalidateMod = AutovalidateMode.disabled;
   TextEditingController? emailAddress = TextEditingController();
   TextEditingController? password = TextEditingController();
-
+  int? customerId;
   final ProfileRepoImpl profileRepoImpl;
 
   Future<void> showProfile() async {
@@ -27,15 +29,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  Future<void> updateProfile({
-    required int userId,
-    Map<String, dynamic>? body,
-  }) async {
+  Future<void> updateProfile({Map<String, dynamic>? body}) async {
+    log('=====body: $body=======');
     emit(ProfileLoading());
-    var result = await profileRepoImpl.updateProfile(
-      userId: userId.toString(),
-      body: body,
-    );
+    var result = await profileRepoImpl.updateProfile(body: body);
     result.fold((fail) {
       emit(ProfileFailure(errMessage: fail.errMessage));
     }, (user) {

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freelancer_app/core/constants/app_images.dart';
 import 'package:freelancer_app/core/utils/constant.dart';
-import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
+import 'package:freelancer_app/features/profile/data/models/profile_model/customer_datum.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomeHomeBar extends StatelessWidget {
   final bool loading;
-  final CustomerInfo? customerInfos;
+  final CustomerInfos? customerInfos;
   const CustomeHomeBar({
     super.key,
     this.customerInfos,
@@ -63,7 +63,7 @@ class CustomeHomeBar extends StatelessWidget {
                   const SizedBox(height: 3),
                   !loading
                       ? Text(
-                          customerInfos!.customer!.name!,
+                          customerInfos!.user!.name!,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,

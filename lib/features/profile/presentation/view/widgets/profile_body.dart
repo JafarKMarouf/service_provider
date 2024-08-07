@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:freelancer_app/features/profile/data/models/profile_model/customer_info.dart';
-
-import 'package:freelancer_app/features/profile/presentation/view/widgets/custome_profile_bar.dart';
+import 'package:freelancer_app/features/profile/data/models/profile_model/customer_datum.dart';
+import 'package:freelancer_app/features/profile/presentation/view/widgets/profile_loading_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view/widgets/profile_success_view.dart';
 import 'package:freelancer_app/features/profile/presentation/view_models/profile_cubit/profile_cubit.dart';
 import 'package:get/get.dart';
@@ -16,7 +14,7 @@ class ProfileBody extends StatefulWidget {
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
-  List<CustomerInfo> customerInfo = [];
+  List<CustomerInfos> customerInfo = [];
 
   @override
   void initState() {
@@ -26,8 +24,13 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
+    return Container(
+      padding: const EdgeInsets.only(
+        right: 8,
+        left: 8,
+        bottom: 15,
+        top: 16,
+      ),
       child: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
           if (state is ProfileSuccess) {
@@ -42,15 +45,10 @@ class _ProfileBodyState extends State<ProfileBody> {
           }
         },
         builder: (context, state) {
-          if (state is ProfileSuccess) {
-            return ProfileSuccessView(customerInfo: customerInfo);
+          if (state is ProfileLoading) {
+            return const ProfileLoadingView();
           } else {
-            return const Column(
-              children: [
-                AspectRatio(aspectRatio: 7),
-                CustomeProfileBar(isLoading: true)
-              ],
-            );
+            return ProfileSuccessView(customerInfo: customerInfo);
           }
         },
       ),

@@ -21,29 +21,37 @@ class HomeView extends StatelessWidget {
       height: MediaQuery.sizeOf(context).height,
       child: Column(
         children: [
-          const Expanded(flex: 2, child: HandleUserDetails()),
+          const AspectRatio(aspectRatio: 4, child: HandleUserDetails()),
+
+          // const Expanded(flex: 2, child: HandleUserDetails()),
           CustomeSearch(width: MediaQuery.of(context).size.width),
 
-          //============================ فئات الخدمات المتاحة ====================
+          // ================== فئات الخدمات المتاحة =================
+
           FetchServices(
-            title: 'الخدمات',
-            onPressed: () => g.Get.to(
-              () => CategoriesListView(loading: !loading),
-              transition: g.Transition.fadeIn,
-              duration: kDurationTransition,
-            ),
+            title: ' الخدمات المتاحة',
+            onPressed: () {
+              g.Get.to(
+                () => CategoriesListView(loading: !loading),
+                transition: g.Transition.fadeIn,
+                duration: kDurationTransition,
+              );
+            },
           ),
           const HandleCategoriesUi(),
 
-          //============================  الخدمات المحجوزة========================
+          // ====================== الخدمات المحجوزة =================
 
           FetchServices(
             title: 'الخدمات المحجوزة',
-            onPressed: () => g.Get.to(
-              () => const BookedServicesListView(),
-              transition: g.Transition.fadeIn,
-              duration: kDurationTransition,
-            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BookedServicesListView(),
+                ),
+              );
+            },
           ),
           const HandleBookServiceUi(),
         ],

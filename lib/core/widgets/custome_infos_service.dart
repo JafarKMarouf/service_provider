@@ -32,8 +32,8 @@ class _CustomeInfosServiceState extends State<CustomeInfosService> {
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16,
-            top: 8,
-            bottom: 8,
+            top: 4,
+            bottom: 4,
             right: 4,
           ),
           child: Row(

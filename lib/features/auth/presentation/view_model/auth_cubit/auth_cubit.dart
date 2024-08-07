@@ -63,8 +63,6 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthFailure(errorMessage: failure.errMessage));
       },
       (user) async {
-        emit(AuthSuccess(userModel: user));
-
         await AppStorage.storeToken(user.data!.token!);
         await AppStorage.storeUserId(user.data!.user!.id!.toString());
         await AppStorage.storeUserName(user.data!.user!.name.toString());
@@ -89,7 +87,10 @@ class AuthCubit extends Cubit<AuthState> {
                   );
           },
         );
-        if (isVerify == null) await resend();
+        if (isVerify == null) {
+          await resend();
+        }
+        emit(AuthSuccess(userModel: user));
       },
     );
   }
@@ -135,7 +136,7 @@ class AuthCubit extends Cubit<AuthState> {
       Future.delayed(
         const Duration(microseconds: 250),
         () {
-          g.Get.to(
+          g.Get.offAll(
             () => const CustomeNavBar(),
             transition: g.Transition.fadeIn,
             duration: kDurationTransition,
@@ -189,13 +190,15 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> startTimer() async {
+    start = 120;
     emit(AuthStartTimer());
     isResendAgain = true;
     const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(oneSec, (timer) {
       if (start <= 120 && start > 0) {
-        start--;
-        emit(AuthUpdateTimer());
+        emit(AuthUpdate1Timer());
+        start = start - 1;
+        emit(AuthUpdate2Timer());
       } else if (start == 0) {
         isResendAgain = false;
         timer.cancel();

@@ -5,6 +5,14 @@ import 'package:freelancer_app/core/widgets/custome_text.dart';
 import 'custome_service_image.dart';
 
 class CustomeStyleServiceInfos extends StatelessWidget {
+  final String title;
+  final String? info;
+  final String? image1;
+  final String? image2;
+  final String? image3;
+  final bool? rating;
+  final bool clicked;
+
   const CustomeStyleServiceInfos({
     super.key,
     required this.title,
@@ -15,13 +23,6 @@ class CustomeStyleServiceInfos extends StatelessWidget {
     this.rating,
     this.clicked = true,
   });
-  final String title;
-  final String? info;
-  final String? image1;
-  final String? image2;
-  final String? image3;
-  final bool? rating;
-  final bool clicked;
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +31,15 @@ class CustomeStyleServiceInfos extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
-        // textBaseline: TextBaseline.ideographic,
         children: [
           Expanded(
             child: CustomeText(
               text: info!,
-              size: 16,
+              size: 15,
               weight: FontWeight.w500,
             ),
           ),
-          const SizedBox(
-            width: 8,
-          ),
+          // const SizedBox(width: 8),
           CustomeText(
             text: title,
             size: 16,
@@ -53,15 +51,11 @@ class CustomeStyleServiceInfos extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          DisplayStarRating(
-            clicked: clicked,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
+          DisplayStarRating(clicked: clicked),
+          const SizedBox(width: 8),
           CustomeText(
             text: title,
-            size: 16,
+            size: 14,
             weight: FontWeight.w700,
           ),
         ],
@@ -152,7 +146,7 @@ class StarRating extends StatelessWidget {
                 : () {},
             child: Icon(
               index < value
-                  ? filledStar   ?? Icons.star
+                  ? filledStar ?? Icons.star
                   : unfilledStar ?? Icons.star_border,
               color: color,
               size: size,

@@ -1,63 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:freelancer_app/features/booked_services/data/models/book_services/book_datum.dart';
+import 'package:freelancer_app/features/booked_services/presentation/view/add_book_service/freelancer_infos_view/widget/rating_freelancer.dart';
 import 'package:freelancer_app/features/booked_services/presentation/view/widgets/custome_style_service_infos.dart';
 
-
 class ConfirmedBooked extends StatelessWidget {
-  const ConfirmedBooked({
-    super.key,
-  });
+  final DatumBooked booked;
+  const ConfirmedBooked({super.key, required this.booked});
+
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      // mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         CustomeStyleServiceInfos(
           title: 'اسم الخدمة : ',
-          info: 'تصليح مكيفات',
+          info: booked.service!.serviceName,
         ),
-        SizedBox(
-          height: 8,
-        ),
+        const SizedBox(height: 8),
         CustomeStyleServiceInfos(
           title: 'اسم الفريلانسر : ',
-          info: 'هشام حداد',
+          info: booked.expert!.user!.name,
         ),
-        SizedBox(
-          height: 8,
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            RatingFreelancer(rating: booked.expert!.rating!),
+            const Text(
+              'التقييم :   ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+              textDirection: TextDirection.rtl,
+            ),
+          ],
         ),
-        CustomeStyleServiceInfos(
-          title: 'التقييم :',
-          rating: true,
-        ),
-        SizedBox(
-          height: 8,
-        ),
+        const SizedBox(height: 8),
         CustomeStyleServiceInfos(
           title: ' رسوم الخدمة مكتملة : ',
-          info: '9000 ل.س',
+          info: '\$ ${booked.expert!.price}',
         ),
-        SizedBox(
-          height: 8,
-        ),
+        const SizedBox(height: 8),
         CustomeStyleServiceInfos(
           title: 'التاريخ : ',
-          info: '2023/08/15',
+          info: '${booked.deliveryDate}',
         ),
-        SizedBox(
-          height: 8,
-        ),
+        const SizedBox(height: 8),
         CustomeStyleServiceInfos(
           title: ' وقت إكمال الخدمة : ',
-          info: '08 مساء‘',
+          info: '${booked.deliveryTime}',
         ),
-        SizedBox(
-          height: 8,
-        ),
+        const SizedBox(height: 8),
         CustomeStyleServiceInfos(
           title: ' رفم الفريلانسر : ',
-          info: '09344655435',
+          info: '${booked.expert!.mobile}',
         ),
+        const SizedBox(height: 16),
       ],
     );
   }

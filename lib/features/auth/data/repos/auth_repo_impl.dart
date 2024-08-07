@@ -18,7 +18,10 @@ class AuthRepoImpl implements AuthRepo {
     try {
       var data = await apiService.post(
         endPoint: 'login',
-        body: {'email': email, 'password': password},
+        body: {
+          'email': email,
+          'password': password,
+        },
       );
       UserModel user = UserModel.fromJson(data);
 
